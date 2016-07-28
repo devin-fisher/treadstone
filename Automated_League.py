@@ -6,7 +6,6 @@ import argparse
 def kill_list_function(data):
     kill_list = []
     t = len(data['frames'])
-
     for x in range (0, t):
 
         z = len(data['frames'][x]['events'])
