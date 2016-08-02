@@ -207,7 +207,9 @@ def main(args):
     kill_list = kill_list_function(data)
     start_list, counter_list = start_counter_list_function(kill_list, counter_list)
     end_list, counter_list = end_list_function(kill_list, counter_list, start_list)
-    large_fight_function(start_list, counter_list)
+    team_fight = large_fight_function(start_list, counter_list)
+    player_gold(data,team_fight)
+    player_items_list = player_items(data)
     report(start_list, end_list)
 
     print(kill_list)
