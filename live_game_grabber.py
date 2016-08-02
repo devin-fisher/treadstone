@@ -1,14 +1,16 @@
 import daemon
 import jwt
 import os
+import sys
 import requests
 from calendar import timegm
 from datetime import datetime, timedelta
 
-from websocket import create_connection
 import websocket
 import time
 import uuid
+
+
 
 
 TOKEN_FILE = ".token"
@@ -20,6 +22,7 @@ STATS_API = "ws://livestats.proxy.lolesports.com/stats"
 TOKEN_EXPRIED_MOD = 1000
 TEST_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2IjoiMS4wIiwiamlkIjoiNzY2ZDA4YWItNGI4Mi00NWMzLTgyZGUtYjNmNGQxYWNhMjRjIiwiaWF0IjoxNDcwMDY2MDgxNzA3LCJleHAiOjE0NzA2NzA4ODE3MDcsIm5iZiI6MTQ3MDA2NjA4MTcwNywiY2lkIjoiYTkyNjQwZjI2ZGMzZTM1NGI0MDIwMjZhMjA3NWNiZjMiLCJzdWIiOnsiaXAiOiI2Ny4xNjEuMjQxLjIxMSIsInVhIjoiTW96aWxsYS81LjAgKFgxMTsgTGludXggeDg2XzY0KSBBcHBsZVdlYktpdC81MzcuMzYgKEtIVE1MLCBsaWtlIEdlY2tvKSBDaHJvbWUvNTEuMC4yNzA0LjEwNiBTYWZhcmkvNTM3LjM2In0sInJlZiI6WyJ3YXRjaC4qLmxvbGVzcG9ydHMuY29tIl0sInNydiI6WyJsaXZlc3RhdHMtdjEuMCJdfQ.KQVuSivkPAqR7uV5U7aPH7AgdWVnYlhrXhdPp1pp65I"
 
+WEB_SOCKET = None
 WS = None
 RUNNING = True
 
@@ -84,34 +87,49 @@ def _on_message(ws, message):
 
 def _on_error(ws, error):
     print error
-    # CUR_RETRY_TIME = min((CUR_RETRY_TIME * 2) + MIN_RETRY_TIME, MAX_RETRY_TIME)
-    # print CUR_RETRY_TIME
+    if hasattr(ws, 'retry_time'):
+        ws.retry_time = min((ws.retry_time * 2) + 10, 60)
+    else:
+        ws.retry_time = 10
 
 def _on_close(ws):
     print "### closed ###"
 
 def _on_open(ws):
     print "### open ###"
+    ws.retry_time = 0
 
 def main():
+    global WEB_SOCKET
     data_dir = os.path.join(os.getcwd(), DATA_DIRECTORY)
     if not os.path.exists(data_dir):
         os.makedirs(data_dir)
 
-    print min((CUR_RETRY_TIME * 2) + MIN_RETRY_TIME, MAX_RETRY_TIME)
     while(RUNNING):
-        time.sleep(CUR_RETRY_TIME)
+        retry_time = 0
+        if WEB_SOCKET is not None:
+            if hasattr(WEB_SOCKET, 'retry_time'):
+                retry_time = WEB_SOCKET.retry_time
+            else:
+                retry_time = 10
+
+        print("Retry wait time: " + str(retry_time))
+        # sys.stdout.flush()
+        time.sleep(retry_time)
+
         token = _get_token()
         url = STATS_API + "?jwt=" +token
         url = "ws://192.168.1.2:9999/"
         print(url)
         websocket.enableTrace(True)
-        WS = websocket.WebSocketApp(url,
+        WEB_SOCKET = websocket.WebSocketApp(url,
                                   on_message = _on_message,
                                   on_error = _on_error,
                                   on_close = _on_close)
-        WS.on_open = _on_open
-        WS.run_forever(ping_interval=None)
+
+        WEB_SOCKET.retry_time = retry_time
+        WEB_SOCKET.on_open = _on_open
+        WEB_SOCKET.run_forever(ping_interval=None)
 
 
 if __name__ == "__main__":
