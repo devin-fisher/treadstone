@@ -6,8 +6,8 @@ After=network.target
 Type=simple
 User=root
 Group=root
-WorkingDirectory=/var/opt/live_game_grabber
-ExecStart=/opt/treadstone/live_game_grabber.py
+WorkingDirectory=/var/opt/live_game
+ExecStart=/opt/treadstone/livegame.py
 StandardOutput=syslog
 StandardError=syslog
 
