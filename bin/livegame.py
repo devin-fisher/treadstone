@@ -38,7 +38,7 @@ def _get_token_from_disk():
         return None
 
 def _get_new_token():
-    print("!" * 20)
+    print("New Token will be Generated")
     r = requests.get(TOKEN_ISSUE_API)
     j = r.json()
     rtn = j.get("token", None)
@@ -118,7 +118,7 @@ def main():
 
         token = _get_token()
         url = STATS_API + "?jwt=" +token
-        url = "ws://192.168.1.2:9999/"
+#        url = "ws://192.168.1.2:9999/"
         print(url)
         websocket.enableTrace(True)
         WEB_SOCKET = websocket.WebSocketApp(url,
