@@ -146,22 +146,58 @@ def report(start_list, end_list):
         else:
             video_length = video_length + ((60 - time_seconds_start) + time_seconds_end)
 
-        print('start',time_minutes_start,':', time_seconds_start)
-        print('end  ',time_minutes_end,':', time_seconds_end)
-    print(int(video_length / 60),'Minutes and',video_length % 60,'Seconds')
+        #print('start',time_minutes_start,':', time_seconds_start)
+        #print('end  ',time_minutes_end,':', time_seconds_end)
+    #print(int(video_length / 60),'Minutes and',video_length % 60,'Seconds')
 
 def large_fight_function(start_list, counter_list):
     len_counter_list = len(counter_list)
+    team_fight = []
     for a in range(0,len_counter_list):
         if (counter_list[a] >= 3):
             time_seconds_start = int((start_list[a] / 1000) % 60)
             time_minutes_start = int(((start_list[a] / 1000) - time_seconds_start) / 60)
+            team_fight.append(start_list[a])
             print('Team Fights!!',time_minutes_start,':',time_seconds_start)
+
+    return(team_fight)
 
 def _create_url(args):
     return "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001740199/timeline?gameHash=7b4f6400bb5f0053"
 
-    
+def player_gold(data, team_fight):
+    len_team_fight = len(team_fight)
+    for a in range(0,len_team_fight):
+        time = int((team_fight[a]/1000)/60)
+        for b in range(1,11):
+            x = str(b)
+            player_gold = data['frames'][time]['participantFrames'][x]['totalGold']
+
+    return(team_fight)
+
+def player_items(data):
+    test = {}
+    player_items_list = []
+    player_items_list1 = []
+    data_len = len(data)
+    for a in range(0,10):
+        player_id = a
+        player_items_list.append(a)
+        # for x in range (0, data_len):
+        #     z = len(data['frames'][x]['events'])
+        #     for y in range (0, z):
+        #         check = data['frames'][x]['events'][y]['type']
+        #         if check == "ITEM_PURCHASED":
+        #             check2 = data['frames'][x]['events'][y]['participantId']
+        #             print(check2)
+        #             if check2 == player_id:
+        #                 item_id = data['frames'][x]['events'][y]['itemId']
+        #                 player_items_list1[a].append(item_id)
+
+    print(player_items_list)
+    print(player_items_list[1])
+    return player_items_list
+
 def main(args):
     url = _create_url(args)
     r = requests.get(url)
