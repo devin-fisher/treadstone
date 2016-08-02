@@ -1,17 +1,16 @@
-import daemon
+#!/usr/bin/env python
 import jwt
 import os
 import sys
-import requests
-from calendar import timegm
-from datetime import datetime, timedelta
 
-import websocket
 import time
 import uuid
 
+import requests
+import websocket
 
-
+from calendar import timegm
+from datetime import datetime, timedelta
 
 TOKEN_FILE = ".token"
 TOKEN_ISSUE_API = "http://api.lolesports.com/api/issueToken"
@@ -133,18 +132,8 @@ def main():
 
 
 if __name__ == "__main__":
-    # context = daemon.DaemonContext(
-    # working_directory='/var/opt/live_game_grabber',
-    # umask=0o002,
-    # pidfile=lockfile.FileLock('/var/run/live_game_grabber.pid'),
-    # )
-
-    # context.signal_map = {
-    # signal.SIGTERM: program_cleanup,
-    # signal.SIGHUP: 'terminate',
-    # signal.SIGUSR1: reload_program_config,
-    # }
-
-    # with context:
-    #     main(args)
-    main()
+    try:
+        main()
+    except:
+        pass
+    print("Stoped")
