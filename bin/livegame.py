@@ -79,6 +79,7 @@ def _get_token():
 
 def _on_message(ws, message):
     name = str(uuid.uuid4())
+    name = name + ".json"
     # print name
     loc = os.path.join(os.getcwd(), DATA_DIRECTORY, name)
     with open(loc, "w") as f:
