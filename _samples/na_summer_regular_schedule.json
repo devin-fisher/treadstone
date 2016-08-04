@@ -1,0 +1,3858 @@
+{
+  "na_2016_summer_472c44a9-49d3-4de4-912c-aa4151fd1b3b": [
+    {
+      "name": "TSM-vs-CLG", 
+      "id": "98e358ff-2153-453a-92d1-2f1bfee4afae", 
+      "scheduledTime": "2016-06-04T00:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "0045fb8f-0272-4a84-8500-240d69c33f7b", 
+          "gameId": "1001720111", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "55109b5a7a91ae87", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001720111/timeline?gameHash=55109b5a7a91ae87", 
+          "youtube_video_url": "https://www.youtube.com/embed/geGlkI9lVpk?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "4d985748-066a-4ea1-9a16-db0612d08b10", 
+          "gameId": "1001720119", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "e147296c928da5b4", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001720119/timeline?gameHash=e147296c928da5b4", 
+          "youtube_video_url": "https://www.youtube.com/embed/6bAUiO5QYQ0?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "514af31a-c14f-48fa-a4d5-3522de3b563d", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "1", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "1", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "NV-vs-NRG", 
+      "id": "70ed07fa-5fa7-4467-a84d-d3860350540a", 
+      "scheduledTime": "2016-06-04T03:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "ae0255a4-ad36-4efd-a2ce-7e8b83560dab", 
+          "gameId": "1001720120", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "ea0611c44259f062", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001720120/timeline?gameHash=ea0611c44259f062", 
+          "youtube_video_url": "https://www.youtube.com/embed/eZyFRjeOZ2I?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "9f7b7ad2-7677-4931-b76e-8de149e1d29e", 
+          "gameId": "1001720133", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "b14fd1cbf4a478c7", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001720133/timeline?gameHash=b14fd1cbf4a478c7", 
+          "youtube_video_url": "https://www.youtube.com/embed/RH8G61siDJg?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "5d61cb8b-3c3b-4b5c-a58d-246ab276b8e0", 
+          "gameId": "1001720134", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "aa0eef8f5441887e", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001720134/timeline?gameHash=aa0eef8f5441887e", 
+          "youtube_video_url": "https://www.youtube.com/embed/zdAQXaZbJ9s?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "1", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "1", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "C9-vs-IMT", 
+      "id": "6a69a9a5-0466-4779-bdc1-39e77b3638f3", 
+      "scheduledTime": "2016-06-04T19:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "925d8443-8f5a-4b1b-8717-2a882b7e429c", 
+          "gameId": "1001720142", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "cadc355b3ee8548f", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001720142/timeline?gameHash=cadc355b3ee8548f", 
+          "youtube_video_url": "https://www.youtube.com/embed/VcX6o_Se0w8?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "d96283e5-604d-4dac-8e9f-ec6e4ed20cd6", 
+          "gameId": "1001720170", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "5905d606461c5597", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001720170/timeline?gameHash=5905d606461c5597", 
+          "youtube_video_url": "https://www.youtube.com/embed/AXS9WTshI6k?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "187bd0f9-a197-49f2-ba6f-a7a8700967e0", 
+          "gameId": "1001720176", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "67f1feafdf188b05", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001720176/timeline?gameHash=67f1feafdf188b05", 
+          "youtube_video_url": "https://www.youtube.com/embed/XsEYnknlIDY?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "1", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "FOX-vs-P1", 
+      "id": "a6ac9ba9-9b50-4657-bd8c-27f903d17e10", 
+      "scheduledTime": "2016-06-04T19:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "e31185fa-391a-48d3-a823-aa56e6b1a49f", 
+          "gameId": "1001720149", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "6b1525560c312f5d", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001720149/timeline?gameHash=6b1525560c312f5d", 
+          "youtube_video_url": "https://www.youtube.com/embed/O_uzBKDNBlI?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "0356066f-1b66-4b72-b501-88c962fabed8", 
+          "gameId": "1001720171", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "9da12bca41666abe", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001720171/timeline?gameHash=9da12bca41666abe", 
+          "youtube_video_url": "https://www.youtube.com/embed/qRz4GSCMt5g?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "3af390f3-3431-46d8-8664-5ba04ec3e5bd", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "1", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "NV-vs-TL", 
+      "id": "a117be1c-cd36-4b3e-a6cf-65a7f81a03ce", 
+      "scheduledTime": "2016-06-04T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "ae0baafa-fd39-430c-9115-d7b29753e9ae", 
+          "gameId": "1001720185", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "751e1f62ba5d9e0e", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001720185/timeline?gameHash=751e1f62ba5d9e0e", 
+          "youtube_video_url": "https://www.youtube.com/embed/FQ0ebcQvHHA?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "b372838c-2b74-4c23-b3cc-e8010c99383a", 
+          "gameId": "1001720194", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "79751f22797a00de", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001720194/timeline?gameHash=79751f22797a00de", 
+          "youtube_video_url": "https://www.youtube.com/embed/L3IgbAlIqbQ?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "df036fc1-06ae-45a1-baba-10f8a92263c3", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "1", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "APX-vs-NRG", 
+      "id": "6ff48a4d-3d28-44ba-8b3a-58f1655fea93", 
+      "scheduledTime": "2016-06-04T22:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "48c69f04-f87c-40b3-89b3-5572da9f1432", 
+          "gameId": "1001720177", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "9bf1b56e827487f6", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001720177/timeline?gameHash=9bf1b56e827487f6", 
+          "youtube_video_url": "https://www.youtube.com/embed/POpaOcFvvrk?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "c8b3423f-f513-49e9-8b14-ba0923360113", 
+          "gameId": "1001720192", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "ecb0ae4d5c980c6d", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001720192/timeline?gameHash=ecb0ae4d5c980c6d", 
+          "youtube_video_url": "https://www.youtube.com/embed/GzRIc5jg_IY?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "8f09c901-9d26-4a7a-9b1b-29d654ed2a53", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "1", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "APX-vs-CLG", 
+      "id": "a4dac265-d601-4412-9f9c-47dd156d0f88", 
+      "scheduledTime": "2016-06-05T19:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "9344019a-1bb5-4ef4-ad92-63900d678c35", 
+          "gameId": "1001710207", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "c6baf4616cb79dff", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001710207/timeline?gameHash=c6baf4616cb79dff", 
+          "youtube_video_url": "https://www.youtube.com/embed/sUuNW9l7y1U?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "55544358-b528-4ba4-a252-64d4a5a185fe", 
+          "gameId": "1001710230", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "6ff996091267c4c9", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001710230/timeline?gameHash=6ff996091267c4c9", 
+          "youtube_video_url": "https://www.youtube.com/embed/UYebe5FG4vQ?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "c4db7513-b922-44b1-bf53-a4e4afdc3a56", 
+          "gameId": "1001710238", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "d999bef5a1043081", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001710238/timeline?gameHash=d999bef5a1043081", 
+          "youtube_video_url": "https://www.youtube.com/embed/_mDBBDIZEPc?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "1", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "TSM-vs-TL", 
+      "id": "a1216faf-ca83-47a5-ad2b-91d786cbd5be", 
+      "scheduledTime": "2016-06-05T19:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "b966fb1f-c246-414a-ae2e-8b88bcf81c1d", 
+          "gameId": "1001710205", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "5b656ac1bc2a0f9d", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001710205/timeline?gameHash=5b656ac1bc2a0f9d", 
+          "youtube_video_url": "https://www.youtube.com/embed/lEkHhvispls?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "638dab01-dd00-41af-b341-04b9381d9d14", 
+          "gameId": "1001710228", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "38a3099fdf0bdf3b", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001710228/timeline?gameHash=38a3099fdf0bdf3b", 
+          "youtube_video_url": "https://www.youtube.com/embed/zJzWrnQDMEE?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "c6340256-c43f-43f4-943a-81865035cdce", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "1", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "FOX-vs-C9", 
+      "id": "65134d3b-9834-4889-9f5c-25067bca9d30", 
+      "scheduledTime": "2016-06-05T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "5e3f98f1-a328-4280-9eea-e919106825b1", 
+          "gameId": "1001710240", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "c07acf54b1d57c2a", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001710240/timeline?gameHash=c07acf54b1d57c2a", 
+          "youtube_video_url": "https://www.youtube.com/embed/izIEJ4E0oc0?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "4d83ddab-77da-451a-b7c2-112d21a69eea", 
+          "gameId": "1001710249", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "856ed19d3d6dce2e", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001710249/timeline?gameHash=856ed19d3d6dce2e", 
+          "youtube_video_url": "https://www.youtube.com/embed/6R9l-btdKUA?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "15063fbd-b94f-4fc4-9332-c94045840ada", 
+          "gameId": "1001710250", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "5fc1a3a62a465985", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001710250/timeline?gameHash=5fc1a3a62a465985", 
+          "youtube_video_url": "https://www.youtube.com/embed/KVBmcUGOtFg?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "1", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "IMT-vs-P1", 
+      "id": "6932eaf5-a2eb-4583-8034-9e1bbab72d99", 
+      "scheduledTime": "2016-06-05T22:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "3535deb2-b976-416f-a75d-d481eafc63b9", 
+          "gameId": "1001710231", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "91a0a2d462dc0d41", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001710231/timeline?gameHash=91a0a2d462dc0d41", 
+          "youtube_video_url": "https://www.youtube.com/embed/NQ7BkXk6LBM?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "155fdbc9-b288-4211-89ff-a4e906a2c1ea", 
+          "gameId": "1001710239", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "9f534fd8eceff80b", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001710239/timeline?gameHash=9f534fd8eceff80b", 
+          "youtube_video_url": "https://www.youtube.com/embed/MzRWvr7bjJs?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "5a16875e-81f5-4971-899b-8b88f9167b33", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "1", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "NRG-vs-IMT", 
+      "id": "8ad5a66c-9687-4be6-ac1e-d589f34bbf90", 
+      "scheduledTime": "2016-06-11T00:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "a82051ba-91a8-43a1-9b32-15597cb904cc", 
+          "gameId": "1001740004", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "80d74cc3683eba13", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001740004/timeline?gameHash=80d74cc3683eba13", 
+          "youtube_video_url": "https://www.youtube.com/embed/8ocipGf1ASA?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "8e62ddd8-cb76-4684-b677-ec4b66ebb883", 
+          "gameId": "1001740012", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "aa8c411318d67a9c", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001740012/timeline?gameHash=aa8c411318d67a9c", 
+          "youtube_video_url": "https://www.youtube.com/embed/TiQHPMcIRmg?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "a64f709b-32c2-45f8-88b7-4c9e82a40a2a", 
+          "gameId": "1001740013", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "b9d3eb305b671378", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001740013/timeline?gameHash=b9d3eb305b671378", 
+          "youtube_video_url": "https://www.youtube.com/embed/K11e9_Qtj3o?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "2", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "1", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "APX-vs-NV", 
+      "id": "8506e37f-fb97-4157-8b40-e5255bee27da", 
+      "scheduledTime": "2016-06-11T03:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "3362774d-cbf0-441d-b0ff-16a79be34636", 
+          "gameId": "1001740014", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "101816173ebc860f", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001740014/timeline?gameHash=101816173ebc860f", 
+          "youtube_video_url": "https://www.youtube.com/embed/R4eNrr8CmbA?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "6d4f9160-5d06-4ce2-a6dd-0085d51dfe69", 
+          "gameId": "1001740024", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "996e843d01cae5e6", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001740024/timeline?gameHash=996e843d01cae5e6", 
+          "youtube_video_url": "https://www.youtube.com/embed/vdxekbG1ZSw?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "cee115b5-87d2-4b4c-a33b-e3dcc75a8b95", 
+          "gameId": "1001740025", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "53918301f0b91c8f", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001740025/timeline?gameHash=53918301f0b91c8f", 
+          "youtube_video_url": "https://www.youtube.com/embed/ofWPOUtyBCU?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "2", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "1", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "TL-vs-CLG", 
+      "id": "f7cda096-3fff-4433-aecd-339350f0c845", 
+      "scheduledTime": "2016-06-11T19:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "2b1f5382-2486-4f14-8294-a5ce8d55895d", 
+          "gameId": "1001730039", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "ea789c30ec56b6d1", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730039/timeline?gameHash=ea789c30ec56b6d1", 
+          "youtube_video_url": "https://www.youtube.com/embed/HMmPLp-CdI4?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "055dc289-aad3-430a-8498-7a88f12495fe", 
+          "gameId": "1001730040", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "7654a2d0218d4f61", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730040/timeline?gameHash=7654a2d0218d4f61", 
+          "youtube_video_url": "https://www.youtube.com/embed/H782LSLdfbo?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "9000b8a1-843d-40d1-b24c-b87ea2ca429e", 
+          "gameId": "1001730042", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "18dab8e7368a1744", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730042/timeline?gameHash=18dab8e7368a1744", 
+          "youtube_video_url": "https://www.youtube.com/embed/1dyO-3c3VT8?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "2", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "NRG-vs-FOX", 
+      "id": "014e85ef-caf0-452d-be51-12223fbf0dba", 
+      "scheduledTime": "2016-06-11T19:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "fcc202c4-cd90-4b69-9ce5-10a905e5c83a", 
+          "gameId": "1001730026", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "601c2b974dda600c", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730026/timeline?gameHash=601c2b974dda600c", 
+          "youtube_video_url": "https://www.youtube.com/embed/JWViY45DkiU?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "07844bbe-3ca9-4bfe-8fd8-7442f2310597", 
+          "gameId": "1001730041", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "814965adabe8f34d", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730041/timeline?gameHash=814965adabe8f34d", 
+          "youtube_video_url": "https://www.youtube.com/embed/bqdCqdXINNo?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "79737129-fb62-4b2b-98bd-a33982499c24", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "2", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "P1-vs-C9", 
+      "id": "39ac6126-7153-4b61-baa2-840a2ae375dd", 
+      "scheduledTime": "2016-06-11T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "fb1877ea-3d5a-41d1-8f4b-bc0d082c6c15", 
+          "gameId": "1001730049", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "e4153bf9fb77978a", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730049/timeline?gameHash=e4153bf9fb77978a", 
+          "youtube_video_url": "https://www.youtube.com/embed/s9aFc5vW3kM?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "ba7eba62-9b0e-4fb3-963e-498b5d1b6711", 
+          "gameId": "1001730060", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "2bd21ca63a29c3e3", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730060/timeline?gameHash=2bd21ca63a29c3e3", 
+          "youtube_video_url": "https://www.youtube.com/embed/FNcSVp5Jgzs?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "8233f036-6214-417c-95a5-5e8f6f1bd74e", 
+          "gameId": "1001730061", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "5e37778102abc70d", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730061/timeline?gameHash=5e37778102abc70d", 
+          "youtube_video_url": "https://www.youtube.com/embed/FvuTUldVbHQ?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "2", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "TSM-vs-APX", 
+      "id": "f8e1e015-87bf-415e-b8a1-9d91bbace711", 
+      "scheduledTime": "2016-06-11T22:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "00f46dc1-a365-473e-bcbe-159ef237eb47", 
+          "gameId": "1001730043", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "cc0d578c7b089314", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730043/timeline?gameHash=cc0d578c7b089314", 
+          "youtube_video_url": "https://www.youtube.com/embed/26IDQyElm5E?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "3487620d-7bb8-4734-8daf-c3954e293f64", 
+          "gameId": "1001730059", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "b0170f54c8d76453", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730059/timeline?gameHash=b0170f54c8d76453", 
+          "youtube_video_url": "https://www.youtube.com/embed/qqtB7-vZqwA?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "7400d648-8a18-47ed-82b9-5bd1df97de27", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "2", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "TSM-vs-IMT", 
+      "id": "81790d64-8c46-47e0-bfb2-cbe23ff60c4f", 
+      "scheduledTime": "2016-06-12T19:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "36d6c836-08d6-4817-a0ce-c330dd345e15", 
+          "gameId": "1001730068", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "83338b7c076f011c", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730068/timeline?gameHash=83338b7c076f011c", 
+          "youtube_video_url": "https://www.youtube.com/embed/IRO2S8gVelg?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "8da946d5-4f9c-49d7-90c7-dab8633170ab", 
+          "gameId": "1001730093", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "6722439ce0f83b03", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730093/timeline?gameHash=6722439ce0f83b03", 
+          "youtube_video_url": "https://www.youtube.com/embed/UnUVF4UeGww?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "49792061-e2f6-4cbe-9604-600b8e44935a", 
+          "gameId": "1001730096", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "09d9dc4c7b495ace", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730096/timeline?gameHash=09d9dc4c7b495ace", 
+          "youtube_video_url": "https://www.youtube.com/embed/l723F-bhOwM?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "2", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "NV-vs-P1", 
+      "id": "d27d2387-be31-4fa3-9108-aa5c219f2823", 
+      "scheduledTime": "2016-06-12T19:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "d57756ce-7ce7-4a19-8ea4-bcc682140abf", 
+          "gameId": "1001730069", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "7e73ec9bad597bbb", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730069/timeline?gameHash=7e73ec9bad597bbb", 
+          "youtube_video_url": "https://www.youtube.com/embed/J7ClxSLPUao?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "ef7ea0fa-6c91-4eec-86e6-f67315599b9b", 
+          "gameId": "1001730095", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "fdd15e6b9127b86a", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730095/timeline?gameHash=fdd15e6b9127b86a", 
+          "youtube_video_url": "https://www.youtube.com/embed/cKfv-bQnqRA?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "f560c873-eddf-42b2-ba3a-051e37cf358c", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "2", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "FOX-vs-TL", 
+      "id": "47ee45b7-cb6e-4f4b-a16a-c5e71a8826ed", 
+      "scheduledTime": "2016-06-12T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "ecd40ad3-6ff5-4a98-96c5-74401c2ade04", 
+          "gameId": "1001730107", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "13a042a853b9187c", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730107/timeline?gameHash=13a042a853b9187c", 
+          "youtube_video_url": "https://www.youtube.com/embed/NCys08AyjCg?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "e00cc26d-9e2e-41b1-8dd5-edc25fd76bd3", 
+          "gameId": "1001730117", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "917adeae4ac3efa7", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730117/timeline?gameHash=917adeae4ac3efa7", 
+          "youtube_video_url": "https://www.youtube.com/embed/jtKZHIuZt3A?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "c85250be-9644-4c2a-92ba-068b3e1f6767", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "2", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "CLG-vs-C9", 
+      "id": "4506297f-8424-498b-a21a-da89935221fb", 
+      "scheduledTime": "2016-06-12T22:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "6f0436f2-5ce1-4215-bfce-150784f52f59", 
+          "gameId": "1001730100", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "95c0b0330487f2ca", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730100/timeline?gameHash=95c0b0330487f2ca", 
+          "youtube_video_url": "https://www.youtube.com/embed/LmDv0aY6Yho?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "57e37ca3-5a97-47e3-b693-2367532c4254", 
+          "gameId": "1001730115", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "bc139107dd29c6ea", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730115/timeline?gameHash=bc139107dd29c6ea", 
+          "youtube_video_url": "https://www.youtube.com/embed/L0TXNyY8UIE?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "bf3fe7db-8d52-469c-be00-4e36e0e05e57", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "2", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "C9-vs-TSM", 
+      "id": "ad45d321-25ed-4046-99c8-c22177269a25", 
+      "scheduledTime": "2016-06-18T00:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "993bdf17-3ea5-4f0f-8748-4ec4700bb652", 
+          "gameId": "1001730132", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "a8003dbaa21cde73", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730132/timeline?gameHash=a8003dbaa21cde73", 
+          "youtube_video_url": "https://www.youtube.com/embed/44EKx3AQiJk?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "4cf99b6c-b0fc-45d7-8827-b0b8cc44cb65", 
+          "gameId": "1001730138", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "b14119e6e175d443", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730138/timeline?gameHash=b14119e6e175d443", 
+          "youtube_video_url": "https://www.youtube.com/embed/V5295rJcP5s?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "7507ba9c-a830-42e2-9cac-dd75fc7512a3", 
+          "gameId": "1001730142", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "1facc2ad3739c9a4", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730142/timeline?gameHash=1facc2ad3739c9a4", 
+          "youtube_video_url": "https://www.youtube.com/embed/ICQhZ-fgVAE?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "3", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "1", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "TL-vs-P1", 
+      "id": "1d5574f3-fb55-4d9b-a5a0-d0f1baa4c9da", 
+      "scheduledTime": "2016-06-18T03:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "230909d9-656d-43a1-a8de-a9b956535439", 
+          "gameId": "1001730143", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "87b0273af49b12a7", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730143/timeline?gameHash=87b0273af49b12a7", 
+          "youtube_video_url": "https://www.youtube.com/embed/tI3kmXYa2L0?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "b1923df5-f849-42b0-9b18-20ea57f7c626", 
+          "gameId": "1001730150", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "b516729f5838c5e9", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730150/timeline?gameHash=b516729f5838c5e9", 
+          "youtube_video_url": "https://www.youtube.com/embed/gxkZfJxyJc4?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "1dadc7c5-2ec3-41ce-ac60-81b7350f873f", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "3", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "1", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "IMT-vs-NV", 
+      "id": "ff9f7ce8-ffbe-41ef-b555-6e8008590506", 
+      "scheduledTime": "2016-06-18T19:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "bee97655-8c8e-45cc-995f-33d6847eb176", 
+          "gameId": "1001730162", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "b571cbbfd29636fa", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730162/timeline?gameHash=b571cbbfd29636fa", 
+          "youtube_video_url": "https://www.youtube.com/embed/pOO2DKFpnkI?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "4c93f691-69a4-4a15-b00a-359193e4ffdd", 
+          "gameId": "1001730183", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "9fe3604c6eb8bfd2", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730183/timeline?gameHash=9fe3604c6eb8bfd2", 
+          "youtube_video_url": "https://www.youtube.com/embed/HzTC0oORiwQ?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "949b6261-17df-474a-be01-b5657d647407", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "3", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "CLG-vs-FOX", 
+      "id": "17528151-decf-4bc8-86e0-eb79d0f81c0f", 
+      "scheduledTime": "2016-06-18T19:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "a3b525d5-6a57-43ae-81f1-bcc1bf41dd83", 
+          "gameId": "1001730164", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "4f771f91724f5114", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730164/timeline?gameHash=4f771f91724f5114", 
+          "youtube_video_url": "https://www.youtube.com/embed/_vWOKvNsaDg?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "161809c1-fbca-40e5-93ea-af147f348530", 
+          "gameId": "1001730181", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "78a169ea03f4f3fb", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730181/timeline?gameHash=78a169ea03f4f3fb", 
+          "youtube_video_url": "https://www.youtube.com/embed/CYLn13--Qa8?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "72a79cac-3d5f-4433-babc-5abdff4f8d05", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "3", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "TL-vs-NRG", 
+      "id": "84d17c3d-d4a4-480a-ac25-5c1e6d081a63", 
+      "scheduledTime": "2016-06-18T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "5ffde0b1-9130-40c7-b994-7f031ff05e51", 
+          "gameId": "1001730195", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "10e542b3146af3ed", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730195/timeline?gameHash=10e542b3146af3ed", 
+          "youtube_video_url": "https://www.youtube.com/embed/LiYp52vKuuw?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "da3dab5e-292b-4839-8a1a-75904c691a7a", 
+          "gameId": "1001730209", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "911f884c9dadd055", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730209/timeline?gameHash=911f884c9dadd055", 
+          "youtube_video_url": "https://www.youtube.com/embed/42ok49X0ArY?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "6c372027-260a-4b7d-9144-a253b00d67f9", 
+          "gameId": "1001730212", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "1b277bf50ddc2035", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730212/timeline?gameHash=1b277bf50ddc2035", 
+          "youtube_video_url": "https://www.youtube.com/embed/L8_k4vijFxA?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "3", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "P1-vs-APX", 
+      "id": "ffe80e3c-186a-49b7-a193-ab063bad55a6", 
+      "scheduledTime": "2016-06-18T22:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "dc3e5103-189c-44c0-b207-5c99f535622d", 
+          "gameId": "1001730184", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "cd634f9cf591432d", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730184/timeline?gameHash=cd634f9cf591432d", 
+          "youtube_video_url": "https://www.youtube.com/embed/lrjh7lSvpg8?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "8a9fefc1-acd6-49a5-a40b-2e118ca6418a", 
+          "gameId": "1001730207", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "9a64672c2a70fdc7", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730207/timeline?gameHash=9a64672c2a70fdc7", 
+          "youtube_video_url": "https://www.youtube.com/embed/6frb_POHfcY?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "c8729257-dd40-4965-9539-199ba1e3e825", 
+          "gameId": "1001730210", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "563362e1228d8a6f", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730210/timeline?gameHash=563362e1228d8a6f", 
+          "youtube_video_url": "https://www.youtube.com/embed/QcYS3W0afQU?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "3", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "NRG-vs-TSM", 
+      "id": "5b814971-749f-41b6-9f83-3ee068e4d471", 
+      "scheduledTime": "2016-06-19T19:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "b724f4b6-2400-4ec7-93e6-5d2c8a4774f2", 
+          "gameId": "1001730225", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "479ccecf1cfa44e3", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730225/timeline?gameHash=479ccecf1cfa44e3", 
+          "youtube_video_url": "https://www.youtube.com/embed/AUF3kfr_2eA?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "25b8a3d8-f79c-430c-85a5-7255caa96541", 
+          "gameId": "1001730247", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "b4d301ea53190209", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730247/timeline?gameHash=b4d301ea53190209", 
+          "youtube_video_url": "https://www.youtube.com/embed/BP8vEXHzLec?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "60315a17-12d9-48c3-8106-80a985011c5f", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "3", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "APX-vs-C9", 
+      "id": "3af8f08f-2ce1-4218-98c6-1d7ce039a9dd", 
+      "scheduledTime": "2016-06-19T19:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "9067b65f-d335-4ccc-a020-c04c1aa52bbd", 
+          "gameId": "1001740167", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "d4bdddbb2ab10fa8", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001740167/timeline?gameHash=d4bdddbb2ab10fa8", 
+          "youtube_video_url": "https://www.youtube.com/embed/y_4wg2poPO4?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "5b5e5f8c-d185-45f3-aaaa-fa9b5a5adbec", 
+          "gameId": "1001740190", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "25d8363fb4b9a8aa", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001740190/timeline?gameHash=25d8363fb4b9a8aa", 
+          "youtube_video_url": "https://www.youtube.com/embed/Bkc5EMDcYfI?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "304ba43a-76ea-46e3-8fd3-3a49e1e15756", 
+          "gameId": "1001740199", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "7b4f6400bb5f0053", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001740199/timeline?gameHash=7b4f6400bb5f0053", 
+          "youtube_video_url": "https://www.youtube.com/embed/PGpR6EsPs9Q?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "3", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "FOX-vs-IMT", 
+      "id": "b74722ff-d96a-4168-acc0-f12bca5717e8", 
+      "scheduledTime": "2016-06-19T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "85d89cf2-ebbd-48ce-b3c9-c37b2181be5a", 
+          "gameId": "1001730252", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "b0ea8af2576398e2", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730252/timeline?gameHash=b0ea8af2576398e2", 
+          "youtube_video_url": "https://www.youtube.com/embed/0dwjqhpi1-8?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "9c5e3351-3e2b-4dcf-82f7-db1a45540c68", 
+          "gameId": "1001730265", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "0b5a9e07d29c35e5", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001730265/timeline?gameHash=0b5a9e07d29c35e5", 
+          "youtube_video_url": "https://www.youtube.com/embed/YgQ5NF9WBSM?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "3f5e847d-8ec9-4447-ab23-40701cc44cc7", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "3", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "CLG-vs-NV", 
+      "id": "9b095b8c-824c-4662-a6cb-f50843cc491e", 
+      "scheduledTime": "2016-06-19T22:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "eb9a98f8-7ebc-4563-80e1-ec612e419fe5", 
+          "gameId": "1001740201", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "6c0b80e85eee4ab5", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001740201/timeline?gameHash=6c0b80e85eee4ab5", 
+          "youtube_video_url": "https://www.youtube.com/embed/UOD4p7Wnr9s?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "d7613718-fa12-4d36-9ca0-36a084db3d88", 
+          "gameId": "1001740213", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "45ee4dbe362140e0", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001740213/timeline?gameHash=45ee4dbe362140e0", 
+          "youtube_video_url": "https://www.youtube.com/embed/RppkRJknU5Y?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "026a6062-f7a3-4290-8a57-d42003e49114", 
+          "gameId": "1001740214", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "b5020ba7c60c6b45", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001740214/timeline?gameHash=b5020ba7c60c6b45", 
+          "youtube_video_url": "https://www.youtube.com/embed/9F3ahVb8Wo0?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "3", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "CLG-vs-IMT", 
+      "id": "0b4e8ff2-3afa-4c98-b498-ca36a8b88913", 
+      "scheduledTime": "2016-06-25T00:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "155e8032-a724-4796-9682-e44a5b81cc61", 
+          "gameId": "1001750008", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "c81555b7ec2c0c30", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750008/timeline?gameHash=c81555b7ec2c0c30", 
+          "youtube_video_url": "https://www.youtube.com/embed/GKgE8zJRLmQ?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "d002fa8c-818a-4fa2-bc96-2f9f136011b8", 
+          "gameId": "1001750021", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "4894407b2447420c", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750021/timeline?gameHash=4894407b2447420c", 
+          "youtube_video_url": "https://www.youtube.com/embed/79i_t9CCqDQ?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "e5883dad-e9af-45b2-b12f-05899cba4ba5", 
+          "gameId": "1001750022", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "0d69b8d1b636da2f", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750022/timeline?gameHash=0d69b8d1b636da2f", 
+          "youtube_video_url": "https://www.youtube.com/embed/ObtO_-dOWAo?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "4", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "1", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "TL-vs-APX", 
+      "id": "3474b279-47e2-418f-a9fe-741203696b56", 
+      "scheduledTime": "2016-06-25T03:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "415daa39-8e2f-4b84-ab63-0d723ae1a7bb", 
+          "gameId": "1001750023", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "3f52a287ef18a0c4", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750023/timeline?gameHash=3f52a287ef18a0c4", 
+          "youtube_video_url": "https://www.youtube.com/embed/DUpYNpZMsK0?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "80ce1904-3ddc-43e1-821c-b86e1b811726", 
+          "gameId": "1001750030", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "44c996900d35483c", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750030/timeline?gameHash=44c996900d35483c", 
+          "youtube_video_url": "https://www.youtube.com/embed/YzbMUbPqQuo?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "13dcc273-83a8-44e0-a0f6-830bc31e4e15", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "4", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "1", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "C9-vs-NV", 
+      "id": "a01248b0-7426-4db4-84e8-ae414d2c5215", 
+      "scheduledTime": "2016-06-25T19:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "e524c216-30bf-47eb-8755-27c1ed3d95b6", 
+          "gameId": "1001760025", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "20f6d9bafaee791c", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760025/timeline?gameHash=20f6d9bafaee791c", 
+          "youtube_video_url": "https://www.youtube.com/embed/W3v3X2AoWjI?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "50017fbb-0e7e-4f44-8ccf-c5c3db3426d5", 
+          "gameId": "1001760045", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "97c38b238c6a6c77", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760045/timeline?gameHash=97c38b238c6a6c77", 
+          "youtube_video_url": "https://www.youtube.com/embed/KBf2SYfiCHA?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "50cdd863-0ac4-4a7b-a983-00bcd0dbedb4", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "4", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "TSM-vs-FOX", 
+      "id": "4ea7b6cf-88b3-4a45-a039-9d3c8f5ee13a", 
+      "scheduledTime": "2016-06-25T19:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "7cda15bf-fd83-441c-b1a0-0fbeb99a0e4d", 
+          "gameId": "1001750032", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "3091f93795130394", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750032/timeline?gameHash=3091f93795130394", 
+          "youtube_video_url": "https://www.youtube.com/embed/4uxzIUfi1dQ?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "3e2b3503-775b-442d-964d-aac34e9a4f61", 
+          "gameId": "1001750049", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "da8e89749e0918da", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750049/timeline?gameHash=da8e89749e0918da", 
+          "youtube_video_url": "https://www.youtube.com/embed/uZ5iCibYxg8?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "6bf7d54c-699d-4f88-8394-06f105e1b24d", 
+          "gameId": "1001750055", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "75c71a5a5d178b97", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750055/timeline?gameHash=75c71a5a5d178b97", 
+          "youtube_video_url": "https://www.youtube.com/embed/ksBeINl7Igc?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "4", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "IMT-vs-TL", 
+      "id": "6051b60b-0679-4713-9a37-68553903626f", 
+      "scheduledTime": "2016-06-25T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "21e7e37d-116d-4f12-9f04-fe0210a01f7e", 
+          "gameId": "1001760049", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "a382df4059846295", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760049/timeline?gameHash=a382df4059846295", 
+          "youtube_video_url": "https://www.youtube.com/embed/LJ1UOUkcrF4?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "fc18cd7e-506d-4497-aa6e-bcfc125f2e60", 
+          "gameId": "1001760053", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "c591726775dee78f", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760053/timeline?gameHash=c591726775dee78f", 
+          "youtube_video_url": "https://www.youtube.com/embed/ChVC4lFufbg?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "37588a61-57be-4273-b6d1-2d0250e8b6cf", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "4", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "NRG-vs-P1", 
+      "id": "28fc7453-efcb-4eb3-9461-355900789776", 
+      "scheduledTime": "2016-06-25T22:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "3be51a18-25ac-41d8-866e-f3906280c730", 
+          "gameId": "1001750056", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "2d342681a2af3b5a", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750056/timeline?gameHash=2d342681a2af3b5a", 
+          "youtube_video_url": "https://www.youtube.com/embed/x-KL_Ftfz7M?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "b5ae6b0f-7285-4244-8534-7e40985ceb42", 
+          "gameId": "1001750066", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "9daf2d594e5d747b", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750066/timeline?gameHash=9daf2d594e5d747b", 
+          "youtube_video_url": "https://www.youtube.com/embed/t7lJjqXGDig?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "2a25df97-ae00-4026-b46d-ef4a5f6da24f", 
+          "gameId": "1001750067", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "622cc06cec350082", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750067/timeline?gameHash=622cc06cec350082", 
+          "youtube_video_url": "https://www.youtube.com/embed/3rAeMU3HBVo?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "4", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "C9-vs-NRG", 
+      "id": "25b49032-edf8-4002-bce6-a857c46dc476", 
+      "scheduledTime": "2016-06-26T19:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "71626909-b196-408b-ba80-19e0cf07755d", 
+          "gameId": "1001760065", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "ea7c61190ffe2069", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760065/timeline?gameHash=ea7c61190ffe2069", 
+          "youtube_video_url": "https://www.youtube.com/embed/a1uPcm5CaBk?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "3371d58c-6c12-4313-aea8-4e18a9030b07", 
+          "gameId": "1001760091", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "5a9cf21a812fa838", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760091/timeline?gameHash=5a9cf21a812fa838", 
+          "youtube_video_url": "https://www.youtube.com/embed/SBDEFxgnXW0?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "01c44558-9587-42b5-98c2-6c3864402d10", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "4", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "NV-vs-TSM", 
+      "id": "29907f39-b6a0-4b4d-8c47-ca98d55f75d3", 
+      "scheduledTime": "2016-06-26T19:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "73908644-310d-4500-881f-d720b2f054e3", 
+          "gameId": "1001760063", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "eabdd610cd451fe8", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760063/timeline?gameHash=eabdd610cd451fe8", 
+          "youtube_video_url": "https://www.youtube.com/embed/Ox6xXkGdtBo?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "e7085467-8ce2-425a-b8ed-cfe40e4026cd", 
+          "gameId": "1001760092", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "c1374ad5aaaa51f4", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760092/timeline?gameHash=c1374ad5aaaa51f4", 
+          "youtube_video_url": "https://www.youtube.com/embed/xQSc59kZVNI?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "8ea13df1-6b00-4ebe-a95a-912090dfa9de", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "4", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "P1-vs-CLG", 
+      "id": "63e106bc-a766-46ac-a2e2-484f16f58504", 
+      "scheduledTime": "2016-06-26T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "d7dc01e7-8fb1-4e62-99aa-7c2265982bf2", 
+          "gameId": "1001760098", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "2988e030de889179", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760098/timeline?gameHash=2988e030de889179", 
+          "youtube_video_url": "https://www.youtube.com/embed/AFC0S1lY2sE?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "67498508-c3cd-419f-a24c-9ced80672de5", 
+          "gameId": "1001760117", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "7b11b422397350c0", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760117/timeline?gameHash=7b11b422397350c0", 
+          "youtube_video_url": "https://www.youtube.com/embed/5qy08ujmwtw?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "0aea2517-090f-4b6a-adf8-8b5e89bb5f31", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "4", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "APX-vs-FOX", 
+      "id": "9b80f2e9-905e-4798-a32d-872557ec4821", 
+      "scheduledTime": "2016-06-26T22:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "6ef44612-0c2f-486b-9bf1-26898130e5a0", 
+          "gameId": "1001760107", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "83f2a2de43f822bb", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760107/timeline?gameHash=83f2a2de43f822bb", 
+          "youtube_video_url": "https://www.youtube.com/embed/a6hb-1X7brA?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "27533f7d-bc06-4327-a481-dbdd7a07441a", 
+          "gameId": "1001760118", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "b6bdb005bad88103", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760118/timeline?gameHash=b6bdb005bad88103", 
+          "youtube_video_url": "https://www.youtube.com/embed/aK5LymoowyU?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "5fdc3c0f-7f1f-48f6-b973-1f92783dba10", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "4", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "C9-vs-TL", 
+      "id": "62b5a0f1-b49d-46d4-9db0-ca0c7455db99", 
+      "scheduledTime": "2016-07-02T00:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "b867b2c5-da41-4872-a7a7-b04a147af70b", 
+          "gameId": "1001750124", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "e6f41af5eb69654f", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750124/timeline?gameHash=e6f41af5eb69654f", 
+          "youtube_video_url": "https://www.youtube.com/embed/ot7wqfrMOh8?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "5ebbaeaf-9697-422a-acf1-21389976cd29", 
+          "gameId": "1001750133", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "c225e3bb5dbb845a", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750133/timeline?gameHash=c225e3bb5dbb845a", 
+          "youtube_video_url": "https://www.youtube.com/embed/GmSjkgaCBDc?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "f3b39c40-bf14-4ba7-a039-b3bdc591faab", 
+          "gameId": "1001750134", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "f72e69317496deb8", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750134/timeline?gameHash=f72e69317496deb8", 
+          "youtube_video_url": "https://www.youtube.com/embed/7tyQ5q704YA?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "5", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "1", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "FOX-vs-NV", 
+      "id": "2f181229-7070-4a35-99ce-c4b3c9db005c", 
+      "scheduledTime": "2016-07-02T03:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "51e320d9-5053-47cb-bdf0-120ba69b666d", 
+          "gameId": "1001750135", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "7aa05375d72c2d51", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750135/timeline?gameHash=7aa05375d72c2d51", 
+          "youtube_video_url": "https://www.youtube.com/embed/sApPwtbVh14?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "f605ec9f-aa71-42e2-bf87-e3c7905728b1", 
+          "gameId": "1001750142", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "a4dc5cd727f14aa8", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750142/timeline?gameHash=a4dc5cd727f14aa8", 
+          "youtube_video_url": "https://www.youtube.com/embed/qacA0mloIrE?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "eb099cd7-70b7-4564-84b7-1adfecd58bf2", 
+          "gameId": "1001750143", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "3ef0fd7649844cc8", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750143/timeline?gameHash=3ef0fd7649844cc8", 
+          "youtube_video_url": "https://www.youtube.com/embed/uUm42zGbfuQ?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "5", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "1", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "NRG-vs-CLG", 
+      "id": "c8bd38c2-3d91-497e-99d9-b9c74f9a92f1", 
+      "scheduledTime": "2016-07-02T19:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "9dbfa609-9cc7-4774-9927-fac6bc373a1e", 
+          "gameId": "1001760146", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "d504180c99854a20", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760146/timeline?gameHash=d504180c99854a20", 
+          "youtube_video_url": "https://www.youtube.com/embed/F1k5ADLsmrM?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "41fd278c-1923-41fb-8e17-a6175775da74", 
+          "gameId": "1001760157", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "28809b867814227b", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760157/timeline?gameHash=28809b867814227b", 
+          "youtube_video_url": "https://www.youtube.com/embed/lhNrqmti26E?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "f37c2e0e-81a4-4860-a7f1-1951863213b7", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "5", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "P1-vs-TSM", 
+      "id": "0add2d3a-349a-4c1e-b59a-42f108ab0c86", 
+      "scheduledTime": "2016-07-02T19:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "48e75281-8a49-45be-8e32-79ec26be8d18", 
+          "gameId": "1001750161", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "4077a74e5fe22cad", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750161/timeline?gameHash=4077a74e5fe22cad", 
+          "youtube_video_url": "https://www.youtube.com/embed/nHhhVMcyH58?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "f6f767c6-7571-4182-a57d-4d9b76139ef0", 
+          "gameId": "1001750187", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "ef79737a86ff3e42", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750187/timeline?gameHash=ef79737a86ff3e42", 
+          "youtube_video_url": "https://www.youtube.com/embed/HRhJC0E2Lw0?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "f995a51c-f767-45ff-9a12-a665f4fb546d", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "5", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "IMT-vs-APX", 
+      "id": "dbdbc5cb-9009-49a5-bbf2-c93cf155dcae", 
+      "scheduledTime": "2016-07-02T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "042b1616-8729-417b-92d1-f5df779131dc", 
+          "gameId": "1001760159", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "f26accda4d6c5d59", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760159/timeline?gameHash=f26accda4d6c5d59", 
+          "youtube_video_url": "https://www.youtube.com/embed/gn7RJJfFgzE?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "400147b3-6b1e-4d9a-9def-e3fa903a1494", 
+          "gameId": "1001760168", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "33139ace690bae76", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760168/timeline?gameHash=33139ace690bae76", 
+          "youtube_video_url": "https://www.youtube.com/embed/iX1KkLhPe7Y?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "ca3a5d89-43b6-45f5-99de-1bccb83d1f93", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "5", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "TL-vs-NV", 
+      "id": "fc590ff6-736b-44fe-b08e-abf1c00e5e7b", 
+      "scheduledTime": "2016-07-02T22:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "36f16155-d68f-46a3-b5a5-2b481c81b1c0", 
+          "gameId": "1001750188", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "4b134e5901c86d2d", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750188/timeline?gameHash=4b134e5901c86d2d", 
+          "youtube_video_url": "https://www.youtube.com/embed/4gv4RNfR1jg?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "defbc078-4e70-4b79-8f43-a89e2b2d724c", 
+          "gameId": "1001750203", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "33c82b66e0aeb520", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750203/timeline?gameHash=33c82b66e0aeb520", 
+          "youtube_video_url": "https://www.youtube.com/embed/trAnuVFt8RM?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "cf04cca7-f895-4633-93a0-3707552fa871", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "5", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "CLG-vs-TSM", 
+      "id": "31340009-8b20-4f73-861a-4da2c2424360", 
+      "scheduledTime": "2016-07-03T19:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "5c8435f8-ce2f-4186-a9af-d51f38bea5a6", 
+          "gameId": "1001760179", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "1f00ba96abb13d47", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760179/timeline?gameHash=1f00ba96abb13d47", 
+          "youtube_video_url": "https://www.youtube.com/embed/_JSClqa5mlc?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "a1f1a5dd-bbc9-4c33-8328-e0af627e88cc", 
+          "gameId": "1001760201", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "63da12029ea9ec26", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760201/timeline?gameHash=63da12029ea9ec26", 
+          "youtube_video_url": "https://www.youtube.com/embed/wDJDqxCjoBI?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "a9de6eff-0b4d-45e1-910a-ccac5aba2a30", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "5", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "FOX-vs-NRG", 
+      "id": "15e443df-d970-48fc-a6d3-1f8c37d06013", 
+      "scheduledTime": "2016-07-03T19:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "eba6dea3-a03d-4537-b192-6883cd849da4", 
+          "gameId": "1001760181", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "974fdba511a58088", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760181/timeline?gameHash=974fdba511a58088", 
+          "youtube_video_url": "https://www.youtube.com/embed/oC0anb-6L0k?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "1931941a-658c-4526-b897-80f5ddec2605", 
+          "gameId": "1001760202", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "43f962128c3be501", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760202/timeline?gameHash=43f962128c3be501", 
+          "youtube_video_url": "https://www.youtube.com/embed/w30L8C-jdbY?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "595a694a-bdb4-45d7-a2f6-03cdb77c47b0", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "5", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "APX-vs-P1", 
+      "id": "81d07136-5444-4cc0-b976-73fcee839896", 
+      "scheduledTime": "2016-07-03T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "be35be80-6233-4b81-82ab-7261363c5869", 
+          "gameId": "1001760204", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "59ebdb320f12a09d", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760204/timeline?gameHash=59ebdb320f12a09d", 
+          "youtube_video_url": "https://www.youtube.com/embed/H-Qq1dkB0fk?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "6ae2760b-63da-4963-876d-72632dd70c63", 
+          "gameId": "1001760216", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "fd57d3ad70b5bf6f", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760216/timeline?gameHash=fd57d3ad70b5bf6f", 
+          "youtube_video_url": "https://www.youtube.com/embed/PnapWGkvPFQ?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "142cf486-fb68-4d04-b3d8-5629b188623f", 
+          "gameId": "1001760218", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "d80f4b9caa5d24b6", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760218/timeline?gameHash=d80f4b9caa5d24b6", 
+          "youtube_video_url": "https://www.youtube.com/embed/LVq8l1MjdVI?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "5", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "IMT-vs-C9", 
+      "id": "99e4d5b3-71ea-4e74-8303-8d924ebcde81", 
+      "scheduledTime": "2016-07-03T22:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "861e19b3-39ff-4bbe-9455-b341f6228382", 
+          "gameId": "1001760206", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "ba4d00ab68323c33", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760206/timeline?gameHash=ba4d00ab68323c33", 
+          "youtube_video_url": "https://www.youtube.com/embed/D7sp2KiyXhM?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "edb69ca7-5e2e-45e1-987b-e98cce47ed79", 
+          "gameId": "1001760217", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "4c0eef4bc6a24f18", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760217/timeline?gameHash=4c0eef4bc6a24f18", 
+          "youtube_video_url": "https://www.youtube.com/embed/qWAVnWxM_yw?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "412374f5-ca14-469e-94c4-a8ef82c1b3d0", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "5", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "TSM-vs-C9", 
+      "id": "04c31976-15a0-4273-9623-e4b597c17181", 
+      "scheduledTime": "2016-07-09T00:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "e0ea204b-5288-4ce8-9249-86c90fe0cda3", 
+          "gameId": "1001770009", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "18bce4dcdcaca5c4", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770009/timeline?gameHash=18bce4dcdcaca5c4", 
+          "youtube_video_url": "https://www.youtube.com/embed/vhmEatxwfBs?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "f3d408b4-1a59-4e62-9c78-1c1716c710ea", 
+          "gameId": "1001770023", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "300b36f61a1fec39", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770023/timeline?gameHash=300b36f61a1fec39", 
+          "youtube_video_url": "https://www.youtube.com/embed/kGiwec_xkto?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "31039aa0-1fa2-4c52-b41b-6e85a3728995", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "6", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "1", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "NV-vs-IMT", 
+      "id": "692c98d9-7abd-4583-ab46-04e533e20f60", 
+      "scheduledTime": "2016-07-09T03:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "f9f9c055-0a78-40b6-b5f6-300fc618f818", 
+          "gameId": "1001770025", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "c0e95bc8e55e8d6f", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770025/timeline?gameHash=c0e95bc8e55e8d6f", 
+          "youtube_video_url": "https://www.youtube.com/embed/n2xmt0Nfp5c?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "929496cc-91c1-4543-80b6-da265feb5483", 
+          "gameId": "1001770034", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "8de6f3e698e4d194", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770034/timeline?gameHash=8de6f3e698e4d194", 
+          "youtube_video_url": "https://www.youtube.com/embed/Nwwv59r9RD4?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "d9c94f7a-4857-44f6-b0ea-8702a9e36ddd", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "6", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "1", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "NRG-vs-APX", 
+      "id": "45cf2345-b936-4102-81c6-f3f709b376ba", 
+      "scheduledTime": "2016-07-09T19:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "c61fef7e-c58e-41c1-8276-4b8fa3ac6a3f", 
+          "gameId": "1001770052", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "f71e158fb97921d1", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770052/timeline?gameHash=f71e158fb97921d1", 
+          "youtube_video_url": "https://www.youtube.com/embed/q4X35c4EwDs?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "ecadc486-fae1-4522-9ddb-6a7f75fb02c4", 
+          "gameId": "1001770071", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "12516475741700a3", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770071/timeline?gameHash=12516475741700a3", 
+          "youtube_video_url": "https://www.youtube.com/embed/3mz4KxEJzH0?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "469796c6-3345-4449-b3cb-5a2b6aeb9d9f", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "6", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "P1-vs-FOX", 
+      "id": "ac516825-d749-4708-9c00-9dfa1cb3605c", 
+      "scheduledTime": "2016-07-09T19:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "b46dac09-eb41-45ae-a42d-aa08938f10f2", 
+          "gameId": "1001770051", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "cea9f70aaa7237c7", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770051/timeline?gameHash=cea9f70aaa7237c7", 
+          "youtube_video_url": "https://www.youtube.com/embed/F6nob0dBozE?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "cceffa0f-357f-4a5e-bb4f-a6bfecc357e4", 
+          "gameId": "1001770070", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "98eab43c6d83fa43", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770070/timeline?gameHash=98eab43c6d83fa43", 
+          "youtube_video_url": "https://www.youtube.com/embed/2USjyzu3naY?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "7f6040fb-e9d4-417b-8fad-4c5f5b45fda8", 
+          "gameId": "1001770076", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "a0cfb97c0dee47e9", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770076/timeline?gameHash=a0cfb97c0dee47e9", 
+          "youtube_video_url": "https://www.youtube.com/embed/n3_s3QKtJvc?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "6", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "TL-vs-IMT", 
+      "id": "d577ff70-7c73-4619-8796-ecdd35231eeb", 
+      "scheduledTime": "2016-07-09T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "e24f436c-b3c8-48db-8e25-1b0875922b90", 
+          "gameId": "1001770077", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "8dcbc863b65a3e47", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770077/timeline?gameHash=8dcbc863b65a3e47", 
+          "youtube_video_url": "https://www.youtube.com/embed/Cp4a44Joz7U?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "da8eaa1b-bd72-484f-8e90-5e7e44b3675b", 
+          "gameId": "1001770094", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "c2e030e81dfcb06d", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770094/timeline?gameHash=c2e030e81dfcb06d", 
+          "youtube_video_url": "https://www.youtube.com/embed/igUyCRwCzhI?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "9f33d9ca-904e-49e2-94ed-2179ea2eb6ef", 
+          "gameId": "1001770098", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "2fcc41b4a787dd5c", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770098/timeline?gameHash=2fcc41b4a787dd5c"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "6", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "NV-vs-CLG", 
+      "id": "848dd155-5dad-4210-a449-4deba7dac1ed", 
+      "scheduledTime": "2016-07-09T22:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "431a06f2-7f04-4ae1-8e1a-0f8818fe353b", 
+          "gameId": "1001770086", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "b48012e9d6fced7e", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770086/timeline?gameHash=b48012e9d6fced7e", 
+          "youtube_video_url": "https://www.youtube.com/embed/DK1jXxJgFE4?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "833f514e-9627-4df0-864a-08bdcdefb9d1", 
+          "gameId": "1001770095", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "8b9b98f4974c7914", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770095/timeline?gameHash=8b9b98f4974c7914", 
+          "youtube_video_url": "https://www.youtube.com/embed/rDYCAGHQ8L8?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "da8e2056-bb36-42ac-996e-869a23d52161", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "6", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "APX-vs-TSM", 
+      "id": "7d329c46-c28c-40c8-b977-ab78968f4438", 
+      "scheduledTime": "2016-07-10T19:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "619a2a7c-8f6b-4d68-b408-f3ecd6dc517d", 
+          "gameId": "1001770100", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "54ac74a678bad2b8", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770100/timeline?gameHash=54ac74a678bad2b8", 
+          "youtube_video_url": "https://www.youtube.com/embed/_ezAwLj_zy0?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "0fafe79c-de2d-4b44-9d3b-15685e120ce7", 
+          "gameId": "1001770120", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "c546271cc13774a5", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770120/timeline?gameHash=c546271cc13774a5", 
+          "youtube_video_url": "https://www.youtube.com/embed/s_wd97sDL6M?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "e57dcc44-61f6-4556-bd84-a6e05cb8aebf", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "6", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "NRG-vs-C9", 
+      "id": "e3052ff3-f000-402c-af40-874bc81fca20", 
+      "scheduledTime": "2016-07-10T19:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "899fff61-9672-4f28-b1a4-40a4728d63d0", 
+          "gameId": "1001770101", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "101e59a94cf6f805", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770101/timeline?gameHash=101e59a94cf6f805", 
+          "youtube_video_url": "https://www.youtube.com/embed/C9A8CuDV_kw?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "c3c16afd-ad81-47fd-84e6-54112e6f6ed3", 
+          "gameId": "1001770122", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "b49ec7b6e70e0ac3", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770122/timeline?gameHash=b49ec7b6e70e0ac3", 
+          "youtube_video_url": "https://www.youtube.com/embed/xZVxocRrtEY?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "7bece5da-6732-4640-af0f-7a4fdcd75ebd", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "6", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "CLG-vs-P1", 
+      "id": "9dcd0cbf-fbf7-4b3e-8ca2-377dc574d0cd", 
+      "scheduledTime": "2016-07-10T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "715218f9-a4d9-40c6-b440-bccc22615381", 
+          "gameId": "1001770129", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "235d422afb917152", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770129/timeline?gameHash=235d422afb917152", 
+          "youtube_video_url": "https://www.youtube.com/embed/u8LKRXSwMM4?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "29445fc9-ebc4-47a0-856d-1e9aa78fcfed", 
+          "gameId": "1001770145", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "cf93d283baa11d0b", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770145/timeline?gameHash=cf93d283baa11d0b", 
+          "youtube_video_url": "https://www.youtube.com/embed/BhmwaLDhupM?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "2c5ea8a7-c1ac-4b16-8090-b64187c57fc7", 
+          "gameId": "1001770147", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "3cffc8e4b3e8ed5b", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770147/timeline?gameHash=3cffc8e4b3e8ed5b", 
+          "youtube_video_url": "https://www.youtube.com/embed/A2207IR_S_I?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "6", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "TL-vs-FOX", 
+      "id": "61399e02-17b6-4d06-9dfd-b013ef042860", 
+      "scheduledTime": "2016-07-10T22:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "6b6e68c2-ba50-49be-ba53-5fb8b284c285", 
+          "gameId": "1001770141", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "af16a253aa103c9f", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770141/timeline?gameHash=af16a253aa103c9f", 
+          "youtube_video_url": "https://www.youtube.com/embed/k2OPRByPMxA?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "40e25e09-ae09-4377-b824-cb1fc1219424", 
+          "gameId": "1001770146", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "d973b4bfdd4f8f3b", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770146/timeline?gameHash=d973b4bfdd4f8f3b", 
+          "youtube_video_url": "https://www.youtube.com/embed/KI1Lu5C7tr4?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "ef84a159-19cd-44fb-a9af-a93e863a8b00", 
+          "gameId": "1001770148", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "fdfdf21f82d74ed2", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770148/timeline?gameHash=fdfdf21f82d74ed2", 
+          "youtube_video_url": "https://www.youtube.com/embed/gPm0q9X4XA8?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "6", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "IMT-vs-CLG", 
+      "id": "72148c29-40aa-426e-8dac-c4c30645ea53", 
+      "scheduledTime": "2016-07-15T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "9d1624e4-c0b3-4b5b-ba78-7c54cb1ec38c", 
+          "gameId": "1001780152", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "ae360307684b4903", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001780152/timeline?gameHash=ae360307684b4903", 
+          "youtube_video_url": "https://www.youtube.com/embed/Rd5h5WoMPGA?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "8f58abbb-7a07-4828-80b1-b1f85f21485f", 
+          "gameId": "1001780161", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "0fe9496fb1285381", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001780161/timeline?gameHash=0fe9496fb1285381", 
+          "youtube_video_url": "https://www.youtube.com/embed/FEyZdROkPsI?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "47fc5326-a210-4878-b652-3a508d6fa289", 
+          "gameId": "1001780162", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "0f8ed0b2b5009258", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001780162/timeline?gameHash=0f8ed0b2b5009258", 
+          "youtube_video_url": "https://www.youtube.com/embed/RSBzypQDwqw?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "7", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "1", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "P1-vs-NRG", 
+      "id": "f86a630c-8a56-427e-be8e-30daf04495cf", 
+      "scheduledTime": "2016-07-16T01:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "85ac3687-517b-40ce-bb99-ead8ce55a81a", 
+          "gameId": "1001780163", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "6adb88df325775ab", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001780163/timeline?gameHash=6adb88df325775ab", 
+          "youtube_video_url": "https://www.youtube.com/embed/zxmgFnY9I3I?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "f7731e13-5dae-4fb7-bd44-adc480c2c642", 
+          "gameId": "1001780175", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "41817d27a3139144", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001780175/timeline?gameHash=41817d27a3139144", 
+          "youtube_video_url": "https://www.youtube.com/embed/6dQJIX9ek6U?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "e679fb54-8f62-4bbf-8498-8fe547af046c", 
+          "gameId": "1001780176", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "0732428e8e182fc4", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001780176/timeline?gameHash=0732428e8e182fc4", 
+          "youtube_video_url": "https://www.youtube.com/embed/ccjVz7RNYXo?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "7", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "1", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "FOX-vs-TSM", 
+      "id": "b584e264-d1bf-4062-8e86-1b01627b7afa", 
+      "scheduledTime": "2016-07-16T19:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "556d1023-9a27-43b8-8664-1b021bfc7921", 
+          "gameId": "1001770255", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "a02ff4b40290a621", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770255/timeline?gameHash=a02ff4b40290a621", 
+          "youtube_video_url": "https://www.youtube.com/embed/N00ZxCZpZbY?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "71142b7b-c7f8-45da-837f-fbf77cd8463e", 
+          "gameId": "1001770271", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "62bfd20904c0ee22", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770271/timeline?gameHash=62bfd20904c0ee22", 
+          "youtube_video_url": "https://www.youtube.com/embed/jafJwc70Ur8?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "49e4a71e-caa0-4c51-8433-04e7389ad2ea", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "7", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "NRG-vs-NV", 
+      "id": "a57fb3eb-0713-4a0f-ae23-522152d4651a", 
+      "scheduledTime": "2016-07-16T19:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "260a60eb-877d-4a1b-ba55-ffa1091f7df3", 
+          "gameId": "1001770250", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "5443019078ba6723", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770250/timeline?gameHash=5443019078ba6723", 
+          "youtube_video_url": "https://www.youtube.com/embed/V37TDBsxyYg?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "8bf750eb-88d7-47b6-b734-3784486c8175", 
+          "gameId": "1001770270", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "267d2afad8232f69", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770270/timeline?gameHash=267d2afad8232f69", 
+          "youtube_video_url": "https://www.youtube.com/embed/7EjNcPUOwok?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "88ae26bd-07fe-43c5-a07d-d029df9d8a03", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "7", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "C9-vs-APX", 
+      "id": "0834a750-4782-44da-a297-1ce0a7e5a38b", 
+      "scheduledTime": "2016-07-16T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "394919cc-bbb9-4fed-a139-b1aa02f88948", 
+          "gameId": "1001770273", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "754d4504a8a71503", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770273/timeline?gameHash=754d4504a8a71503", 
+          "youtube_video_url": "https://www.youtube.com/embed/kmCqVKGkLjE?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "221c178f-5495-4884-85f4-f4a0cb84c538", 
+          "gameId": "1001770287", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "5ec4a8e3395bf1e5", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770287/timeline?gameHash=5ec4a8e3395bf1e5", 
+          "youtube_video_url": "https://www.youtube.com/embed/B9QxHv_mDX8?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "c9b2b0f8-2321-4c52-af33-646c6e67cfda", 
+          "gameId": "1001770289", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "d530b153320f4180", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770289/timeline?gameHash=d530b153320f4180", 
+          "youtube_video_url": "https://www.youtube.com/embed/pNmeX7vwgm8?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "7", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "P1-vs-TL", 
+      "id": "bdb55f1b-7cbb-4200-9b9c-2e8a0d98da19", 
+      "scheduledTime": "2016-07-16T22:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "80bc5107-dd8b-4bec-a184-6c4b8dab752d", 
+          "gameId": "1001770274", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "a8a69a83e261e03d", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770274/timeline?gameHash=a8a69a83e261e03d", 
+          "youtube_video_url": "https://www.youtube.com/embed/Ghy_eBe8k30?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "6ccc18f2-c5d3-4eab-9658-7e4cbc7abd19", 
+          "gameId": "1001770288", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "9972a4775464d66b", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770288/timeline?gameHash=9972a4775464d66b", 
+          "youtube_video_url": "https://www.youtube.com/embed/msOkALlI1dU?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "1ad87074-d6fe-4af4-9303-f10b3694bafe", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "7", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "C9-vs-CLG", 
+      "id": "be07f442-bcde-436f-b802-f3fbcab4b903", 
+      "scheduledTime": "2016-07-17T19:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "9a9708e3-011f-4819-b421-1bc29ecac738", 
+          "gameId": "1001770300", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "94bab40a191def20", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770300/timeline?gameHash=94bab40a191def20", 
+          "youtube_video_url": "https://www.youtube.com/embed/VndX5uuuLXA?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "71325fb6-48db-4203-8ae2-025cba9b435d", 
+          "gameId": "1001770314", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "01ba7b307c7b8202", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770314/timeline?gameHash=01ba7b307c7b8202", 
+          "youtube_video_url": "https://www.youtube.com/embed/xQKLkTKS9_0?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "37dce064-7ea1-46c5-98fd-297a399af9bd", 
+          "gameId": "1001770318", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "74a5717e2f44717e", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770318/timeline?gameHash=74a5717e2f44717e", 
+          "youtube_video_url": "https://www.youtube.com/embed/1iucyA5o8Cw?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "7", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "IMT-vs-FOX", 
+      "id": "bf0123be-7290-4312-8fba-8d092b7ea729", 
+      "scheduledTime": "2016-07-17T19:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "c1a2d930-3a1f-41c9-a9f3-eda96e86bf75", 
+          "gameId": "1001770301", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "8d7a85cb462adc40", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770301/timeline?gameHash=8d7a85cb462adc40", 
+          "youtube_video_url": "https://www.youtube.com/embed/qybczGIJ-cg?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "90498e49-6d94-40c4-95eb-6f6c847e2bbd", 
+          "gameId": "1001770315", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "44fa6e5b5b9c393b", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770315/timeline?gameHash=44fa6e5b5b9c393b", 
+          "youtube_video_url": "https://www.youtube.com/embed/vwYHzjGHHdc?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "827726a5-07c6-4318-83ab-0e6064fd5663", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "7", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "TL-vs-TSM", 
+      "id": "2b5b4a4a-5e57-4891-a6af-302f30c8370b", 
+      "scheduledTime": "2016-07-17T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "161b8664-4a3a-4b38-9376-e4a82595dfcd", 
+          "gameId": "1001770324", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "3ed8302060a8b03c", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770324/timeline?gameHash=3ed8302060a8b03c", 
+          "youtube_video_url": "https://www.youtube.com/embed/TOTQGx57su8?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "84605cf9-50e5-4935-a95c-1180d31d4b45", 
+          "gameId": "1001770333", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "cf6614ff5140c5af", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770333/timeline?gameHash=cf6614ff5140c5af", 
+          "youtube_video_url": "https://www.youtube.com/embed/WsdHsL038ww?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "c4f483e0-a750-4b05-9023-2c56b0b18e18", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "7", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "NV-vs-APX", 
+      "id": "f529bff8-371e-46dc-ad92-fb87deeacb87", 
+      "scheduledTime": "2016-07-17T22:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "b5ba9f59-a070-4c47-8ec1-389c297b7039", 
+          "gameId": "1001770317", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "c1a27090e64ebdc1", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770317/timeline?gameHash=c1a27090e64ebdc1", 
+          "youtube_video_url": "https://www.youtube.com/embed/Paw8MvKF_Vs?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "2d5d2899-6763-46df-b124-0a5c37315cfc", 
+          "gameId": "1001770330", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "4eba084343b4c053", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770330/timeline?gameHash=4eba084343b4c053", 
+          "youtube_video_url": "https://www.youtube.com/embed/ddovii0r0Qo?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "2120424e-9d44-4795-9c31-d2600e049e43", 
+          "gameId": "1001770335", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "01de05166befb130", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770335/timeline?gameHash=01de05166befb130", 
+          "youtube_video_url": "https://www.youtube.com/embed/8qmT8OuOO_U?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "7", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "IMT-vs-NRG", 
+      "id": "00640eba-8283-48a6-bc6c-9f3f27627ca8", 
+      "scheduledTime": "2016-07-22T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "ca77cf01-7788-4b01-bb51-139d5ac5264d", 
+          "gameId": "1001800007", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "b49ad6a9fd215034", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800007/timeline?gameHash=b49ad6a9fd215034", 
+          "youtube_video_url": "https://www.youtube.com/embed/K6MgIGGGtgo?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "94b37a6c-fe4a-46a5-a3a0-82c09ca2019d", 
+          "gameId": "1001800017", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "02da363c63f11c8c", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800017/timeline?gameHash=02da363c63f11c8c", 
+          "youtube_video_url": "https://www.youtube.com/embed/7y4i0jtdhOc?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "fcea9ddd-a38c-4e69-a8c4-6d4e82f4bcbc", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "8", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "1", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "FOX-vs-APX", 
+      "id": "fc02ffc4-d3ef-4b3c-8fa8-c5cb62a48c92", 
+      "scheduledTime": "2016-07-23T01:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "2a61ff92-4d2f-40dc-b432-6d3fb7c1a589", 
+          "gameId": "1001800018", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "e12cd6c824c39922", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800018/timeline?gameHash=e12cd6c824c39922", 
+          "youtube_video_url": "https://www.youtube.com/embed/WNtuh8twKNs?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "ee74d2de-656d-41f5-ac23-1dd3a91c5f94", 
+          "gameId": "1001800024", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "b4f2476db962125a", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800024/timeline?gameHash=b4f2476db962125a", 
+          "youtube_video_url": "https://www.youtube.com/embed/xkBIV3QOz3U?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "3e292246-40eb-4eaf-8a12-d1348c7f2a3d", 
+          "gameId": "1001800025", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "02a54b0f61a8af09", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800025/timeline?gameHash=02a54b0f61a8af09", 
+          "youtube_video_url": "https://www.youtube.com/embed/2iLLOoYY1BE?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "8", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "1", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "CLG-vs-TL", 
+      "id": "322e1a5d-efae-497a-96ad-a8143d723265", 
+      "scheduledTime": "2016-07-23T19:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "c9ee9a4d-fa37-497d-baed-0e2a92752666", 
+          "gameId": "1001790026", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "b0fa4fb2fd8c61c0", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790026/timeline?gameHash=b0fa4fb2fd8c61c0", 
+          "youtube_video_url": "https://www.youtube.com/embed/pFgEnbRlv00?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "a025f0b9-8119-4c60-95d1-e2b301761c1e", 
+          "gameId": "1001790043", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "f1c868873d9ba2bb", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790043/timeline?gameHash=f1c868873d9ba2bb", 
+          "youtube_video_url": "https://www.youtube.com/embed/_qkX62csKvg?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "d55661a0-b4a8-4f1f-9e40-442a89d78939", 
+          "gameId": "1001790044", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "4867415a082cabe6", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790044/timeline?gameHash=4867415a082cabe6", 
+          "youtube_video_url": "https://www.youtube.com/embed/ycl6TDDHHeQ?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "8", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "NV-vs-C9", 
+      "id": "1d7ea30a-a43e-4146-9ff0-26baf6f432be", 
+      "scheduledTime": "2016-07-23T19:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "6e61fa68-de77-4791-8124-096f3e4717b6", 
+          "gameId": "1001800033", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "a072f3f48ef0a754", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800033/timeline?gameHash=a072f3f48ef0a754", 
+          "youtube_video_url": "https://www.youtube.com/embed/dljqPNFmznY?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "3f3a2c5b-6984-486c-999f-2a16dd6bb4bb", 
+          "gameId": "1001800048", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "7cb9b96e7881987c", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800048/timeline?gameHash=7cb9b96e7881987c", 
+          "youtube_video_url": "https://www.youtube.com/embed/U-ND3e9pfGE?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "7ba8bb80-9089-4acd-ab71-8c903ad2746d", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "8", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "TSM-vs-P1", 
+      "id": "f019f46e-2e19-4e09-9c07-2cb1f3cd8122", 
+      "scheduledTime": "2016-07-23T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "1596b2a9-0876-4216-8569-7922ed907237", 
+          "gameId": "1001790053", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "1611c1c37df63afe", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790053/timeline?gameHash=1611c1c37df63afe", 
+          "youtube_video_url": "https://www.youtube.com/embed/nR8kfoEoGeo?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "21bc66bc-eb3a-4d39-9999-7f668476cfdc", 
+          "gameId": "1001790061", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "8abe496d4c8b444c", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790061/timeline?gameHash=8abe496d4c8b444c", 
+          "youtube_video_url": "https://www.youtube.com/embed/VDMpL1orqaY?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "f393a06c-c0dd-48e2-aa2d-abaecae7646c", 
+          "gameId": "1001790062", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "0949493e4b1d2840", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790062/timeline?gameHash=0949493e4b1d2840", 
+          "youtube_video_url": "https://www.youtube.com/embed/QesYtSNGUwE?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "8", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "APX-vs-IMT", 
+      "id": "6dae9ea8-54fa-4051-95e3-49c71c499306", 
+      "scheduledTime": "2016-07-23T22:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "a032c1b6-7efe-41a8-a058-0a761eb559e8", 
+          "gameId": "1001800049", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "12c492ad170a9c08", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800049/timeline?gameHash=12c492ad170a9c08", 
+          "youtube_video_url": "https://www.youtube.com/embed/75t-dDWZiJs?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "a05cb9cc-3709-4b0c-88d6-2465150f869a", 
+          "gameId": "1001800062", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "42f43d9bf4bb460f", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800062/timeline?gameHash=42f43d9bf4bb460f", 
+          "youtube_video_url": "https://www.youtube.com/embed/FzPKGJmEPL0?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "cb3ada03-59b8-465a-a5c8-447030cca7be", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "8", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "NRG-vs-TL", 
+      "id": "4dc4efa4-0dc6-4320-b126-5bce1739c3ec", 
+      "scheduledTime": "2016-07-24T19:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "ea163091-0334-49e7-954d-84fb83ba4036", 
+          "gameId": "1001790068", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "f13032b196843270", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790068/timeline?gameHash=f13032b196843270", 
+          "youtube_video_url": "https://www.youtube.com/embed/MLWKfbBInmQ?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "2e550e43-d324-4a7a-89b4-9b115a780340", 
+          "gameId": "1001790082", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "e854c52c0732fa3f", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790082/timeline?gameHash=e854c52c0732fa3f", 
+          "youtube_video_url": "https://www.youtube.com/embed/Ke-BAPA_8Wg?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "ec6669a5-8805-451c-b39a-034a4bf260ca", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "8", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "TSM-vs-NV", 
+      "id": "f295759f-6a71-4c9e-a37f-c4e27ba69492", 
+      "scheduledTime": "2016-07-24T19:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "48a6bdca-e803-4cab-8731-8b4413365eb9", 
+          "gameId": "1001800069", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "35fca232c243a937", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800069/timeline?gameHash=35fca232c243a937", 
+          "youtube_video_url": "https://www.youtube.com/embed/1A6k6v2lfIY?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "95fc88c4-b39c-4c89-891c-b4481a9ad0c9", 
+          "gameId": "1001800086", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "8b228d99406d8671", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800086/timeline?gameHash=8b228d99406d8671", 
+          "youtube_video_url": "https://www.youtube.com/embed/IHpqIsfmrCE?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "b31e7fb3-f0f2-4dcd-a71f-4044f710f708", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "8", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "C9-vs-P1", 
+      "id": "51c4e895-932e-477d-b9ca-3270aa4477df", 
+      "scheduledTime": "2016-07-24T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "f97d88e4-638c-4713-8600-5deebc1684de", 
+          "gameId": "1001790086", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "c20906c192b5941a", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790086/timeline?gameHash=c20906c192b5941a", 
+          "youtube_video_url": "https://www.youtube.com/embed/lZVh8vyy6RA?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "d8a081c5-3ee2-4393-8bf0-2808e5bad03f", 
+          "gameId": "1001790100", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "ee827e8b8f4c5400", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790100/timeline?gameHash=ee827e8b8f4c5400", 
+          "youtube_video_url": "https://www.youtube.com/embed/GF2sUcCjXtM?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "3f49b26a-784f-4bc3-933a-427c1a6ab0c7", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "8", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "FOX-vs-CLG", 
+      "id": "d1c3bd4b-9a12-4de7-b21c-fff82af12582", 
+      "scheduledTime": "2016-07-24T22:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "981a70df-467d-415c-ad9e-1ff341c320df", 
+          "gameId": "1001800092", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "111d7ae6ebddff84", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800092/timeline?gameHash=111d7ae6ebddff84", 
+          "youtube_video_url": "https://www.youtube.com/embed/J5xZ9daVmZ4?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "2091f102-3e3d-4eb7-98a6-49bccbf15c42", 
+          "gameId": "1001800102", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "859555fd05add0d8", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800102/timeline?gameHash=859555fd05add0d8", 
+          "youtube_video_url": "https://www.youtube.com/embed/HthldtwoZx8?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "628e39ee-ae14-4f02-9d7b-5770a0dd8e31", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "8", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "IMT-vs-TSM", 
+      "id": "e63f76ab-f29c-41c9-8572-02d8100eae12", 
+      "scheduledTime": "2016-07-29T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "040de5ba-ee48-477e-9116-94e10db693ec", 
+          "gameId": "1001800106", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "0e95d971fc903f68", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800106/timeline?gameHash=0e95d971fc903f68", 
+          "youtube_video_url": "https://www.youtube.com/embed/fmqeavjSfTg?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "f5aeebaa-3752-488d-9608-e3a3edaf1bdd", 
+          "gameId": "1001800114", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "59c7fa0cbcb447a6", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800114/timeline?gameHash=59c7fa0cbcb447a6", 
+          "youtube_video_url": "https://www.youtube.com/embed/F7ECZilW9v0?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "dca961e1-b9f4-4667-b97b-04350a892e36", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "9", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "1", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "P1-vs-NV", 
+      "id": "869388af-33e1-4bb1-b5a7-8b41977df190", 
+      "scheduledTime": "2016-07-30T01:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "8a4da304-ec28-4f9a-8f4a-f195d44aa801", 
+          "gameId": "1001800115", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "2876937b9f26143f", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800115/timeline?gameHash=2876937b9f26143f", 
+          "youtube_video_url": "https://www.youtube.com/embed/nDp8G7eRcE4?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "4d4b7a56-2854-4506-a7c5-2dee01219c57", 
+          "gameId": "1001800124", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "4d75ae1e59b460b9", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800124/timeline?gameHash=4d75ae1e59b460b9", 
+          "youtube_video_url": "https://www.youtube.com/embed/BsSw6DtoMOc?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "4e0e1093-5e07-4376-869d-ebc9c293e6f2", 
+          "gameId": "1001800126", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "7ba28e6d86ccdb3f", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800126/timeline?gameHash=7ba28e6d86ccdb3f"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "9", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "1", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "CLG-vs-NRG", 
+      "id": "b045c1e7-9a87-4296-a886-308d516576cd", 
+      "scheduledTime": "2016-07-30T19:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "07f200e8-31b6-4579-baf8-e1bf1e41af1f", 
+          "gameId": "1001790146", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "dab287768f9c9a8f", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790146/timeline?gameHash=dab287768f9c9a8f", 
+          "youtube_video_url": "https://www.youtube.com/embed/j6APfc4Skd0?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "e4ce7010-ae01-420e-8512-73305b405d2c", 
+          "gameId": "1001790154", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "cbf7576b380ce3da", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790154/timeline?gameHash=cbf7576b380ce3da", 
+          "youtube_video_url": "https://www.youtube.com/embed/4Lc1nTydXE8?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "50ce982f-263f-4f15-8dbf-457522c918fc", 
+          "gameId": "1001790155", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "cba1d8a2db193a4e", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790155/timeline?gameHash=cba1d8a2db193a4e", 
+          "youtube_video_url": "https://www.youtube.com/embed/br3r6cl7P5A?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "9", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "APX-vs-TL", 
+      "id": "f7371869-45ff-4e47-bc81-48b26eef6ed0", 
+      "scheduledTime": "2016-07-30T19:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "49b62592-e8d7-4ad4-97df-480065d4007d", 
+          "gameId": "1001800131", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "5662acbc1970c323", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800131/timeline?gameHash=5662acbc1970c323", 
+          "youtube_video_url": "https://www.youtube.com/embed/nBfB0W86cVM?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "0fa4bbb6-c0f1-47f6-8b09-d5e86dfbd934", 
+          "gameId": "1001800149", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "5df753ec2dd23ba4", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800149/timeline?gameHash=5df753ec2dd23ba4", 
+          "youtube_video_url": "https://www.youtube.com/embed/EALi8YnBX8o?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "67f99875-b413-4a6e-9aab-db745fbf3f9f", 
+          "gameId": "1001800150", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "08f3ce8ac9cbd0a0", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800150/timeline?gameHash=08f3ce8ac9cbd0a0", 
+          "youtube_video_url": "https://www.youtube.com/embed/wqaoZk-ecQU?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "9", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "C9-vs-FOX", 
+      "id": "f7cc41e8-7f71-4db2-a130-222042bf6d73", 
+      "scheduledTime": "2016-07-30T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "daafcc63-a9bc-4329-b763-40d6d3ce1c04", 
+          "gameId": "1001790158", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "3a5b1f9692d10577", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790158/timeline?gameHash=3a5b1f9692d10577", 
+          "youtube_video_url": "https://www.youtube.com/embed/SiqD9vq3A5o?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "d05d2787-3519-4418-8e25-d0f63c9986fe", 
+          "gameId": "1001790168", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "244c04ca9929d31c", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790168/timeline?gameHash=244c04ca9929d31c", 
+          "youtube_video_url": "https://www.youtube.com/embed/J_nzcEC2RJI?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "8faa574e-4b21-4996-b3e5-aa8e3d094c10", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "9", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "P1-vs-IMT", 
+      "id": "6d6f411e-336c-40d4-8c4c-0dbbbaafb7b3", 
+      "scheduledTime": "2016-07-30T22:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "015e41c3-1906-43ed-af9f-e6400d0c280c", 
+          "gameId": "1001800151", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "ec7dffb3e766d0c3", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800151/timeline?gameHash=ec7dffb3e766d0c3", 
+          "youtube_video_url": "https://www.youtube.com/embed/rG3IKJKAIJM?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "27d0cd70-8411-48ea-9e2a-bd9618875d84", 
+          "gameId": "1001800167", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "68c7f0c738fefb67", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800167/timeline?gameHash=68c7f0c738fefb67", 
+          "youtube_video_url": "https://www.youtube.com/embed/9Mp0HePA3x4?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "c6ecf43b-c278-41d5-b115-2f3d0b181ef7", 
+          "gameId": "1001800169", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "f257efe929c1ab2e", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800169/timeline?gameHash=f257efe929c1ab2e", 
+          "youtube_video_url": "https://www.youtube.com/embed/pMS5lIBBAYU?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "9", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "2", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "TSM-vs-NRG", 
+      "id": "beb1abd8-6ace-4e18-ab52-b577d2046038", 
+      "scheduledTime": "2016-07-31T19:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "3c0bb4c0-dd15-4c38-bd8f-22aefe465925", 
+          "gameId": "1001800176", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "702c02573fc06370", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800176/timeline?gameHash=702c02573fc06370", 
+          "youtube_video_url": "https://www.youtube.com/embed/Ou7YrVeB6Pg?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "0fccc219-42a8-4ff9-8797-f5bc59faab4b", 
+          "gameId": "1001800189", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "4a13b45119b577c0", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800189/timeline?gameHash=4a13b45119b577c0", 
+          "youtube_video_url": "https://www.youtube.com/embed/vz7ZHJjql70?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "485d40d5-5f34-454f-8eba-bd3080e8bbed", 
+          "gameId": "1001800190", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "bf0b9367d095b9eb", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800190/timeline?gameHash=bf0b9367d095b9eb", 
+          "youtube_video_url": "https://www.youtube.com/embed/Ek89Knwy7CY?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "9", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "CLG-vs-APX", 
+      "id": "63118334-05e5-4e02-bd37-f39c84951945", 
+      "scheduledTime": "2016-07-31T19:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "084c4b2f-d340-4b1a-a812-f55b6479dcc0", 
+          "gameId": "1001790178", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "4a4c51497cd20b05", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790178/timeline?gameHash=4a4c51497cd20b05", 
+          "youtube_video_url": "https://www.youtube.com/embed/FmjkMuV_T40?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "74ba84a6-2b6b-4c20-b6f9-e27fa3358567", 
+          "gameId": "1001790194", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "8bc3e96053067de0", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790194/timeline?gameHash=8bc3e96053067de0", 
+          "youtube_video_url": "https://www.youtube.com/embed/n5hHDNkMFiQ?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "b540ab36-a2d0-4127-8cb9-2f600c45f19a", 
+          "gameId": "1001790195", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "75f0c5653fa9e214", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790195/timeline?gameHash=75f0c5653fa9e214", 
+          "youtube_video_url": "https://www.youtube.com/embed/IJlHHYDYDqI?wmode=transparent"
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "9", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "TL-vs-C9", 
+      "id": "979342e5-6a26-4891-b160-5e2755ccae9a", 
+      "scheduledTime": "2016-07-31T22:00:00.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "f7d00c31-f730-4d36-b9a2-ac56e60c2563", 
+          "gameId": "1001800191", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "9c44f9b3d85ffc61", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800191/timeline?gameHash=9c44f9b3d85ffc61", 
+          "youtube_video_url": "https://www.youtube.com/embed/EahjMplB0SA?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "dc9f7d0c-e876-40ac-aadf-d602ef5b408e", 
+          "gameId": "1001800202", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "7d4f42eb3c1f3864", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800202/timeline?gameHash=7d4f42eb3c1f3864", 
+          "youtube_video_url": "https://www.youtube.com/embed/5OUv58NZWCU?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "49009bb2-76fa-4e49-9b72-582152622069", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "9", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }, 
+    {
+      "name": "NV-vs-FOX", 
+      "id": "a7ac2f00-10d3-4bf0-bc45-92fb71a518d7", 
+      "scheduledTime": "2016-07-31T22:00:01.000+0000", 
+      "state": "resolved", 
+      "games": [
+        {
+          "name": "G1", 
+          "id": "0d287773-a22d-4243-a80f-97782a0352e4", 
+          "gameId": "1001790199", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "2e4aa23a33c9f340", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790199/timeline?gameHash=2e4aa23a33c9f340", 
+          "youtube_video_url": "https://www.youtube.com/embed/MuhPEpkY2os?wmode=transparent"
+        }, 
+        {
+          "name": "G2", 
+          "id": "760d0004-c0cd-4fa1-8153-0f8f1b7fbe44", 
+          "gameId": "1001790206", 
+          "gameRealm": "TRLH1", 
+          "gameHash": "37fe8c982a3c6988", 
+          "timeline_url": "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001790206/timeline?gameHash=37fe8c982a3c6988", 
+          "youtube_video_url": "https://www.youtube.com/embed/zVkbu4YdobE?wmode=transparent"
+        }, 
+        {
+          "name": "G3", 
+          "id": "e9effac7-ab42-472d-a111-fb05a776c9ad", 
+          "gameId": null, 
+          "gameRealm": null, 
+          "gameHash": null
+        }
+      ], 
+      "tags": {
+        "stageLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b:bracket:2a6a824d-3009-4d23-9c83-859b7a9c2629", 
+        "tournamentLabel": "urn:rg:lolesports:global:highlander:tournament:472c44a9-49d3-4de4-912c-aa4151fd1b3b", 
+        "blockLabel": "9", 
+        "leagueLabel": "urn:rg:lolesports:global:league:league:2", 
+        "subBlockPrefix": "day", 
+        "subBlockLabel": "3", 
+        "blockPrefix": "week"
+      }
+    }
+  ]
+}
