@@ -1,0 +1,12 @@
+[Unit]
+Description=Treadstone API
+After=network.target
+
+[Service]
+User=root
+Group=nginx
+WorkingDirectory=/opt/treadstone/api
+ExecStart=/usr/bin/gunicorn --workers 3 --bind unix:treadstone_api.sock -m 007 app:api
+
+[Install]
+WantedBy=multi-user.target
