@@ -163,59 +163,93 @@ def large_fight_function(start_list, counter_list):
     return(team_fight)
 
 def _create_url(args):
-    return "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001740199/timeline?gameHash=7b4f6400bb5f0053"
+    return "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001710249/timeline?gameHash=856ed19d3d6dce2e"
 
 def player_gold(data, team_fight):
+    player_gold_list = {}
     len_team_fight = len(team_fight)
     for a in range(0,len_team_fight):
+        player_gold_list[a] = {}
         time = int((team_fight[a]/1000)/60)
+        player_gold_list1 = []
         for b in range(1,11):
             x = str(b)
             player_gold = data['frames'][time]['participantFrames'][x]['totalGold']
-
-    return(team_fight)
+            player_gold_list1.append(player_gold)
+        time_str = str(team_fight[a])
+        player_gold_list[a][time_str] = player_gold_list1
+    print(player_gold_list)
+    return(player_gold_list)
 
 def player_items(data):
-    test = {}
-    player_items_list = []
-    player_items_list1 = []
-    data_len = len(data)
-    for a in range(0,10):
+    player_items_list = {}
+    data_len = len(data['frames'])
+    for a in range(1,11):
         player_id = a
-        player_items_list.append(a)
-        # for x in range (0, data_len):
-        #     z = len(data['frames'][x]['events'])
-        #     for y in range (0, z):
-        #         check = data['frames'][x]['events'][y]['type']
-        #         if check == "ITEM_PURCHASED":
-        #             check2 = data['frames'][x]['events'][y]['participantId']
-        #             print(check2)
-        #             if check2 == player_id:
-        #                 item_id = data['frames'][x]['events'][y]['itemId']
-        #                 player_items_list1[a].append(item_id)
+        player_items_list[a] = {}
+        player_items_list1 = []
+        for x in range (0, data_len):
+            z = len(data['frames'][x]['events'])
+            for y in range (0, z):
+                check = data['frames'][x]['events'][y]['type']
+                item_id = 0
+                if check == "ITEM_PURCHASED":
+                    check2 = data['frames'][x]['events'][y]['participantId']
+                    if check2 == player_id:
+                        item_id = data['frames'][x]['events'][y]['itemId']
+                        player_items_list1.append(item_id)
+                if check == 'ITEM_UNDO':
+                    check2 = data['frames'][x]['events'][y]['participantId']
+                    check3 = data['frames'][x]['events'][y]['afterId']
+                    if check2 == player_id:
+                        if check3 != 0:
+                            item_id = data['frames'][x]['events'][y]['afterId']
+                            # player_items_list1.remove(item_id)
+                            # print('Item Undo After', item_id)
+                        else:
+                            item_id = data['frames'][x]['events'][y]['beforeId']
+                            player_items_list1.remove(item_id)
+
+        for x in range (0, data_len):
+            z = len(data['frames'][x]['events'])
+            for y in range (0, z):
+                check = data['frames'][x]['events'][y]['type']
+                if check == 'ITEM_DESTROYED':
+                    check2 = data['frames'][x]['events'][y]['participantId']
+                    if check2 == player_id:
+                        item_id = data['frames'][x]['events'][y]['itemId']
+                        if item_id == 3200:
+                            player_items_list1.append(item_id)
+                        quit = 0
+                        for c in range(0,len(player_items_list1)):
+                            check4 = player_items_list1[c]
+                            if check4 == item_id:
+                                quit = 1
+                        if quit == 1:
+                            player_items_list1.remove(item_id)
+
+        player_items_list[a]['Items'] = player_items_list1
 
     print(player_items_list)
-    print(player_items_list[1])
     return player_items_list
 
 def main(args):
     url = _create_url(args)
     r = requests.get(url)
     data = r.json()
-
     counter_list = []
     kill_list = kill_list_function(data)
     start_list, counter_list = start_counter_list_function(kill_list, counter_list)
     end_list, counter_list = end_list_function(kill_list, counter_list, start_list)
     team_fight = large_fight_function(start_list, counter_list)
-    player_gold(data,team_fight)
+    player_gold_list = player_gold(data,team_fight)
     player_items_list = player_items(data)
     report(start_list, end_list)
 
-    print(kill_list)
-    print(start_list)
-    print(counter_list)
-    print(end_list)
+    # print(kill_list)
+    # print(start_list)
+    # print(counter_list)
+    # print(end_list)
 
 
 if __name__ == "__main__":
