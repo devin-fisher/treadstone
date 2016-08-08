@@ -2,21 +2,34 @@
 
 import requests
 import requests_cache
-requests_cache.install_cache('/tmp/lcs_schedule_cache', expire_after=3600.0)
-import json
 import dateutil.parser
 import hashlib
+import time
+from pymongo import MongoClient
 
 from collections import OrderedDict
+
+requests_cache.install_cache('/tmp/lcs_schedule_cache', expire_after=3600.0)
 
 LEAGUE_INFO_API = 'http://api.lolesports.com/api/v1/leagues?slug=%s'
 MATCH_DETAIL_API = 'http://api.lolesports.com/api/v2/highlanderMatchDetails?tournamentId=%s&matchId=%s'
 TIME_LINE_API = 'https://acs.leagueoflegends.com/v1/stats/game/%s/%s/timeline?gameHash=%s'
 
+
+def request_json_resource(url, retry=3, time_between=1):
+    for i in xrange(retry):
+        response = requests.get(url)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            time.sleep(time_between)
+
+    raise Exception('Unable to retrieve json recourse')
+
+
 def get_match_info(match_id, tournament_id):
     url = MATCH_DETAIL_API % (tournament_id, match_id)
-    response = requests.get(url)
-    data = response.json()
+    data = request_json_resource(url)
 
     rtn = OrderedDict()
 
@@ -34,16 +47,17 @@ def get_match_info(match_id, tournament_id):
 
     if 'scheduleItems' in data:
         if len(data['scheduleItems']) > 0:
-            scheduleItems = data['scheduleItems'][0]
+            schedule_items = data['scheduleItems'][0]
 
-            if 'scheduledTime' in scheduleItems:
-                rtn['scheduledTime'] = scheduleItems['scheduledTime']
+            if 'scheduledTime' in schedule_items:
+                rtn['scheduledTime'] = schedule_items['scheduledTime']
 
-            if 'tags' in scheduleItems:
-                    rtn['tags'] = scheduleItems['tags']
+            if 'tags' in schedule_items:
+                rtn['tags'] = schedule_items['tags']
 
     # print data
     return rtn
+
 
 def get_game_info(games, match_detail_info):
     rtn = []
@@ -55,13 +69,13 @@ def get_game_info(games, match_detail_info):
         game_info['gameRealm'] = game.get('gameRealm')
         game_info['gameHash'] = match_detail_info['mapping'].get(game_info['id'])
 
-
         if game_info.get('gameRealm') and game_info.get('gameId') and game_info.get('gameHash'):
-            game_info['timeline_url'] = TIME_LINE_API % (game_info.get('gameRealm'), game_info.get('gameId'), game_info.get('gameHash'))
+            game_info['timeline_url'] = TIME_LINE_API % (
+                game_info.get('gameRealm'), game_info.get('gameId'), game_info.get('gameHash'))
 
         match_detail_info['videos'].get(game_info['id'])
         if match_detail_info['videos'].get(game_info['id']):
-             game_info['youtube_video_url'] = match_detail_info['videos'].get(game_info['id'])
+            game_info['youtube_video_url'] = match_detail_info['videos'].get(game_info['id'])
 
         rtn.append(game_info)
     # print rtn
@@ -69,7 +83,7 @@ def get_game_info(games, match_detail_info):
 
 
 def process_bracket(bracket, tournament_id, bracket_id):
-    rtn = []
+    matches = []
     for match_id, match in bracket['matches'].iteritems():
         match_detail_info = get_match_info(match_id, tournament_id)
         match_info = OrderedDict()
@@ -82,34 +96,47 @@ def process_bracket(bracket, tournament_id, bracket_id):
         match_info['state'] = match['state']
         match_info['games'] = get_game_info(match['games'], match_detail_info)
         match_info['tags'] = match_detail_info.get('tags')
-        rtn.append(match_info)
-        #break
-    return sorted(rtn, key=lambda x: dateutil.parser.parse(x.get('scheduledTime')))
+        matches.append(match_info)
+        # break
+    return sorted(matches, key=lambda x: dateutil.parser.parse(x.get('scheduledTime')))
+
 
 def process_highlander_tournaments(data, tournaments_name, bracket_name):
-    rtn = OrderedDict()
+    matches = OrderedDict()
+    brackets = []
     for tournament in data:
         if tournament['title'] in tournaments_name:
             tournament_id = tournament['id']
             for bracket_id, bracket in tournament['brackets'].iteritems():
                 if bracket['name'] in bracket_name:
-                    rtn[tournaments_name + '_' +tournament_id] = process_bracket(bracket, tournament_id, bracket['id'])
-    return rtn
+                    matches[tournaments_name + '_' + tournament_id] = process_bracket(bracket, tournament_id, bracket['id'])
+                    add_bracket = {}
+                    add_bracket['tournaments_name'] = tournaments_name
+                    add_bracket['bracket_name'] = bracket['name']
+                    add_bracket['bracket_id'] = bracket['id']
+                    add_bracket['_id'] = hashlib.md5(bracket['id']).hexdigest()[:24]
+                    add_bracket['tournament_id'] = tournament_id
+                    brackets.append(add_bracket)
+    return matches, brackets
+
 
 def process_league_tournament(league, tournaments_name, bracket_name):
-    response = requests.get(LEAGUE_INFO_API % league)
-    data = response.json()
-
+    data = request_json_resource(LEAGUE_INFO_API % league)
     return process_highlander_tournaments(data['highlanderTournaments'], tournaments_name, bracket_name)
 
 
 if __name__ == "__main__":
-    rtn = process_league_tournament('na-lcs', 'na_2016_summer', 'regular_season')['na_2016_summer_472c44a9-49d3-4de4-912c-aa4151fd1b3b']
-    rtn_str = json.dumps(rtn, indent=2)
-    print(rtn_str)
-    from pymongo import MongoClient
+    rtn_matches, rtn_brackets = process_league_tournament('na-lcs', 'na_2016_summer', 'regular_season')
+    # rtn_str = json.dumps(rtn_matches['na_2016_summer_472c44a9-49d3-4de4-912c-aa4151fd1b3b'], indent=2)
+    # rtn_str = json.dumps(rtn_brackets, indent=2)
+    # print(rtn_str)
+
     client = MongoClient()
-    collection = client.lol.scheduled_games
-    for match in rtn:
+
+    collection = client.lol.scheduled_matches
+    for match in rtn_matches:
         collection.save(match)
-    
+
+    collection = client.lol.brackets
+    for match in rtn_matches:
+        collection.save(match)
