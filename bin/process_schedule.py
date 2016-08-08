@@ -5,6 +5,7 @@ import requests_cache
 requests_cache.install_cache('/tmp/lcs_schedule_cache', expire_after=3600.0)
 import json
 import dateutil.parser
+import hashlib
 
 from collections import OrderedDict
 
@@ -67,19 +68,22 @@ def get_game_info(games, match_detail_info):
     return sorted(rtn, key=lambda x: x.get('name'))
 
 
-def process_bracket(bracket, tournament_id):
+def process_bracket(bracket, tournament_id, bracket_id):
     rtn = []
     for match_id, match in bracket['matches'].iteritems():
         match_detail_info = get_match_info(match_id, tournament_id)
         match_info = OrderedDict()
         match_info['name'] = match['name']
         match_info['id'] = match_id
+        match_info['_id'] = hashlib.md5(match_id).hexdigest()[:24]
         match_info['scheduledTime'] = match_detail_info.get('scheduledTime')
+        match_info['tournament_id'] = tournament_id
+        match_info['bracket_id'] = bracket_id
         match_info['state'] = match['state']
         match_info['games'] = get_game_info(match['games'], match_detail_info)
         match_info['tags'] = match_detail_info.get('tags')
         rtn.append(match_info)
-        # break
+        #break
     return sorted(rtn, key=lambda x: dateutil.parser.parse(x.get('scheduledTime')))
 
 def process_highlander_tournaments(data, tournaments_name, bracket_name):
@@ -89,7 +93,7 @@ def process_highlander_tournaments(data, tournaments_name, bracket_name):
             tournament_id = tournament['id']
             for bracket_id, bracket in tournament['brackets'].iteritems():
                 if bracket['name'] in bracket_name:
-                    rtn[tournaments_name + '_' +tournament_id] = process_bracket(bracket, tournament_id)
+                    rtn[tournaments_name + '_' +tournament_id] = process_bracket(bracket, tournament_id, bracket['id'])
     return rtn
 
 def process_league_tournament(league, tournaments_name, bracket_name):
@@ -100,4 +104,12 @@ def process_league_tournament(league, tournaments_name, bracket_name):
 
 
 if __name__ == "__main__":
-    print json.dumps(process_league_tournament('na-lcs', 'na_2016_summer', 'regular_season'), indent=2)
+    rtn = process_league_tournament('na-lcs', 'na_2016_summer', 'regular_season')['na_2016_summer_472c44a9-49d3-4de4-912c-aa4151fd1b3b']
+    rtn_str = json.dumps(rtn, indent=2)
+    print(rtn_str)
+    from pymongo import MongoClient
+    client = MongoClient()
+    collection = client.lol.scheduled_games
+    for match in rtn:
+        collection.save(match)
+    
