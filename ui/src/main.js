@@ -11,6 +11,7 @@ Promise.config({
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
+    // .plugin('aurelia-http-client')
     .feature('resources');
 
   if (environment.debug) {

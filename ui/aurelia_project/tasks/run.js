@@ -4,6 +4,13 @@ import historyApiFallback from 'connect-history-api-fallback/lib';;
 import project from '../aurelia.json';
 import build from './build';
 import {CLIOptions} from 'aurelia-cli';
+import proxy from  'http-proxy-middleware';
+
+var jsonPlaceholderProxy = proxy('/api', {
+    target: 'http://45.55.21.68',
+    changeOrigin: true,             // for vhosted sites, changes host header to match to target's host
+    logLevel: 'debug'
+});
 
 function onChange(path) {
   console.log(`File Changed: ${path}`);
@@ -24,7 +31,7 @@ let serve = gulp.series(
       logLevel: 'silent',
       server: {
         baseDir: ['.'],
-        middleware: [historyApiFallback(), function(req, res, next) {
+        middleware: [jsonPlaceholderProxy, historyApiFallback(), function(req, res, next) {
           res.setHeader('Access-Control-Allow-Origin', '*');
           next();
         }]
