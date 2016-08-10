@@ -87,7 +87,6 @@ def kill_list_function(data):
     new_list = []
     a = 0
 
-
     return kill_list
 
 def start_counter_list_function(kill_list, counter_list):
@@ -167,68 +166,75 @@ def _create_url(args):
     return "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770122/timeline?gameHash=b49ec7b6e70e0ac3"
 
 def player_gold(data, team_fight,time):
-    player_gold_list = []
+    player_gold_list = {}
     len_team_fight = len(team_fight)
+    player_gold_list1 = []
     time_stamp = int((time/1000)/60)
-
-    for b in range(1,11):
-        x = str(b)
-        player_gold = data['frames'][int((time_stamp)/60)]['participantFrames'][x]['totalGold']
-        player_gold_list.append(player_gold)
+    for a in range(0,time_stamp):
+        player_gold_list[a] = {}
+        for b in range(1,11):
+            x = str(b)
+            player_gold = data['frames'][time_stamp]['participantFrames'][x]['totalGold']
+            player_gold_list1.append(player_gold)
+        time_str = str(time_stamp)
+        player_gold_list[a] = player_gold_list1
 
     return(player_gold_list)
 
-def player_items(data, team_fight, time):
+def player_items(data, team_fight):
     player_items_list = {}
     data_len = len(data['frames'])
     len_team_fight = len(team_fight)
-    time_stamp = int((time/1000)/60)
-    for a in range(1,11):
-        player_id = a
-        player_items_list[a] = {}
-        player_items_list1 = []
-        for x in range (0, time_stamp):
-            z = len(data['frames'][x]['events'])
-            for y in range (0, z):
-                check = data['frames'][x]['events'][y]['type']
-                item_id = 0
-                if check == "ITEM_PURCHASED":
-                    check2 = data['frames'][x]['events'][y]['participantId']
-                    if check2 == player_id:
-                        item_id = data['frames'][x]['events'][y]['itemId']
-                        player_items_list1.append(item_id)
-                if check == 'ITEM_UNDO':
-                    check2 = data['frames'][x]['events'][y]['participantId']
-                    check3 = data['frames'][x]['events'][y]['afterId']
-                    if check2 == player_id:
-                        if check3 != 0:
-                            item_id = data['frames'][x]['events'][y]['afterId']
-                            # player_items_list1.remove(item_id)
-                            # print('Item Undo After', item_id)
-                        else:
-                            item_id = data['frames'][x]['events'][y]['beforeId']
-                            player_items_list1.remove(item_id)
-
-        for x in range (0, time_stamp):
-            z = len(data['frames'][x]['events'])
-            for y in range (0, z):
-                check = data['frames'][x]['events'][y]['type']
-                if check == 'ITEM_DESTROYED':
-                    check2 = data['frames'][x]['events'][y]['participantId']
-                    if check2 == player_id:
-                        item_id = data['frames'][x]['events'][y]['itemId']
-                        if item_id == 3200:
+    for c in range(0,len_team_fight):
+        i = c + 1
+        time_stamp = int((team_fight[c]/1000)/60)
+        player_items_list[i] = {}
+        for a in range(1,11):
+            player_id = a
+            player_items_list[i][a] = {}
+            player_items_list1 = []
+            for x in range (0, time_stamp):
+                z = len(data['frames'][x]['events'])
+                for y in range (0, z):
+                    check = data['frames'][x]['events'][y]['type']
+                    item_id = 0
+                    if check == "ITEM_PURCHASED":
+                        check2 = data['frames'][x]['events'][y]['participantId']
+                        if check2 == player_id:
+                            item_id = data['frames'][x]['events'][y]['itemId']
                             player_items_list1.append(item_id)
-                        quit = 0
-                        for c in range(0,len(player_items_list1)):
-                            check4 = player_items_list1[c]
-                            if check4 == item_id:
-                                quit = 1
-                        if quit == 1:
-                            player_items_list1.remove(item_id)
+                    if check == 'ITEM_UNDO':
+                        check2 = data['frames'][x]['events'][y]['participantId']
+                        check3 = data['frames'][x]['events'][y]['afterId']
+                        if check2 == player_id:
+                            if check3 != 0:
+                                item_id = data['frames'][x]['events'][y]['afterId']
+                                # player_items_list1.remove(item_id)
+                                # print('Item Undo After', item_id)
+                            else:
+                                item_id = data['frames'][x]['events'][y]['beforeId']
+                                player_items_list1.remove(item_id)
 
-        # player_items_list[c][a] = player_items_list1
-        player_items_list[a]['items'] = player_items_list1
+            for x in range (0, data_len):
+                z = len(data['frames'][x]['events'])
+                for y in range (0, z):
+                    check = data['frames'][x]['events'][y]['type']
+                    if check == 'ITEM_DESTROYED':
+                        check2 = data['frames'][x]['events'][y]['participantId']
+                        if check2 == player_id:
+                            item_id = data['frames'][x]['events'][y]['itemId']
+                            if item_id == 3200:
+                                player_items_list1.append(item_id)
+                            quit = 0
+                            for c in range(0,len(player_items_list1)):
+                                check4 = player_items_list1[c]
+                                if check4 == item_id:
+                                    quit = 1
+                            if quit == 1:
+                                player_items_list1.remove(item_id)
+
+            # player_items_list[c][a] = player_items_list1
+            player_items_list[i][a]['items'] = player_items_list1
 
     return player_items_list
 
@@ -280,12 +286,14 @@ def team_gold(player_gold_list):
     team_gold_list = {}
     blue_gold = 0
     red_gold = 0
-    for a in range(0, 5):
-        blue_gold = blue_gold + player_gold_list[a]
-    for b in range(5,10):
-        red_gold = red_gold + player_gold_list[b]
-    team_gold_list[1] = blue_gold
-    team_gold_list[2] = red_gold
+    for c in range(0,len_player_gold_list):
+        team_gold_list[c] = {}
+        for a in range(0, 5):
+            blue_gold = blue_gold + player_gold_list[c][a]
+        for b in range(5,10):
+            red_gold = red_gold + player_gold_list[c][b]
+        team_gold_list[c][1] = blue_gold
+        team_gold_list[c][2] = red_gold
 
     return(team_gold_list)
 
@@ -432,7 +440,7 @@ def infographic_list_builder(data, time, team_fight,player_gold_list):
         offset = a + 1
 
         player_gold_list = player_gold(data,team_fight,time)
-        player_items_list = player_items(data, team_fight, time)
+        player_items_list = player_items(data, team_fight)
         kill_score = team_kills(data, time)
         tower_score = team_towers(data,time)
         team_gold_list = team_gold(player_gold_list)
@@ -442,12 +450,12 @@ def infographic_list_builder(data, time, team_fight,player_gold_list):
 
         blue_player_kill_list = player_kill_list[0:5]
         blue_player_death_list = player_death_list[0:5]
-        blue_player_gold_list = player_gold_list[0:5]
+        blue_player_gold_list = player_gold_list[a][0:5]
 
         infographic_list = {}
         infographic_list[100] = {}
 
-        infographic_list[100]['teamGold'] = team_gold_list[1]
+        infographic_list[100]['teamGold'] = team_gold_list[0][1]
         infographic_list[100]['teamKills'] = kill_score[0]
         infographic_list[100]['towerKills'] = tower_score[0]
         infographic_list[100]['dragonKills'] = dragon_count_list[1]
@@ -457,7 +465,7 @@ def infographic_list_builder(data, time, team_fight,player_gold_list):
 
         infographic_list[100]['playerItem'] = {}
         for b in range(1,6):
-            infographic_list[100]['playerItem'][b] = player_items_list[b]['items']
+            infographic_list[100]['playerItem'][b] = player_items_list[offset][b]['items']
 
 
     print('Player Gold at each Team Fight', player_gold_list)
@@ -481,7 +489,7 @@ def main(args):
     end_list, counter_list = end_list_function(kill_list, counter_list, start_list)
     team_fight = large_fight_function(start_list, counter_list)
     player_gold_list = player_gold(data,team_fight,time)
-    player_items_list1 = player_items(data, team_fight, time)
+    player_items_list1 = player_items(data, team_fight)
     kill_score = team_kills(data, time)
     tower_score = team_towers(data,time)
     team_gold_list = team_gold(player_gold_list)
