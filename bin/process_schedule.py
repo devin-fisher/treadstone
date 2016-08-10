@@ -102,14 +102,14 @@ def process_bracket(bracket, tournament_id, bracket_id):
 
 
 def process_highlander_tournaments(data, tournaments_name, bracket_name):
-    matches = OrderedDict()
+    matches = [] 
     brackets = []
     for tournament in data:
         if tournament['title'] in tournaments_name:
             tournament_id = tournament['id']
             for bracket_id, bracket in tournament['brackets'].iteritems():
                 if bracket['name'] in bracket_name:
-                    matches[tournaments_name + '_' + tournament_id] = process_bracket(bracket, tournament_id, bracket['id'])
+                    matches.extend(process_bracket(bracket, tournament_id, bracket['id']))
                     add_bracket = {}
                     add_bracket['tournaments_name'] = tournaments_name
                     add_bracket['bracket_name'] = bracket['name']
@@ -138,5 +138,5 @@ if __name__ == "__main__":
         collection.save(match)
 
     collection = client.lol.brackets
-    for match in rtn_matches:
-        collection.save(match)
+    for bracket in rtn_brackets:
+        collection.save(bracket)
