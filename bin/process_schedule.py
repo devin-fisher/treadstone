@@ -126,7 +126,7 @@ def process_league_tournament(league, tournaments_name, bracket_name):
 
 
 if __name__ == "__main__":
-    rtn_matches, rtn_brackets = process_league_tournament('na-lcs', 'na_2016_summer', 'regular_season')
+    rtn_matches, rtn_brackets = process_league_tournament('na-lcs', 'na_2016_summer', 'na_2016_summer_playoffs')
     # rtn_str = json.dumps(rtn_matches['na_2016_summer_472c44a9-49d3-4de4-912c-aa4151fd1b3b'], indent=2)
     # rtn_str = json.dumps(rtn_brackets, indent=2)
     # print(rtn_str)
