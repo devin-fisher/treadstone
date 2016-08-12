@@ -423,13 +423,38 @@ def dragon_counter(data, time):
     dragon_count_list[2] = dragon_count_red
 
     return(dragon_count_list)
+def infographic_time_list_builder(data,team_fight):
+    infographic_time_list = []
+    len_game = len(data['frames']) // 5
+    len_team_fight = len(team_fight)
+    time_counter = 0
+    for a in range(0,len_game):
+        time_counter = time_counter + 5
+        infographic_time = (time_counter * 60) * 1000
+        infographic_time_list.append(infographic_time)
+        for b in range(0,len_team_fight):
+            team_fight_time = int((team_fight[b]/60)/1000)
+
+            if team_fight_time > time_counter and team_fight_time < (time_counter + 5):
+                infographic_time_list.append(team_fight[b])
+    print(infographic_time_list)
+
+    return(infographic_time_list)
 
 def infographic_list_builder(data, time, team_fight,player_gold_list):
 
-    len_team_fight = len(team_fight)
-    for a in range(0,len_team_fight):
-        time = team_fight[a]
-        offset = a + 1
+
+
+    infographic_time_list = infographic_time_list_builder(data, team_fight)
+    len_infographic_time_list = len(infographic_time_list)
+    infographic_list = {}
+
+    team_gold_str = str('teamGold')
+    infographic_list[200] = {}
+    infographic_list[100] = {}
+
+    for a in range(0,len_infographic_time_list):
+        time = infographic_time_list[a]
 
         player_gold_list = player_gold(data,team_fight,time)
         player_items_list = player_items(data, team_fight, time)
@@ -444,20 +469,52 @@ def infographic_list_builder(data, time, team_fight,player_gold_list):
         blue_player_death_list = player_death_list[0:5]
         blue_player_gold_list = player_gold_list[0:5]
 
-        infographic_list = {}
-        infographic_list[100] = {}
 
-        infographic_list[100]['teamGold'] = team_gold_list[1]
-        infographic_list[100]['teamKills'] = kill_score[0]
-        infographic_list[100]['towerKills'] = tower_score[0]
-        infographic_list[100]['dragonKills'] = dragon_count_list[1]
-        infographic_list[100]['playerKills'] = blue_player_kill_list
-        infographic_list[100]['playerDeaths'] = blue_player_death_list
-        infographic_list[100]['playerGold'] = blue_player_gold_list
+        infographic_list[100][a] = {}
 
-        infographic_list[100]['playerItem'] = {}
+        infographic_list[100][a]["teamGold"] = team_gold_list[1]
+        infographic_list[100][a]["teamKills"] = kill_score[0]
+        infographic_list[100][a]["towerKills"] = tower_score[0]
+        infographic_list[100][a]["dragonKills"] = dragon_count_list[1]
+        infographic_list[100][a]["playerKills"] = blue_player_kill_list
+        infographic_list[100][a]["playerDeaths"] = blue_player_death_list
+        infographic_list[100][a]["playerGold"] = blue_player_gold_list
+
+        infographic_list[100][a]['playerItem'] = {}
         for b in range(1,6):
-            infographic_list[100]['playerItem'][b] = player_items_list[b]['items']
+            infographic_list[100][a]['playerItem'][b] = player_items_list[b]['items']
+
+    for a in range(0,len_infographic_time_list):
+        time = infographic_time_list[a]
+
+        player_gold_list = player_gold(data,team_fight,time)
+        player_items_list = player_items(data, team_fight, time)
+        kill_score = team_kills(data, time)
+        tower_score = team_towers(data,time)
+        team_gold_list = team_gold(player_gold_list)
+        player_kill_list = player_kills(data,time)
+        player_death_list = player_deaths(data,time)
+        dragon_count_list = dragon_counter(data,time)
+
+        blue_player_kill_list = player_kill_list[5:10]
+        blue_player_death_list = player_death_list[5:10]
+        blue_player_gold_list = player_gold_list[5:10]
+
+
+        infographic_list[200][a] = {}
+
+        infographic_list[200][a]['teamGold'] = team_gold_list[2]
+        infographic_list[200][a]['teamKills'] = kill_score[1]
+        infographic_list[200][a]['towerKills'] = tower_score[1]
+        infographic_list[200][a]['dragonKills'] = dragon_count_list[2]
+        infographic_list[200][a]['playerKills'] = blue_player_kill_list
+        infographic_list[200][a]['playerDeaths'] = blue_player_death_list
+        infographic_list[200][a]['playerGold'] = blue_player_gold_list
+
+        infographic_list[200][a]['playerItem'] = {}
+        for b in range(6,11):
+            infographic_list[200][a]['playerItem'][b] = player_items_list[b]['items']
+
 
 
     print('Player Gold at each Team Fight', player_gold_list)
@@ -467,6 +524,7 @@ def infographic_list_builder(data, time, team_fight,player_gold_list):
     print('Sums up team gold (Blue First then Red)', team_gold_list)
     print('Player Deaths at certain Time', player_death_list)
     print('Dragon Kills up to a certain Time', dragon_count_list)
+    # test = json.dumps(infographic_list)
     print(infographic_list)
     return(infographic_list)
 
