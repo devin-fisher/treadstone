@@ -115,6 +115,11 @@
           "aurelia-templating-binding",
           "aurelia-http-client",
           {
+            "name": "aurelia-dialog",
+            "path": "../node_modules/aurelia-dialog/dist/amd",
+            "main": "aurelia-dialog"
+          },
+          {
             "name": "text",
             "path": "../scripts/text"
           },

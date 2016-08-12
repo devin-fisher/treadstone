@@ -7,12 +7,20 @@ export class Match {
     return this.model.name;
   }
 
+  get id() {
+    return this.model.id;
+  }
+
   get state() {
     return this.model.state;
   }
 
   get games() {
     return this.model.games;
+  }
+
+  get bracket_id() {
+    return this.model.bracket_id;
   }
 
   get scheduledTime() {

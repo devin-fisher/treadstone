@@ -17,7 +17,7 @@
           <td>${match.scheduledTime}</td>
           <td>${match.state}</td>
           <td>
-            <button repeat.for="game of match.games" type="button" class="btn btn-primary btn-warning btn-sm">${game.name}</button>
+            <button repeat.for="game of match.games" type="button" click.delegate="openVideoDialog(match.bracket_id, match.id, game.gameId)" class="btn btn-primary btn-warning btn-sm">${game.name}</button>
           </td>
           <td>
             <button type="button" class="btn btn-primary btn-sm">report</button>
