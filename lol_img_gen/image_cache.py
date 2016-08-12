@@ -5,7 +5,6 @@ import requests
 import requests_cache
 requests_cache.install_cache('/tmp/lcs_image_cache')
 
-DISK_CACHE_LOCATION = "/var/cache/lol_image_image/"
 DATA_DRAGON = "http://ddragon.leagueoflegends.com/"
 
 def get_item_image(version, item_num):
