@@ -3,6 +3,7 @@ from PIL import Image
 from image_cache import get_item_image, get_summoner_image, get_champ_image
 import PIL
 
+
 def build_item_tile(items, version, pad = 6, image_size = 64):
     items = _get_item_images(items, version)
     _validate_item_images(items)
@@ -44,6 +45,7 @@ def build_item_tile(items, version, pad = 6, image_size = 64):
 
     return new_im
 
+
 def build_champ_tile(champ, summoner1, summoner2, version, pad = 6):
     champ_img = get_champ_image(version, champ)
     summoner1_img = get_summoner_image(version, summoner1)
@@ -67,6 +69,7 @@ def build_champ_tile(champ, summoner1, summoner2, version, pad = 6):
 
     return new_im
 
+
 def build_player_tile(champ_tile, item_tile, pad = 20):
     champ_tile_width, champ_tile_height  = champ_tile.size
     item_tile_width, item_tile_height  = item_tile.size
@@ -85,6 +88,23 @@ def build_player_tile(champ_tile, item_tile, pad = 20):
     return new_im
 
 
+def build_team_tile(champ_tiles, total_gold, pad = 10):
+    total_width = max(map(lambda x: x.width, champ_tiles))
+    total_height = max(map(lambda x: x.height, champ_tiles)) * 5 + pad * 4
+
+    print ""
+    print total_width
+    print total_height
+
+    new_im = Image.new('RGBA', (total_width, total_height))
+    y_pos = 0
+    for champ_tile in champ_tiles:
+        new_im.paste(champ_tile, (0,y_pos))
+        y_pos += champ_tile.height + pad
+
+    return new_im
+
+
 def _get_item_images(items, version):
     rtn = []
     for item in items:
@@ -93,6 +113,7 @@ def _get_item_images(items, version):
         else:
             rtn.append(None)
     return rtn
+
 
 def _validate_item_images(items):
     if len(items) is not 7:
@@ -119,7 +140,18 @@ if __name__ == "__main__":
     items = ["3073", "3071", "1001", "3340", "1401", None, None]
     item_tile = build_item_tile(items, "6.15.1")
     champ_tile = build_champ_tile("Janna", "SummonerFlash", "SummonerFlash", "6.15.1")
+    champ_tile2 = build_champ_tile("Akali", "SummonerFlash", "SummonerFlash", "6.15.1")
+    champ_tile3 = build_champ_tile("Ashe", "SummonerFlash", "SummonerFlash", "6.15.1")
+    champ_tile4 = build_champ_tile("Elise", "SummonerFlash", "SummonerFlash", "6.15.1")
+    champ_tile5 = build_champ_tile("Shen", "SummonerFlash", "SummonerFlash", "6.15.1")
 
     player_tile = build_player_tile(champ_tile, item_tile)
-    player_tile.show()
-    # player_tile.save('test.png', 'PNG')
+    player_tile2 = build_player_tile(champ_tile2, item_tile)
+    player_tile3 = build_player_tile(champ_tile3, item_tile)
+    player_tile4 = build_player_tile(champ_tile4, item_tile)
+    player_tile5 = build_player_tile(champ_tile5, item_tile)
+
+    team_tile = build_team_tile([player_tile, player_tile2, player_tile3, player_tile4, player_tile5], 0)
+
+    team_tile.show(team_tile)
+    team_tile.save('test.png', 'PNG')
