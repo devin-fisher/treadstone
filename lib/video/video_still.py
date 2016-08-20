@@ -1,9 +1,8 @@
-import base64
 from moviepy.editor import VideoFileClip
-# from imageio import imsave, RETURN_BYTES
 import sys
 from PIL import Image, ImageEnhance
 import numpy
+import cv2
 
 
 IMAGE_SPLITS_COUNT = 10.0
@@ -49,12 +48,50 @@ def get_still(path_val, pos_sec, show=False):
 
 def get_still_with_video(video, pos_sec, show=False):
     image = video.get_frame(pos_sec)
-    if show:
-        Image.fromarray(image).show()
+    # if show:
+    #     Image.fromarray(image).show()
     if image is not None:
         image = _crop_image(image)
         return _prep_image(image, show=show)
 
+
+def _normalize_part(image, width=6, height=9, show=False):
+    image = image.copy().reshape(image.shape[0] * image.shape[1])
+    image = image.copy()
+    image.resize(width*height, refcheck=False)
+
+    if show:
+        cv2.imshow("", image.reshape((height, width)))
+        cv2.waitKey()
+
+    return image / 255.0
+
+
+def extract_part(contour, full_image, show=False):
+    x, y, w, h = cv2.boundingRect(contour)
+    part = full_image[y:y + h, x:x + w]
+    if show:
+        cv2.imshow("", part)
+        cv2.waitKey()
+    part = _normalize_part(part)
+
+    return part
+
+
+def extract_parts(image_data):
+    contours, hierarchy = cv2.findContours(image_data.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+    def contours_cmp(a, b):
+        return cv2.boundingRect(a)[0].__cmp__(cv2.boundingRect(b)[0])
+
+    def filter_colon_dots(contour):
+        return cv2.boundingRect(contour)[3] >= 4
+
+    contours = sorted(contours, cmp=contours_cmp)
+    contours = filter(filter_colon_dots, contours)
+
+    for c in contours:
+        yield extract_part(c, image_data)
 
 if __name__ == "__main__":
     path = sys.argv[1]

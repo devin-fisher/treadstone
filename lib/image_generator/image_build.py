@@ -63,7 +63,8 @@ def build_champ_tile(champ, summoner1, summoner2, version, pad = 6):
 
     new_im = Image.new('RGBA', (total_width, total_hight))
 
-    new_im.paste(champ_img, (0,(total_hight-champ_img_height)/2))
+    place_x = (total_hight-champ_img_height)#/2
+    new_im.paste(champ_img, (0, place_x))
     new_im.paste(summoner1_img, (champ_img_width+pad, 0))
     new_im.paste(summoner2_img, (champ_img_width+pad, summoner1_img_height + pad))
 
