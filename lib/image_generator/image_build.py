@@ -1,7 +1,10 @@
 import sys
 from PIL import Image
+from PIL import ImageFont
+from PIL import ImageDraw
+from PIL import ImageFile
 from image_cache import get_item_image, get_summoner_image, get_champ_image
-import PIL
+# import PIL
 
 
 def build_item_tile(items, version, pad = 6, image_size = 64):
@@ -63,7 +66,7 @@ def build_champ_tile(champ, summoner1, summoner2, version, pad = 6):
 
     new_im = Image.new('RGBA', (total_width, total_hight))
 
-    place_x = (total_hight-champ_img_height)#/2
+    place_x = (total_hight-champ_img_height)/2
     new_im.paste(champ_img, (0, place_x))
     new_im.paste(summoner1_img, (champ_img_width+pad, 0))
     new_im.paste(summoner2_img, (champ_img_width+pad, summoner1_img_height + pad))
@@ -106,6 +109,13 @@ def build_team_tile(champ_tiles, total_gold, pad = 10):
     return new_im
 
 
+def build_stat_tile(gold, kills, deaths, assists):
+    img = Image.new('RGBA', (100, 100))
+    draw = ImageDraw.Draw(img)
+    font = ImageFont.truetype("monofonto.ttf", 16)
+    draw.text((0, 0), "20.2k", (255, 255, 255), font=font)
+    return img
+
 def _get_item_images(items, version):
     rtn = []
     for item in items:
@@ -122,7 +132,7 @@ def _validate_item_images(items):
         #return
 
     for im in items:
-        if not isinstance(im, PIL.ImageFile.ImageFile) and im is not None:
+        if not isinstance(im, ImageFile.ImageFile) and im is not None:
             print("Not all items or None")
 
     sizes = []
@@ -137,22 +147,28 @@ def _validate_item_images(items):
 
 
 if __name__ == "__main__":
-    items = [get_item_image("6.15.1", "3073"), get_item_image("6.15.1", "3071"), get_item_image("6.15.1", "1001"), get_item_image("6.15.1", "3340"), get_item_image("6.15.1", "1401"), None, None]
-    items = ["3073", "3071", "1001", "3340", "1401", None, None]
-    item_tile = build_item_tile(items, "6.15.1")
-    champ_tile = build_champ_tile("Janna", "SummonerFlash", "SummonerFlash", "6.15.1")
-    champ_tile2 = build_champ_tile("Akali", "SummonerFlash", "SummonerFlash", "6.15.1")
-    champ_tile3 = build_champ_tile("Ashe", "SummonerFlash", "SummonerFlash", "6.15.1")
-    champ_tile4 = build_champ_tile("Elise", "SummonerFlash", "SummonerFlash", "6.15.1")
-    champ_tile5 = build_champ_tile("Shen", "SummonerFlash", "SummonerFlash", "6.15.1")
+    # items = [get_item_image("6.15.1", "3073"), get_item_image("6.15.1", "3071"), get_item_image("6.15.1", "1001"), get_item_image("6.15.1", "3340"), get_item_image("6.15.1", "1401"), None, None]
+    # items = ["3073", "3071", "1001", "3340", "1401", None, None]
+    # item_tile = build_item_tile(items, "6.15.1")
+    # champ_tile = build_champ_tile("Janna", "SummonerFlash", "SummonerFlash", "6.15.1")
+    # champ_tile2 = build_champ_tile("Akali", "SummonerFlash", "SummonerFlash", "6.15.1")
+    # champ_tile3 = build_champ_tile("Ashe", "SummonerFlash", "SummonerFlash", "6.15.1")
+    # champ_tile4 = build_champ_tile("Elise", "SummonerFlash", "SummonerFlash", "6.15.1")
+    # champ_tile5 = build_champ_tile("Shen", "SummonerFlash", "SummonerFlash", "6.15.1")
+    #
+    # player_tile = build_player_tile(champ_tile, item_tile)
+    # player_tile2 = build_player_tile(champ_tile2, item_tile)
+    # player_tile3 = build_player_tile(champ_tile3, item_tile)
+    # player_tile4 = build_player_tile(champ_tile4, item_tile)
+    # player_tile5 = build_player_tile(champ_tile5, item_tile)
+    #
+    # team_tile = build_team_tile([player_tile, player_tile2, player_tile3, player_tile4, player_tile5], 0)
+    #
+    # team_tile.show(team_tile)
+    # team_tile.save('test.png', 'PNG')
 
-    player_tile = build_player_tile(champ_tile, item_tile)
-    player_tile2 = build_player_tile(champ_tile2, item_tile)
-    player_tile3 = build_player_tile(champ_tile3, item_tile)
-    player_tile4 = build_player_tile(champ_tile4, item_tile)
-    player_tile5 = build_player_tile(champ_tile5, item_tile)
-
-    team_tile = build_team_tile([player_tile, player_tile2, player_tile3, player_tile4, player_tile5], 0)
-
-    team_tile.show(team_tile)
-    team_tile.save('test.png', 'PNG')
+    img = Image.new('RGBA', (100, 100))
+    draw = ImageDraw.Draw(img)
+    font = ImageFont.truetype("monofonto.ttf", 16)
+    draw.text((0, 0), "20.2k", (255, 255, 255), font=font)
+    img.show()
