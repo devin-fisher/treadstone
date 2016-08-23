@@ -1,10 +1,8 @@
-import sys
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
 from PIL import ImageFile
-from image_cache import get_item_image, get_summoner_image, get_champ_image
-# import PIL
+from image_cache import get_item_image, get_summoner_image, get_champ_image, get_icon_image
 
 
 def build_item_tile(items, version, pad = 6, image_size = 64):
@@ -21,7 +19,7 @@ def build_item_tile(items, version, pad = 6, image_size = 64):
 
     new_im = Image.new('RGBA', (total_width, max_height))
 
-    #Top Row
+    # Top Row
     x_offset = 0
     y_offset = 0
     for pos in xrange(3):
@@ -30,13 +28,13 @@ def build_item_tile(items, version, pad = 6, image_size = 64):
             new_im.paste(im, (x_offset,y_offset))
         x_offset += image_size + pad
 
-    #Trinket
+    # Trinket
     im = items[3]
     hoz_center = (max_height-image_size)/2
     if im:
         new_im.paste(im, (total_width-image_size, hoz_center))
 
-    #Bottem Row
+    # Bottem Row
     x_offset = 0
     y_offset = image_size + pad
 
@@ -59,14 +57,14 @@ def build_champ_tile(champ, summoner1, summoner2, version, pad = 6):
     summoner2_img_width, summoner2_img_height  = summoner2_img.size
 
     total_width = champ_img_width + pad + max(summoner1_img_width, summoner2_img_width)
-    total_hight = max(champ_img_height, (summoner1_img_height + pad + summoner2_img_height))
+    total_height = max(champ_img_height, (summoner1_img_height + pad + summoner2_img_height))
 
     print total_width
-    print total_hight
+    print total_height
 
-    new_im = Image.new('RGBA', (total_width, total_hight))
+    new_im = Image.new('RGBA', (total_width, total_height))
 
-    place_x = (total_hight-champ_img_height)/2
+    place_x = (total_height-champ_img_height)/2
     new_im.paste(champ_img, (0, place_x))
     new_im.paste(summoner1_img, (champ_img_width+pad, 0))
     new_im.paste(summoner2_img, (champ_img_width+pad, summoner1_img_height + pad))
@@ -74,20 +72,22 @@ def build_champ_tile(champ, summoner1, summoner2, version, pad = 6):
     return new_im
 
 
-def build_player_tile(champ_tile, item_tile, pad = 20):
-    champ_tile_width, champ_tile_height  = champ_tile.size
-    item_tile_width, item_tile_height  = item_tile.size
+def build_player_tile(champ_tile, stats_tile, item_tile, pad=10):
+    champ_tile_width, champ_tile_height = champ_tile.size
+    stats_tile_width, stats_tile_height = stats_tile.size
+    item_tile_width, item_tile_height = item_tile.size
 
-    total_width = champ_tile_width + pad + item_tile_width
-    total_hight = max(champ_tile_height, item_tile_height)
+    total_width = champ_tile_width + pad + stats_tile_width + pad + item_tile_width
+    total_height = max(champ_tile_height, stats_tile_height, item_tile_height)
 
     print total_width
-    print total_hight
+    print total_height
 
-    new_im = Image.new('RGBA', (total_width, total_hight))
+    new_im = Image.new('RGBA', (total_width, total_height))
 
-    new_im.paste(champ_tile, (0,(total_hight-champ_tile_height)/2))
-    new_im.paste(item_tile, (champ_tile_width+pad, 0))
+    new_im.paste(champ_tile, (0, (total_height-champ_tile_height)/2))
+    new_im.paste(stats_tile, (champ_tile_width+pad, 0))
+    new_im.paste(item_tile, (champ_tile_width + pad + stats_tile_width + pad, 0))
 
     return new_im
 
@@ -109,12 +109,53 @@ def build_team_tile(champ_tiles, total_gold, pad = 10):
     return new_im
 
 
-def build_stat_tile(gold, kills, deaths, assists):
-    img = Image.new('RGBA', (100, 100))
+def build_stat_tile(gold, kills, deaths, assists, pad=10):
+    gold_icon = get_icon_image('5.5.1', 'gold')
+    score_icon = get_icon_image('5.5.1', 'score')
+
+    gold_icon_dem = (22,18)
+    score_icon_dem = (18, 19)
+
+    font = ImageFont.truetype("compactalet.ttf", 20)
+    fill = "black"
+
+    gold_val = str(round(gold/1000.0, 1))+"k"
+    score_val = str(kills) + '/' + str(deaths) + '/' + str(assists)
+
+    width = 55  # _find_width_stat_tile(gold_val, score_val, font)
+    height = 134
+
+    print width
+    print height
+
+    img = Image.new('RGBA', (width, height))
+
     draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype("monofonto.ttf", 16)
-    draw.text((0, 0), "20.2k", (255, 255, 255), font=font)
+    icon_x = (width/2)-(gold_icon_dem[0]/2)
+    icon_y = pad
+    img.paste(gold_icon, (icon_x, icon_y))
+    w, h = draw.textsize(gold_val, font=font)
+    text_x = (width-w)/2
+    text_y = icon_y + gold_icon_dem[1] + (pad/2)
+    draw.text((text_x, text_y), gold_val, fill=fill, font=font)
+
+    draw = ImageDraw.Draw(img)
+    icon_x = (width/2)-(score_icon_dem[0]/2)
+    icon_y = text_y + h + (pad*2)
+    img.paste(score_icon, (icon_x, icon_y))
+    w, h = draw.textsize(score_val, font=font)
+    text_x = (width-w)/2
+    text_y = icon_y + gold_icon_dem[1] + (pad/2)
+    draw.text((text_x, text_y), score_val, fill=fill, font=font)
+
     return img
+
+
+def _find_width_stat_tile(gold_str, score_str, font):
+    img = Image.new('RGBA', (500, 500))
+    draw = ImageDraw.Draw(img)
+    return max((draw.textsize(gold_str, font=font)[0] + 8), (draw.textsize(score_str, font=font)[0] + 8))
+
 
 def _get_item_images(items, version):
     rtn = []
@@ -147,28 +188,29 @@ def _validate_item_images(items):
 
 
 if __name__ == "__main__":
-    # items = [get_item_image("6.15.1", "3073"), get_item_image("6.15.1", "3071"), get_item_image("6.15.1", "1001"), get_item_image("6.15.1", "3340"), get_item_image("6.15.1", "1401"), None, None]
-    # items = ["3073", "3071", "1001", "3340", "1401", None, None]
-    # item_tile = build_item_tile(items, "6.15.1")
-    # champ_tile = build_champ_tile("Janna", "SummonerFlash", "SummonerFlash", "6.15.1")
-    # champ_tile2 = build_champ_tile("Akali", "SummonerFlash", "SummonerFlash", "6.15.1")
-    # champ_tile3 = build_champ_tile("Ashe", "SummonerFlash", "SummonerFlash", "6.15.1")
-    # champ_tile4 = build_champ_tile("Elise", "SummonerFlash", "SummonerFlash", "6.15.1")
-    # champ_tile5 = build_champ_tile("Shen", "SummonerFlash", "SummonerFlash", "6.15.1")
-    #
-    # player_tile = build_player_tile(champ_tile, item_tile)
-    # player_tile2 = build_player_tile(champ_tile2, item_tile)
-    # player_tile3 = build_player_tile(champ_tile3, item_tile)
-    # player_tile4 = build_player_tile(champ_tile4, item_tile)
-    # player_tile5 = build_player_tile(champ_tile5, item_tile)
-    #
-    # team_tile = build_team_tile([player_tile, player_tile2, player_tile3, player_tile4, player_tile5], 0)
-    #
-    # team_tile.show(team_tile)
-    # team_tile.save('test.png', 'PNG')
+    items_list = [get_item_image("6.15.1", "3073"), get_item_image("6.15.1", "3071"), get_item_image("6.15.1", "1001"), get_item_image("6.15.1", "3340"), get_item_image("6.15.1", "1401"), None, None]
+    items_list = ["3073", "3071", "1001", "3340", "1401", None, None]
+    item_tile = build_item_tile(items_list, "6.15.1")
 
-    img = Image.new('RGBA', (100, 100))
-    draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype("monofonto.ttf", 16)
-    draw.text((0, 0), "20.2k", (255, 255, 255), font=font)
-    img.show()
+    stats_tile = build_stat_tile(66666, 66, 66, 66)
+
+    champ_tile = build_champ_tile("Janna", "SummonerFlash", "SummonerFlash", "6.15.1")
+    champ_tile2 = build_champ_tile("Akali", "SummonerFlash", "SummonerFlash", "6.15.1")
+    champ_tile3 = build_champ_tile("Ashe", "SummonerFlash", "SummonerFlash", "6.15.1")
+    champ_tile4 = build_champ_tile("Elise", "SummonerFlash", "SummonerFlash", "6.15.1")
+    champ_tile5 = build_champ_tile("Shen", "SummonerFlash", "SummonerFlash", "6.15.1")
+
+    player_tile = build_player_tile(champ_tile, stats_tile, item_tile)
+    player_tile2 = build_player_tile(champ_tile2, stats_tile, item_tile)
+    player_tile3 = build_player_tile(champ_tile3, stats_tile, item_tile)
+    player_tile4 = build_player_tile(champ_tile4, stats_tile, item_tile)
+    player_tile5 = build_player_tile(champ_tile5, stats_tile, item_tile)
+
+    team_tile = build_team_tile([player_tile, player_tile2, player_tile3, player_tile4, player_tile5], 0)
+
+    # team_tile.show(team_tile)
+    team_tile.save('test.png', 'PNG')
+
+    # im = build_stat_tile(22122, 3, 10, 22)
+    # im.show()
+    # im.save('test.png', 'PNG')
