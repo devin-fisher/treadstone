@@ -1,9 +1,14 @@
 import sys, os
 from PIL import Image
-from StringIO import StringIO
+try:
+    from StringIO import StringIO as inIO
+except ImportError:
+    from io import BytesIO as inIO
 import requests
 import requests_cache
-requests_cache.install_cache('/tmp/lcs_image_cache')
+import tempfile
+
+requests_cache.install_cache(os.path.join(tempfile.gettempdir(),'lcs_image_cache'))
 
 DATA_DRAGON = "http://ddragon.leagueoflegends.com/"
 
@@ -31,7 +36,7 @@ def get_icon_image(version, icon):
 def _get_image(loc):
     web_loc = _web_location(loc)
     r = requests.get(web_loc, stream=True)
-    return Image.open(StringIO(r.content))
+    return Image.open(inIO(r.content))
 
 
 def _create_item_location(version, item_num):
