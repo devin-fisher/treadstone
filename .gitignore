@@ -94,3 +94,5 @@ ENV/
 .ropeproject
 
 
+
+lib/image_generator/test.png

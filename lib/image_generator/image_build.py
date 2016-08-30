@@ -3,7 +3,6 @@ from PIL import ImageFont
 from PIL import ImageDraw
 from PIL import ImageFile
 from image_cache import get_item_image, get_summoner_image, get_champ_image, get_icon_image
-import sys
 
 
 def build_item_tile(items, version, pad=6, image_size=64):
@@ -11,8 +10,6 @@ def build_item_tile(items, version, pad=6, image_size=64):
     _validate_item_images(items)
 
     place_triket = False
-
-    # image_size = 64
 
     total_width = image_size * 3 + pad * 3
     if place_triket:
@@ -122,20 +119,23 @@ def build_team_tile(champ_tiles, total_gold, pad=10):
     return new_im
 
 
-def build_stat_tile(gold, kills, deaths, assists, pad=10):
+def build_stat_tile(gold, cs, kills, deaths, assists, pad=4):
     gold_icon = get_icon_image('5.5.1', 'gold')
     score_icon = get_icon_image('5.5.1', 'score')
+    minion_icon = get_icon_image('5.5.1', 'minion')
 
     gold_icon_dem = (22, 18)
     score_icon_dem = (18, 19)
+    minion_icon_dem = (22, 20)
 
-    font = ImageFont.truetype("compactalet.ttf", 20)
+    font = ImageFont.truetype("assets/compactalet.ttf", 20)
     fill = "white"
 
     gold_val = str(round(gold / 1000.0, 1)) + "k"
     score_val = str(kills) + '/' + str(deaths) + '/' + str(assists)
+    cs_val = str(cs)
 
-    width = 55  # _find_width_stat_tile(gold_val, score_val, font)
+    width = 55
     height = 134
 
     print(width)
@@ -157,23 +157,32 @@ def build_stat_tile(gold, kills, deaths, assists, pad=10):
     icon_x = int((width / 2) - (score_icon_dem[0] / 2))
     icon_y = text_y + h + (pad * 2)
     img.paste(score_icon, (icon_x, icon_y))
+
     w, h = draw.textsize(score_val, font=font)
     text_x = int((width - w) / 2)
     text_y = int(icon_y + gold_icon_dem[1] + (pad / 2))
     draw.text((text_x, text_y), score_val, fill=fill, font=font)
 
+    draw = ImageDraw.Draw(img)
+    icon_x = int((width / 2) - (minion_icon_dem[0] / 2))
+    icon_y = text_y + h + (pad * 2)
+    img.paste(minion_icon, (icon_x, icon_y))
+
+    w, h = draw.textsize(cs_val, font=font)
+    text_x = int((width - w) / 2)
+    text_y = int(icon_y + gold_icon_dem[1] + (pad / 2))
+    draw.text((text_x, text_y), cs_val, fill=fill, font=font)
+
     return img
 
 
 def build_score_tile(team_1_kills, team_2_kills, team_1_gold, team_2_gold, pad=20):
-    width = 600  # _find_width_stat_tile(gold_val, score_val, font)
+    width = 600
     height = 720
 
-    font = ImageFont.truetype("beaufortforlol-bold.otf", 35)
+    font = ImageFont.truetype("assets/beaufortforlol-bold.otf", 35)
     team_1_fill = "royalblue"
     team_2_fill = "orangered"
-
-
 
     print(width)
     print(height)
@@ -191,7 +200,6 @@ def build_score_tile(team_1_kills, team_2_kills, team_1_gold, team_2_gold, pad=2
     w, h = draw.textsize(str(team_1_kills), font=font)
     text_x = int(width / 2 - w - v_pad)
     text_y = pad
-    print(text_y)
     draw.text((text_x, text_y), str(team_1_kills), fill=team_1_fill, font=font)
     max_y = max(max_y, text_y+h)
 
@@ -229,9 +237,6 @@ def build_score_tile(team_1_kills, team_2_kills, team_1_gold, team_2_gold, pad=2
     max_y += pad
 
     img = img.crop((0,0, img.width, max_y))
-
-    # img.show()
-    # sys.exit(0)
 
     return img
 
@@ -304,7 +309,7 @@ if __name__ == "__main__":
     items_list = ["3073", "3071", "1001", "3340", "1401", None, None]
     item_tile = build_item_tile(items_list, "6.15.1")
 
-    stats_tile = build_stat_tile(66666, 66, 66, 66)
+    stats_tile = build_stat_tile(66666, 666, 66, 66, 66)
 
     champ_tile = build_champ_tile("Janna", "SummonerFlash", "SummonerFlash", "6.15.1")
     champ_tile2 = build_champ_tile("Akali", "SummonerFlash", "SummonerFlash", "6.15.1")
