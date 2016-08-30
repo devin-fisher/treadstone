@@ -3,15 +3,20 @@ from PIL import ImageFont
 from PIL import ImageDraw
 from PIL import ImageFile
 from image_cache import get_item_image, get_summoner_image, get_champ_image, get_icon_image
+import sys
 
 
 def build_item_tile(items, version, pad=6, image_size=64):
     items = _get_item_images(items, version)
     _validate_item_images(items)
 
+    place_triket = False
+
     # image_size = 64
 
-    total_width = image_size * 4 + pad * 3
+    total_width = image_size * 3 + pad * 3
+    if place_triket:
+        total_width += image_size
     max_height = image_size * 2 + pad
 
     print(total_width)
@@ -28,11 +33,12 @@ def build_item_tile(items, version, pad=6, image_size=64):
             new_im.paste(im, (x_offset, y_offset))
         x_offset += image_size + pad
 
-    # Trinket
-    im = items[3]
-    hoz_center = int((max_height - image_size) / 2)
-    if im:
-        new_im.paste(im, (total_width - image_size, hoz_center))
+    if place_triket:
+        # Trinket
+        im = items[3]
+        hoz_center = int((max_height - image_size) / 2)
+        if im:
+            new_im.paste(im, (total_width - image_size, hoz_center))
 
     # Bottem Row
     x_offset = 0
@@ -124,7 +130,7 @@ def build_stat_tile(gold, kills, deaths, assists, pad=10):
     score_icon_dem = (18, 19)
 
     font = ImageFont.truetype("compactalet.ttf", 20)
-    fill = "black"
+    fill = "white"
 
     gold_val = str(round(gold / 1000.0, 1)) + "k"
     score_val = str(kills) + '/' + str(deaths) + '/' + str(assists)
@@ -164,8 +170,10 @@ def build_score_tile(team_1_kills, team_2_kills, team_1_gold, team_2_gold, pad=2
     height = 720
 
     font = ImageFont.truetype("beaufortforlol-bold.otf", 35)
-    team_1_fill = "blue"
-    team_2_fill = "red"
+    team_1_fill = "royalblue"
+    team_2_fill = "orangered"
+
+
 
     print(width)
     print(height)
@@ -177,37 +185,53 @@ def build_score_tile(team_1_kills, team_2_kills, team_1_gold, team_2_gold, pad=2
 
     draw = ImageDraw.Draw(img)
 
+    v_pad = pad*3
     max_y = 0
 
     w, h = draw.textsize(str(team_1_kills), font=font)
-    text_x = int(width / 2 - w - pad)
+    text_x = int(width / 2 - w - v_pad)
     text_y = pad
     print(text_y)
     draw.text((text_x, text_y), str(team_1_kills), fill=team_1_fill, font=font)
     max_y = max(max_y, text_y+h)
 
     w, h = draw.textsize(str(team_2_kills), font=font)
-    text_x = int(width / 2 + pad)
+    text_x = int(width / 2 + v_pad)
     draw.text((text_x, text_y), str(team_2_kills), fill=team_2_fill, font=font)
     max_y = max(max_y, text_y + h)
+
+    icon = Image.open("assets/score_icon.png")
+    resize_size = int(h*1.7)
+    icon.thumbnail((resize_size, resize_size), resample=Image.LANCZOS)
+    icon_x = int(width/2 - (icon.width/2))
+    icon_y = int((text_y+h/2) - icon.height/2)
+    img.paste(icon, (icon_x, icon_y))
 
     text_y += 4*pad+h
 
     w, h = draw.textsize(team_1_gold, font=font)
-    text_x = int(width / 2 - w - pad)
+    text_x = int(width / 2 - w - v_pad)
     draw.text((text_x, text_y), team_1_gold, fill=team_1_fill, font=font)
     max_y = max(max_y, text_y + h)
 
     w, h = draw.textsize(team_2_gold, font=font)
-    text_x = int(width / 2 + pad)
+    text_x = int(width / 2 + v_pad)
     draw.text((text_x, text_y), team_2_gold, fill=team_2_fill, font=font)
     max_y = max(max_y, text_y + h)
 
-    max_y += pad + 14  # not sure what this is need to make it even
+    icon = Image.open("assets/score_icon.png")
+    resize_size = int(h*1.7)
+    icon.thumbnail((resize_size, resize_size), resample=Image.LANCZOS)
+    icon_x = int(width/2 - (icon.width/2))
+    icon_y = int((text_y+h/2) - icon.height/2)
+    img.paste(icon, (icon_x, icon_y))
 
-    draw.line([(int(img.width/2), 0),(int(img.width/2), max_y)], "black", width=3)
+    max_y += pad
 
     img = img.crop((0,0, img.width, max_y))
+
+    # img.show()
+    # sys.exit(0)
 
     return img
 
@@ -233,7 +257,9 @@ def build_full_image(team_1_tile, team_2_tile, score_tile, side_pad=40):
     paste_y = int((height - team_2_tile.height) / 2)
     img.paste(team_2_tile, (paste_x, paste_y))
 
-    return img
+    background = Image.open("assets/background.jpg")
+    background.paste(img, (0, 0), img)
+    return background
 
 
 def _find_width_stat_tile(gold_str, score_str, font):
