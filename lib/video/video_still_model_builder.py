@@ -24,7 +24,14 @@ SAMPLE_STILL_DIR = '../../_samples/still_data/'
 
 SAMPLE_RANGES = {
     "/home/devin.fisher/Kingdoms/lol/79i_t9CCqDQ.mp4":
-        {'start_time': 1970, 'length': 100, 'start_game_time': 1318}
+        {'start_time': convert_min_sec_to_sec("11:06"),
+         'length': convert_min_sec_to_sec("21:02") - convert_min_sec_to_sec("11:06"),
+         'start_game_time': convert_min_sec_to_sec("0:14")}
+    ,
+    "/home/devin.fisher/Kingdoms/lol/79i_t9CCqDQ.mp4":
+        {'start_time': convert_min_sec_to_sec("21:31"),
+         'length': convert_min_sec_to_sec("35:09") - convert_min_sec_to_sec("21:31"),
+         'start_game_time': convert_min_sec_to_sec("10:39")}
     ,
     "/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4":
         {'start_time': convert_min_sec_to_sec("23:22"),
@@ -89,6 +96,7 @@ def capture_digit_data(path, data, interval_sec=1, check_times=False, **kwargs):
     if check_time(video_obj, start_time, start_game_time, check_times):
         for i in xrange(length):
             if not check_times:
+                print("%s of %s" % (str(i), str(length)))
                 image_data = get_still_with_video(video_obj, start_time+i)
                 expected_digits = video_still_util.convert_seconds_to_parts(start_game_time+i)
                 num = 0
@@ -135,6 +143,7 @@ if __name__ == "__main__":
     # rtn['data'] = []
     #
     # for video_path, times in SAMPLE_RANGES.iteritems():
+    #     print("Video:%s %s" % (video_path, str(times)))
     #     capture_digit_data(video_path, rtn, check_times=False, **times)
     #
     # rtn['target'] = numpy.asarray(rtn['target'])

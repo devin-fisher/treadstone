@@ -22,5 +22,5 @@ def find_time_still(image_data):
 
 
 if __name__ == "__main__":
-    im = get_still("/home/devin.fisher/Kingdoms/lol/79i_t9CCqDQ.mp4", 1278, show=True)
-    print find_time_still(im)
+    im = get_still("/home/devin.fisher/Kingdoms/lol/79i_t9CCqDQ.mp4", 1822, show=True)
+    print video_still_util.seconds_to_string(find_time_still(im))

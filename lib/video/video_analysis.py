@@ -9,7 +9,8 @@ from operator import add, sub
 IMAGE_SPLITS_COUNT = 10.0
 IMAGE_SPLIT_TIME = .999 / IMAGE_SPLITS_COUNT
 
-WALK_DOWN_CYCLE = [240.0, 60.0, 20.0, 5.0, 1.0]
+# WALK_DOWN_CYCLE = [240.0, 60.0, 20.0, 5.0, 1.0]
+WALK_DOWN_CYCLE = [10.0, 5.0, 1.0]
 
 
 def get_time(video, video_time, show=False):
@@ -99,9 +100,11 @@ def _walk_cycle(func, video, video_time, game_time, length):
         if good_video_time is None:
             return good_video_time, good_game_time
 
+    if length - good_game_time <= 20:  # very near the end
+        return None, None
     return good_video_time, good_game_time
 
-# TODO error cases -- end of video
+
 def _get_past_break(video, video_time, last_game_time, length, step=5):
     while True:
         video_time += step
@@ -110,36 +113,85 @@ def _get_past_break(video, video_time, last_game_time, length, step=5):
             return video_time, new_game_time
 
 
-
-
 def find_time_shifts(video, start_video_time, length):
     start_video_time += 61
     cur_video_time = start_video_time
     expected_game_time = 61
 
-    break_video_start, break_game_start = _walk_cycle(_walk_forward, video, cur_video_time, expected_game_time, length)
+    rtn_shifts = []
 
-    print (video_still_util.seconds_to_string(break_video_start),
-           video_still_util.seconds_to_string(break_game_start))
+    while True:
+        break_video_start, break_game_start = _walk_cycle(_walk_forward, video, cur_video_time, expected_game_time, length)
 
-    break_video_end, break_game_end = _get_past_break(video, break_video_start, break_game_start, length)
+        if break_video_start is None:
+            end = cur_video_time + (length - expected_game_time)
+            print "Game End"
+            print video_still_util.seconds_to_string(end)
+            break
 
-    break_video_end, break_game_end = _walk_cycle(_walk_backwards, video, break_video_end, break_game_end, length)
+        print "Break Start"
+        print (video_still_util.seconds_to_string(break_video_start),
+               video_still_util.seconds_to_string(break_game_start))
 
-    print (video_still_util.seconds_to_string(break_video_end),
-           video_still_util.seconds_to_string(break_game_end))
+        break_video_end, break_game_end = _get_past_break(video, break_video_start, break_game_start, length)
 
-    # return break_video_start, break_game_start
+        break_video_end, break_game_end = _walk_cycle(_walk_backwards, video, break_video_end, break_game_end, length)
+
+        print "Break End"
+        print (video_still_util.seconds_to_string(break_video_end),
+               video_still_util.seconds_to_string(break_game_end))
+
+        did_shift = (break_video_end - break_video_start) != (break_game_end - break_game_start)
+        rtn_shifts.append({'start_time': break_video_start, 'start_game_time': break_game_start, 'end_time': break_video_end, 'end_game_time': break_game_end, 'did_shift': did_shift})
+        cur_video_time = break_video_end
+        expected_game_time = break_game_end
+
+    return rtn_shifts
+
+def standard_analysis(video_path, game_length, verbose=False):
+    rtn = {}
+    rtn['game_length'] = game_length
+
+    video_obj = VideoFileClip(video_path)
+    start = find_start_point(video_obj)
+
+    rtn['start'] = start
+
+    if verbose:
+        print "Game Start: " + video_still_util.seconds_to_string(start)
+
+    shifts = find_time_shifts(video_obj, start, game_length)
+    rtn['shifts'] = shifts
+
+    if verbose:
+        for shift in shifts:
+            print "Break Start: " + str((video_still_util.seconds_to_string(shift['start_time']),
+                   video_still_util.seconds_to_string(shift['start_game_time'])))
+
+            print "Break End: " + str((video_still_util.seconds_to_string(shift['end_time']),
+                   video_still_util.seconds_to_string(shift['end_game_time'])))
+
+            print "Did Shift: " + str(shift['did_shift'])
+
+
+    end = shifts[-1]['end_time'] + (game_length - shifts[-1]['end_game_time'])
+    rtn['end'] = end
+    if verbose:
+        print "Game End: " + video_still_util.seconds_to_string(end)
+
+    return rtn
+
 
 if __name__ == "__main__":
-    path = "/home/devin.fisher/Kingdoms/lol/79i_t9CCqDQ.mp4"
-    video_obj = VideoFileClip(path)
-    # start = find_start_point(video_obj)
+    path = "/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4"
+    print(standard_analysis(path, 2292, verbose=True))
+    # video_obj = VideoFileClip(path)
+    # # start = find_start_point(video_obj)
+    # # print "start:" + str(start)
+    # start = 651.3048
+    # length_val = 1594
+    #
     # print "start:" + str(start)
-    start = 651.3048
-    length_val = 1594
-
-    print "start:" + str(start)
-
-    print find_time_shifts(video_obj, start, length_val)
+    #
+    # print find_time_shifts(video_obj, start, length_val)
 

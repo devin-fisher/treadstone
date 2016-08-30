@@ -2,6 +2,7 @@ from moviepy.editor import VideoFileClip
 from video_still import get_still_with_video
 from video_still_machine import find_time_still
 from video_still_util import convert_min_sec_to_sec
+from video_analysis import standard_analysis
 import video_still_util
 
 SAMPLE_RANGES = {
@@ -34,6 +35,28 @@ SAMPLE_RANGES = {
          'start_game_time': convert_min_sec_to_sec("33:27")}
 }
 
+SAMPLE_ANALYSIS = {
+    "/home/devin.fisher/Kingdoms/lol/79i_t9CCqDQ.mp4":
+        {
+            'start': 651.3048,
+            'end': 2240.3048,
+            'game_length': 1594,
+            'shifts':
+                [
+                    {'start_game_time': 611.0,
+                     'start_time': 1262.3048,
+                     'did_shift': False,
+                     'end_time': 1282.3048,
+                     'end_game_time': 631},
+                    {'start_game_time': 1457.0,
+                     'start_time': 2108.3048,
+                     'did_shift': True,
+                     'end_time': 2163.3048,
+                     'end_game_time': 1517}
+                ]
+        }
+}
+
 
 def test_still_open_video(path, time, game_time):
     video_obj = VideoFileClip(path)
@@ -59,8 +82,19 @@ def test_video_range(path, **kwargs):
         test_still(video_obj, path, start_time + i, start_game_time + i)
 
 
+def test_all_video_analysis():
+    for video, analysis in SAMPLE_ANALYSIS.iteritems():
+        test_video_analysis(video, analysis)
+
+
+def test_video_analysis(video_path, analysis):
+    cal_analysis = standard_analysis(video_path, analysis['game_length'])
+    results = "NOT Equal!!"
+    if cmp(cal_analysis, analysis) == 0:
+        results = "Equal"
+    print("Results for '%s' are %s" % (video_path, results))
+
 if __name__ == "__main__":
-    test_still_open_video('/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4', 1927, 540)
-    test_still_open_video('/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4', 1987, 600)
-    # for video_path, times in SAMPLE_RANGES.iteritems():
-    #     test_video_range(video_path, **times)
+    # test_still_open_video('/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4', 1927, 540)
+    # test_still_open_video('/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4', 1987, 600)
+    test_all_video_analysis()
