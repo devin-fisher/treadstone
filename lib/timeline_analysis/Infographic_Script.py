@@ -130,7 +130,7 @@ def large_fight_function(start_list, counter_list):
             time_seconds_start = int((start_list[a] / 1000) % 60)
             time_minutes_start = int(((start_list[a] / 1000) - time_seconds_start) / 60)
             team_fight.append(start_list[a])
-            print('Team Fights!!',time_minutes_start,':',time_seconds_start)
+            # print('Team Fights!!',time_minutes_start,':',time_seconds_start)
 
     return(team_fight)
 
@@ -362,7 +362,7 @@ def inhibitor_timer(data,time):
                             count2 = count2 + 1
                             inhib_status[2][count2] = status_list
 
-    print('Checks if Inhibitor is down', inhib_status)
+
     return(inhib_status)
 
 def baron_timer(data,time):
@@ -386,7 +386,7 @@ def baron_timer(data,time):
                         if check4 > 5:
                             baron_buff = 2
 
-    print('Checks for baron buff', baron_buff)
+
     return(baron_buff)
 
 def dragon_counter(data, time):
@@ -429,13 +429,19 @@ def infographic_time_list_builder(data,team_fight):
 
             if team_fight_time > time_counter and team_fight_time < (time_counter + 5):
                 infographic_time_list.append(team_fight[b])
-    print(infographic_time_list)
+
 
     return(infographic_time_list)
 
-def infographic_list_builder(data, team_fight):
+def infographic_list_builder(url):
 
-
+    r = requests.get(url)
+    data = r.json()
+    counter_list = []
+    kill_list = kill_list_function(data)
+    start_list, counter_list = start_counter_list_function(kill_list, counter_list)
+    end_list, counter_list = end_list_function(kill_list, counter_list, start_list)
+    team_fight = large_fight_function(start_list, counter_list)
 
     infographic_time_list = infographic_time_list_builder(data, team_fight)
     len_infographic_time_list = len(infographic_time_list)
@@ -499,19 +505,12 @@ def infographic_list_builder(data, team_fight):
             infographic_list[a][200]['playerItem'][b] = player_items_list[b]['items']
 
 
-    print(infographic_list[3])
+    print(infographic_list)
     return(infographic_list)
 
 def main(args):
     url = _create_url(args)
-    r = requests.get(url)
-    data = r.json()
-    counter_list = []
-    kill_list = kill_list_function(data)
-    start_list, counter_list = start_counter_list_function(kill_list, counter_list)
-    end_list, counter_list = end_list_function(kill_list, counter_list, start_list)
-    team_fight = large_fight_function(start_list, counter_list)
-    infographic_list_builder(data, team_fight)
+    infographic_list_builder(url)
 
 
 if __name__ == "__main__":
