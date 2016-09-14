@@ -14,8 +14,6 @@ import pickle
 
 import numpy
 
-# from video_still_machine import extract_parts
-
 
 CONTRAST = 2.5
 IMAGE_FILTER_THRESHOLD = 180
@@ -24,39 +22,60 @@ SAMPLE_STILL_DIR = '../../_samples/still_data/'
 
 SAMPLE_RANGES = {
     "/home/devin.fisher/Kingdoms/lol/79i_t9CCqDQ.mp4":
+    [
         {'start_time': convert_min_sec_to_sec("11:06"),
          'length': convert_min_sec_to_sec("21:02") - convert_min_sec_to_sec("11:06"),
          'start_game_time': convert_min_sec_to_sec("0:14")}
-    ,
-    "/home/devin.fisher/Kingdoms/lol/79i_t9CCqDQ.mp4":
+        ,
         {'start_time': convert_min_sec_to_sec("21:31"),
          'length': convert_min_sec_to_sec("35:09") - convert_min_sec_to_sec("21:31"),
          'start_game_time': convert_min_sec_to_sec("10:39")}
+    ]
     ,
     "/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4":
+    [
         {'start_time': convert_min_sec_to_sec("23:22"),
          'length': convert_min_sec_to_sec("40:32") - convert_min_sec_to_sec("23:22"),
          'start_game_time': convert_min_sec_to_sec("0:15")}
+        ,
+
+        {'start_time': convert_min_sec_to_sec("41:20"),
+         'length': convert_min_sec_to_sec("50:13") - convert_min_sec_to_sec("41:20"),
+         'start_game_time': convert_min_sec_to_sec("18:17"),
+         'should_verify': False
+         }
+        ,
+        {'start_time': convert_min_sec_to_sec("51:18"),
+         'length': convert_min_sec_to_sec("55:08") - convert_min_sec_to_sec("51:18"),
+         'start_game_time': convert_min_sec_to_sec("28:15"),
+         'should_verify': False
+         }
+        ,
+        {'start_time': convert_min_sec_to_sec("55:31"),
+         'length': convert_min_sec_to_sec("01:01:11") - convert_min_sec_to_sec("55:31"),
+         'start_game_time': convert_min_sec_to_sec("32:28"),
+         'should_verify': False
+         }
+    ]
     ,
     "/home/devin.fisher/Kingdoms/lol/pFgEnbRlv00.mp4":
+    [
         {'start_time': convert_min_sec_to_sec("33:19"),
          'length': convert_min_sec_to_sec("35:31") - convert_min_sec_to_sec("33:19"),
          'start_game_time': convert_min_sec_to_sec("12:14")}
-    ,
-    "/home/devin.fisher/Kingdoms/lol/pFgEnbRlv00.mp4":
+        ,
         {'start_time': convert_min_sec_to_sec("36:00"),
          'length': convert_min_sec_to_sec("47:29") - convert_min_sec_to_sec("36:00"),
          'start_game_time': convert_min_sec_to_sec("15:00")}
-    ,
-    "/home/devin.fisher/Kingdoms/lol/pFgEnbRlv00.mp4":
+        ,
         {'start_time': convert_min_sec_to_sec("48:10"),
          'length': convert_min_sec_to_sec("53:29") - convert_min_sec_to_sec("48:10"),
          'start_game_time': convert_min_sec_to_sec("27:10")}
-    ,
-    "/home/devin.fisher/Kingdoms/lol/pFgEnbRlv00.mp4":
+        ,
         {'start_time': convert_min_sec_to_sec("54:27"),
          'length': convert_min_sec_to_sec("56:38") - convert_min_sec_to_sec("54:27"),
          'start_game_time': convert_min_sec_to_sec("33:27")}
+    ]
 }
 
 
@@ -120,13 +139,13 @@ def train_model(data_set_path='/home/devin.fisher/Kingdoms/treadstone/_samples/s
     with open(data_set_path, 'rb') as f:
         data_set = pickle.load(f)
 
-    (train_x, test_x, train_y, test_y) = train_test_split(data_set['data'], data_set['target'], test_size=0.33)
+    (train_x, test_x, train_y, test_y) = train_test_split(data_set['data'], data_set['target'], test_size=0.1)
 
     dbn = DBN(
         [-1, 300, -1],
         learn_rates=0.3,
         learn_rate_decays=0.9,
-        epochs=10,
+        epochs=30,
         verbose=1)
     dbn.fit(train_x, train_y)
 
@@ -143,8 +162,9 @@ if __name__ == "__main__":
     # rtn['data'] = []
     #
     # for video_path, times in SAMPLE_RANGES.iteritems():
-    #     print("Video:%s %s" % (video_path, str(times)))
-    #     capture_digit_data(video_path, rtn, check_times=False, **times)
+    #     for time in times:
+    #         print("Video:%s %s" % (video_path, str(time)))
+    #         capture_digit_data(video_path, rtn, check_times=time.get('should_verify', False), **time)
     #
     # rtn['target'] = numpy.asarray(rtn['target'])
     # rtn['data'] = numpy.asarray(rtn['data'])

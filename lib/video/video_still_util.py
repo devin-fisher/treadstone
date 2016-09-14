@@ -1,9 +1,14 @@
 def convert_min_sec_to_sec(time_str):
     parts = time_str.split(':')
-    return int(parts[0]) * 60 + int(parts[1])
+
+    if len(parts) == 2:
+        return int(parts[0]) * 60 + int(parts[1])
+    elif len(parts) == 3:
+        return int(parts[0]) * 60 * 60 + int(parts[1]) * 60 + int(parts[2])
 
 
 def convert_seconds_to_parts(seconds):
+    seconds = int(seconds)
     if type(seconds) == str:
         seconds = int(seconds)
     m, s = divmod(seconds, 60)
@@ -35,4 +40,6 @@ def convert_parts_to_string(parts):
 
 
 def seconds_to_string(seconds):
+    if seconds is None:
+        return ""
     return convert_parts_to_string(convert_seconds_to_parts(int(seconds)))

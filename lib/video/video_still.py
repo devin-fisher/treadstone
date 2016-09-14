@@ -9,7 +9,10 @@ IMAGE_SPLITS_COUNT = 10.0
 IMAGE_SPLIT_TIME = .999 / IMAGE_SPLITS_COUNT
 
 CONTRAST = 2.5
-IMAGE_FILTER_THRESHOLD = 180
+IMAGE_FILTER_THRESHOLD = 190
+
+NORMALIZED_WIDTH = 7
+NORMALIZED_HEIGHT = 10
 
 
 def _prep_image(image, show=False, contrast_val=CONTRAST, image_filter_threshold=IMAGE_FILTER_THRESHOLD):
@@ -55,30 +58,26 @@ def get_still_with_video(video, pos_sec, show=False):
         return _prep_image(image, show=show)
 
 
-def _normalize_part(image, width=6, height=9, show=False):
-    image = image.copy().reshape(image.shape[0] * image.shape[1])
-    image = image.copy()
-    image.resize(width*height, refcheck=False)
+def _normalize_part(image, width, height, show=False):
+    normal = numpy.zeros((height, width))
+    mid_height = int((height - image.shape[0]) / 2)
+    mid_width = int((width - image.shape[1]) / 2)
+
+    try:
+        normal[mid_height:mid_height+image.shape[0], mid_width:mid_width+image.shape[1]] = image
+    except Exception as e:
+        raise e
 
     if show:
-        cv2.imshow("", image.reshape((height, width)))
+        cv2.imshow("", normal)
         cv2.waitKey()
 
-    return image / 255.0
+    normal.resize(width * height, refcheck=False)
+    normal = (normal / 255.0)
+    return normal.copy()
 
 
-def extract_part(contour, full_image, show=False):
-    x, y, w, h = cv2.boundingRect(contour)
-    part = full_image[y:y + h, x:x + w]
-    if show:
-        cv2.imshow("", part)
-        cv2.waitKey()
-    part = _normalize_part(part)
-
-    return part
-
-
-def extract_parts(image_data):
+def extract_parts(image_data, show=False):
     contours, hierarchy = cv2.findContours(image_data.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     def contours_cmp(a, b):
@@ -90,8 +89,25 @@ def extract_parts(image_data):
     contours = sorted(contours, cmp=contours_cmp)
     contours = filter(filter_colon_dots, contours)
 
-    for c in contours:
-        yield extract_part(c, image_data)
+    if len(contours) < 3 or len(contours) > 4:
+        yield None
+    else:
+        for c in contours:
+            # yield extract_part(c, image_data)
+
+            x, y, w, h = cv2.boundingRect(c)
+            part = image_data[y:y + h, x:x + w]
+
+            if show:
+                cv2.imshow("", part)
+                cv2.waitKey()
+
+            if part.shape[1] > NORMALIZED_WIDTH:
+                slit_num = int(part.shape[1]/2)
+                yield _normalize_part(part[:, :slit_num], NORMALIZED_WIDTH, NORMALIZED_HEIGHT, show=show)
+                yield _normalize_part(part[:, slit_num + 1:], NORMALIZED_WIDTH, NORMALIZED_HEIGHT, show=show)
+            else:
+                yield _normalize_part(part, NORMALIZED_WIDTH, NORMALIZED_HEIGHT, show=show)
 
 if __name__ == "__main__":
     path = sys.argv[1]
