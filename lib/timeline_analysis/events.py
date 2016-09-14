@@ -1,7 +1,9 @@
 #!/usr/bin/env python
-import requests
 import json
 import argparse
+from lib.util.http_lol_static import request_json_resource
+
+from collections import OrderedDict
 
 def kill_list_function(data):
     kill_list = []
@@ -124,9 +126,7 @@ def end_list_function(kill_list, counter_list, start_list):
     return end_list, counter_list
 
 def report(url):
-
-    r = requests.get(url)
-    data = r.json()
+    data = request_json_resource(url)
     counter_list = []
     kill_list = kill_list_function(data)
     start_list, counter_list = start_counter_list_function(kill_list, counter_list)
@@ -138,9 +138,9 @@ def report(url):
     len_start_list = len(start_list)
     video_length = 0
     infographic_list = infographic_time_list_builder(data, team_fight)
-    video_edit_times = {}
+    video_edit_times = OrderedDict()
     for a in range(0, len_start_list):
-        video_edit_times[a] = {}
+        video_edit_times[str(a)] = {}
         seconds = int((end_list[a] / 1000) % 60)
         end_time = start_list[a] + after
         if (seconds < before):
@@ -152,11 +152,11 @@ def report(url):
         else:
             end_time = end_list[a] + after
 
-        video_edit_times[a]['startTime'] = start_time
-        video_edit_times[a]['endTime'] = end_time
+        video_edit_times[str(a)]['startTime'] = start_time
+        video_edit_times[str(a)]['endTime'] = end_time
         video_length = video_length + ((end_time - start_time)/1000)
 
-    print(video_edit_times)
+    # print(video_edit_times)
     return(video_edit_times)
 
 def large_fight_function(start_list, counter_list):
@@ -167,7 +167,7 @@ def large_fight_function(start_list, counter_list):
             time_seconds_start = int((start_list[a] / 1000) % 60)
             time_minutes_start = int(((start_list[a] / 1000) - time_seconds_start) / 60)
             team_fight.append(start_list[a])
-            print('Team Fights!!',time_minutes_start,':',time_seconds_start)
+            # print('Team Fights!!',time_minutes_start,':',time_seconds_start)
 
     return(team_fight)
 

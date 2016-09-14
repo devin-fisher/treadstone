@@ -1,6 +1,7 @@
-import requests
 import json
 import argparse
+from lib.util.http_lol_static import request_json_resource
+from collections import OrderedDict
 
 def kill_list_function(data):
     kill_list = []
@@ -149,13 +150,13 @@ def player_gold(data, team_fight,time):
     return(player_gold_list)
 
 def player_items(data, team_fight, time):
-    player_items_list = {}
+    player_items_list = OrderedDict()
     data_len = len(data['frames'])
     len_team_fight = len(team_fight)
     time_stamp = int((time/1000)/60)
     for a in range(1,11):
         player_id = a
-        player_items_list[a] = {}
+        player_items_list[a] = OrderedDict()
         player_items_list1 = []
         for x in range (0, time_stamp):
             z = len(data['frames'][x]['events'])
@@ -247,7 +248,7 @@ def team_towers(data,time):
 
 def team_gold(player_gold_list):
     len_player_gold_list = len(player_gold_list)
-    team_gold_list = {}
+    team_gold_list = OrderedDict()
     blue_gold = 0
     red_gold = 0
     for a in range(0, 5):
@@ -318,7 +319,7 @@ def player_deaths(data, time):
 
 def inhibitor_timer(data,time):
     t = len(data['frames'])
-    inhib_status = {}
+    inhib_status = OrderedDict()
     # inhib_status will have 3 values per inhibitor event. First is TRUE FALSE refering to Super Minions, Second is lane assignment, Third is time remaining until inhibitor restores
     status_list = []
     null_list = [0,0]
@@ -329,8 +330,8 @@ def inhibitor_timer(data,time):
     super_minions = 0
     # super_minions (0 = false, 1 = true)
     time_remaining = 0
-    inhib_status[1] = {}
-    inhib_status[2] = {}
+    inhib_status[1] = OrderedDict()
+    inhib_status[2] = OrderedDict()
     inhib_status[1][1] = null_list
     inhib_status[2][1] = null_list
     for x in range (0, t):
@@ -391,9 +392,9 @@ def baron_timer(data,time):
 
 def dragon_counter(data, time):
     time_stamp = int((time/1000)/60)
-    dragon_count_list = {}
-    dragon_count_list[1] = {}
-    dragon_count_list[2] ={}
+    dragon_count_list = OrderedDict()
+    dragon_count_list[1] = OrderedDict()
+    dragon_count_list[2] =OrderedDict()
     dragon_count_blue = 0
     dragon_count_red = 0
     for x in range (0, time_stamp):
@@ -434,9 +435,7 @@ def infographic_time_list_builder(data,team_fight):
     return(infographic_time_list)
 
 def infographic_list_builder(url):
-
-    r = requests.get(url)
-    data = r.json()
+    data = request_json_resource(url)
     counter_list = []
     kill_list = kill_list_function(data)
     start_list, counter_list = start_counter_list_function(kill_list, counter_list)
@@ -445,10 +444,12 @@ def infographic_list_builder(url):
 
     infographic_time_list = infographic_time_list_builder(data, team_fight)
     len_infographic_time_list = len(infographic_time_list)
-    infographic_list = {}
+    infographic_list = OrderedDict()
 
     for a in range(0,len_infographic_time_list):
-        time = infographic_time_list[a]
+        a_index = a
+        a = str(a)
+        time = infographic_time_list[a_index]
 
         player_gold_list = player_gold(data,team_fight,time)
         player_items_list = player_items(data, team_fight, time)
@@ -466,23 +467,25 @@ def infographic_list_builder(url):
         blue_player_assist_list = player_assist_list[0:5]
 
 
-        infographic_list[a] = {}
-        infographic_list[a][100] = {}
-        infographic_list[a][200] = {}
+        team_1 = "100"
+        team_2 = "200"
+        infographic_list[a] = OrderedDict()
+        infographic_list[a][team_1] = OrderedDict()
+        infographic_list[a][team_2] = OrderedDict()
 
-        infographic_list[a][100]["timeStamp"] = infographic_time_list[a]
-        infographic_list[a][100]["teamGold"] = team_gold_list[1]
-        infographic_list[a][100]["teamKills"] = kill_score[0]
-        infographic_list[a][100]["towerKills"] = tower_score[0]
-        infographic_list[a][100]["dragonKills"] = dragon_count_list[1]
-        infographic_list[a][100]["playerKills"] = blue_player_kill_list
-        infographic_list[a][100]["playerAssists"] = blue_player_assist_list
-        infographic_list[a][100]["playerDeaths"] = blue_player_death_list
-        infographic_list[a][100]["playerGold"] = blue_player_gold_list
+        infographic_list[a][team_1]["timeStamp"] = infographic_time_list[a_index]
+        infographic_list[a][team_1]["teamGold"] = team_gold_list[1]
+        infographic_list[a][team_1]["teamKills"] = kill_score[0]
+        infographic_list[a][team_1]["towerKills"] = tower_score[0]
+        infographic_list[a][team_1]["dragonKills"] = dragon_count_list[1]
+        infographic_list[a][team_1]["playerKills"] = blue_player_kill_list
+        infographic_list[a][team_1]["playerAssists"] = blue_player_assist_list
+        infographic_list[a][team_1]["playerDeaths"] = blue_player_death_list
+        infographic_list[a][team_1]["playerGold"] = blue_player_gold_list
 
-        infographic_list[a][100]['playerItem'] = {}
+        infographic_list[a][team_1]['playerItem'] = OrderedDict()
         for b in range(1,6):
-            infographic_list[a][100]['playerItem'][b] = player_items_list[b]['items']
+            infographic_list[a][team_1]['playerItem'][b] = player_items_list[b]['items']
 
 
         red_player_kill_list = player_kill_list[5:10]
@@ -490,22 +493,22 @@ def infographic_list_builder(url):
         red_player_gold_list = player_gold_list[5:10]
         red_player_assist_list = player_assist_list[5:10]
 
-        infographic_list[a][200]["timeStamp"] = infographic_time_list[a]
-        infographic_list[a][200]['teamGold'] = team_gold_list[2]
-        infographic_list[a][200]['teamKills'] = kill_score[1]
-        infographic_list[a][200]['towerKills'] = tower_score[1]
-        infographic_list[a][200]['dragonKills'] = dragon_count_list[2]
-        infographic_list[a][200]['playerKills'] = red_player_kill_list
-        infographic_list[a][200]["playerAssists"] = red_player_assist_list
-        infographic_list[a][200]['playerDeaths'] = red_player_death_list
-        infographic_list[a][200]['playerGold'] = red_player_gold_list
+        infographic_list[a][team_2]["timeStamp"] = infographic_time_list[a_index]
+        infographic_list[a][team_2]['teamGold'] = team_gold_list[2]
+        infographic_list[a][team_2]['teamKills'] = kill_score[1]
+        infographic_list[a][team_2]['towerKills'] = tower_score[1]
+        infographic_list[a][team_2]['dragonKills'] = dragon_count_list[2]
+        infographic_list[a][team_2]['playerKills'] = red_player_kill_list
+        infographic_list[a][team_2]["playerAssists"] = red_player_assist_list
+        infographic_list[a][team_2]['playerDeaths'] = red_player_death_list
+        infographic_list[a][team_2]['playerGold'] = red_player_gold_list
 
-        infographic_list[a][200]['playerItem'] = {}
+        infographic_list[a][team_2]['playerItem'] = OrderedDict()
         for b in range(6,11):
-            infographic_list[a][200]['playerItem'][b] = player_items_list[b]['items']
+            infographic_list[a][team_2]['playerItem'][b] = player_items_list[b]['items']
 
 
-    print(infographic_list)
+    # print(infographic_list)
     return(infographic_list)
 
 def main(args):
