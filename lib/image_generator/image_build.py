@@ -1,3 +1,4 @@
+import os
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
@@ -128,7 +129,7 @@ def build_stat_tile(gold, cs, kills, deaths, assists, pad=4):
     score_icon_dem = (18, 19)
     minion_icon_dem = (22, 20)
 
-    font = ImageFont.truetype("assets/compactalet.ttf", 20)
+    font = ImageFont.truetype(_assets_loc("compactalet.ttf"), 20)
     fill = "white"
 
     gold_val = str(round(gold / 1000.0, 1)) + "k"
@@ -180,7 +181,7 @@ def build_score_tile(team_1_kills, team_2_kills, team_1_gold, team_2_gold, pad=2
     width = 600
     height = 720
 
-    font = ImageFont.truetype("assets/beaufortforlol-bold.otf", 35)
+    font = ImageFont.truetype(_assets_loc("beaufortforlol-bold.otf"), 35)
     team_1_fill = "royalblue"
     team_2_fill = "orangered"
 
@@ -208,7 +209,7 @@ def build_score_tile(team_1_kills, team_2_kills, team_1_gold, team_2_gold, pad=2
     draw.text((text_x, text_y), str(team_2_kills), fill=team_2_fill, font=font)
     max_y = max(max_y, text_y + h)
 
-    icon = Image.open("assets/score_icon.png")
+    icon = Image.open(_assets_loc("score_icon.png"))
     resize_size = int(h*1.7)
     icon.thumbnail((resize_size, resize_size), resample=Image.LANCZOS)
     icon_x = int(width/2 - (icon.width/2))
@@ -227,7 +228,7 @@ def build_score_tile(team_1_kills, team_2_kills, team_1_gold, team_2_gold, pad=2
     draw.text((text_x, text_y), team_2_gold, fill=team_2_fill, font=font)
     max_y = max(max_y, text_y + h)
 
-    icon = Image.open("assets/score_icon.png")
+    icon = Image.open(_assets_loc("gold_icon.png"))
     resize_size = int(h*1.7)
     icon.thumbnail((resize_size, resize_size), resample=Image.LANCZOS)
     icon_x = int(width/2 - (icon.width/2))
@@ -262,9 +263,13 @@ def build_full_image(team_1_tile, team_2_tile, score_tile, side_pad=40):
     paste_y = int((height - team_2_tile.height) / 2)
     img.paste(team_2_tile, (paste_x, paste_y))
 
-    background = Image.open("assets/background.jpg")
+    background = Image.open(_assets_loc("background.jpg"))
     background.paste(img, (0, 0), img)
     return background
+
+
+def _assets_loc(file):
+    return os.path.join(os.path.dirname(__file__), "assets", file)
 
 
 def _find_width_stat_tile(gold_str, score_str, font):
@@ -279,6 +284,10 @@ def _get_item_images(items, version):
         if item:
             rtn.append(get_item_image(version, item))
         else:
+            rtn.append(None)
+
+    if len(rtn) < 7:
+        for i in range(len(rtn), 7):
             rtn.append(None)
     return rtn
 
@@ -301,6 +310,36 @@ def _validate_item_images(items):
 
     if len(set(sizes)) > 1:
         print("Not all items are same size")
+
+
+def build_info_graphics(infographic_data):
+    version = "6.15.1"
+    for event_num, data in infographic_data.iteritems():
+        team_tiles = {}
+        for team_num, team_data in data.iteritems():
+            team_player_tiles = []
+            for player_num in xrange(len(team_data['playerItem'])):
+                i_tile = build_item_tile(team_data['playerItem'][player_num], version)
+                c_tile = build_champ_tile("Janna", "SummonerFlash", "SummonerFlash", version)
+                s_tile = build_stat_tile(team_data['playerGold'][player_num]
+                                             , 666
+                                             , team_data['playerKills'][player_num]
+                                             , team_data['playerDeaths'][player_num]
+                                             , team_data['playerAssists'][player_num])
+                p_tile = build_player_tile(c_tile, s_tile, i_tile)
+                team_player_tiles.append(p_tile)
+
+            team_tiles[team_num] = build_team_tile(team_player_tiles, 0)
+
+        score_tile = build_score_tile(data['100']['teamKills']
+                                      , data['200']['teamKills']
+                                      , data['100']['teamGold']
+                                      , data['200']['teamGold'])
+
+        full_tile = build_full_image(team_tiles['100'], team_tiles['200'], score_tile)
+        full_tile.show("")
+        return
+
 
 
 if __name__ == "__main__":
