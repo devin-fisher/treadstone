@@ -1,5 +1,6 @@
 import json
 import argparse
+# import requests
 from lib.util.http_lol_static import request_json_resource
 from collections import OrderedDict
 
@@ -418,6 +419,7 @@ def dragon_counter(data, time):
 
 def infographic_time_list_builder(data,team_fight):
     infographic_time_list = []
+    len_game = ((len(data['frames']) - 1) // 5)
     len_team_fight = len(team_fight)
     time_counter = 0
     for a in range(0,len_game):
@@ -435,6 +437,8 @@ def infographic_time_list_builder(data,team_fight):
 
 def infographic_list_builder(url):
     data = request_json_resource(url)
+    # r = requests.get(url)
+    # data = r.json()
     counter_list = []
     kill_list = kill_list_function(data)
     start_list, counter_list = start_counter_list_function(kill_list, counter_list)
@@ -512,6 +516,7 @@ def infographic_list_builder(url):
 
 def main(args):
     url = _create_url(args)
+    # url = "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750124/timeline?gameHash=e6f41af5eb69654f"
     infographic_list_builder(url)
 
 
