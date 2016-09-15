@@ -418,7 +418,6 @@ def dragon_counter(data, time):
 
 def infographic_time_list_builder(data,team_fight):
     infographic_time_list = []
-    len_game = len(data['frames']) // 5
     len_team_fight = len(team_fight)
     time_counter = 0
     for a in range(0,len_game):
