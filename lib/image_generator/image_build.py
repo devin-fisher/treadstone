@@ -331,14 +331,12 @@ def build_info_graphics(infographic_data):
 
             team_tiles[team_num] = build_team_tile(team_player_tiles, 0)
 
-        score_tile = build_score_tile(data['100']['teamKills']
+        s_tile = build_score_tile(data['100']['teamKills']
                                       , data['200']['teamKills']
                                       , data['100']['teamGold']
                                       , data['200']['teamGold'])
 
-        full_tile = build_full_image(team_tiles['100'], team_tiles['200'], score_tile)
-        full_tile.show("")
-        return
+        return build_full_image(team_tiles['100'], team_tiles['200'], s_tile)
 
 
 
