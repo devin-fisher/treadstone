@@ -486,9 +486,9 @@ def infographic_list_builder(url):
         infographic_list[a][team_1]["playerDeaths"] = blue_player_death_list
         infographic_list[a][team_1]["playerGold"] = blue_player_gold_list
 
-        infographic_list[a][team_1]['playerItem'] = OrderedDict()
+        infographic_list[a][team_1]['playerItem'] = []
         for b in range(1,6):
-            infographic_list[a][team_1]['playerItem'][str(b)] = player_items_list[b]['items']
+            infographic_list[a][team_1]['playerItem'].append(player_items_list[b]['items'])
 
 
         red_player_kill_list = player_kill_list[5:10]
@@ -506,9 +506,9 @@ def infographic_list_builder(url):
         infographic_list[a][team_2]['playerDeaths'] = red_player_death_list
         infographic_list[a][team_2]['playerGold'] = red_player_gold_list
 
-        infographic_list[a][team_2]['playerItem'] = OrderedDict()
+        infographic_list[a][team_2]['playerItem'] = []
         for b in range(6,11):
-            infographic_list[a][team_2]['playerItem'][str(b)] = player_items_list[b]['items']
+            infographic_list[a][team_2]['playerItem'].append(player_items_list[b]['items'])
 
 
     # print(infographic_list)
