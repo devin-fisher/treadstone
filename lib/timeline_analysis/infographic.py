@@ -199,8 +199,36 @@ def player_items(data, team_fight, time):
                         if quit == 1:
                             player_items_list1.remove(item_id)
 
+        for b in range(0,len(player_items_list1)):
+            if len(player_items_list1) < 4:
+                check =  4 - len(player_items_list1)
+                for c in range(0,check):
+                    player_items_list1.append(0)
+            if player_items_list1[b] == 3340:
+                temp = player_items_list1[3]
+                player_items_list1[3] = player_items_list1[b]
+                player_items_list1[b] = temp
+
+            if player_items_list1[b] == 3363:
+                temp = player_items_list1[3]
+                player_items_list1[3] = player_items_list1[b]
+                player_items_list1[b] = temp
+
+            if player_items_list1[b] == 3341:
+                temp = player_items_list1[3]
+                player_items_list1[3] = player_items_list1[b]
+                player_items_list1[b] = temp
+
+            if player_items_list1[b] == 3364:
+                temp = player_items_list1[3]
+                player_items_list1[3] = player_items_list1[b]
+                player_items_list1[b] = temp
+
         # player_items_list[c][a] = player_items_list1
         player_items_list[a]['items'] = player_items_list1
+
+    # print(player_items_list)
+
 
     return player_items_list
 
@@ -435,15 +463,49 @@ def infographic_time_list_builder(data,team_fight):
 
     return(infographic_time_list)
 
-def infographic_list_builder(url):
+def champion_id_list(data_stats):
+    champion = []
+    for a in range (0,10):
+        champion_id = data_stats['participants'][a]['championId']
+        champion.append(champion_id)
+
+    return champion
+
+def graph_info_red(data,time):
+    time_stamp = int((time/1000)/60)
+
+    red_graph_list = []
+    for a in range(0,time_stamp + 1):
+        count_red = 0
+        for c in range(6,11):
+            count_red = count_red + data['frames'][a]['participantFrames'][str(c)]['totalGold']
+        red_graph_list.append(count_red)
+    return red_graph_list
+
+def graph_info_blue(data,time):
+    time_stamp = int((time/1000)/60)
+    blue_graph_list = []
+    for a in range(0,time_stamp + 1):
+        count_blue = 0
+        for b in range(1,6):
+            count_blue = count_blue + data['frames'][a]['participantFrames'][str(b)]['totalGold']
+        blue_graph_list.append(count_blue)
+
+
+    return blue_graph_list
+
+def infographic_list_builder(url,url_stats):
     data = request_json_resource(url)
     # r = requests.get(url)
+    # s = requests.get(url_stats)
     # data = r.json()
+    # data_stats = s.json()
     counter_list = []
     kill_list = kill_list_function(data)
     start_list, counter_list = start_counter_list_function(kill_list, counter_list)
     end_list, counter_list = end_list_function(kill_list, counter_list, start_list)
     team_fight = large_fight_function(start_list, counter_list)
+    champion_list = champion_id_list(data_stats)
 
     infographic_time_list = infographic_time_list_builder(data, team_fight)
     len_infographic_time_list = len(infographic_time_list)
@@ -464,10 +526,14 @@ def infographic_list_builder(url):
         player_death_list = player_deaths(data,time)
         dragon_count_list = dragon_counter(data,time)
 
+
+        blue_graph_list = graph_info_blue(data,time)
         blue_player_kill_list = player_kill_list[0:5]
         blue_player_death_list = player_death_list[0:5]
         blue_player_gold_list = player_gold_list[0:5]
         blue_player_assist_list = player_assist_list[0:5]
+        blue_champion_list = champion_list[0:5]
+
 
 
         team_1 = "100"
@@ -485,16 +551,19 @@ def infographic_list_builder(url):
         infographic_list[a][team_1]["playerAssists"] = blue_player_assist_list
         infographic_list[a][team_1]["playerDeaths"] = blue_player_death_list
         infographic_list[a][team_1]["playerGold"] = blue_player_gold_list
+        infographic_list[a][team_1]["championId"] = blue_champion_list
+        infographic_list[a][team_1]["totalGoldGraph"] = blue_graph_list
 
         infographic_list[a][team_1]['playerItem'] = []
         for b in range(1,6):
             infographic_list[a][team_1]['playerItem'].append(player_items_list[b]['items'])
 
-
+        red_graph_list = graph_info_red(data,time)
         red_player_kill_list = player_kill_list[5:10]
         red_player_death_list = player_death_list[5:10]
         red_player_gold_list = player_gold_list[5:10]
         red_player_assist_list = player_assist_list[5:10]
+        red_champion_list = champion_list[5:11]
 
         infographic_list[a][team_2]["timeStamp"] = infographic_time_list[a_index]
         infographic_list[a][team_2]['teamGold'] = team_gold_list[2]
@@ -505,11 +574,12 @@ def infographic_list_builder(url):
         infographic_list[a][team_2]["playerAssists"] = red_player_assist_list
         infographic_list[a][team_2]['playerDeaths'] = red_player_death_list
         infographic_list[a][team_2]['playerGold'] = red_player_gold_list
+        infographic_list[a][team_2]['championId'] = red_champion_list
+        infographic_list[a][team_2]['totalGoldGraph'] = red_graph_list
 
         infographic_list[a][team_2]['playerItem'] = []
         for b in range(6,11):
             infographic_list[a][team_2]['playerItem'].append(player_items_list[b]['items'])
-
 
     # print(infographic_list)
     return(infographic_list)
@@ -517,7 +587,8 @@ def infographic_list_builder(url):
 def main(args):
     url = _create_url(args)
     # url = "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001750124/timeline?gameHash=e6f41af5eb69654f"
-    infographic_list_builder(url)
+    url_stats = "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001710249?gameHash=856ed19d3d6dce2e"
+    infographic_list_builder(url,url_stats)
 
 
 if __name__ == "__main__":
