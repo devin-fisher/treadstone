@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import os
-import sys
 from pymongo import MongoClient
 # from bson.objectid import ObjectId
 import hashlib
@@ -12,6 +11,8 @@ from collections import OrderedDict
 from lib.timeline_analysis.events import report as timeline_events
 from lib.timeline_analysis.infographic import infographic_list_builder as timeline_infographic
 from lib.video.video_analysis import standard_analysis
+
+from lib.image_generator.image_build import build_info_graphics
 
 import json
 
@@ -34,10 +35,16 @@ def played_game(game_data):
     return False
 
 
-def save_game_analysis(game_id, game_analysis, client):
+def save_game_analysis(game_id, game_analysis, client, status='Incomplete', error_msg=None):
     coll = client.lol.game_analysis
     if '_id' not in game_analysis:
         game_analysis['_id'] = mongodb_id_convert(game_id)
+
+    if status:
+        game_analysis['status'] = status
+    if error_msg:
+        game_analysis['error_msg'] = error_msg
+
     coll.save(game_analysis)
 
 
@@ -112,15 +119,18 @@ def update_match(match_data, bracket_data, client):
         for item in collection.find({"_id": mongodb_id_convert(game_id)}):
             game_analysis = item
 
-        if not game_analysis.get('complete', False):
+        if "complete" != game_analysis.get('status', "incomplete"):
             url = BRACKET_DATA_URL % bracket_data + "/matches/" + match_data['id'] + "/games/" + game_id
             game_data = http_get_resource(url, retry=3, time_between=1)
             print str(game_data)
 
-            do_timeline_event_analysis(game_id, game_data, game_analysis, client)
-            do_timeline_infographic_analysis(game_id, game_data, game_analysis, client)
-            # do_game_analysis(game_id, game_data, game_analysis, client)
-            # break
+            try:
+                do_timeline_event_analysis(game_id, game_data, game_analysis, client)
+                do_timeline_infographic_analysis(game_id, game_data, game_analysis, client)
+                # do_game_analysis(game_id, game_data, game_analysis, client)
+                # break
+            except Exception as e:
+                save_game_analysis(game_id, game_analysis, client, status='error', error_msg=e.message)
 
 
 def main(args):
@@ -143,6 +153,6 @@ def main(args):
                 update_match(match, bracket, client)
                 # break
 
-
 if __name__ == "__main__":
-    main(None)
+    build_info_graphics(timeline_infographic('https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760159/timeline?gameHash=f26accda4d6c5d59')).show("")
+    # main(None)
