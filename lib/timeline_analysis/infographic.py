@@ -198,6 +198,44 @@ def player_items(data, team_fight, time):
                                 quit = 1
                         if quit == 1:
                             player_items_list1.remove(item_id)
+                if check == 'ITEM_SOLD':
+                    check2 = data['frames'][x]['events'][y]['participantId']
+                    if check2 == player_id:
+                        item_id = data['frames'][x]['events'][y]['itemId']
+                        if item_id == 3200:
+                            player_items_list1.append(item_id)
+                        quit = 0
+                        for c in range(0,len(player_items_list1)):
+                            check4 = player_items_list1[c]
+                            if check4 == item_id:
+                                quit = 1
+                        if quit == 1:
+                            player_items_list1.remove(item_id)
+
+        health_potion = 2003
+        vision_ward = 2043
+        biscuit = 2010
+        counter = 0
+        for b in range(0,len(player_items_list1)):
+            if player_items_list1[b] == biscuit:
+                counter = counter + 1
+        for c in range(0, counter - 1):
+            player_items_list1.remove(biscuit)
+
+        counter = 0
+        for b in range(0,len(player_items_list1)):
+            if player_items_list1[b] == health_potion:
+                counter = counter + 1
+        for c in range(0, counter - 1):
+            player_items_list1.remove(health_potion)
+
+        counter = 0
+        for b in range(0,len(player_items_list1)):
+            if player_items_list1[b] == vision_ward:
+                counter = counter + 1
+        for c in range(0, counter - 1):
+            player_items_list1.remove(vision_ward)
+
 
         for b in range(0,len(player_items_list1)):
             if len(player_items_list1) < 4:
@@ -226,9 +264,6 @@ def player_items(data, team_fight, time):
 
         # player_items_list[c][a] = player_items_list1
         player_items_list[a]['items'] = player_items_list1
-
-    # print(player_items_list)
-
 
     return player_items_list
 
@@ -494,19 +529,32 @@ def graph_info_blue(data,time):
 
     return blue_graph_list
 
+def summoner_spell(data_stats):
+    spell_list = []
+    for a in range (0,10):
+        spells = []
+        spell_1 = data_stats['participants'][a]['spell1Id']
+        spell_2 = data_stats['participants'][a]['spell2Id']
+        spells.append(spell_1)
+        spells.append(spell_2)
+        spell_list.append(spells)
+
+    return spell_list
+
 def infographic_list_builder(url,url_stats):
     data = request_json_resource(url)
     data_stats = request_json_resource(url_stats)
     # r = requests.get(url)
-    # s = requests.get(url_stats)
+    s = requests.get(url_stats)
     # data = r.json()
-    # data_stats = s.json()
+    data_stats = s.json()
     counter_list = []
     kill_list = kill_list_function(data)
     start_list, counter_list = start_counter_list_function(kill_list, counter_list)
     end_list, counter_list = end_list_function(kill_list, counter_list, start_list)
     team_fight = large_fight_function(start_list, counter_list)
     champion_list = champion_id_list(data_stats)
+    spell_list = summoner_spell(data_stats)
 
     infographic_time_list = infographic_time_list_builder(data, team_fight)
     len_infographic_time_list = len(infographic_time_list)
@@ -534,7 +582,7 @@ def infographic_list_builder(url,url_stats):
         blue_player_gold_list = player_gold_list[0:5]
         blue_player_assist_list = player_assist_list[0:5]
         blue_champion_list = champion_list[0:5]
-
+        blue_spell_list = spell_list[0:5]
 
 
         team_1 = "100"
@@ -554,6 +602,7 @@ def infographic_list_builder(url,url_stats):
         infographic_list[a][team_1]["playerGold"] = blue_player_gold_list
         infographic_list[a][team_1]["championId"] = blue_champion_list
         infographic_list[a][team_1]["totalGoldGraph"] = blue_graph_list
+        infographic_list[a][team_1]["summonerSpell"] = blue_spell_list
 
         infographic_list[a][team_1]['playerItem'] = []
         for b in range(1,6):
@@ -565,6 +614,7 @@ def infographic_list_builder(url,url_stats):
         red_player_gold_list = player_gold_list[5:10]
         red_player_assist_list = player_assist_list[5:10]
         red_champion_list = champion_list[5:11]
+        red_spell_list = spell_list[5:11]
 
         infographic_list[a][team_2]["timeStamp"] = infographic_time_list[a_index]
         infographic_list[a][team_2]['teamGold'] = team_gold_list[2]
@@ -577,6 +627,7 @@ def infographic_list_builder(url,url_stats):
         infographic_list[a][team_2]['playerGold'] = red_player_gold_list
         infographic_list[a][team_2]['championId'] = red_champion_list
         infographic_list[a][team_2]['totalGoldGraph'] = red_graph_list
+        infographic_list[a][team_2]['summonerSpell'] = red_spell_list
 
         infographic_list[a][team_2]['playerItem'] = []
         for b in range(6,11):
