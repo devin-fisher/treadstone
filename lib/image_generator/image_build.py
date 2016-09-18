@@ -263,7 +263,7 @@ def build_full_image(team_1_tile, team_2_tile, score_tile, side_pad=40):
     paste_y = int((height - team_2_tile.height) / 2)
     img.paste(team_2_tile, (paste_x, paste_y))
 
-    background = Image.open(_assets_loc("background.jpg"))
+    background = Image.open(_assets_loc("background2.jpg"))
     background.paste(img, (0, 0), img)
     return background
 
@@ -320,7 +320,7 @@ def build_info_graphics(infographic_data):
             team_player_tiles = []
             for player_num in xrange(len(team_data['playerItem'])):
                 i_tile = build_item_tile(team_data['playerItem'][player_num], version)
-                c_tile = build_champ_tile("Janna", "SummonerFlash", "SummonerFlash", version)
+                c_tile = build_champ_tile(team_data['championId'][player_num], "SummonerFlash", "SummonerFlash", version)
                 s_tile = build_stat_tile(team_data['playerGold'][player_num]
                                              , 666
                                              , team_data['playerKills'][player_num]

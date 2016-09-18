@@ -8,7 +8,7 @@ import requests
 import requests_cache
 import tempfile
 
-requests_cache.install_cache(os.path.join(tempfile.gettempdir(),'lcs_image_cache'))
+requests_cache.install_cache(os.path.join(tempfile.gettempdir(), 'lcs_image_cache'))
 
 DATA_DRAGON = "http://ddragon.leagueoflegends.com/"
 
@@ -19,6 +19,8 @@ def get_item_image(version, item_num):
 
 
 def get_champ_image(version, champ_name):
+    if is_number(champ_name):
+        champ_name = lookup_champ_name(version, champ_name)
     location = _create_champ_location(version, champ_name)
     return _get_image(location)
 
@@ -55,5 +57,28 @@ def _create_icon_location(version, icon):
     return "cdn/%s/img/ui/%s.png" % (version, icon)
 
 
+def _create_champion_location(version):
+    return "cdn/%s/data/en_US/champion.json" % (version)
+
+
 def _web_location(loc):
     return os.path.join(DATA_DRAGON, loc)
+
+
+def lookup_champ_name(version, champ_id):
+    data = requests.get(_web_location(_create_champion_location(version)), stream=True).json()
+    for key, data in data['data'].iteritems():
+        if int(data['key']) == int(champ_id):
+            return key
+
+
+def is_number(s):
+    try:
+        int(s)
+        return True
+    except ValueError:
+        return False
+
+
+if __name__ == "__main__":
+    get_champ_image("6.18.1", 143).show()

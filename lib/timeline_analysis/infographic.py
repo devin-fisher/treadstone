@@ -496,6 +496,7 @@ def graph_info_blue(data,time):
 
 def infographic_list_builder(url,url_stats):
     data = request_json_resource(url)
+    data_stats = request_json_resource(url_stats)
     # r = requests.get(url)
     # s = requests.get(url_stats)
     # data = r.json()

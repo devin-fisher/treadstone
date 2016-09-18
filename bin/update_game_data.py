@@ -154,5 +154,7 @@ def main(args):
                 # break
 
 if __name__ == "__main__":
-    build_info_graphics(timeline_infographic('https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760159/timeline?gameHash=f26accda4d6c5d59')).show("")
+    img = build_info_graphics(timeline_infographic('https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760159/timeline?gameHash=f26accda4d6c5d59', 'https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760159?gameHash=f26accda4d6c5d59'))
+    img.show()
+    img.save('test.png', 'PNG')
     # main(None)
