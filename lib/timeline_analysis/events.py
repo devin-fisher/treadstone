@@ -5,6 +5,7 @@ from lib.util.http_lol_static import request_json_resource
 
 from collections import OrderedDict
 
+
 def kill_list_function(data):
     kill_list = []
     t = len(data['frames'])
@@ -92,6 +93,7 @@ def kill_list_function(data):
 
     return kill_list
 
+
 def start_counter_list_function(kill_list, counter_list):
     start_list = []
 
@@ -114,6 +116,7 @@ def start_counter_list_function(kill_list, counter_list):
 
     return start_list, counter_list
 
+
 def end_list_function(kill_list, counter_list, start_list):
     end_list = []
     b = 0
@@ -125,7 +128,8 @@ def end_list_function(kill_list, counter_list, start_list):
 
     return end_list, counter_list
 
-def report(url):
+
+def report(url, stats_url):
     data = request_json_resource(url)
     counter_list = []
     kill_list = kill_list_function(data)
@@ -157,7 +161,8 @@ def report(url):
         video_length = video_length + ((end_time - start_time)/1000)
 
     # print(video_edit_times)
-    return(video_edit_times)
+    return video_edit_times
+
 
 def large_fight_function(start_list, counter_list):
     len_counter_list = len(counter_list)
@@ -169,7 +174,8 @@ def large_fight_function(start_list, counter_list):
             team_fight.append(start_list[a])
             # print('Team Fights!!',time_minutes_start,':',time_seconds_start)
 
-    return(team_fight)
+    return team_fight
+
 
 def infographic_time_list_builder(data,team_fight):
     infographic_time_list = []
@@ -186,15 +192,17 @@ def infographic_time_list_builder(data,team_fight):
             if team_fight_time > time_counter and team_fight_time < (time_counter + 5):
                 infographic_time_list.append(team_fight[b])
 
-    return(infographic_time_list)
+    return infographic_time_list
+
 
 def _create_url(args):
     return "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001720111/timeline?gameHash=55109b5a7a91ae87"
 
+
 def main(args):
     url = _create_url(args)
 
-    report(url)
+    report(url, None)
 
 
 if __name__ == "__main__":

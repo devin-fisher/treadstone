@@ -545,9 +545,9 @@ def infographic_list_builder(url,url_stats):
     data = request_json_resource(url)
     data_stats = request_json_resource(url_stats)
     # r = requests.get(url)
-    s = requests.get(url_stats)
+    # s = requests.get(url_stats)
     # data = r.json()
-    data_stats = s.json()
+    # data_stats = s.json()
     counter_list = []
     kill_list = kill_list_function(data)
     start_list, counter_list = start_counter_list_function(kill_list, counter_list)

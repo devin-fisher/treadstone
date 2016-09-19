@@ -98,3 +98,5 @@ ENV/
 lib/image_generator/test.png
 
 .DS_Store
+
+bin/test.png

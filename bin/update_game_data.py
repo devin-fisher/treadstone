@@ -5,6 +5,7 @@ from pymongo import MongoClient
 # from bson.objectid import ObjectId
 import hashlib
 import requests
+import requests_cache
 import time
 from collections import OrderedDict
 
@@ -14,7 +15,11 @@ from lib.video.video_analysis import standard_analysis
 
 from lib.image_generator.image_build import build_info_graphics
 
+from lib.timeline_analysis.video_cooralator import video_event_translator
+
 import json
+
+requests_cache.install_cache('/tmp/lcs_static_cache')
 
 
 BRACKET_DATA_URL = "http://127.0.0.1:8000/api/league/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
@@ -84,11 +89,12 @@ def _timeline_analysis(func, key_val, game_id, game_data, game_analysis, client)
     if key_val in game_analysis:
         return game_analysis
 
-    url = game_data.get('timeline_url', None)
-    if url is None:
+    timeline_url = game_data.get('timeline_url', None)
+    stats_url = game_data.get('stats_url', None)
+    if timeline_url is None or stats_url is None:
         raise Exception("Time Line URL is not defined")
 
-    game_analysis[key_val] = func(url)
+    game_analysis[key_val] = func(timeline_url, stats_url)
     save_game_analysis(game_id, game_analysis, client)
 
     return game_analysis
@@ -114,8 +120,8 @@ def update_match(match_data, bracket_data, client):
         if not played_game(game):
             continue
 
-        collection = client.lol.game_analysis
         game_analysis = dict()
+        collection = client.lol.game_analysis
         for item in collection.find({"_id": mongodb_id_convert(game_id)}):
             game_analysis = item
 
@@ -132,6 +138,8 @@ def update_match(match_data, bracket_data, client):
             except Exception as e:
                 save_game_analysis(game_id, game_analysis, client, status='error', error_msg=e.message)
 
+
+sample_bracket = json.loads("""{ "_id" : "57d31a4e4527ea510a02985d", "league" : "na-lcs", "tournament_id" : "472c44a9-49d3-4de4-912c-aa4151fd1b3b", "bracket_id" : "2a6a824d-3009-4d23-9c83-859b7a9c2629" }""")
 
 def main(args):
     client = MongoClient()
@@ -154,7 +162,12 @@ def main(args):
                 # break
 
 if __name__ == "__main__":
-    img = build_info_graphics(timeline_infographic('https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760159/timeline?gameHash=f26accda4d6c5d59', 'https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760159?gameHash=f26accda4d6c5d59'))
-    img.show()
-    img.save('test.png', 'PNG')
+    # img = build_info_graphics(timeline_infographic('https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760159/timeline?gameHash=f26accda4d6c5d59', 'https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760159?gameHash=f26accda4d6c5d59'))
+    # img.show()
+    # img.save('test.png', 'PNG')
     # main(None)
+    events = timeline_events('https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800106/timeline?gameHash=0e95d971fc903f68', None)
+    import lib.video.video_still_test as video_still_test
+    video_breaks = video_still_test.SAMPLE_ANALYSIS['/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4']
+    video_event_translator(events,video_breaks)
+    pass
