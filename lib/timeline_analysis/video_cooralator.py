@@ -28,13 +28,13 @@ def _find_video_time(video_breaks, game_time):
 
 
 def video_event_translator(events, video_breaks):
-    rtn = OrderedDict()
-    for key, range_data in events.iteritems():
+    rtn = []
+    for range_data in events:
         translated = OrderedDict()
         start = _find_video_time(video_breaks, range_data['startTime'])
         end = _find_video_time(video_breaks, range_data['endTime'])
         print str((util.seconds_to_string(start), util.seconds_to_string(end)))
         translated['startTime'] = start
         translated['endTime'] = end
-        rtn[key] = translated
+        rtn.append(translated)
     return rtn

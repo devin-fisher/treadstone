@@ -1,6 +1,6 @@
 import json
 import argparse
-import requests
+# import requests
 from lib.util.http_lol_static import request_json_resource
 from collections import OrderedDict
 from timeline_lib import kill_list_function

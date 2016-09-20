@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 import json
 import argparse
-# from lib.util.http_lol_static import request_json_resource
-import requests
+from lib.util.http_lol_static import request_json_resource
+# import requests
 from collections import OrderedDict
 
 from timeline_lib import kill_list_function
@@ -47,7 +47,7 @@ def report(url, stats_url):
         video_edit_times[a]['endTime'] = end_time
         video_length = video_length + ((end_time - start_time)/1000)
 
-    print(video_edit_times)
+    # print(video_edit_times)
     return video_edit_times
 
 

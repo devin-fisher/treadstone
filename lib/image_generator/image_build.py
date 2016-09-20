@@ -314,9 +314,13 @@ def _validate_item_images(items):
 
 def build_info_graphics(infographic_data):
     version = "6.15.1"
-    for event_num, data in infographic_data.iteritems():
-        team_tiles = {}
-        for team_num, team_data in data.iteritems():
+    for data in infographic_data:
+        team_tiles = []
+        team_kills = []
+        team_gold = []
+        for team_data in data:
+            team_kills.append(team_data.get('teamKills', 0))
+            team_gold.append(team_data.get('teamGold', 0))
             team_player_tiles = []
             for player_num in xrange(len(team_data['playerItem'])):
                 i_tile = build_item_tile(team_data['playerItem'][player_num], version)
@@ -335,15 +339,14 @@ def build_info_graphics(infographic_data):
                 p_tile = build_player_tile(c_tile, s_tile, i_tile)
                 team_player_tiles.append(p_tile)
 
-            team_tiles[team_num] = build_team_tile(team_player_tiles, 0)
+            team_tiles.append(build_team_tile(team_player_tiles, 0))
 
-        s_tile = build_score_tile(data['100']['teamKills']
-                                      , data['200']['teamKills']
-                                      , data['100']['teamGold']
-                                      , data['200']['teamGold'])
+        s_tile = build_score_tile(team_kills[0]
+                                      , team_kills[1]
+                                      , team_gold[0]
+                                      , team_gold[1])
 
-        return build_full_image(team_tiles['100'], team_tiles['200'], s_tile)
-
+        return build_full_image(team_tiles[0], team_tiles[1], s_tile)
 
 
 if __name__ == "__main__":

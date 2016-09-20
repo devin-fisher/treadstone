@@ -171,5 +171,5 @@ if __name__ == "__main__":
     # events = timeline_events('https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800106/timeline?gameHash=0e95d971fc903f68', None)
     # import lib.video.video_still_test as video_still_test
     # video_breaks = video_still_test.SAMPLE_ANALYSIS['/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4']
-    # video_event_translator(events,video_breaks)
+    # video_event_translator(events, video_breaks)
     # pass
