@@ -165,9 +165,11 @@ if __name__ == "__main__":
     # img = build_info_graphics(timeline_infographic('https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760159/timeline?gameHash=f26accda4d6c5d59', 'https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760159?gameHash=f26accda4d6c5d59'))
     # img.show()
     # img.save('test.png', 'PNG')
-    # main(None)
-    events = timeline_events('https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800106/timeline?gameHash=0e95d971fc903f68', None)
-    import lib.video.video_still_test as video_still_test
-    video_breaks = video_still_test.SAMPLE_ANALYSIS['/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4']
-    video_event_translator(events,video_breaks)
-    pass
+
+    main(None)
+
+    # events = timeline_events('https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800106/timeline?gameHash=0e95d971fc903f68', None)
+    # import lib.video.video_still_test as video_still_test
+    # video_breaks = video_still_test.SAMPLE_ANALYSIS['/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4']
+    # video_event_translator(events,video_breaks)
+    # pass

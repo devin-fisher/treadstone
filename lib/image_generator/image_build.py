@@ -320,12 +320,18 @@ def build_info_graphics(infographic_data):
             team_player_tiles = []
             for player_num in xrange(len(team_data['playerItem'])):
                 i_tile = build_item_tile(team_data['playerItem'][player_num], version)
-                c_tile = build_champ_tile(team_data['championId'][player_num], "SummonerFlash", "SummonerFlash", version)
+
+                c_tile = build_champ_tile(team_data['championId'][player_num]
+                                          , team_data['summonerSpell'][player_num][0]
+                                          , team_data['summonerSpell'][player_num][1]
+                                          , version)
+
                 s_tile = build_stat_tile(team_data['playerGold'][player_num]
                                              , 666
                                              , team_data['playerKills'][player_num]
                                              , team_data['playerDeaths'][player_num]
                                              , team_data['playerAssists'][player_num])
+
                 p_tile = build_player_tile(c_tile, s_tile, i_tile)
                 team_player_tiles.append(p_tile)
 
