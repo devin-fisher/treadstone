@@ -1,4 +1,4 @@
-export class Bracket {
+export class Tournament {
   constructor(modelVal) {
     this.model = modelVal;
     this.select = false
@@ -16,15 +16,12 @@ export class Bracket {
     return this.model.league_id;
   }
 
-  get tournament_id() {
-    return this.model.tournament_id;
-  }
 
   get selected()
   {
     return this.select
   }
-
+  
   set selected(bool)
   {
     this.select = bool

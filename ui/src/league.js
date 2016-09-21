@@ -1,6 +1,7 @@
-export class Match {
+export class League {
   constructor(modelVal) {
     this.model = modelVal;
+    this.select = false
   }
 
   get name() {
@@ -11,11 +12,13 @@ export class Match {
     return this.model.id;
   }
 
-  get state() {
-    return this.model.state;
+  get selected()
+  {
+    return this.select
   }
 
-  get bracket_id() {
-    return this.model.bracket_id;
+  set selected(bool)
+  {
+    this.select = bool
   }
 }
