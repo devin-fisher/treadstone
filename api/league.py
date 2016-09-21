@@ -34,16 +34,6 @@ def find_tournament(tournament_id, tournament_data):
     return None
 
 
-def list_tournament(tournament_data):
-    rtn = []
-    for tournament in tournament_data.get('highlanderTournaments', []):
-        t = dict()
-        t['id'] = tournament['id']
-        t['name'] = tournament['title']
-        rtn.append(t)
-    return rtn
-
-
 def augment_game_data(game_data, match_details):
     game_hash = None
     game_id = game_data['id']
@@ -78,7 +68,10 @@ class League(object):
 
 class LeagueList(object):
     def on_get(self, req, resp):
-        league_list = [{"key": "na-lcs", "name": "LCS NA"}]
+        league_list = [
+            {"id": "na-lcs", "name": "LCS NA"}
+            , {"id": "worlds", "name": "Worlds"}
+        ]
         resp.content_type = 'application/json'
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(league_list)
@@ -100,7 +93,14 @@ class Tournament(object):
 class TournamentList(object):
     def on_get(self, req, resp, league_id):
         league_data = request_json_resource(LEAGUE_INFO_API % league_id, retry=3, time_between=1)
-        tournament_list = list_tournament(league_data)
+
+        tournament_list = []
+        for tournament in league_data.get('highlanderTournaments', []):
+            t = dict()
+            t['league_id'] = league_id
+            t['id'] = tournament['id']
+            t['name'] = tournament['title']
+            tournament_list.append(t)
 
         if tournament_list:
             resp.content_type = 'application/json'
@@ -139,6 +139,8 @@ class BracketList(object):
         b_list = []
         for bracket_id, bracket in tournament_data.get('brackets', {}).iteritems():
             b = OrderedDict()
+            b['league_id'] = league_id
+            b['tournament_id'] = tournament_id
             b['id'] = bracket_id
             b['name'] = bracket['name']
             b_list.append(b)
@@ -188,6 +190,9 @@ class MatchList(object):
         m_list = []
         for match_id, match in bracket_data.get('matches', {}).iteritems():
             m = OrderedDict()
+            m['league_id'] = league_id
+            m['tournament_id'] = tournament_id
+            m['bracket_id'] = bracket_id
             m['id'] = match_id
             m['name'] = match['name']
             m['state'] = match['state']
@@ -258,6 +263,10 @@ class GameList(object):
         g_list = []
         for game_id, game in match_data.get('games', {}).iteritems():
             g = OrderedDict()
+            g['league_id'] = league_id
+            g['tournament_id'] = tournament_id
+            g['bracket_id'] = bracket_id
+            g['match_id'] = match_id
             g['id'] = game_id
             g['name'] = game['name']
             g_list.append(g)
