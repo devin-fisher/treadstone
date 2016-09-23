@@ -6,6 +6,11 @@ import json
 
 from collections import OrderedDict
 
+from bson.objectid import ObjectId
+from pymongo import MongoClient
+
+import hashlib
+
 requests_cache.install_cache('/tmp/lcs_schedule_cache', expire_after=3600.0, backend='memory')
 
 LEAGUE_INFO_API = 'http://api.lolesports.com/api/v1/leagues?slug=%s'
@@ -13,6 +18,8 @@ MATCH_DETAIL_API = 'http://api.lolesports.com/api/v2/highlanderMatchDetails?tour
 TIME_LINE_API = 'https://acs.leagueoflegends.com/v1/stats/game/%s/%s/timeline?gameHash=%s'
 GAME_STAT_API = 'https://acs.leagueoflegends.com/v1/stats/game/%s/%s?gameHash=%s'
 
+def mongodb_id_convert(id):
+    return hashlib.md5(id).hexdigest()[:24]
 
 def request_json_resource(url, retry=3, time_between=1):
     for i in xrange(retry):
@@ -134,15 +141,20 @@ class BracketList(object):
         if tournament_data is None:
             raise falcon.HTTPNotFound()
 
-        # bracket_data = tournament_data['brackets'].get(bracket_id, None)
-
+        client = MongoClient()
+        brackets_coll = client.lol.watched_brackets
         b_list = []
         for bracket_id, bracket in tournament_data.get('brackets', {}).iteritems():
+            watched = False
+            watched_bracket = brackets_coll.find_one({'_id': mongodb_id_convert(bracket_id)})
+            if watched_bracket:
+                watched = watched_bracket.get('watched', watched)
             b = OrderedDict()
             b['league_id'] = league_id
             b['tournament_id'] = tournament_id
             b['id'] = bracket_id
             b['name'] = bracket['name']
+            b['watched'] = watched
             b_list.append(b)
 
         if b_list:
