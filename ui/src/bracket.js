@@ -20,6 +20,10 @@ export class Bracket {
     return this.model.tournament_id;
   }
 
+  get watched() {
+    return this.model.watched;
+  }
+
   get selected()
   {
     return this.select
@@ -29,4 +33,6 @@ export class Bracket {
   {
     this.select = bool
   }
+
+
 }

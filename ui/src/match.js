@@ -18,4 +18,12 @@ export class Match {
   get bracket_id() {
     return this.model.bracket_id;
   }
+
+  get tournament_id() {
+    return this.model.tournament_id;
+  }
+
+  get league_id() {
+    return this.model.league_id;
+  }
 }

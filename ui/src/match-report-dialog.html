@@ -1,0 +1,25 @@
+<template>
+  <ai-dialog class="modal-content">
+    <ai-dialog-header class="modal-header h2">Match Report</ai-dialog-header>
+    <ai-dialog-body class="modal-body">
+
+      <ul class="nav nav-tabs">
+        <li repeat.for="game of games" class="${ $first ? 'active' : '' }">
+          <a data-toggle="tab" href="#${game.name}">${game.name}</a>
+        </li>
+      </ul>
+
+      <div  class="tab-content">
+        <div repeat.for="game of games" id="${game.name}" class="tab-pane fade ${ $first ? 'in active' : '' }">
+          <h3>${game.name}</h3>
+          <p>${game.name}</p>
+        </div>
+      </div>
+
+    </ai-dialog-body>
+
+    <ai-dialog-footer class="modal-footer">
+      <button class="btn btn-primary btn-info btn-sm">Download Full Report</button>
+    </ai-dialog-footer>
+  </ai-dialog>
+</template>

@@ -14,7 +14,6 @@ requests_cache.install_cache('/tmp/lcs_schedule_cache', expire_after=3600.0)
 
 LEAGUE_INFO_API = 'http://api.lolesports.com/api/v1/leagues?slug=%s'
 MATCH_DETAIL_API = 'http://api.lolesports.com/api/v2/highlanderMatchDetails?tournamentId=%s&matchId=%s'
-                 # 'http://api.lolesports.com/api/v2/highlanderMatchDetails?tournamentId=%s&matchId=%s'
 TIME_LINE_API = 'https://acs.leagueoflegends.com/v1/stats/game/%s/%s/timeline?gameHash=%s'
 
 

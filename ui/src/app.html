@@ -1,9 +1,9 @@
 <template>
+  <require from="bootstrap/css/bootstrap.css"></require>
   <div class="treadstone-app" style="width: 90%;height: 90%;margin: 0 auto;" >
     <h1 style="">${heading}</h1>
 
     <div id="match-table">
-      <!-- <button repeat.for="bracket of brackets" click.delegate="populateMatches(bracket.bracket_id)" type="button" class="btn btn-primary">${bracket.name}</button> -->
       <div id="league-buttons">
         <button repeat.for="league of leagues" click.delegate="populateTournaments(league)" type="button" class.bind="league.selected ? 'btn btn-success' : 'btn btn-primary'">${league.name}</button>
       </div>
@@ -11,7 +11,10 @@
         <button repeat.for="tournament of tournaments" click.delegate="populateBrackets(tournament)" type="button" class.bind="tournament.selected ? 'btn btn-success' : 'btn btn-primary'">${tournament.name}</button>
       </div>
       <div id="bracket-buttons">
-        <button repeat.for="bracket of brackets" click.delegate="populateMatches(bracket)" type="button"  class.bind="bracket.selected ? 'btn btn-success' : 'btn btn-primary'">${bracket.name}&nbsp;&nbsp;<input type="checkbox" value=""></button>
+        <button repeat.for="bracket of brackets" click.delegate="populateMatches(bracket)" type="button"  class.bind="bracket.selected ? 'btn btn-success' : 'btn btn-primary'">${bracket.name}&nbsp;&nbsp;
+          <input if.bind="bracket.watched" type="checkbox" checked>
+          <input if.bind="!bracket.watched" type="checkbox">
+        </button>
       </div>
       <table class="table table-striped table-bordered">
         <tr>
@@ -23,7 +26,7 @@
           <td>${match.name}</td>
           <td>${match.state}</td>
           <td>
-            <button type="button" class="btn btn-primary btn-sm">report</button>
+            <button type="button" class="btn btn-primary btn-sm" click.delegate="openMatchReportDialog(match)">report</button>
           </td>
         </tr>
       </table>

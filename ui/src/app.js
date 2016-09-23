@@ -2,10 +2,11 @@ import {Match} from './match';
 import {League} from './league';
 import {Bracket} from './bracket';
 import {Tournament} from './tournament';
-import {VideoPrompt} from './video-dialog';
+import {MatchReportPrompt} from './match-report-dialog';
 import {HttpClient} from 'aurelia-http-client';
 import {DialogService} from 'aurelia-dialog';
 import {inject} from 'aurelia-framework';
+import $ from 'bootstrap'
 
 @inject(DialogService)
 export class App
@@ -29,16 +30,28 @@ export class App
     // }
   }
 
-  openVideoDialog(bracketId, matchId, gameId)
+  openMatchReportDialog(match)
   {
-    this.dialogService.open({ viewModel: VideoPrompt, model: {"bracketId":bracketId, "matchId":matchId, "gameId":gameId}}).then(response => {
-          if (!response.wasCancelled) {
-            console.log('good');
-          } else {
-            console.log('bad');
-          }
-          console.log(response.output);
-        });
+    var url = 'api/leagues/'+match.league_id+'/tournaments/'+ match.tournament_id + '/brackets/' + match.bracket_id + '/matches/' + match.id + '/games'
+    var dservice = this.dialogService;
+    this.httpClient.createRequest(url)
+      .asGet()
+      .send()
+      .then((function(data)
+      {
+          var games = JSON.parse(data.response);
+          dservice.open({ viewModel: MatchReportPrompt, model: {"match":match, "games":games}}).then(response =>
+          {
+              if (!response.wasCancelled) {
+                console.log('good');
+              } else {
+                console.log('bad');
+              }
+              console.log(response.output);
+          });
+      }));
+
+
   }
 
   _populate(obj, objList, clearArrays, url, subObjList, createSubObj)
@@ -72,7 +85,7 @@ export class App
             {
               subObjList.push(createSubObj(entry));
             });
-      }).bind(this));
+      }));
   }
 
   populateLeague()
