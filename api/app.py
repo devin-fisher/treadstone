@@ -1,6 +1,7 @@
 import falcon
 from wsgiref import simple_server
 from league import *
+from report import *
  
 # falcon.API instances are callable WSGI apps
 wsgi_app = api = application = falcon.API()
@@ -12,6 +13,7 @@ tournament = Tournament()
 tournament_list = TournamentList()
 bracket = Bracket()
 bracket_list = BracketList()
+report = Report()
 match = Match()
 match_list = MatchList()
 game = Game()
@@ -24,6 +26,7 @@ api.add_route("/api/leagues/{league_id}/tournaments/", tournament_list)
 api.add_route("/api/leagues/{league_id}/tournaments/{tournament_id}", tournament)
 api.add_route("/api/leagues/{league_id}/tournaments/{tournament_id}/brackets/", bracket_list)
 api.add_route("/api/leagues/{league_id}/tournaments/{tournament_id}/brackets/{bracket_id}", bracket)
+api.add_route("/api/leagues/{league_id}/tournaments/{tournament_id}/brackets/{bracket_id}/report", report)
 api.add_route("/api/leagues/{league_id}/tournaments/{tournament_id}/brackets/{bracket_id}/matches/", match_list)
 api.add_route("/api/leagues/{league_id}/tournaments/{tournament_id}/brackets/{bracket_id}/matches/{match_id}", match)
 api.add_route("/api/leagues/{league_id}/tournaments/{tournament_id}/brackets/{bracket_id}/matches/{match_id}/games/", game_list)
