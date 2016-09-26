@@ -1,25 +1,30 @@
+import os
+import sys
 import falcon
 import requests
 import requests_cache
 import time
 import json
-
 from collections import OrderedDict
-
 from bson.objectid import ObjectId
 from pymongo import MongoClient
-
 import hashlib
 
-requests_cache.install_cache('/tmp/lcs_schedule_cache', expire_after=3600.0, backend='memory')
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
+
+from lib.util.static_vals import CACHE_DIR
+
+requests_cache.install_cache(os.path.join(CACHE_DIR, 'lcs_schedule_cache'), expire_after=3600.0, backend='memory')
 
 LEAGUE_INFO_API = 'http://api.lolesports.com/api/v1/leagues?slug=%s'
 MATCH_DETAIL_API = 'http://api.lolesports.com/api/v2/highlanderMatchDetails?tournamentId=%s&matchId=%s'
 TIME_LINE_API = 'https://acs.leagueoflegends.com/v1/stats/game/%s/%s/timeline?gameHash=%s'
 GAME_STAT_API = 'https://acs.leagueoflegends.com/v1/stats/game/%s/%s?gameHash=%s'
 
+
 def mongodb_id_convert(id):
     return hashlib.md5(id).hexdigest()[:24]
+
 
 def request_json_resource(url, retry=3, time_between=1):
     for i in xrange(retry):

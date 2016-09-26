@@ -1,4 +1,4 @@
-import sys, os
+import os
 from PIL import Image
 try:
     from StringIO import StringIO as inIO
@@ -6,9 +6,10 @@ except ImportError:
     from io import BytesIO as inIO
 import requests
 import requests_cache
-import tempfile
 
-requests_cache.install_cache(os.path.join(tempfile.gettempdir(), 'lcs_image_cache'))
+from lib.util.static_vals import CACHE_DIR
+
+requests_cache.install_cache(os.path.join(CACHE_DIR, 'lcs_image_cache'))
 
 DATA_DRAGON = "http://ddragon.leagueoflegends.com/"
 

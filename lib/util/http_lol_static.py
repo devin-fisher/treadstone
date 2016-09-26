@@ -1,9 +1,12 @@
+import os
 import requests
 import requests_cache
 import time
 from collections import OrderedDict
 
-# requests_cache.install_cache('/tmp/lcs_static_cache')
+from lib.util.static_vals import CACHE_DIR
+
+requests_cache.install_cache(os.path.join(CACHE_DIR, 'lcs_static_cache'))
 
 
 def request_json_resource(url, retry=3, time_between=1):

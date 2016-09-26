@@ -1,7 +1,8 @@
 #project ignores
 .token
 data
-live_game_data/data*
+live_game_data/*
+cache_data/*
 .idea/*
 
 # Byte-compiled / optimized / DLL files

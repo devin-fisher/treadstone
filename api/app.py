@@ -33,5 +33,5 @@ api.add_route("/api/leagues/{league_id}/tournaments/{tournament_id}/brackets/{br
 api.add_route("/api/leagues/{league_id}/tournaments/{tournament_id}/brackets/{bracket_id}/matches/{match_id}/games/{game_id}", game)
 
 if __name__ == '__main__':
-    httpd = simple_server.make_server('127.0.0.1', 8000, application)
+    httpd = simple_server.make_server('127.0.0.1', 8555, application)
     httpd.serve_forever()
