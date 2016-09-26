@@ -11,7 +11,7 @@ def kill_list_function(data):
             if check == 'CHAMPION_KILL':
 
                 kill = int(data['frames'][x]['events'][y]['timestamp'])
-                kill = kill/1000
+                kill1 = int(kill/1000)
                 time_seconds = (kill / 1000) % 60
                 time_minutes = ((kill / 1000) - time_seconds) / 60
                 #print(int (time_minutes),':', int (time_seconds), 'Champion Kill')
@@ -30,13 +30,13 @@ def kill_list_function(data):
                     g = 1
                     #print(int (time_minutes),':', int (time_seconds + 2))
                 v = v + 1
-                kill_list.append(kill)
+                kill_list.append(kill1)
 
 
             if check == 'BUILDING_KILL':
 
                 kill = int(data['frames'][x]['events'][y]['timestamp'])
-                kill = kill/1000
+                kill1 = int(kill/1000)
                 time_seconds = (kill / 1000) % 60
                 time_minutes = ((kill / 1000) - time_seconds) / 60
                 #print(int (time_minutes),':', int (time_seconds),'Building_Kill')
@@ -55,12 +55,12 @@ def kill_list_function(data):
                     g =1
                     #print(int (time_minutes),':', int (time_seconds + 2))
                 v = v + 1
-                kill_list.append(kill)
+                kill_list.append(kill1)
 
             if check == 'ELITE_MONSTER_KILL':
 
                 kill = int(data['frames'][x]['events'][y]['timestamp'])
-                kill = kill/1000
+                kill1 = int(kill/1000)
                 time_seconds = (kill / 1000) % 60
                 time_minutes = ((kill / 1000) - time_seconds) / 60
                 #print(int (time_minutes),':', int (time_seconds),'Elite Monster Kill')
@@ -79,13 +79,13 @@ def kill_list_function(data):
                     g =1
                     #print(int (time_minutes),':', int (time_seconds + 5))
                 v = v + 1
-                kill_list.append(kill)
+                kill_list.append(kill1)
     y = y + 1
     x = x + 1
     new_list = []
     a = 0
 
-
+    print(kill_list)
     return kill_list
 
 def start_counter_list_function(kill_list, counter_list):
@@ -99,7 +99,7 @@ def start_counter_list_function(kill_list, counter_list):
         last = a - 1
         before = kill_list[last]
         delta = current - before
-        if delta > 15000:
+        if delta > 15:
             cur = kill_list[a]
             start_list.append(cur)
             counter_list.append(kill_counter)
@@ -126,8 +126,8 @@ def large_fight_function(start_list, counter_list):
     team_fight = []
     for a in range(0,len_counter_list):
         if (counter_list[a] >= 3):
-            time_seconds_start = int((start_list[a] / 1000) % 60)
-            time_minutes_start = int(((start_list[a] / 1000) - time_seconds_start) / 60)
+            time_seconds_start = int((start_list[a]) % 60)
+            time_minutes_start = int(((start_list[a]) - time_seconds_start) / 60)
             team_fight.append(start_list[a])
             # print('Team Fights!!',time_minutes_start,':',time_seconds_start)
 

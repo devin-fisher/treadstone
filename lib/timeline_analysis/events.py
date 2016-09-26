@@ -3,10 +3,10 @@ import json
 from lib.util.http_lol_static import request_json_resource
 from collections import OrderedDict
 
-from timeline_lib import kill_list_function
-from timeline_lib import start_counter_list_function
-from timeline_lib import end_list_function
-from timeline_lib import large_fight_function
+from lib.timeline_analysis.timeline_lib import kill_list_function
+from lib.timeline_analysis.timeline_lib import start_counter_list_function
+from lib.timeline_analysis.timeline_lib import end_list_function
+from lib.timeline_analysis.timeline_lib import large_fight_function
 
 def report(url, stats_url):
     data = request_json_resource(url)
@@ -18,15 +18,15 @@ def report(url, stats_url):
     end_list, counter_list = end_list_function(kill_list, counter_list, start_list)
     team_fight = large_fight_function(start_list, counter_list)
 
-    before = 7000
-    after = 2000
+    before = 7
+    after = 2
     len_start_list = len(start_list)
     video_length = 0
     # infographic_list = infographic_time_list_builder(data, team_fight)
     video_edit_times = []
     for a in range(0, len_start_list):
         video_edit_times.append({})
-        seconds = int((end_list[a] / 1000) % 60)
+        seconds = int((end_list[a]) % 60)
         end_time = start_list[a] + after
         if (seconds < before):
             start_time = start_list[a] - before
@@ -39,7 +39,7 @@ def report(url, stats_url):
 
         video_edit_times[a]['startTime'] = start_time
         video_edit_times[a]['endTime'] = end_time
-        video_length = video_length + ((end_time - start_time)/1000)
+        video_length = video_length + ((end_time - start_time))
 
     # print(video_edit_times)
     return video_edit_times

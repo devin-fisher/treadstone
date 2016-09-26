@@ -1,9 +1,9 @@
 from lib.util.http_lol_static import request_json_resource
 from collections import OrderedDict
-from timeline_lib import kill_list_function
-from timeline_lib import start_counter_list_function
-from timeline_lib import end_list_function
-from timeline_lib import large_fight_function
+from lib.timeline_analysis.timeline_lib import kill_list_function
+from lib.timeline_analysis.timeline_lib import start_counter_list_function
+from lib.timeline_analysis.timeline_lib import end_list_function
+from lib.timeline_analysis.timeline_lib import large_fight_function
 
 
 def player_gold(data, team_fight,time):
@@ -510,6 +510,6 @@ def infographic_list_builder(url,url_stats):
         for b in range(6,11):
             infographic_list[a][team_2]['playerItem'].append(player_items_list[b]['items'])
 
-    # print(infographic_list)
+    print(infographic_list)
     return(infographic_list)
 
