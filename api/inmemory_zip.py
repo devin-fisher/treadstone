@@ -27,8 +27,8 @@ class InMemoryZip(object):
 
     def append_image(self, filename_in_zip, image):
         image_data = BytesIO()
-        image.save(image_data, 'JPEG')
-        self.append(filename_in_zip+".jpg", image_data.getvalue())
+        image.save(image_data, 'PNG')
+        self.append(filename_in_zip+".png", image_data.getvalue())
 
         return self
 

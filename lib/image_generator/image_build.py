@@ -17,8 +17,8 @@ def build_item_tile(items, version, pad=6, image_size=64):
         total_width += image_size
     max_height = image_size * 2 + pad
 
-    print(total_width)
-    print(max_height)
+    # print(total_width)
+    # print(max_height)
 
     new_im = Image.new('RGBA', (total_width, max_height))
 
@@ -63,8 +63,8 @@ def build_champ_tile(champ, summoner1, summoner2, version, pad=6):
     total_width = champ_img_width + pad + max(summoner1_img_width, summoner2_img_width)
     total_height = max(champ_img_height, (summoner1_img_height + pad + summoner2_img_height))
 
-    print(total_width)
-    print(total_height)
+    # print(total_width)
+    # print(total_height)
 
     new_im = Image.new('RGBA', (total_width, total_height))
 
@@ -84,8 +84,8 @@ def build_player_tile(champ_tile, stats_tile, item_tile, pad=10):
     total_width = champ_tile_width + pad + stats_tile_width + pad + item_tile_width
     total_height = max(champ_tile_height, stats_tile_height, item_tile_height)
 
-    print(total_width)
-    print(total_height)
+    # print(total_width)
+    # print(total_height)
 
     new_im = Image.new('RGBA', (total_width, total_height))
 
@@ -108,8 +108,8 @@ def build_team_tile(champ_tiles, total_gold, pad=10):
     total_width = max(map(lambda x: x.width, champ_tiles))
     total_height = max(map(lambda x: x.height, champ_tiles)) * 5 + pad * 4
 
-    print(total_width)
-    print(total_height)
+    # print(total_width)
+    # print(total_height)
 
     new_im = Image.new('RGBA', (total_width, total_height))
     y_pos = 0
@@ -139,8 +139,8 @@ def build_stat_tile(gold, cs, kills, deaths, assists, pad=4):
     width = 55
     height = 134
 
-    print(width)
-    print(height)
+    # print(width)
+    # print(height)
 
     img = Image.new('RGBA', (width, height))
 
@@ -185,8 +185,8 @@ def build_score_tile(team_1_kills, team_2_kills, team_1_gold, team_2_gold, pad=2
     team_1_fill = "royalblue"
     team_2_fill = "orangered"
 
-    print(width)
-    print(height)
+    # print(width)
+    # print(height)
 
     img = Image.new('RGBA', (width, height))
 
@@ -314,6 +314,7 @@ def _validate_item_images(items):
 
 def build_info_graphics(infographic_data):
     version = "6.15.1"
+    rtn = []
     for data in infographic_data:
         team_tiles = []
         team_kills = []
@@ -346,10 +347,11 @@ def build_info_graphics(infographic_data):
                                       , team_gold[0]
                                       , team_gold[1])
 
-        return build_full_image(team_tiles[0], team_tiles[1], s_tile)
+        rtn.append(build_full_image(team_tiles[0], team_tiles[1], s_tile))
+    return rtn
 
 
-if __name__ == "__main__":
+def build_sample_image():
     items_list = [get_item_image("6.15.1", "3073"), get_item_image("6.15.1", "3071"), get_item_image("6.15.1", "1001"),
                   get_item_image("6.15.1", "3340"), get_item_image("6.15.1", "1401"), None, None]
     items_list = ["3073", "3071", "1001", "3340", "1401", None, None]
@@ -375,13 +377,9 @@ if __name__ == "__main__":
 
     full_tile = build_full_image(team_tile, team_tile.copy(), score_tile)
 
-    full_tile.show(team_tile)
-    full_tile.save('test.png', 'PNG')
+    return full_tile
 
-    # team_tile.show(team_tile)
-    # team_tile.save('test.png', 'PNG')
-    # team_tile.show()
-
-    # im = build_stat_tile(22122, 3, 10, 22)
-    # im.show()
-    # im.save('test.png', 'PNG')
+if __name__ == "__main__":
+    sample = build_sample_image()
+    sample.show()
+    # sample.save('test.png', 'PNG')

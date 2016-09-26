@@ -1,18 +1,12 @@
 #!/usr/bin/env python
 import json
-import argparse
 from lib.util.http_lol_static import request_json_resource
-# import requests
 from collections import OrderedDict
 
 from timeline_lib import kill_list_function
 from timeline_lib import start_counter_list_function
 from timeline_lib import end_list_function
 from timeline_lib import large_fight_function
-
-
-
-
 
 def report(url, stats_url):
     data = request_json_resource(url)
@@ -50,8 +44,6 @@ def report(url, stats_url):
     # print(video_edit_times)
     return video_edit_times
 
-
-
 # def infographic_time_list_builder(data,team_fight):
 #     infographic_time_list = []
 #     len_game = len(data['frames']) // 5
@@ -68,24 +60,3 @@ def report(url, stats_url):
 #                 infographic_time_list.append(team_fight[b])
 #
 #     return infographic_time_list
-
-
-def _create_url(args):
-    return "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001720111/timeline?gameHash=55109b5a7a91ae87"
-
-
-def main(args):
-    url = _create_url(args)
-
-    report(url, None)
-
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Create a highlight report for particular match.")
-    parser.add_argument("-r", "--region", action="store_true", help="Region used to retrieve timeline file")
-    parser.add_argument("-i", "--game-id", action="store_true", help="Game Id used to retrieve timeline file")
-    parser.add_argument("-s", "--game-hash", action="store_true", help="Game Hash used to retrieve timeline file")
-    parser.add_argument("-f", "--full-url", action="store_true", help="Full URL used to retrieve timeline file")
-
-    args = parser.parse_args()
-    main(args)

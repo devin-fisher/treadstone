@@ -1,28 +1,26 @@
 #!/usr/bin/env python
 
-import os
 from pymongo import MongoClient
-# from bson.objectid import ObjectId
 import hashlib
 import requests
 import requests_cache
 import time
 from collections import OrderedDict
+import json
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 
 from lib.timeline_analysis.events import report as timeline_events
 from lib.timeline_analysis.infographic import infographic_list_builder as timeline_infographic
 from lib.video.video_analysis import standard_analysis
-
 from lib.image_generator.image_build import build_info_graphics
-
 from lib.timeline_analysis.video_cooralator import video_event_translator
-
-import json
 
 requests_cache.install_cache('/tmp/lcs_static_cache')
 
 
-BRACKET_DATA_URL = "http://127.0.0.1:8000/api/league/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
+BRACKET_DATA_URL = "http://127.0.0.1:8000/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
 
 
 def mongodb_id_convert(id):
@@ -140,6 +138,7 @@ def update_match(match_data, bracket_data, client):
 
 
 sample_bracket = json.loads("""{ "_id" : "57d31a4e4527ea510a02985d", "league" : "na-lcs", "tournament_id" : "472c44a9-49d3-4de4-912c-aa4151fd1b3b", "bracket_id" : "2a6a824d-3009-4d23-9c83-859b7a9c2629" }""")
+
 
 def main(args):
     client = MongoClient()
