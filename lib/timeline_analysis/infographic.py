@@ -356,7 +356,7 @@ def infographic_time_list_builder(data,team_fight, start_list):
 
     for a in range(0,len_game):
         time_counter = time_counter + 5
-        infographic_time = (time_counter * 60) * 1000
+        infographic_time = (time_counter * 60)
         test = True
         test_list.append(infographic_time)
 
@@ -369,7 +369,7 @@ def infographic_time_list_builder(data,team_fight, start_list):
         for c in range(0,len_team_fight):
             team_fight_time = int((team_fight[c]/60)/1000)
             if team_fight_time > time_counter and team_fight_time < (time_counter + 5) and team_fight[c] != infographic_time_list[a]:
-                infographic_time_list.append(team_fight[c])
+                infographic_time_list.append((team_fight[c]/1000))
 
     infographic_time_list.remove(0)
     # print(infographic_time_list)
@@ -384,7 +384,7 @@ def champion_id_list(data_stats):
     return champion
 
 def graph_info_red(data,time):
-    time_stamp = int((time/1000)/60)
+    time_stamp = int((time)/60)
 
     red_graph_list = []
     for a in range(0,time_stamp + 1):
@@ -395,7 +395,7 @@ def graph_info_red(data,time):
     return red_graph_list
 
 def graph_info_blue(data,time):
-    time_stamp = int((time/1000)/60)
+    time_stamp = int((time)/60)
     blue_graph_list = []
     for a in range(0,time_stamp + 1):
         count_blue = 0
@@ -512,3 +512,4 @@ def infographic_list_builder(url,url_stats):
 
     # print(infographic_list)
     return(infographic_list)
+

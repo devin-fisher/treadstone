@@ -11,6 +11,7 @@ def kill_list_function(data):
             if check == 'CHAMPION_KILL':
 
                 kill = int(data['frames'][x]['events'][y]['timestamp'])
+                kill = kill/1000
                 time_seconds = (kill / 1000) % 60
                 time_minutes = ((kill / 1000) - time_seconds) / 60
                 #print(int (time_minutes),':', int (time_seconds), 'Champion Kill')
@@ -35,6 +36,7 @@ def kill_list_function(data):
             if check == 'BUILDING_KILL':
 
                 kill = int(data['frames'][x]['events'][y]['timestamp'])
+                kill = kill/1000
                 time_seconds = (kill / 1000) % 60
                 time_minutes = ((kill / 1000) - time_seconds) / 60
                 #print(int (time_minutes),':', int (time_seconds),'Building_Kill')
@@ -58,6 +60,7 @@ def kill_list_function(data):
             if check == 'ELITE_MONSTER_KILL':
 
                 kill = int(data['frames'][x]['events'][y]['timestamp'])
+                kill = kill/1000
                 time_seconds = (kill / 1000) % 60
                 time_minutes = ((kill / 1000) - time_seconds) / 60
                 #print(int (time_minutes),':', int (time_seconds),'Elite Monster Kill')
