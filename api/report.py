@@ -21,7 +21,7 @@ HARD_CODED_EVENTS = report(
 
 
 class Report(object):
-    def on_get(self, req, resp, league_id, tournament_id, bracket_id):
+    def on_get(self, req, resp, league_id, tournament_id, bracket_id, match_id):
         time_line_events = HARD_CODED_EVENTS
         time_line_infographic = HARD_CODED_INFOGRAPHIC
         images = build_info_graphics(time_line_infographic)
