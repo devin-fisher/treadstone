@@ -16,7 +16,7 @@ def main(args):
     new_dict['watched'] = True
     client = MongoClient()
     collection = client.lol.watched_brackets
-    collection.update({'_id': mongodb_id_convert(args[3])}, new_dict, {'upsert': True})
+    collection.update({'_id': mongodb_id_convert(args[3])}, new_dict, upsert=True)
 
 if __name__ == "__main__":
     main(sys.argv)
