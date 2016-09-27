@@ -372,7 +372,7 @@ def infographic_time_list_builder(data,team_fight, start_list):
                 infographic_time_list.append((team_fight[c]))
 
     infographic_time_list.remove(0)
-    print(infographic_time_list)
+    # print(infographic_time_list)
     return(infographic_time_list)
 
 def champion_id_list(data_stats):
@@ -510,6 +510,6 @@ def infographic_list_builder(url,url_stats):
         for b in range(6,11):
             infographic_list[a][team_2]['playerItem'].append(player_items_list[b]['items'])
 
-    print(infographic_list)
+    # print(infographic_list)
     return(infographic_list)
 

@@ -20,8 +20,8 @@ from lib.timeline_analysis.video_cooralator import video_event_translator
 requests_cache.install_cache('/tmp/lcs_static_cache')
 
 
-BRACKET_DATA_URL = "http://127.0.0.1:8000/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
-# BRACKET_DATA_URL = "http://127.0.0.1/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
+# BRACKET_DATA_URL = "http://127.0.0.1:8555/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
+BRACKET_DATA_URL = "http://127.0.0.1/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
 
 
 def mongodb_id_convert(id):
@@ -110,12 +110,13 @@ def do_timeline_infographic_analysis(game_id, game_data, game_analysis, client):
 def do_game_analysis(game_id, game_data, game_analysis, client):
     length = get_game_length(game_data.get('stats_url', None))
     video_path = download_video(game_data.get('youtube_url', None), game_id)
-    print(standard_analysis(video_path, length, verbose=True))
+    #print(standard_analysis(video_path, length, verbose=True))
     return game_analysis
 
 
 def update_match(match_data, bracket_data, client):
     for game_id, game in match_data.get('games', dict()).iteritems():
+        print("   "+game['name'])
         if not played_game(game):
             continue
 
@@ -132,7 +133,7 @@ def update_match(match_data, bracket_data, client):
         if "complete" != game_analysis.get('status', "incomplete"):
             url = BRACKET_DATA_URL % bracket_data + "/matches/" + match_data['id'] + "/games/" + game_id
             game_data = http_get_resource(url, retry=3, time_between=1)
-            print str(game_data)
+            #print str(game_data)
 
             try:
                 do_timeline_event_analysis(game_id, game_data, game_analysis, client)
@@ -163,6 +164,7 @@ def main(args):
 
         for match_id, match in bracket_data.get('matches', dict()).iteritems():
             if match.get('state', '') == 'resolved':
+                print(match['name'])
                 update_match(match, bracket, client)
                 # break
 

@@ -85,7 +85,7 @@ def kill_list_function(data):
     new_list = []
     a = 0
 
-    print(kill_list)
+    # print(kill_list)
     return kill_list
 
 def start_counter_list_function(kill_list, counter_list):
