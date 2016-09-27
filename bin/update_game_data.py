@@ -20,8 +20,8 @@ from lib.timeline_analysis.video_cooralator import video_event_translator
 requests_cache.install_cache('/tmp/lcs_static_cache')
 
 
-# BRACKET_DATA_URL = "http://127.0.0.1:8000/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
-BRACKET_DATA_URL = "http://127.0.0.1/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
+BRACKET_DATA_URL = "http://127.0.0.1:8000/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
+# BRACKET_DATA_URL = "http://127.0.0.1/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
 
 
 def mongodb_id_convert(id):
@@ -124,6 +124,11 @@ def update_match(match_data, bracket_data, client):
         for item in collection.find({"_id": mongodb_id_convert(game_id)}):
             game_analysis = item
 
+        game_analysis['league'] = bracket_data['league']
+        game_analysis['tournament_id'] = bracket_data['tournament_id']
+        game_analysis['bracket_id'] = bracket_data['bracket_id']
+        game_analysis['match_id'] = match_data['id']
+        game_analysis['game_id'] = game_id
         if "complete" != game_analysis.get('status', "incomplete"):
             url = BRACKET_DATA_URL % bracket_data + "/matches/" + match_data['id'] + "/games/" + game_id
             game_data = http_get_resource(url, retry=3, time_between=1)
