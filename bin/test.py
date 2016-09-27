@@ -8,10 +8,10 @@ from lib.timeline_analysis.events import report
 
 if __name__ == "__main__":
     url = "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770122/timeline?gameHash=b49ec7b6e70e0ac3"
-    stats = "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001710249?gameHash=856ed19d3d6dce2e"
+    stats = "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770122?gameHash=b49ec7b6e70e0ac3"
     print (infographic_list_builder(url, stats))
 
 if __name__ == "__main__":
     url = "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770122/timeline?gameHash=b49ec7b6e70e0ac3"
-    stats = "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001710249?gameHash=856ed19d3d6dce2e"
+    stats = "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770122?gameHash=b49ec7b6e70e0ac3"
     print (report(url, stats))

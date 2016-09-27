@@ -9,7 +9,7 @@ from lib.timeline_analysis.timeline_lib import large_fight_function
 def player_gold(data, team_fight,time):
     player_gold_list = []
     len_team_fight = len(team_fight)
-    time_stamp = int((time/1000)/60)
+    time_stamp = int((time)/60)
     for b in range(1,11):
         x = str(b)
         player_gold = data['frames'][time_stamp]['participantFrames'][x]['totalGold']
@@ -21,7 +21,7 @@ def player_items(data, team_fight, time):
     player_items_list = OrderedDict()
     data_len = len(data['frames'])
     len_team_fight = len(team_fight)
-    time_stamp = int((time/1000)/60)
+    time_stamp = int((time)/60)
     for a in range(1,11):
         player_id = a
         player_items_list[a] = OrderedDict()
@@ -135,7 +135,7 @@ def player_items(data, team_fight, time):
     return player_items_list
 
 def team_kills(data,time):
-    time_stamp = int((time/1000)/60)
+    time_stamp = int((time)/60)
     count_red = 0
     count_blue = 0
     kill_score = [1,2]
@@ -155,7 +155,7 @@ def team_kills(data,time):
     return(kill_score)
 
 def team_towers(data,time):
-    time_stamp = int((time/1000)/60)
+    time_stamp = int((time)/60)
     count_red = 0
     count_blue = 0
     tower_score = [1,2]
@@ -192,7 +192,7 @@ def team_gold(player_gold_list):
     return(team_gold_list)
 
 def player_kills(data, time):
-    time_stamp = int((time/1000)/60)
+    time_stamp = int((time)/60)
     player_kill_list = []
     for a in range(1,11):
         kill_count = 0
@@ -210,7 +210,7 @@ def player_kills(data, time):
     return(player_kill_list)
 
 def player_assists(data,time):
-    time_stamp = int((time/1000)/60)
+    time_stamp = int((time)/60)
     player_assist_list = []
     for a in range(1,11):
         assist_count = 0
@@ -231,7 +231,7 @@ def player_assists(data,time):
     return(player_assist_list)
 
 def player_deaths(data, time):
-    time_stamp = int((time/1000)/60)
+    time_stamp = int((time)/60)
     player_death_list = []
     for a in range(1,11):
         death_count = 0
@@ -367,12 +367,12 @@ def infographic_time_list_builder(data,team_fight, start_list):
                     test = False
 
         for c in range(0,len_team_fight):
-            team_fight_time = int((team_fight[c]/60)/1000)
+            team_fight_time = int((team_fight[c]/60))
             if team_fight_time > time_counter and team_fight_time < (time_counter + 5) and team_fight[c] != infographic_time_list[a]:
-                infographic_time_list.append((team_fight[c]/1000))
+                infographic_time_list.append((team_fight[c]))
 
     infographic_time_list.remove(0)
-    # print(infographic_time_list)
+    print(infographic_time_list)
     return(infographic_time_list)
 
 def champion_id_list(data_stats):
