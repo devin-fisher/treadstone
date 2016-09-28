@@ -3,6 +3,7 @@
 data
 live_game_data/*
 cache_data/*
+data_reports/*
 .idea/*
 
 # Byte-compiled / optimized / DLL files

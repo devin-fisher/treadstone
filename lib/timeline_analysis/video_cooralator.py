@@ -1,6 +1,5 @@
-import lib.video.video_still_util as util
 from collections import OrderedDict
-
+from lib.video.video_still_util import seconds_to_string
 
 def _convert_millisec_to_sec(mil):
     if mil > 6000:
@@ -31,10 +30,19 @@ def video_event_translator(events, video_breaks):
     rtn = []
     for range_data in events:
         translated = OrderedDict()
-        start = _find_video_time(video_breaks, range_data['startTime'])
-        end = _find_video_time(video_breaks, range_data['endTime'])
-        print str((util.seconds_to_string(start), util.seconds_to_string(end)))
-        translated['startTime'] = start
-        translated['endTime'] = end
+        game_start = range_data['startTime']
+        game_end = range_data['endTime']
+
+        video_start = _find_video_time(video_breaks, range_data['startTime'])
+        video_end = _find_video_time(video_breaks, range_data['endTime'])
+
+        video_start = seconds_to_string(video_start)
+        video_end = seconds_to_string(video_end)
+
+        translated['video_start'] = video_start
+        translated['video_end'] = video_end
+        translated['game_start'] = game_start
+        translated['game_end'] = game_end
+
         rtn.append(translated)
     return rtn

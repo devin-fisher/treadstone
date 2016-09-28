@@ -18,7 +18,7 @@ def _test_start(video, video_time, game_test_time=45):
     return at_game_test_time == game_test_time
 
 
-def _find_sec_change(video, video_time, game_time, game_test_time=45):
+def _find_sec_change(video, video_time, game_time):
     video_time_plus_split = video_time
     while True:
         video_time_plus_split += IMAGE_SPLIT_TIME
@@ -27,33 +27,46 @@ def _find_sec_change(video, video_time, game_time, game_test_time=45):
             return None
 
         if cur_game_time > game_time:
-            rtn_start_video_time = video_time_plus_split - cur_game_time
-            if _test_start(video, rtn_start_video_time, game_test_time=game_test_time):
-                return rtn_start_video_time + IMAGE_SPLIT_TIME # add a little bit of time, we don't want to be right on the edge
-            else:
-                return None
+            return video_time_plus_split + IMAGE_SPLIT_TIME, cur_game_time # add a little bit of time, we don't want to be right on the edge
+            # rtn_start_video_time = video_time_plus_split - cur_game_time
+            # if _test_start(video, rtn_start_video_time, game_test_time=game_test_time):
+            #     return rtn_start_video_time + IMAGE_SPLIT_TIME
+            # else:
+            #     return None
 
 
-def find_start_point(video, game_test_time=45, bump_rate=10):
-    cur = video.duration/2
+def find_start_point(video, game_test_time=45, bump_rate=45):
+    cur_video = video.duration*.55
     max_time = video.duration
+    operator = sub
 
     while True:
-        if cur > max_time:
-            return None
+        # print cur_video
+        if cur_video > max_time or cur_video <= 0:
+            raise Exception("Unable to find start time")
 
-        found_game_time = get_time(video, cur, show=False)
+        found_game_time = get_time(video, cur_video, show=False)
         if found_game_time is None:
-            cur += bump_rate
+            cur_video = operator(cur_video, bump_rate)
             continue
 
-        second_change_video_time = _find_sec_change(video, cur, found_game_time, game_test_time=game_test_time)
+        found_video_time, found_game_time = _find_sec_change(video, cur_video, found_game_time)
 
-        if second_change_video_time is None:
-            cur += bump_rate
+        if found_video_time is None or found_game_time is None:
+            cur_video = operator(cur_video, bump_rate)
             continue
+
+        preposed_start_video_time = found_video_time - found_game_time
+        game_at_preposed = get_time(video, preposed_start_video_time + game_test_time, show=False)
+
+        if game_at_preposed is None:
+            cur_video = operator(cur_video, bump_rate)
+            continue
+        elif game_at_preposed == game_test_time:
+            return preposed_start_video_time
         else:
-            return second_change_video_time
+            cur_video -= (found_game_time/2)
+            continue
 
 
 def _walk_op(video, video_time, game_time, length, step, operator):
@@ -167,6 +180,22 @@ def standard_analysis(video_path, game_length, verbose=False):
 
     end = shifts[-1]['end_time'] + (game_length - shifts[-1]['end_game_time'])
     rtn['end'] = end
+
+    return rtn
+
+
+def start_only_analysis(video_path, game_length, verbose=False):
+    rtn = {}
+    rtn['game_length'] = game_length
+
+    video_obj = VideoFileClip(video_path)
+    start = find_start_point(video_obj)
+
+    rtn['start'] = start
+
+    rtn['shifts'] = []
+
+    # rtn['end'] = end
 
     return rtn
 

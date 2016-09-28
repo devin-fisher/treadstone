@@ -5,6 +5,8 @@ from PIL import ImageDraw
 from PIL import ImageFile
 from image_cache import get_item_image, get_summoner_image, get_champ_image, get_icon_image
 
+from lib.video.video_still_util import seconds_to_string
+
 
 def build_item_tile(items, version, pad=6, image_size=64):
     items = _get_item_images(items, version)
@@ -295,32 +297,37 @@ def _get_item_images(items, version):
 
 def _validate_item_images(items):
     if len(items) is not 7:
-        print("List don't include 7 items")
-        # return
+        # print("List don't include 7 items")
+        pass
 
     for im in items:
         if not isinstance(im, ImageFile.ImageFile) and im is not None:
-            print("Not all items or None")
+            # print("Not all items or None")
+            pass
 
     sizes = []
     for im in items:
         if im:
             if im.size[0] is not im.size[1]:
-                print("Not all items are square")
+                # print("Not all items are square")
+                pass
             sizes.append(im.size[0])
 
     if len(set(sizes)) > 1:
-        print("Not all items are same size")
+        # print("Not all items are same size")
+        pass
 
 
 def build_info_graphics(infographic_data):
     version = "6.15.1"
     rtn = []
     for data in infographic_data:
+        timestamp = 0
         team_tiles = []
         team_kills = []
         team_gold = []
         for team_data in data:
+            timestamp = team_data['timeStamp']
             team_kills.append(team_data.get('teamKills', 0))
             team_gold.append(team_data.get('teamGold', 0))
             team_player_tiles = []
@@ -333,7 +340,7 @@ def build_info_graphics(infographic_data):
                                           , version)
 
                 s_tile = build_stat_tile(team_data['playerGold'][player_num]
-                                             , None
+                                             , team_data['minionsKilled'][player_num]
                                              , team_data['playerKills'][player_num]
                                              , team_data['playerDeaths'][player_num]
                                              , team_data['playerAssists'][player_num])
@@ -347,8 +354,9 @@ def build_info_graphics(infographic_data):
                                       , team_kills[1]
                                       , team_gold[0]
                                       , team_gold[1])
-
-        rtn.append(build_full_image(team_tiles[0], team_tiles[1], s_tile))
+        img = build_full_image(team_tiles[0], team_tiles[1], s_tile)
+        img.info['file_name'] = "infographic_" + seconds_to_string(timestamp)
+        rtn.append(img)
     return rtn
 
 

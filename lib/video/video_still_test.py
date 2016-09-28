@@ -314,7 +314,7 @@ def test_all_video_analysis():
 
 
 def test_video_analysis(video_path, analysis):
-    cal_analysis = standard_analysis(video_path, analysis['game_length'])
+    cal_analysis = standard_analysis(video_path, analysis['game_length'], verbose=False)
     if compare_dict(cal_analysis, analysis):
         results = "Equal"
     else:
