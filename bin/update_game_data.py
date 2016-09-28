@@ -22,8 +22,8 @@ from lib.util.static_vals import REPORTS_DIR
 requests_cache.install_cache('/tmp/lcs_static_cache')
 
 
-BRACKET_DATA_URL = "http://127.0.0.1:8555/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
-# BRACKET_DATA_URL = "http://127.0.0.1/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
+# BRACKET_DATA_URL = "http://127.0.0.1:8555/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
+BRACKET_DATA_URL = "http://127.0.0.1/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
 
 
 def mongodb_id_convert(id):
