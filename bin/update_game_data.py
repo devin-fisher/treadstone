@@ -17,6 +17,8 @@ from lib.video.video_analysis import start_only_analysis
 from lib.image_generator.image_build import build_info_graphics
 from lib.timeline_analysis.video_cooralator import video_event_translator
 
+from lib.util.static_vals import REPORTS_DIR
+
 requests_cache.install_cache('/tmp/lcs_static_cache')
 
 
@@ -173,7 +175,7 @@ def update_match(match_data, bracket_data, client):
                 save_game_analysis(game_id, game_analysis, client, status='error', error_msg=e.message)
         match_games.append(game_analysis)
 
-    build_report_file(match_games, match_data['id'], "/home/devin.fisher/Kingdoms/treadstone/data_reports/"+match_data['id']+".zip")
+    build_report_file(match_games, match_data['id'], os.path.join(REPORTS_DIR, match_data['id']+".zip"))
 
 
 sample_bracket = {
