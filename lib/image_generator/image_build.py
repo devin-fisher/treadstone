@@ -164,15 +164,16 @@ def build_stat_tile(gold, cs, kills, deaths, assists, pad=4):
     text_y = int(icon_y + gold_icon_dem[1] + (pad / 2))
     draw.text((text_x, text_y), score_val, fill=fill, font=font)
 
-    draw = ImageDraw.Draw(img)
-    icon_x = int((width / 2) - (minion_icon_dem[0] / 2))
-    icon_y = text_y + h + (pad * 2)
-    img.paste(minion_icon, (icon_x, icon_y))
+    if cs:
+        draw = ImageDraw.Draw(img)
+        icon_x = int((width / 2) - (minion_icon_dem[0] / 2))
+        icon_y = text_y + h + (pad * 2)
+        img.paste(minion_icon, (icon_x, icon_y))
 
-    w, h = draw.textsize(cs_val, font=font)
-    text_x = int((width - w) / 2)
-    text_y = int(icon_y + gold_icon_dem[1] + (pad / 2))
-    draw.text((text_x, text_y), cs_val, fill=fill, font=font)
+        w, h = draw.textsize(cs_val, font=font)
+        text_x = int((width - w) / 2)
+        text_y = int(icon_y + gold_icon_dem[1] + (pad / 2))
+        draw.text((text_x, text_y), cs_val, fill=fill, font=font)
 
     return img
 
@@ -332,7 +333,7 @@ def build_info_graphics(infographic_data):
                                           , version)
 
                 s_tile = build_stat_tile(team_data['playerGold'][player_num]
-                                             , 666
+                                             , None
                                              , team_data['playerKills'][player_num]
                                              , team_data['playerDeaths'][player_num]
                                              , team_data['playerAssists'][player_num])
