@@ -33,6 +33,7 @@ export class App
   openMatchReportDialog(match)
   {
     var url = 'api/leagues/'+match.league_id+'/tournaments/'+ match.tournament_id + '/brackets/' + match.bracket_id + '/matches/' + match.id + '/games'
+    var report_url = 'api/leagues/'+match.league_id+'/tournaments/'+ match.tournament_id + '/brackets/' + match.bracket_id + '/matches/' + match.id + '/report'
     var dservice = this.dialogService;
     this.httpClient.createRequest(url)
       .asGet()
@@ -40,7 +41,7 @@ export class App
       .then((function(data)
       {
           var games = JSON.parse(data.response);
-          dservice.open({ viewModel: MatchReportPrompt, model: {"match":match, "games":games}}).then(response =>
+          dservice.open({ viewModel: MatchReportPrompt, model: {"match":match, "games":games, "report_url":report_url}}).then(response =>
           {
               if (!response.wasCancelled) {
                 console.log('good');
