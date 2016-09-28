@@ -418,6 +418,18 @@ def summoner_spell(data_stats):
 
     return spell_list
 
+def minion_count(data,time):
+    minion_list = []
+    time_stamp = int((time)/60)
+    for b in range(1,11):
+        x = str(b)
+        minion = data['frames'][time_stamp]['participantFrames'][x]['minionsKilled']
+        jungle = data['frames'][time_stamp]['participantFrames'][x]['jungleMinionsKilled']
+        total_minion = minion + jungle
+        minion_list.append(total_minion)
+
+    return(minion_list)
+
 def infographic_list_builder(url,url_stats):
     data = request_json_resource(url)
     data_stats = request_json_resource(url_stats)
@@ -451,7 +463,7 @@ def infographic_list_builder(url,url_stats):
         player_assist_list = player_assists(data,time)
         player_death_list = player_deaths(data,time)
         dragon_count_list = dragon_counter(data,time)
-
+        minion_list = minion_count(data,time)
 
         blue_graph_list = graph_info_blue(data,time)
         blue_player_kill_list = player_kill_list[0:5]
@@ -460,6 +472,7 @@ def infographic_list_builder(url,url_stats):
         blue_player_assist_list = player_assist_list[0:5]
         blue_champion_list = champion_list[0:5]
         blue_spell_list = spell_list[0:5]
+        blue_minion_list = minion_list[0:5]
 
 
         team_1 = 0
@@ -480,6 +493,7 @@ def infographic_list_builder(url,url_stats):
         infographic_list[a][team_1]["championId"] = blue_champion_list
         infographic_list[a][team_1]["totalGoldGraph"] = blue_graph_list
         infographic_list[a][team_1]["summonerSpell"] = blue_spell_list
+        infographic_list[a][team_1]["minionsKilled"] = blue_minion_list
 
         infographic_list[a][team_1]['playerItem'] = []
         for b in range(1,6):
@@ -492,6 +506,7 @@ def infographic_list_builder(url,url_stats):
         red_player_assist_list = player_assist_list[5:10]
         red_champion_list = champion_list[5:11]
         red_spell_list = spell_list[5:11]
+        red_minion_list = minion_list[5:11]
 
         infographic_list[a][team_2]["timeStamp"] = infographic_time_list[a_index]
         infographic_list[a][team_2]['teamGold'] = team_gold_list[2]
@@ -505,6 +520,7 @@ def infographic_list_builder(url,url_stats):
         infographic_list[a][team_2]['championId'] = red_champion_list
         infographic_list[a][team_2]['totalGoldGraph'] = red_graph_list
         infographic_list[a][team_2]['summonerSpell'] = red_spell_list
+        infographic_list[a][team_2]['minionsKilled'] = red_minion_list
 
         infographic_list[a][team_2]['playerItem'] = []
         for b in range(6,11):
