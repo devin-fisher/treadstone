@@ -355,7 +355,7 @@ def build_info_graphics(infographic_data):
                                       , team_gold[0]
                                       , team_gold[1])
         img = build_full_image(team_tiles[0], team_tiles[1], s_tile)
-        img.info['file_name'] = "infographic_" + seconds_to_string(timestamp)
+        img.info['file_name'] = "infographic_" + seconds_to_string(timestamp).replace(':', '-')
         rtn.append(img)
     return rtn
 

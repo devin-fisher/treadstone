@@ -215,6 +215,10 @@ class MatchList(object):
             if os.path.isfile(os.path.join(REPORTS_DIR, match_id + ".zip")):
                 m['has_report'] = True
 
+            client = MongoClient()
+            if client.lol.game_analysis.count({'match_id': match_id, 'status': 'error'}) > 0:
+                m['has_error'] = True
+
             m_list.append(m)
 
         if m_list:

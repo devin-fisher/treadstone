@@ -1,6 +1,7 @@
 from collections import OrderedDict
 from lib.video.video_still_util import seconds_to_string
 
+
 def _convert_millisec_to_sec(mil):
     if mil > 6000:
         return mil/1000

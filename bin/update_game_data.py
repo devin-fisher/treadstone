@@ -41,7 +41,7 @@ def played_game(game_data):
     return False
 
 
-def save_game_analysis(game_id, game_analysis, client, status='Incomplete', error_msg=None):
+def save_game_analysis(game_id, game_analysis, client, status='incomplete', error_msg=None):
     coll = client.lol.game_analysis
     if '_id' not in game_analysis:
         game_analysis['_id'] = mongodb_id_convert(game_id)
@@ -170,6 +170,7 @@ def update_match(match_data, bracket_data, client):
                 do_timeline_infographic_analysis(game_id, game_data, game_analysis, client)
                 do_timeline_video_analysis(game_id, game_data, game_analysis, client)
                 do_timeline_video_translation(game_id, game_data, game_analysis, client)
+                save_game_analysis(game_id, game_analysis, client, status='complete')
                 # break
             except Exception as e:
                 save_game_analysis(game_id, game_analysis, client, status='error', error_msg=e.message)
