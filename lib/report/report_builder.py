@@ -1,6 +1,7 @@
 from lib.zip.inmemory_zip import InMemoryZip
 from lib.image_generator.image_build import build_info_graphics
 import json
+import os
 
 TYPES_OF_DATA = ['time_line_events', 'time_line_infographic', 'event_translation', 'video_analysis']
 
@@ -31,5 +32,5 @@ def build_report_file(game_analysis, match_id, file_path):
                 imz.append_image(name + "_" + images[i].info.get('file_name', "infographic_" + str(i)), images[i])
 
     if had_data:
-        imz.write_to_file(file_path)
-        # TODO CHECK IF FILE EXISTS
+        if not os.path.isfile(file_path):
+            imz.write_to_file(file_path)
