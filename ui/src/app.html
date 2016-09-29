@@ -23,10 +23,11 @@
           <th>Highlight Report</th>
         </tr>
         <tr repeat.for="match of matches">
-          <td>${match.name}</td>
+          <td>${match.name}&nbsp;<span if.bind="match.has_error" class="glyphicon glyphicon-exclamation-sign" style="color:red" aria-hidden="true"></span></td>
           <td>${match.state}</td>
           <td>
-            <button type="button" class="btn btn-primary btn-sm" click.delegate="openMatchReportDialog(match)">report</button>
+            <a class="btn btn-sm" class.bind="match.has_report ? 'btn-info active' : 'btn-default disabled'" href="${match.has_report ? match.report_url : ''}" class="btn btn-primary btn-info btn-sm">Download Report</a>
+            <button type="button" class="btn btn-primary btn-sm" click.delegate="openMatchReportDialog(match)">Details</button>
           </td>
         </tr>
       </table>

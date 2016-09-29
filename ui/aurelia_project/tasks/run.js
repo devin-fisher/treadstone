@@ -7,7 +7,7 @@ import {CLIOptions} from 'aurelia-cli';
 import proxy from  'http-proxy-middleware';
 
 var jsonPlaceholderProxy = proxy('/api', {
-    target: 'http://45.55.21.68',
+    target: 'http://138.68.40.106',
     changeOrigin: true,             // for vhosted sites, changes host header to match to target's host
     logLevel: 'debug'
 });
