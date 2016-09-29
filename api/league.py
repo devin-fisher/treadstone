@@ -12,6 +12,7 @@ from pymongo import MongoClient
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 
 from lib.util.static_vals import CACHE_DIR
+from lib.util.static_vals import REPORTS_DIR
 from lib.util.mongo_util import mongodb_id_convert
 
 requests_cache.install_cache(os.path.join(CACHE_DIR, 'lcs_schedule_cache'), expire_after=3600.0, backend='memory')
@@ -210,6 +211,10 @@ class MatchList(object):
             m['name'] = match['name']
             m['state'] = match['state']
             m['position'] = match['position']
+            m['has_report'] = False
+            if os.path.isfile(os.path.join(REPORTS_DIR, match_id + ".zip")):
+                m['has_report'] = True
+
             m_list.append(m)
 
         if m_list:
