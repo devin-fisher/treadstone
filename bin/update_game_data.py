@@ -8,6 +8,8 @@ import time
 from collections import OrderedDict
 import sys
 import os
+import argparse
+import json
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 
 from lib.timeline_analysis.events import report as timeline_events
@@ -163,7 +165,6 @@ def update_match(match_data, bracket_data, client):
         if "complete" != game_analysis.get('status', "incomplete"):
             url = BRACKET_DATA_URL % bracket_data + "/matches/" + match_data['id'] + "/games/" + game_id
             game_data = http_get_resource(url, retry=3, time_between=1)
-            # print str(game_data)
 
             try:
                 do_timeline_event_analysis(game_id, game_data, game_analysis, client)
@@ -188,9 +189,16 @@ sample_bracket = {
 
 
 def main(args):
+    brackets = []
     client = MongoClient()
-    collection = client.lol.watched_brackets
-    for bracket in collection.find():
+    if args.bracket is None:
+        collection = client.lol.watched_brackets
+        brackets = collection.find()
+
+    for bracket in brackets:
+        if args.verbose:
+            print json.dumps(bracket, indent=2)
+
         if not bracket.get('watched', True):
             continue
 
@@ -200,24 +208,32 @@ def main(args):
         if not meets_schedule(bracket):
             continue
 
+        print "Scanning Bracket '%(bracket_id)s'" % bracket
         bracket_data = http_get_resource(BRACKET_DATA_URL % bracket)
 
         for match_id, match in bracket_data.get('matches', dict()).iteritems():
+            print "MATCH: %(id)s - %(name)s - %(state)s" % match
             if match.get('state', '') == 'resolved':
                 print(match['name'])
                 update_match(match, bracket, client)
                 # break
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
     # img = build_info_graphics(timeline_infographic(
     # 'https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760159/timeline?gameHash=f26accda4d6c5d59'
     # , 'https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001760159?gameHash=f26accda4d6c5d59'))
     # img[0].show()
-
-    main(None)
 
     # events = timeline_events('https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001800106/timeline?gameHash=0e95d971fc903f68', None)
     # import lib.video.video_still_test as video_still_test
     # video_breaks = video_still_test.SAMPLE_ANALYSIS['/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4']
     # print json.dumps(video_event_translator(events, video_breaks), indent=2)
     # pass
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Create a highlight report for particular match.")
+    parser.add_argument("-v", "--verbose", action="store_false", help="Verbosity")
+    parser.add_argument("-b", "--bracket", action="store", help="Explicit Bracket Id")
+
+    args = parser.parse_args()
+    main(args)
