@@ -209,6 +209,8 @@ def main(args):
         if args.verbose:
             print bracket_data_url
         bracket_data = http_get_resource(bracket_data_url)
+        if args.verbose:
+            print json.dumps(bracket_data, indent=2)
 
         for match_id, match in bracket_data.get('matches', dict()).iteritems():
             print "MATCH: %(id)s - %(name)s - %(state)s" % match
@@ -236,4 +238,3 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     main(args)
-    
