@@ -21,8 +21,8 @@ from lib.timeline_analysis.video_cooralator import video_event_translator
 
 from lib.util.static_vals import REPORTS_DIR
 
-BRACKET_DATA_URL = "http://127.0.0.1:8555/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
-# BRACKET_DATA_URL = "http://127.0.0.1/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
+# BRACKET_DATA_URL = "http://127.0.0.1:8555/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
+BRACKET_DATA_URL = "http://127.0.0.1/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
 
 
 def mongodb_id_convert(id):
@@ -196,11 +196,11 @@ sample_bracket = {
 
 
 def main(args):
-    brackets = [sample_bracket]
+    brackets = []
     client = MongoClient()
-    # if args.bracket is None:
-    #     collection = client.lol.watched_brackets
-    #     brackets = collection.find()
+    if args.bracket is None:
+        collection = client.lol.watched_brackets
+        brackets = collection.find()
 
     for bracket in brackets:
         if args.verbose:
@@ -244,7 +244,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Create a highlight report for particular match.")
-    parser.add_argument("-v", "--verbose", action="store_false", help="Verbosity")
+    parser.add_argument("-v", "--verbose", action="store_true", help="Verbosity")
     parser.add_argument("-b", "--bracket", action="store", help="Explicit Bracket Id")
 
     args = parser.parse_args()
