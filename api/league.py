@@ -15,7 +15,7 @@ from lib.util.static_vals import CACHE_DIR
 from lib.util.static_vals import REPORTS_DIR
 from lib.util.mongo_util import mongodb_id_convert
 
-requests_cache.install_cache(os.path.join(CACHE_DIR, 'lcs_schedule_cache'), expire_after=3600.0, backend='memory')
+requests_cache.install_cache(os.path.join(CACHE_DIR, 'lcs_schedule_cache'), expire_after=240.0)
 
 LEAGUE_INFO_API = 'http://api.lolesports.com/api/v1/leagues?slug=%s'
 MATCH_DETAIL_API = 'http://api.lolesports.com/api/v2/highlanderMatchDetails?tournamentId=%s&matchId=%s'

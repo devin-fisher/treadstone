@@ -32,5 +32,5 @@ def build_report_file(game_analysis, match_id, file_path):
                 imz.append_image(name + "_" + images[i].info.get('file_name', "infographic_" + str(i)), images[i])
 
     if had_data:
-        if not os.path.isfile(file_path):
-            imz.write_to_file(file_path)
+        # if not os.path.isfile(file_path):
+        imz.write_to_file(file_path)

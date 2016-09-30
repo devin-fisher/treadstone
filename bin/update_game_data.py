@@ -3,7 +3,6 @@
 from pymongo import MongoClient
 import hashlib
 import requests
-import requests_cache
 import time
 from collections import OrderedDict
 import sys
@@ -18,9 +17,6 @@ from lib.image_generator.image_build import build_info_graphics
 from lib.timeline_analysis.video_cooralator import video_event_translator
 
 from lib.util.static_vals import REPORTS_DIR
-
-requests_cache.install_cache('/tmp/lcs_static_cache')
-
 
 # BRACKET_DATA_URL = "http://127.0.0.1:8555/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
 BRACKET_DATA_URL = "http://127.0.0.1/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
