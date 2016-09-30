@@ -41,7 +41,10 @@ def get_icon_image(version, icon):
 def _get_image(loc):
     web_loc = _web_location(loc)
     r = requests.get(web_loc, stream=True)
-    return Image.open(inIO(r.content))
+    try:
+        return Image.open(inIO(r.content))
+    except IOError as e:
+        raise e
 
 
 def _create_item_location(version, item_num):

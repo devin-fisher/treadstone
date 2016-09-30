@@ -21,8 +21,8 @@ from lib.timeline_analysis.video_cooralator import video_event_translator
 
 from lib.util.static_vals import REPORTS_DIR
 
-# BRACKET_DATA_URL = "http://127.0.0.1:8555/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
-BRACKET_DATA_URL = "http://127.0.0.1/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
+BRACKET_DATA_URL = "http://127.0.0.1:8555/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
+# BRACKET_DATA_URL = "http://127.0.0.1/api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
 
 
 def mongodb_id_convert(id):
@@ -63,7 +63,7 @@ def http_get_resource(url, retry=3, time_between=1):
                 raise Exception('Bracket Info is Invalid, 404 when retrieving bracket data')
             else:
                 time.sleep(time_between)
-    
+
         raise Exception('Unable to retrieve json recourse')
 
 
@@ -179,19 +179,28 @@ def update_match(match_data, bracket_data, client):
 
 
 sample_bracket = {
-    "_id": "57d31a4e4527ea510a02985d"
-    , "league": "na-lcs"
-    , "tournament_id": "472c44a9-49d3-4de4-912c-aa4151fd1b3b"
-    , "bracket_id": "2a6a824d-3009-4d23-9c83-859b7a9c2629"
-    }
+  "league": "worlds",
+  "_id": "1f32fc038b8e20fd073dbe3f",
+  "tournament_id": "3c5fa267-237e-4b16-8e86-20378a47bf1c",
+  "bracket_id": "4e593494-40f1-42de-8ffd-982c93cfe083",
+  "watched": True
+}
+
+    # {
+    # "_id": "57d31a4e4527ea510a02985d"
+    # , "league": "na-lcs"
+    # , "tournament_id": "472c44a9-49d3-4de4-912c-aa4151fd1b3b"
+    # , "bracket_id": "2a6a824d-3009-4d23-9c83-859b7a9c2629"
+    # , 'watched' : True
+    # }
 
 
 def main(args):
-    brackets = []
+    brackets = [sample_bracket]
     client = MongoClient()
-    if args.bracket is None:
-        collection = client.lol.watched_brackets
-        brackets = collection.find()
+    # if args.bracket is None:
+    #     collection = client.lol.watched_brackets
+    #     brackets = collection.find()
 
     for bracket in brackets:
         if args.verbose:

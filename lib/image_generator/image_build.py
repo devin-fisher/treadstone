@@ -319,7 +319,7 @@ def _validate_item_images(items):
 
 
 def build_info_graphics(infographic_data):
-    version = "6.15.1"
+    version = "6.19.1"
     rtn = []
     for data in infographic_data:
         timestamp = 0

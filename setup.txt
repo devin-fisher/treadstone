@@ -1,0 +1,25 @@
+yum install `cat /opt/treadstone/packages.txt`
+
+Nginx Setup:
+	-- systemd enable
+	-- systemd start
+	-- symlink ui static files
+		-- index.html
+		-- scripts
+		-- bootstrap
+	-- add configuration for API
+	
+Service Setup:
+	-- hardlink files in /opt/treadstone/service to /etc/systemd/systemd
+	-- systemd enable services
+	-- systemd start services
+
+Mongodb-server Setup:
+	-- systemd enable
+	-- systemd start
+
+Pip install:
+	moviepy
+	sklearn
+	
+TODO make this ansible
