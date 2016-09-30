@@ -3,6 +3,7 @@
 from pymongo import MongoClient
 import hashlib
 import requests
+import requests_cache
 import time
 from collections import OrderedDict
 import sys
@@ -53,16 +54,17 @@ def save_game_analysis(game_id, game_analysis, client, status='incomplete', erro
 
 
 def http_get_resource(url, retry=3, time_between=1):
-    for i in xrange(retry):
-        response = requests.get(url)
-        if response.status_code == 200:
-            return response.json(object_pairs_hook=OrderedDict)
-        elif response.status_code == 404:
-            raise Exception('Bracket Info is Invalid, 404 when retrieving bracket data')
-        else:
-            time.sleep(time_between)
-
-    raise Exception('Unable to retrieve json recourse')
+    with requests_cache.disabled():
+        for i in xrange(retry):
+            response = requests.get(url)
+            if response.status_code == 200:
+                return response.json(object_pairs_hook=OrderedDict)
+            elif response.status_code == 404:
+                raise Exception('Bracket Info is Invalid, 404 when retrieving bracket data')
+            else:
+                time.sleep(time_between)
+    
+        raise Exception('Unable to retrieve json recourse')
 
 
 def get_game_length(stats_url):
