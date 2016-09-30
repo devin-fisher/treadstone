@@ -205,7 +205,10 @@ def main(args):
             continue
 
         print "Scanning Bracket '%(bracket_id)s'" % bracket
-        bracket_data = http_get_resource(BRACKET_DATA_URL % bracket)
+        bracket_data_url = BRACKET_DATA_URL % bracket
+        if args.verbose:
+            print bracket_data_url
+        bracket_data = http_get_resource(bracket_data_url)
 
         for match_id, match in bracket_data.get('matches', dict()).iteritems():
             print "MATCH: %(id)s - %(name)s - %(state)s" % match
@@ -233,3 +236,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     main(args)
+    
