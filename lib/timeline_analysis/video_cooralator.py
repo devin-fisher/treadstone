@@ -39,6 +39,8 @@ def video_event_translator(events, video_breaks):
 
         video_start = seconds_to_string(video_start)
         video_end = seconds_to_string(video_end)
+        game_start = seconds_to_string(game_start)
+        game_end = seconds_to_string(game_end)
 
         translated['video_start'] = video_start
         translated['video_end'] = video_end
