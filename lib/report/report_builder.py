@@ -1,5 +1,6 @@
 from lib.zip.inmemory_zip import InMemoryZip
 from lib.image_generator.image_build import build_info_graphics
+from lib.report.sort_data import sort_data
 import json
 import os
 
@@ -9,6 +10,16 @@ TYPES_OF_DATA = ['time_line_events', 'time_line_infographic', 'event_translation
 def build_report_file(game_analysis, match_id, file_path):
     if not game_analysis:
         return
+
+    time_stamp = 0
+    for game in game_analysis:
+        stmp = game.get('time_stamp', 0)
+        time_stamp = stmp if stmp >= time_stamp else time_stamp
+
+    if os.path.isfile(file_path):
+        file_time_stamp = os.path.getmtime(file_path)
+        if file_time_stamp > time_stamp:
+            pass#return
 
     imz = InMemoryZip()
     had_data = False
@@ -22,7 +33,9 @@ def build_report_file(game_analysis, match_id, file_path):
         for type_val in TYPES_OF_DATA:
             if type_val in game:
                 had_data = True
-                imz.append(name + "_" + type_val + ".json", json.dumps(game[type_val], indent=2))
+                data = game[type_val]
+                data = sort_data(data, type_val)
+                imz.append(name + "_" + type_val + ".json", json.dumps(data, indent=2))
                 if type_val == 'time_line_infographic':
                     time_line_infographic = game[type_val]
 

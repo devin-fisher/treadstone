@@ -9,8 +9,6 @@ import requests_cache
 
 from lib.util.static_vals import CACHE_DIR
 
-requests_cache.install_cache(os.path.join(CACHE_DIR, 'lcs_image_cache'))
-
 DATA_DRAGON = "http://ddragon.leagueoflegends.com/"
 
 
@@ -38,13 +36,26 @@ def get_icon_image(version, icon):
     return _get_image(location)
 
 
+def _request(url):
+    with requests_cache.enabled(os.path.join(CACHE_DIR, 'lcs_image_cache')):
+        return requests.get(url, stream=True)
+
+
 def _get_image(loc):
     web_loc = _web_location(loc)
-    r = requests.get(web_loc, stream=True)
+    r = _request(web_loc)
     try:
         return Image.open(inIO(r.content))
     except IOError as e:
         raise e
+
+
+def _lookup_resource_name(url, id_val):
+    data = _request(url)
+    data = data.json()
+    for key, data in data['data'].iteritems():
+        if int(data['key']) == int(id_val):
+            return key
 
 
 def _create_item_location(version, item_num):
@@ -81,13 +92,6 @@ def lookup_champ_name(version, champ_id):
 
 def lookup_summoner_name(version, summoner_id):
     return _lookup_resource_name(_web_location(_create_summoner_data_location(version)), summoner_id)
-
-
-def _lookup_resource_name(url, id_val):
-    data = requests.get(url, stream=True).json()
-    for key, data in data['data'].iteritems():
-        if int(data['key']) == int(id_val):
-            return key
 
 
 def is_number(s):
