@@ -19,7 +19,7 @@ def build_report_file(game_analysis, match_id, file_path):
     if os.path.isfile(file_path):
         file_time_stamp = os.path.getmtime(file_path)
         if file_time_stamp > time_stamp:
-            pass#return
+            return
 
     imz = InMemoryZip()
     had_data = False
@@ -45,5 +45,4 @@ def build_report_file(game_analysis, match_id, file_path):
                 imz.append_image(name + "_" + images[i].info.get('file_name', "infographic_" + str(i)), images[i])
 
     if had_data:
-        # if not os.path.isfile(file_path):
         imz.write_to_file(file_path)
