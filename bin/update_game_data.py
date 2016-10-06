@@ -71,7 +71,7 @@ def main(args):
                 print(match['name'])
                 games_data = update_match(match, bracket, client)
                 build_report_file(games_data, match_id, os.path.join(REPORTS_DIR, match_id+".zip"))
-                break
+                # break
 
 # if __name__ == "__main__":
     # img = build_info_graphics(timeline_infographic(
