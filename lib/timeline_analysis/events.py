@@ -18,8 +18,8 @@ def report(url, stats_url):
     end_list, counter_list = end_list_function(kill_list, counter_list, start_list)
     team_fight = large_fight_function(start_list, counter_list)
 
-    before = 7
-    after = 2
+    before = 11
+    after = 4
     len_start_list = len(start_list)
     video_length = 0
     # infographic_list = infographic_time_list_builder(data, team_fight)
