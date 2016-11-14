@@ -3,7 +3,7 @@ from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
 from PIL import ImageFile
-from image_cache import get_item_image, get_summoner_image, get_champ_image, get_icon_image
+from lib.util.static_lol_data import get_item_image, get_summoner_image, get_champ_image, get_icon_image
 
 from lib.video.video_still_util import seconds_to_string
 
