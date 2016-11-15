@@ -4,6 +4,7 @@ from lib.timeline_analysis.timeline_lib import kill_list_function
 from lib.timeline_analysis.timeline_lib import start_counter_list_function
 from lib.timeline_analysis.timeline_lib import end_list_function
 from lib.timeline_analysis.timeline_lib import large_fight_function
+from lib.util.static_lol_data import get_champ_data
 
 
 def player_gold(data, team_fight,time):
@@ -430,13 +431,100 @@ def minion_count(data,time):
 
     return(minion_list)
 
+def exp_lvl(data,time):
+    exp_list = []
+    time_stamp = int((time)/60)
+
+    for b in range(1,11):
+        lvl_count = 0
+        for a in range(1, time_stamp):
+            for c in range(1, len(data['frames'][a]['events'])):
+                check =  data['frames'][a]['events'][c]['type']
+                if check == "SKILL_LEVEL_UP":
+                    check2 = data['frames'][a]['events'][c]['participantId']
+                    if check2 == b:
+                        lvl_count = lvl_count + 1
+        exp_list.append(lvl_count)
+
+
+    return(exp_list)
+
+def lvl_stat_gold(exp_list,champion_list):
+    gold_efficiency = {"mpregenperlevel":5 , "attackspeedperlevel":25, "spellblockperlevel":18,"critperlevel":40, "hpperlevel":2.6, "hpregenperlevel":3, "attackdamageperlevel":35, "armorperlevel":20, "mpperlevel":1.4}
+    lvl_stat_gold = []
+    champion1 = get_champ_data("6.22.1", "Aatrox")
+    champion2 = get_champ_data("6.22.1", "Irelia")
+    for a in range(0,5):
+        sum = 0
+        lvl_champ1 = exp_list[a]
+        lvl_champ2 = exp_list[a+5]
+        if lvl_champ1 > lvl_champ2:
+            lvl_difference = lvl_champ1 - lvl_champ2
+            for b in range(0,len(champion1)):
+                sum = sum + (lvl_difference * (champion1["mpregenperlevel"] * gold_efficiency["mpregenperlevel"]))
+                sum = sum + (lvl_difference * (champion1["attackspeedperlevel"] * gold_efficiency["attackspeedperlevel"]))
+                sum = sum + (lvl_difference * (champion1["spellblockperlevel"] * gold_efficiency["spellblockperlevel"]))
+                sum = sum + (lvl_difference * (champion1["critperlevel"] * gold_efficiency["critperlevel"]))
+                sum = sum + (lvl_difference * (champion1["hpperlevel"] * gold_efficiency["hpperlevel"]))
+                sum = sum + (lvl_difference * (champion1["hpregenperlevel"] * gold_efficiency["hpregenperlevel"]))
+                sum = sum + (lvl_difference * (champion1["attackdamageperlevel"] * gold_efficiency["attackdamageperlevel"]))
+                sum = sum + (lvl_difference * (champion1["armorperlevel"] * gold_efficiency["armorperlevel"]))
+                sum = sum + (lvl_difference * (champion1["mpperlevel"] * gold_efficiency["mpperlevel"]))
+
+        if lvl_champ1 < lvl_champ2:
+            lvl_difference = lvl_champ2 - lvl_champ1
+            for b in range(0,len(champion1)):
+                sum = sum - (lvl_difference * (champion2["mpregenperlevel"] * gold_efficiency["mpregenperlevel"]))
+                sum = sum - (lvl_difference * (champion2["attackspeedperlevel"] * gold_efficiency["attackspeedperlevel"]))
+                sum = sum - (lvl_difference * (champion2["spellblockperlevel"] * gold_efficiency["spellblockperlevel"]))
+                sum = sum - (lvl_difference * (champion2["critperlevel"] * gold_efficiency["critperlevel"]))
+                sum = sum - (lvl_difference * (champion2["hpperlevel"] * gold_efficiency["hpperlevel"]))
+                sum = sum - (lvl_difference * (champion2["hpregenperlevel"] * gold_efficiency["hpregenperlevel"]))
+                sum = sum - (lvl_difference * (champion2["attackdamageperlevel"] * gold_efficiency["attackdamageperlevel"]))
+                sum = sum - (lvl_difference * (champion2["armorperlevel"] * gold_efficiency["armorperlevel"]))
+                sum = sum - (lvl_difference * (champion2["mpperlevel"] * gold_efficiency["mpperlevel"]))
+        else:
+            sum = 0
+        lvl_stat_gold.append(sum)
+
+    return(sum)
+
+
+def power_index(exp_list, data, time):
+    time_stamp = int((time)/60)
+    max_gold_diff = 4000
+    power_index_list = []
+    champion_list = []
+    for a in range(1,6):
+        index = 0
+        x = str(a)
+        z = str(a+5)
+        lvl_gold  = lvl_stat_gold(exp_list,champion_list)
+        gold_spent1 = data['frames'][time_stamp]['participantFrames'][x]['totalGold'] - data['frames'][time_stamp]['participantFrames'][x]['currentGold']
+        gold_spent2 = data['frames'][time_stamp]['participantFrames'][z]['totalGold'] - data['frames'][time_stamp]['participantFrames'][z]['currentGold']
+        gold_difference = gold_spent1 - gold_spent2
+        if gold_spent1 > gold_spent2:
+            total_gold = gold_difference + lvl_gold
+        if gold_spent1 < gold_spent2:
+            total_gold = (0 - gold_difference) + lvl_gold
+        if total_gold > 0:
+            index = total_gold / max_gold_diff
+        if total_gold < 0:
+            index = (0 - (abs(total_gold) / max_gold_diff))
+        index = int(index * 100)
+        power_index_list.append(index)
+    print(power_index_list)
+    return(power_index_list)
+
 def infographic_list_builder(url,url_stats):
+
     data = request_json_resource(url)
     data_stats = request_json_resource(url_stats)
     # r = requests.get(url)
     # s = requests.get(url_stats)
     # data = r.json()
     # data_stats = s.json()
+
     counter_list = []
     kill_list = kill_list_function(data)
     start_list, counter_list = start_counter_list_function(kill_list, counter_list)
@@ -448,12 +536,15 @@ def infographic_list_builder(url,url_stats):
     infographic_time_list = infographic_time_list_builder(data, team_fight, start_list)
     len_infographic_time_list = len(infographic_time_list)
     infographic_list = []
-
+    time = infographic_time_list[1]
+    champ = "aatrox"
+    exp_list = exp_lvl(data, time)
+    lvl_stat_gold(exp_list, champion_list)
+    power_index(exp_list,data,time)
     for a in range(0,len_infographic_time_list):
         a_index = a
         # a = str(a)
-        time = infographic_time_list[a_index]
-
+        time = infographic_time_list[a]
         player_gold_list = player_gold(data,team_fight,time)
         player_items_list = player_items(data, team_fight, time)
         kill_score = team_kills(data, time)

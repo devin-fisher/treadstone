@@ -122,4 +122,4 @@ def is_number(s):
 
 if __name__ == "__main__":
     #get_champ_image("6.18.1", 143).show()
-    print get_champ_data("6.22.1", "Aatrox")
+    print (get_champ_data("6.22.1", "Aatrox"))
