@@ -355,24 +355,24 @@
 var path = ["E:\\Youtube\\Worlds\\GroupA\\ROXvsNOX\\gameplay.mp4", "C:\\Users\\kydfi\\Documents\\League Project\\Opening_AME\\Comp2.mp4"];
 app.project.importFiles(path);
 app.project.createNewSequence("test","C:\\Program Files\\Adobe\\Adobe Premiere Pro CC 2017\\Settings\\SequencePresets\\ARRI\\1080p\\ARRI 1080p 30fps.sqpreset", 0)
-var test = "blah";
+
 //var newFile = new file(E:\\Youtube\\Worlds\\Group D\\SSG vs SPY\\
 var script_file = File("G1_event_translation.json"); // get the location of the script file
-    var script_file_path = "E:/Youtube/Worlds/Group D/SSG vs SPY/report/"; // get the path
+var script_file_path = "E:/Youtube/Worlds/Group D/SSG vs SPY/report/"; // get the path
 
-    var file_to_read = File("E:\\Youtube\\worlds\\GroupA\\ROXvsNOX\\Report\\G1_time_line_events.json");// but we want JSON
-    var events = null; // create an empty variable
-    //  alert(file_to_read); // This could be interesting
-    var content; // this will hold the String content from the file
-    if(file_to_read !== false){// if it is really there
-          file_to_read.open('r'); // open it
-          content = file_to_read.read(); // read it
-          events =  JSON.parse(content);// now evaluate the string from the file
-          //alert(events.toSource()); // if it all went fine we have now a JSON Object instead of a string call length
-          file_to_read.close(); // always close files after reading
-          }else{
-          alert("Bah!"); // if something went wrong
-    }
+var file_to_read = File("E:\\Youtube\\worlds\\GroupA\\ROXvsNOX\\Report\\G1_time_line_events.json");// but we want JSON
+var events = null; // create an empty variable
+//  alert(file_to_read); // This could be interesting
+var content; // this will hold the String content from the file
+if(file_to_read !== false){// if it is really there
+      file_to_read.open('r'); // open it
+      content = file_to_read.read(); // read it
+      events =  JSON.parse(content);// now evaluate the string from the file
+      //alert(events.toSource()); // if it all went fine we have now a JSON Object instead of a string call length
+      file_to_read.close(); // always close files after reading
+      }else{
+      alert("Bah!"); // if something went wrong
+}
 
 var startTimeSeconds = 0;
 var endTimeSeconds = 4;

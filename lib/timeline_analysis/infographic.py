@@ -1,5 +1,6 @@
 from lib.util.http_lol_static import request_json_resource
 from collections import OrderedDict
+import math
 from lib.timeline_analysis.timeline_lib import kill_list_function
 from lib.timeline_analysis.timeline_lib import start_counter_list_function
 from lib.timeline_analysis.timeline_lib import end_list_function
@@ -452,7 +453,7 @@ def exp_lvl(data,time):
 def lvl_stat_gold(exp_list,champion_list):
     gold_efficiency = {"mpregenperlevel":5 , "attackspeedperlevel":25, "spellblockperlevel":18,"critperlevel":40, "hpperlevel":2.6, "hpregenperlevel":3, "attackdamageperlevel":35, "armorperlevel":20, "mpperlevel":1.4}
     lvl_stat_gold = []
-    champion1 = get_champ_data("6.22.1", "Aatrox")
+    champion1 = get_champ_data("6.22.1", "Malphite")
     champion2 = get_champ_data("6.22.1", "Irelia")
     for a in range(0,5):
         sum = 0
@@ -492,7 +493,7 @@ def lvl_stat_gold(exp_list,champion_list):
 
 def power_index(exp_list, data, time):
     time_stamp = int((time)/60)
-    max_gold_diff = 4000
+    max_gold_diff = 5000
     power_index_list = []
     champion_list = []
     for a in range(1,6):
@@ -507,6 +508,8 @@ def power_index(exp_list, data, time):
             total_gold = gold_difference + lvl_gold
         if gold_spent1 < gold_spent2:
             total_gold = (0 - gold_difference) + lvl_gold
+        if abs(total_gold) > 4000:
+            total_gold = 2*math.sqrt(pow(total_gold,2)+5000*total_gold)-total_gold
         if total_gold > 0:
             index = total_gold / max_gold_diff
         if total_gold < 0:
@@ -533,6 +536,7 @@ def infographic_list_builder(url,url_stats):
     champion_list = champion_id_list(data_stats)
     spell_list = summoner_spell(data_stats)
 
+
     infographic_time_list = infographic_time_list_builder(data, team_fight, start_list)
     len_infographic_time_list = len(infographic_time_list)
     infographic_list = []
@@ -541,6 +545,7 @@ def infographic_list_builder(url,url_stats):
     exp_list = exp_lvl(data, time)
     lvl_stat_gold(exp_list, champion_list)
     power_index(exp_list,data,time)
+    lvl_list = exp_lvl(data,time)
     for a in range(0,len_infographic_time_list):
         a_index = a
         # a = str(a)
@@ -564,7 +569,7 @@ def infographic_list_builder(url,url_stats):
         blue_champion_list = champion_list[0:5]
         blue_spell_list = spell_list[0:5]
         blue_minion_list = minion_list[0:5]
-
+        blue_lvl_list = lvl_list[0:5]
 
         team_1 = 0
         team_2 = 1
@@ -585,6 +590,7 @@ def infographic_list_builder(url,url_stats):
         infographic_list[a][team_1]["totalGoldGraph"] = blue_graph_list
         infographic_list[a][team_1]["summonerSpell"] = blue_spell_list
         infographic_list[a][team_1]["minionsKilled"] = blue_minion_list
+        infographic_list[a][team_1]["playerLevel"] = blue_lvl_list
 
         infographic_list[a][team_1]['playerItem'] = []
         for b in range(1,6):
@@ -598,6 +604,7 @@ def infographic_list_builder(url,url_stats):
         red_champion_list = champion_list[5:11]
         red_spell_list = spell_list[5:11]
         red_minion_list = minion_list[5:11]
+        red_lvl_list = lvl_list[0:5]
 
         infographic_list[a][team_2]["timeStamp"] = infographic_time_list[a_index]
         infographic_list[a][team_2]['teamGold'] = team_gold_list[2]
@@ -612,6 +619,7 @@ def infographic_list_builder(url,url_stats):
         infographic_list[a][team_2]['totalGoldGraph'] = red_graph_list
         infographic_list[a][team_2]['summonerSpell'] = red_spell_list
         infographic_list[a][team_2]['minionsKilled'] = red_minion_list
+        infographic_list[a][team_2]["playerLevel"] = red_lvl_list
 
         infographic_list[a][team_2]['playerItem'] = []
         for b in range(6,11):
