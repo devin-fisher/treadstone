@@ -13,3 +13,4 @@ class YoutubeFile:
 
     def __exit__(self, type, value, traceback):
         os.system("rm -f " + self.path)
+        pass

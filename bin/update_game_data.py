@@ -70,7 +70,7 @@ def main(args):
             if match.get('state', '') == 'resolved':
                 print(match['name'])
                 games_data = update_match(match, bracket, client)
-                build_report_file(games_data, match_id, os.path.join(REPORTS_DIR, match_id+".zip"))
+                build_report_file(games_data, match, match_name=match.get("name", None))
                 # break
 
 # if __name__ == "__main__":

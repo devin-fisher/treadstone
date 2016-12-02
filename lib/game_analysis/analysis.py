@@ -31,7 +31,7 @@ def save_game_analysis(game_id, game_analysis, client, error_msg=None):
         error_list = game_analysis.get('error_msg', list())
         if not isinstance(error_list, list):
             error_list = list({'unknown', str(error_list)})
-            error_list.append(error_msg)
+        error_list.append(error_msg)
         game_analysis['error_msg'] = error_list
 
     game_analysis['time_stamp'] = int(time.time())
@@ -84,12 +84,14 @@ def do_timeline_video_analysis(game_id, game_data, game_analysis, client):
         raise Exception("Time Line URL is not defined")
 
     length = get_game_length(game_data.get('stats_url', None))
+    youtube_url = game_data.get('youtube_url', None)
 
-    with YoutubeFile(game_data.get('youtube_url', None), game_id) as video_path:
+    with YoutubeFile(youtube_url, game_id) as video_path:
         analysis = start_only_analysis(video_path, length, verbose=True)
 
     # print analysis
     game_analysis[key_val] = analysis
+    game_analysis['youtube_url'] = youtube_url
     save_game_analysis(game_id, game_analysis, client)
 
 
