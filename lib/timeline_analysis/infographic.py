@@ -509,14 +509,21 @@ def power_index(exp_list, data, time):
         if gold_spent1 < gold_spent2:
             total_gold = (0 - gold_difference) + lvl_gold
         if abs(total_gold) > 4000:
-            total_gold = 2*math.sqrt(pow(total_gold,2)+5000*total_gold)-total_gold
+            if total_gold > 0:
+                total_gold = 2*math.sqrt(pow(total_gold,2)+5000*total_gold)-total_gold
+            if total_gold < 0:
+                total_gold = -(2*math.sqrt(pow(total_gold,2)+5000*total_gold)-total_gold)
+            else:
+                total_gold = total_gold
+        if exp_list[a-1] > 10 or exp_list[a+4] > 10:
+            total_gold = total_gold * .75
         if total_gold > 0:
             index = total_gold / max_gold_diff
         if total_gold < 0:
             index = (0 - (abs(total_gold) / max_gold_diff))
         index = int(index * 100)
         power_index_list.append(index)
-    print(power_index_list)
+    # print(power_index_list)
     return(power_index_list)
 
 def infographic_list_builder(url,url_stats):
@@ -544,8 +551,8 @@ def infographic_list_builder(url,url_stats):
     champ = "aatrox"
     exp_list = exp_lvl(data, time)
     lvl_stat_gold(exp_list, champion_list)
-    power_index(exp_list,data,time)
-    lvl_list = exp_lvl(data,time)
+
+
     for a in range(0,len_infographic_time_list):
         a_index = a
         # a = str(a)
@@ -560,6 +567,8 @@ def infographic_list_builder(url,url_stats):
         player_death_list = player_deaths(data,time)
         dragon_count_list = dragon_counter(data,time)
         minion_list = minion_count(data,time)
+        lvl_list = exp_lvl(data,time)
+        index = power_index(exp_list,data,time)
 
         blue_graph_list = graph_info_blue(data,time)
         blue_player_kill_list = player_kill_list[0:5]
@@ -576,6 +585,7 @@ def infographic_list_builder(url,url_stats):
         infographic_list.append([])
         infographic_list[a].append(OrderedDict())
         infographic_list[a].append(OrderedDict())
+        infographic_list[a].append([])
 
         infographic_list[a][team_1]["timeStamp"] = infographic_time_list[a_index]
         infographic_list[a][team_1]["teamGold"] = team_gold_list[1]
@@ -625,6 +635,7 @@ def infographic_list_builder(url,url_stats):
         for b in range(6,11):
             infographic_list[a][team_2]['playerItem'].append(player_items_list[b]['items'])
 
+        infographic_list[a][2].append(index)
     # print(infographic_list)
     return(infographic_list)
 
