@@ -1,8 +1,4 @@
-import requests
-import requests_cache
 import time
-from collections import OrderedDict
-import os
 
 from lib.game_analysis.video_dowload import YoutubeFile
 from lib.timeline_analysis.events import report as timeline_events

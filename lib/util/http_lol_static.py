@@ -15,7 +15,7 @@ URL_FORMAT = 'http://%s:%s/%s'
 def request_json_resource(url, retry=3, time_between=1):
     with requests_cache.enabled(os.path.join(CACHE_DIR, 'lcs_static_cache')):
         for i in range(retry):
-            response = requests.get(url, headers={'Origin':'http://www.lolesports.com'})
+            response = requests.get(url, headers={'Origin': 'http://www.lolesports.com'})
             if response.status_code == 200:
                 return response.json(object_pairs_hook=OrderedDict)
             elif response.status_code == 404:

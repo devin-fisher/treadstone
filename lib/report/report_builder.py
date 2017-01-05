@@ -1,12 +1,16 @@
-from lib.zip.inmemory_zip import InMemoryZip
-from lib.image_generator.image_build import build_info_graphics
-from lib.report.sort_data import sort_data
-from lib.util.static_vals import REPORTS_DIR
-from lib.game_analysis.video_download_template import video_download_batch_file
 import json
 import os
 
+from lib.image_generator.image_build import build_info_graphics
+from lib.report.sort_data import sort_data
+from lib.report.video_download_template import video_download_batch_file
+from lib.util.static_vals import REPORTS_DIR
+from lib.zip.inmemory_zip import InMemoryZip
+from lib.util.http_lol_static import request_api_resource
+
 TYPES_OF_DATA = ['time_line_events', 'time_line_infographic', 'event_translation', 'video_analysis']
+
+MATCH_DATA_URL = "api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s/matches/%(match_id)s"
 
 
 def build_report_file(game_analysis, match, match_name=None, file_path=None):
@@ -37,7 +41,7 @@ def build_report_file(game_analysis, match, match_name=None, file_path=None):
     video_list = []
     for game in game_analysis:
         name = game['name']
-        video_list.append({'game_name': name, 'youtube_url': 'youtube_url'})
+        video_list.append({'game_name': name, 'youtube_url': game['youtube_url']})
         if not game or 'time_line_events' not in game or 'time_line_infographic' not in game:
             continue
 
@@ -62,6 +66,10 @@ def build_report_file(game_analysis, match, match_name=None, file_path=None):
     imz.append('files.json', json.dumps(files, indent=2))
     imz.append("match_video_download.bat", video_download_batch_file(video_list))
     imz.append("match_info.json", json.dumps(match, indent=2))
+
+    match_url = MATCH_DATA_URL % game_analysis[0]
+    imz.append("schedule_info.json", json.dumps(request_api_resource(match_url + "/schedule_items"), indent=2))
+    imz.append("team_info.json", json.dumps(request_api_resource(match_url + "/team_info"), indent=2))
 
     if had_data:
         imz.write_to_file(file_path)
