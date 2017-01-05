@@ -1,7 +1,7 @@
 import sys
 from moviepy.editor import VideoFileClip
 from video_still import get_still_with_video, extract_parts
-from video_still_util import convert_min_sec_to_sec
+from video_still_util import seconds_to_string
 import video_still_util
 from video_still_test import SAMPLE_ANALYSIS
 
@@ -20,64 +20,6 @@ CONTRAST = 2.5
 IMAGE_FILTER_THRESHOLD = 180
 
 SAMPLE_STILL_DIR = '../../_samples/still_data/'
-
-SAMPLE_RANGES = {
-    "/home/devin.fisher/Kingdoms/lol/79i_t9CCqDQ.mp4":
-    [
-        {'start_time': convert_min_sec_to_sec("11:06"),
-         'length': convert_min_sec_to_sec("21:02") - convert_min_sec_to_sec("11:06"),
-         'start_game_time': convert_min_sec_to_sec("0:14")}
-        ,
-        {'start_time': convert_min_sec_to_sec("21:31"),
-         'length': convert_min_sec_to_sec("35:09") - convert_min_sec_to_sec("21:31"),
-         'start_game_time': convert_min_sec_to_sec("10:39")}
-    ]
-    ,
-    "/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4":
-    [
-        {'start_time': convert_min_sec_to_sec("23:22"),
-         'length': convert_min_sec_to_sec("40:32") - convert_min_sec_to_sec("23:22"),
-         'start_game_time': convert_min_sec_to_sec("0:15")}
-        ,
-
-        {'start_time': convert_min_sec_to_sec("41:20"),
-         'length': convert_min_sec_to_sec("50:13") - convert_min_sec_to_sec("41:20"),
-         'start_game_time': convert_min_sec_to_sec("18:17"),
-         'should_verify': False
-         }
-        ,
-        {'start_time': convert_min_sec_to_sec("51:18"),
-         'length': convert_min_sec_to_sec("55:08") - convert_min_sec_to_sec("51:18"),
-         'start_game_time': convert_min_sec_to_sec("28:15"),
-         'should_verify': False
-         }
-        ,
-        {'start_time': convert_min_sec_to_sec("55:31"),
-         'length': convert_min_sec_to_sec("01:01:11") - convert_min_sec_to_sec("55:31"),
-         'start_game_time': convert_min_sec_to_sec("32:28"),
-         'should_verify': False
-         }
-    ]
-    ,
-    "/home/devin.fisher/Kingdoms/lol/pFgEnbRlv00.mp4":
-    [
-        {'start_time': convert_min_sec_to_sec("33:19"),
-         'length': convert_min_sec_to_sec("35:31") - convert_min_sec_to_sec("33:19"),
-         'start_game_time': convert_min_sec_to_sec("12:14")}
-        ,
-        {'start_time': convert_min_sec_to_sec("36:00"),
-         'length': convert_min_sec_to_sec("47:29") - convert_min_sec_to_sec("36:00"),
-         'start_game_time': convert_min_sec_to_sec("15:00")}
-        ,
-        {'start_time': convert_min_sec_to_sec("48:10"),
-         'length': convert_min_sec_to_sec("53:29") - convert_min_sec_to_sec("48:10"),
-         'start_game_time': convert_min_sec_to_sec("27:10")}
-        ,
-        {'start_time': convert_min_sec_to_sec("54:27"),
-         'length': convert_min_sec_to_sec("56:38") - convert_min_sec_to_sec("54:27"),
-         'start_game_time': convert_min_sec_to_sec("33:27")}
-    ]
-}
 
 
 def get_conformation(question):
@@ -116,11 +58,13 @@ def capture_digit_data(path, data, interval_sec=1, check_times=False, **kwargs):
     if check_time(video_obj, start_time, start_game_time, check_times):
         for i in xrange(length):
             if not check_times:
-                print("%s of %s" % (str(i), str(length)))
-                image_data = get_still_with_video(video_obj, start_time+i)
+                # print("%s of %s" % (str(i), str(length)))
+                image_data = get_still_with_video(video_obj, start_time+i, show=False)
                 expected_digits = video_still_util.convert_seconds_to_parts(start_game_time+i)
                 num = 0
                 for part in extract_parts(image_data):
+                    if part is None or part.size is not 165:
+                        continue
                     new_data['target'].append(int(expected_digits[num]))
                     new_data['data'].append(part)
                     num += interval_sec
@@ -135,50 +79,61 @@ def capture_digit_data(path, data, interval_sec=1, check_times=False, **kwargs):
         print "Fix %s -- %s" % (str(path), str(kwargs))
 
 
+def capture_video_data(rtn, video_path, analysis, verify_check=False):
+    if not (analysis.get('should_verify', True)) and verify_check:
+        return
+
+    print video_path
+    cur_time = dict()
+    cur_time['start_time'] = analysis['start'] + 60
+    cur_time['start_game_time'] = 60
+    for shift in analysis['shifts']:
+        cur_time['length'] = int((shift['start_time'] - 1) - cur_time['start_time'])
+        print("Video:%s -- Start Time: %s -- Start Game Time: %s -- Length: %s"
+              % (video_path,
+                 seconds_to_string(cur_time['start_time']),
+                 seconds_to_string(cur_time['start_game_time']),
+                 seconds_to_string(cur_time['length'])))
+        capture_digit_data(video_path, rtn, check_times=analysis.get('should_verify', True), **cur_time)
+        cur_time['start_time'] = shift['end_time'] + 1
+        cur_time['start_game_time'] = shift['end_game_time'] + 1
+
+
 def capture_data(data_set_path='../../_samples/still_data/still_training_data.pkl', verify_check=False):
     rtn = dict()
     rtn['target'] = []
     rtn['data'] = []
 
     for video_path, analysis in SAMPLE_ANALYSIS.iteritems():
-        if not (analysis.get('should_verify', True)) and verify_check:
-            continue
-
-        print video_path
-        cur_time = dict()
-        cur_time['start_time'] = analysis['start'] + 60
-        cur_time['start_game_time'] = 60
-        for shift in analysis['shifts']:
-            cur_time['length'] = 15 #int((shift['start_time'] - 1) - cur_time['start_time'])
-            print("Video:%s %s" % (video_path, str(cur_time)))
-            capture_digit_data(video_path, rtn, check_times=analysis.get('should_verify', True), **cur_time)
-            cur_time['start_time'] = shift['end_time'] + 1
-            cur_time['start_game_time'] = shift['end_game_time'] + 1
-            break
-        break
+        capture_video_data(rtn, video_path, analysis, verify_check)
 
     rtn['target'] = numpy.asarray(rtn['target'])
-    rtn['data'] = numpy.asarray(rtn['data'])
+    rtn['data'] = numpy.stack(rtn['data'])
 
-    # with open(data_set_path, 'wb') as f:  TODO This is not creating the right array, must fix
-    #     pickle.dump(rtn, f)
+    with open(data_set_path, 'wb') as f:
+        pickle.dump(rtn, f)
 
 
 def train_model(data_set_path='/home/devin.fisher/Kingdoms/treadstone/_samples/still_data/still_training_data.pkl'):
     # data_set = None
-    # with open(data_set_path, 'rb') as f:
-    #     data_set = pickle.load(f)
-
-    with open('/home/devin.fisher/Kingdoms/lol/still_training_data2.pkl', 'rb') as f:
+    with open(data_set_path, 'rb') as f:
         data_set = pickle.load(f)
 
-    (train_x, test_x, train_y, test_y) = train_test_split(data_set['data'], data_set['target'], test_size=0.1)
+    # with open('/home/devin.fisher/Kingdoms/lol/still_training_data2.pkl', 'rb') as f:
+    #     data_set = pickle.load(f)
+
+    # (train_x, test_x, train_y, test_y) = train_test_split(data_set['data'], data_set['target'], test_size=0.1)
+
+    train_x = data_set['data']
+    test_x = data_set['data']
+    train_y = data_set['target']
+    test_y = data_set['target']
 
     dbn = DBN(
         [-1, 300, -1],
         learn_rates=0.3,
         learn_rate_decays=0.9,
-        epochs=30,
+        epochs=60,
         verbose=1)
     dbn.fit(train_x, train_y)
 
@@ -191,6 +146,31 @@ def train_model(data_set_path='/home/devin.fisher/Kingdoms/treadstone/_samples/s
     print classification_report(test_y, preds)
 
 
+def dedup(data_set_path='../../_samples/still_data/still_training_data.pkl'):
+    with open('/home/devin.fisher/Kingdoms/treadstone/_samples/still_data/still_training_data.pkl', 'rb') as f:
+        data_set = pickle.load(f)
+
+    rtn = dict()
+    dedup_data = []
+    dedup_target = []
+    has = set()
+    data = data_set['data']
+    target = data_set['target']
+    for i in xrange(len(target)):
+        row = tuple(data[i])
+        if row not in has:
+            has.add(row)
+            dedup_target.append(target[i])
+            dedup_data.append(data[i])
+
+    rtn['target'] = numpy.asarray(dedup_target)
+    rtn['data'] = numpy.stack(dedup_data)
+
+    with open(data_set_path, 'wb') as f:
+        pickle.dump(rtn, f)
+
+
 if __name__ == "__main__":
-    # train_model()
-    capture_data()
+    train_model()
+    # capture_data()
+    # dedup()

@@ -59,11 +59,14 @@ def find_time_still(image_data):
     parts_image = extract_parts(image_data)
 
     digits = []
-    for part in parts_image:
-        if part is None:
-            return None
-        digit = MODEL.predict(numpy.atleast_2d(part))
-        digits.append(int(digit))
+    try:
+        for part in parts_image:
+            if part is None:
+                return None
+            digit = MODEL.predict(numpy.atleast_2d(part))
+            digits.append(int(digit))
+    except ValueError:
+        return None
 
     return video_still_util.convert_parts_to_seconds(digits)
 
