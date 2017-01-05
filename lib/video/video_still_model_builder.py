@@ -3,6 +3,7 @@ from moviepy.editor import VideoFileClip
 from video_still import get_still_with_video, extract_parts
 from video_still_util import convert_min_sec_to_sec
 import video_still_util
+from video_still_test import SAMPLE_ANALYSIS
 
 from sklearn.cross_validation import train_test_split
 from sklearn.metrics import classification_report
@@ -134,9 +135,41 @@ def capture_digit_data(path, data, interval_sec=1, check_times=False, **kwargs):
         print "Fix %s -- %s" % (str(path), str(kwargs))
 
 
+def capture_data(data_set_path='../../_samples/still_data/still_training_data.pkl', verify_check=False):
+    rtn = dict()
+    rtn['target'] = []
+    rtn['data'] = []
+
+    for video_path, analysis in SAMPLE_ANALYSIS.iteritems():
+        if not (analysis.get('should_verify', True)) and verify_check:
+            continue
+
+        print video_path
+        cur_time = dict()
+        cur_time['start_time'] = analysis['start'] + 60
+        cur_time['start_game_time'] = 60
+        for shift in analysis['shifts']:
+            cur_time['length'] = 15 #int((shift['start_time'] - 1) - cur_time['start_time'])
+            print("Video:%s %s" % (video_path, str(cur_time)))
+            capture_digit_data(video_path, rtn, check_times=analysis.get('should_verify', True), **cur_time)
+            cur_time['start_time'] = shift['end_time'] + 1
+            cur_time['start_game_time'] = shift['end_game_time'] + 1
+            break
+        break
+
+    rtn['target'] = numpy.asarray(rtn['target'])
+    rtn['data'] = numpy.asarray(rtn['data'])
+
+    # with open(data_set_path, 'wb') as f:  TODO This is not creating the right array, must fix
+    #     pickle.dump(rtn, f)
+
+
 def train_model(data_set_path='/home/devin.fisher/Kingdoms/treadstone/_samples/still_data/still_training_data.pkl'):
-    data_set = None
-    with open(data_set_path, 'rb') as f:
+    # data_set = None
+    # with open(data_set_path, 'rb') as f:
+    #     data_set = pickle.load(f)
+
+    with open('/home/devin.fisher/Kingdoms/lol/still_training_data2.pkl', 'rb') as f:
         data_set = pickle.load(f)
 
     (train_x, test_x, train_y, test_y) = train_test_split(data_set['data'], data_set['target'], test_size=0.1)
@@ -151,23 +184,13 @@ def train_model(data_set_path='/home/devin.fisher/Kingdoms/treadstone/_samples/s
 
     joblib.dump(dbn, 'digit_model.pkl', compress=9)
 
+    # dbn = joblib.load('digit_model.pkl')
+
     # compute the predictions for the test data and show a classification report
     preds = dbn.predict(test_x)
     print classification_report(test_y, preds)
 
+
 if __name__ == "__main__":
-    train_model()
-    # rtn = dict()
-    # rtn['target'] = []
-    # rtn['data'] = []
-    #
-    # for video_path, times in SAMPLE_RANGES.iteritems():
-    #     for time in times:
-    #         print("Video:%s %s" % (video_path, str(time)))
-    #         capture_digit_data(video_path, rtn, check_times=time.get('should_verify', False), **time)
-    #
-    # rtn['target'] = numpy.asarray(rtn['target'])
-    # rtn['data'] = numpy.asarray(rtn['data'])
-    #
-    # with open('../../_samples/still_data/still_training_data.pkl', 'wb') as f:
-    #     pickle.dump(rtn, f)
+    # train_model()
+    capture_data()

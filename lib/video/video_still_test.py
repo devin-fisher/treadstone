@@ -7,35 +7,35 @@ import video_still_util
 
 import numbers
 
-SAMPLE_RANGES = {
-    "/home/devin.fisher/Kingdoms/lol/79i_t9CCqDQ.mp4":
-        {'start_time': 1970, 'length': 100, 'start_game_time': 1318}
-    ,
-    "/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4":
-        {'start_time': convert_min_sec_to_sec("23:22"),
-         'length': convert_min_sec_to_sec("40:32") - convert_min_sec_to_sec("23:22"),
-         'start_game_time': convert_min_sec_to_sec("0:15")}
-    ,
-    "/home/devin.fisher/Kingdoms/lol/pFgEnbRlv00.mp4":
-        {'start_time': convert_min_sec_to_sec("33:19"),
-         'length': convert_min_sec_to_sec("35:31") - convert_min_sec_to_sec("33:19"),
-         'start_game_time': convert_min_sec_to_sec("12:14")}
-    ,
-    "/home/devin.fisher/Kingdoms/lol/pFgEnbRlv00.mp4":
-        {'start_time': convert_min_sec_to_sec("36:00"),
-         'length': convert_min_sec_to_sec("47:29") - convert_min_sec_to_sec("36:00"),
-         'start_game_time': convert_min_sec_to_sec("15:00")}
-    ,
-    "/home/devin.fisher/Kingdoms/lol/pFgEnbRlv00.mp4":
-        {'start_time': convert_min_sec_to_sec("48:10"),
-         'length': convert_min_sec_to_sec("53:29") - convert_min_sec_to_sec("48:10"),
-         'start_game_time': convert_min_sec_to_sec("27:10")}
-    ,
-    "/home/devin.fisher/Kingdoms/lol/pFgEnbRlv00.mp4":
-        {'start_time': convert_min_sec_to_sec("54:27"),
-         'length': convert_min_sec_to_sec("56:38") - convert_min_sec_to_sec("54:27"),
-         'start_game_time': convert_min_sec_to_sec("33:27")}
-}
+# SAMPLE_RANGES = {
+#     "/home/devin.fisher/Kingdoms/lol/79i_t9CCqDQ.mp4":
+#         {'start_time': 1970, 'length': 100, 'start_game_time': 1318}
+#     ,
+#     "/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4":
+#         {'start_time': convert_min_sec_to_sec("23:22"),
+#          'length': convert_min_sec_to_sec("40:32") - convert_min_sec_to_sec("23:22"),
+#          'start_game_time': convert_min_sec_to_sec("0:15")}
+#     ,
+#     "/home/devin.fisher/Kingdoms/lol/pFgEnbRlv00.mp4":
+#         {'start_time': convert_min_sec_to_sec("33:19"),
+#          'length': convert_min_sec_to_sec("35:31") - convert_min_sec_to_sec("33:19"),
+#          'start_game_time': convert_min_sec_to_sec("12:14")}
+#     ,
+#     "/home/devin.fisher/Kingdoms/lol/pFgEnbRlv00.mp4":
+#         {'start_time': convert_min_sec_to_sec("36:00"),
+#          'length': convert_min_sec_to_sec("47:29") - convert_min_sec_to_sec("36:00"),
+#          'start_game_time': convert_min_sec_to_sec("15:00")}
+#     ,
+#     "/home/devin.fisher/Kingdoms/lol/pFgEnbRlv00.mp4":
+#         {'start_time': convert_min_sec_to_sec("48:10"),
+#          'length': convert_min_sec_to_sec("53:29") - convert_min_sec_to_sec("48:10"),
+#          'start_game_time': convert_min_sec_to_sec("27:10")}
+#     ,
+#     "/home/devin.fisher/Kingdoms/lol/pFgEnbRlv00.mp4":
+#         {'start_time': convert_min_sec_to_sec("54:27"),
+#          'length': convert_min_sec_to_sec("56:38") - convert_min_sec_to_sec("54:27"),
+#          'start_game_time': convert_min_sec_to_sec("33:27")}
+# }
 
 SAMPLE_ANALYSIS = {
     "/home/devin.fisher/Kingdoms/lol/79i_t9CCqDQ.mp4":
@@ -43,6 +43,7 @@ SAMPLE_ANALYSIS = {
         'start': 651.3048,
         'end': 2240.3048,
         'game_length': 1594,
+        'should_verify': False,
         'shifts':
             [
                 {'start_game_time': 611.0,
@@ -63,6 +64,7 @@ SAMPLE_ANALYSIS = {
         'start': 1386.8696000000002,
         'end': 3674.8696,
         'game_length': 2292,
+        'should_verify': False,
         'shifts':
             [
                 {'start_game_time': 1048.0,
@@ -92,6 +94,7 @@ SAMPLE_ANALYSIS = {
             'start': 1264.9040999999995,
             'end': 3400.9040999999997,
             'game_length': 2141,
+            'should_verify': False,
             'shifts': [{
                 'start_game_time': 219.0,
                 'start_time': 1483.9040999999995,
@@ -136,6 +139,7 @@ SAMPLE_ANALYSIS = {
             'start': 1777.7094000000009,
             'end': 4153.709400000001,
             'game_length': 2381,
+            'should_verify': False,
             'shifts': [{
                 'start_game_time': 341.0,
                 'start_time': 2118.7094000000006,
@@ -186,6 +190,7 @@ SAMPLE_ANALYSIS = {
             'start': 1004.2291999999997,
             'end': 2910.2291999999998,
             'game_length': 1910,
+            'should_verify': False,
             'shifts': [{
                 'start_game_time': 1071.0,
                 'start_time': 2075.2291999999998,
@@ -218,6 +223,7 @@ SAMPLE_ANALYSIS = {
             'start': 422.3838999999994,
             'end': 2298.3838999999994,
             'game_length': 1880,
+            'should_verify': False,
             'shifts': [{
                 'start_game_time': 359.0,
                 'start_time': 781.3838999999994,
@@ -243,7 +249,65 @@ SAMPLE_ANALYSIS = {
                 'end_time': 2137.3838999999994,
                 'end_game_time': 1719.0
             }]
-        }
+        },
+    "/home/devin.fisher/Kingdoms/lol/3O7OJY3X0yM.mp4" :
+    {
+        'start': 1074.9269000000013,
+        'end': 3461.9269000000013,
+        'game_length': 2391,
+        'should_verify': False,
+        'shifts': [
+            {
+                'start_game_time': 558.0,
+                'start_time': 1632.9269000000013,
+                'did_shift': False,
+                'end_time': 1653.9269000000013,
+                'end_game_time': 579.0
+            },
+            {
+                'start_game_time': 725.0,
+                'start_time': 1799.9269000000013,
+                'did_shift': False,
+                'end_time': 1815.9269000000013,
+                'end_game_time': 741.0
+            },
+            {
+                'start_game_time': 1253.0,
+                'start_time': 2327.9269000000013,
+                'did_shift': True,
+                'end_time': 2340.9269000000013,
+                'end_game_time': 1270.0
+            },
+            {
+                'start_game_time': 1363.0,
+                'start_time': 2433.9269000000013,
+                'did_shift': False,
+                'end_time': 2461.9269000000013,
+                'end_game_time': 1391.0
+            },
+            {
+                'start_game_time': 1542.0,
+                'start_time': 2612.9269000000013,
+                'did_shift': False,
+                'end_time': 2634.9269000000013,
+                'end_game_time': 1564.0
+            },
+            {
+                'start_game_time': 2081.0,
+                'start_time': 3151.9269000000013,
+                'did_shift': False,
+                'end_time': 3180.9269000000013,
+                'end_game_time': 2110.0
+            },
+            {
+                'start_game_time': 2235.0,
+                'start_time': 3305.9269000000013,
+                'did_shift': False,
+                'end_time': 3324.9269000000013,
+                'end_game_time': 2254.0
+            }
+        ]
+    }
 }
 
 
@@ -326,5 +390,6 @@ def test_video_analysis(video_path, analysis):
 if __name__ == "__main__":
     # test_still_open_video('/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4', 1927, 540)
     # test_still_open_video('/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4', 1987, 600)
-    test_all_video_analysis()
+    # test_all_video_analysis()
+    print(str(standard_analysis("/home/devin.fisher/Kingdoms/lol/3O7OJY3X0yM-HD.mp4", 2391, verbose=True)))
     # print compare_dict(SAMPLE_ANALYSIS["/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4"], SAMPLE_ANALYSIS["/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4"])

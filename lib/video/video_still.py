@@ -11,8 +11,11 @@ IMAGE_SPLIT_TIME = .999 / IMAGE_SPLITS_COUNT
 CONTRAST = 2.5
 IMAGE_FILTER_THRESHOLD = 190
 
-NORMALIZED_WIDTH = 7
-NORMALIZED_HEIGHT = 10
+# NORMALIZED_WIDTH = 7
+# NORMALIZED_HEIGHT = 10
+
+NORMALIZED_WIDTH = 11
+NORMALIZED_HEIGHT = 15
 
 
 def _prep_image(image, show=False, contrast_val=CONTRAST, image_filter_threshold=IMAGE_FILTER_THRESHOLD):
@@ -41,6 +44,8 @@ def _convert_binary_array(numpy_array, threshold=IMAGE_FILTER_THRESHOLD):
 def _crop_image(image):
     if (720, 1280, 3) == image.shape:
         return image[55:68, 625:653]
+    elif (1080, 1920, 3) == image.shape:
+        return image[85:101, 938:980]
     raise Exception("Video Resolution has changed")
 
 
@@ -93,8 +98,6 @@ def extract_parts(image_data, show=False):
         yield None
     else:
         for c in contours:
-            # yield extract_part(c, image_data)
-
             x, y, w, h = cv2.boundingRect(c)
             part = image_data[y:y + h, x:x + w]
 
