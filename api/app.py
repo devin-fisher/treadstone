@@ -18,6 +18,8 @@ match = Match()
 match_list = MatchList()
 game = Game()
 game_list = GameList()
+teams_info = TeamInfo()
+schedule_items = ScheduleItems()
 
 
 api.add_route("/api/leagues/", league_list)
@@ -31,6 +33,8 @@ api.add_route("/api/leagues/{league_id}/tournaments/{tournament_id}/brackets/{br
 api.add_route("/api/leagues/{league_id}/tournaments/{tournament_id}/brackets/{bracket_id}/matches/{match_id}/report", report)
 api.add_route("/api/leagues/{league_id}/tournaments/{tournament_id}/brackets/{bracket_id}/matches/{match_id}/games/", game_list)
 api.add_route("/api/leagues/{league_id}/tournaments/{tournament_id}/brackets/{bracket_id}/matches/{match_id}/games/{game_id}", game)
+api.add_route("/api/leagues/{league_id}/tournaments/{tournament_id}/brackets/{bracket_id}/matches/{match_id}/team_info", teams_info)
+api.add_route("/api/leagues/{league_id}/tournaments/{tournament_id}/brackets/{bracket_id}/matches/{match_id}/schedule_items", schedule_items)
 
 if __name__ == '__main__':
     httpd = simple_server.make_server('127.0.0.1', 8555, application)

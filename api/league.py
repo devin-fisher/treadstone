@@ -299,3 +299,32 @@ class GameList(object):
             resp.body = json.dumps(g_list)
         else:
             raise falcon.HTTPNotFound()
+
+
+class TeamInfo(object):
+    def on_get(self, req, resp, league_id, tournament_id, bracket_id, match_id):
+        match_detail_data = request_json_resource(MATCH_DETAIL_API % (tournament_id, match_id), retry=3, time_between=1)
+
+        if match_detail_data:
+            rtn = {}
+            rtn['teams'] = match_detail_data.get('teams', {})
+            rtn['players'] = match_detail_data.get('players', {})
+            resp.content_type = 'application/json'
+            resp.status = falcon.HTTP_200
+            resp.body = json.dumps(rtn)
+        else:
+            raise falcon.HTTPNotFound()
+
+
+class ScheduleItems(object):
+    def on_get(self, req, resp, league_id, tournament_id, bracket_id, match_id):
+        match_detail_data = request_json_resource(MATCH_DETAIL_API % (tournament_id, match_id), retry=3, time_between=1)
+
+        if match_detail_data:
+            rtn = {}
+            rtn['scheduleItems'] = match_detail_data.get('scheduleItems', {})
+            resp.content_type = 'application/json'
+            resp.status = falcon.HTTP_200
+            resp.body = json.dumps(rtn)
+        else:
+            raise falcon.HTTPNotFound()
