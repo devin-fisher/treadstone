@@ -3,7 +3,7 @@ import time
 from lib.game_analysis.video_dowload import YoutubeFile
 from lib.timeline_analysis.events import report as timeline_events
 from lib.timeline_analysis.infographic import infographic_list_builder as timeline_infographic
-from lib.video.video_analysis import start_only_analysis
+from lib.video.video_analysis import standard_analysis as video_analysis
 from lib.timeline_analysis.video_cooralator import video_event_translator
 from lib.util.mongo_util import mongodb_id_convert
 from lib.util.http_lol_static import request_api_resource, request_json_resource_cacheless
@@ -83,7 +83,7 @@ def do_timeline_video_analysis(game_id, game_data, game_analysis, client):
     youtube_url = game_data.get('youtube_url', None)
 
     with YoutubeFile(youtube_url, game_id) as video_path:
-        analysis = start_only_analysis(video_path, length, verbose=True)
+        analysis = video_analysis(video_path, length, verbose=True)
 
     # print analysis
     game_analysis[key_val] = analysis

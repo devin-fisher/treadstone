@@ -8,7 +8,7 @@ class YoutubeFile:
 
     def __enter__(self):
         self.path = '/tmp/%s.mp4' % self.game_id
-        os.system("youtube-dl -f 22 -o '" + self.path + "' -q " + self.youtube_url)
+        os.system("youtube-dl -f 137 -o '" + self.path + "' -q " + self.youtube_url)
         return self.path
 
     def __exit__(self, type, value, traceback):

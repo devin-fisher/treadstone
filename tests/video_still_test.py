@@ -8,7 +8,7 @@ from lib.video.video_still import *
 
 
 class SimplisticTest(unittest.TestCase):
-    def simple_get_still_test(self):
+    def test_simple_get_still(self):
         actual = get_still(os.path.join(main_dir, "tests", "fodder", 'test.mp4'), 2, show=False)
         with open(os.path.join(main_dir, "tests", "fodder", 'test_2_sec_still'), 'rb') as f:
             expected = pickle.load(f)
