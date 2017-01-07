@@ -182,6 +182,11 @@ class Match(object):
         match_data = bracket_data['matches'].get(match_id, None)
 
         if match_data:
+            match_data['league_id'] = league_id
+            match_data['tournament_id'] = tournament_id
+            match_data['tournament_title'] = tournament_data['title']
+            match_data['tournament_description'] = tournament_data['description']
+            match_data['bracket_id'] = bracket_id
             resp.content_type = 'application/json'
             resp.status = falcon.HTTP_200
             resp.body = json.dumps(match_data)
