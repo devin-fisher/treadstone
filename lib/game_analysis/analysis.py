@@ -8,8 +8,7 @@ from lib.timeline_analysis.video_cooralator import video_event_translator
 from lib.util.mongo_util import mongodb_id_convert
 from lib.util.http_lol_static import request_api_resource, request_json_resource_cacheless
 
-BRACKET_DATA_URL = "api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
-
+MATCH_DATA_URL = "api/leagues/%(league_id)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s/matches/%(id)s"
 
 def played_game(game_data):
     if game_data.get('gameId', None):
@@ -27,7 +26,7 @@ def save_game_analysis(game_id, game_analysis, client, error_msg=None):
         error_list = game_analysis.get('error_msg', list())
         if not isinstance(error_list, list):
             error_list = list({'unknown', str(error_list)})
-        error_list.append(error_msg)
+        error_list.append(str(error_msg))
         game_analysis['error_msg'] = error_list
 
     game_analysis['time_stamp'] = int(time.time())
@@ -105,7 +104,7 @@ def do_timeline_video_translation(game_id, game_data, game_analysis, client):
     save_game_analysis(game_id, game_analysis, client)
 
 
-def update_game(game_id, game, match_data, bracket_data, client):
+def update_game(game_id, game, match_data, client):
     print("   " + game['name'])
     if not played_game(game):
         return None
@@ -115,42 +114,42 @@ def update_game(game_id, game, match_data, bracket_data, client):
     for item in collection.find({"_id": mongodb_id_convert(game_id)}):
         game_analysis = item
 
-    game_analysis['league'] = bracket_data['league']
-    game_analysis['tournament_id'] = bracket_data['tournament_id']
-    game_analysis['bracket_id'] = bracket_data['bracket_id']
+    game_analysis['league'] = match_data['league_id']
+    game_analysis['tournament_id'] = match_data['tournament_id']
+    game_analysis['bracket_id'] = match_data['bracket_id']
     game_analysis['match_id'] = match_data['id']
     game_analysis['game_id'] = game_id
     game_analysis['name'] = game['name']
     if "complete" != game_analysis.get('status', "incomplete"):
-        url = BRACKET_DATA_URL % bracket_data + "/matches/" + match_data['id'] + "/games/" + game_id
+        url = MATCH_DATA_URL % match_data + "/games/" + game_id
         game_data = request_api_resource(url, retry=3, time_between=1)
 
         try:
             do_timeline_event_analysis(game_id, game_data, game_analysis, client)
         except Exception as e:
-            save_game_analysis(game_id, game_analysis, client, error_msg={'time_line_events', e.message})
+            save_game_analysis(game_id, game_analysis, client, error_msg=('time_line_events', e.message))
 
         try:
             do_timeline_infographic_analysis(game_id, game_data, game_analysis, client)
         except Exception as e:
-            save_game_analysis(game_id, game_analysis, client, error_msg={'time_line_infographic', e.message})
+            save_game_analysis(game_id, game_analysis, client, error_msg=('time_line_infographic', e.message))
 
         try:
             do_timeline_video_analysis(game_id, game_data, game_analysis, client)
         except Exception as e:
-            save_game_analysis(game_id, game_analysis, client, error_msg={'video_analysis', e.message})
+            save_game_analysis(game_id, game_analysis, client, error_msg=('video_analysis', e.message))
 
         try:
             do_timeline_video_translation(game_id, game_data, game_analysis, client)
         except Exception as e:
-            save_game_analysis(game_id, game_analysis, client, error_msg={'event_translation', e.message})
+            save_game_analysis(game_id, game_analysis, client, error_msg=('event_translation', e.message))
     return game_analysis
 
 
-def update_match(match_data, bracket_data, client):
+def update_match(match_data, client):
     match_games = []
     for game_id, game in match_data.get('games', dict()).iteritems():
-        game_analysis = update_game(game_id, game, match_data, bracket_data, client)
+        game_analysis = update_game(game_id, game, match_data, client)
         if game_analysis:
             match_games.append(game_analysis)
     return match_games

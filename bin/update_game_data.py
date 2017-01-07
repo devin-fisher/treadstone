@@ -50,8 +50,10 @@ def main(args):
         for match_id, match in bracket_data.get('matches', dict()).iteritems():
             print "MATCH: %(id)s - %(name)s - %(state)s" % match
             if match.get('state', '') == 'resolved':
+                match_data_url = bracket_data_url + "/matches/" + match_id
+                match = request_api_resource(match_data_url)
                 print(match['name'])
-                games_data = update_match(match, bracket, client)
+                games_data = update_match(match, client)
                 build_report_file(games_data, match, match_name=match.get("name", None))
                 # break
 
