@@ -605,6 +605,7 @@ def infographic_list_builder(url,url_stats):
         infographic_list[a][team_1]['playerItem'] = []
         for b in range(1,6):
             infographic_list[a][team_1]['playerItem'].append(player_items_list[b]['items'])
+        infographic_list[a][team_1]['power'] = index
 
         red_graph_list = graph_info_red(data,time)
         red_player_kill_list = player_kill_list[5:10]
@@ -635,7 +636,7 @@ def infographic_list_builder(url,url_stats):
         for b in range(6,11):
             infographic_list[a][team_2]['playerItem'].append(player_items_list[b]['items'])
 
-        infographic_list[a][2].append(index)
+        infographic_list[a][team_2]['power'] = index
     # print(infographic_list)
     return(infographic_list)
 
