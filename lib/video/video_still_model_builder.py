@@ -1,4 +1,5 @@
 import sys
+import os
 from moviepy.editor import VideoFileClip
 from video_still import get_still_with_video, extract_parts
 from video_still_util import seconds_to_string
@@ -51,27 +52,36 @@ def capture_digit_data(path, data, interval_sec=1, check_times=False, **kwargs):
     start_time = kwargs.get('start_time')
     length = kwargs.get('length')
     start_game_time = kwargs.get('start_game_time')
-    new_data = dict()
-    new_data['target'] = []
-    new_data['data'] = []
+    last_count = len(data)
+    digit_count = 0
+    new_digit_count = 0
 
     if check_time(video_obj, start_time, start_game_time, check_times):
+        i = 0
         for i in xrange(length):
             if not check_times:
-                # print("%s of %s" % (str(i), str(length)))
                 image_data = get_still_with_video(video_obj, start_time+i, show=False)
                 expected_digits = video_still_util.convert_seconds_to_parts(start_game_time+i)
                 num = 0
                 for part in extract_parts(image_data):
                     if part is None or part.size is not 165:
                         continue
-                    new_data['target'].append(int(expected_digits[num]))
-                    new_data['data'].append(part)
+
+                    data_tuple = tuple(part)
+                    digit_count += 1
+                    if data_tuple not in data:
+                        data[data_tuple] = int(expected_digits[num])
+                        new_digit_count += 1
+
                     num += interval_sec
 
         if check_time(video_obj, start_time+i, start_game_time+i, check_times):
-            data['target'].extend(new_data['target'])
-            data['data'].extend(new_data['data'])
+            if digit_count is not 0:
+                cur_len = len(data)
+                diff = cur_len - last_count
+                percent_new = 100*(float(new_digit_count)/digit_count)
+                print("Unique Digits: %s  +%s (%s%%)" % (str(cur_len), str(diff), percent_new))
+            pass
         else:
             print "Fix %s -- %s" % (str(path), str(kwargs))
 
@@ -83,7 +93,7 @@ def capture_video_data(rtn, video_path, analysis, verify_check=False):
     if not (analysis.get('should_verify', True)) and verify_check:
         return
 
-    print video_path
+    print "##" + video_path + "##"
     cur_time = dict()
     cur_time['start_time'] = analysis['start'] + 60
     cur_time['start_game_time'] = 60
@@ -95,22 +105,31 @@ def capture_video_data(rtn, video_path, analysis, verify_check=False):
                  seconds_to_string(cur_time['start_game_time']),
                  seconds_to_string(cur_time['length'])))
         capture_digit_data(video_path, rtn, check_times=analysis.get('should_verify', True), **cur_time)
+
         cur_time['start_time'] = shift['end_time'] + 1
         cur_time['start_game_time'] = shift['end_game_time'] + 1
 
 
 def capture_data(data_set_path='../../_samples/still_data/still_training_data.pkl', verify_check=False):
     rtn = dict()
-    rtn['target'] = []
-    rtn['data'] = []
 
     for video_path, analysis in SAMPLE_ANALYSIS.iteritems():
-        capture_video_data(rtn, video_path, analysis, verify_check)
+        if os.path.isfile(video_path):
+            capture_video_data(rtn, video_path, analysis, verify_check)
+        else:
+            print("Unable to find file: " + video_path)
 
-    rtn['target'] = numpy.asarray(rtn['target'])
-    rtn['data'] = numpy.stack(rtn['data'])
+    # output_data = dict()
+    # output_data['target'] = []
+    # output_data['data'] = []
+    # for data, target in rtn.iteritems():
+    #     output_data['data'].append(numpy.asarray(data))
+    #     output_data['target'].append(target)
+    #
+    # output_data['target'] = numpy.asarray(output_data['target'])
+    # output_data['data'] = numpy.stack(output_data['data'])
 
-    with open(data_set_path, 'wb') as f:
+    with open('data_values.plk', 'wb') as f:
         pickle.dump(rtn, f)
 
 
@@ -171,6 +190,9 @@ def dedup(data_set_path='../../_samples/still_data/still_training_data.pkl'):
 
 
 if __name__ == "__main__":
-    train_model()
-    # capture_data()
-    # dedup()
+    capture_data()
+    # train_model()
+
+
+    # path = '/home/devin.fisher/Kingdoms/lol/MP6kO4GB1XE.mp4'
+    # capture_video_data({}, path, SAMPLE_ANALYSIS[path], verify_check=True)

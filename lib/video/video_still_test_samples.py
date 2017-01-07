@@ -274,6 +274,7 @@ SAMPLE_ANALYSIS = {
             'start': 807.4063000000001,
             'end': 3528.4063,
             'game_length': 2726,
+            'should_verify': False,
             'shifts': [
                 {
                     'start_game_time': 363.0,
