@@ -108,12 +108,12 @@ def _walk_cycle(func, video, video_time, game_time, length):
     return good_video_time, good_game_time
 
 
-def _get_past_break(video, video_time, last_game_time, length, step=5):
+def _get_past_break(video, video_time, last_game_time, length, step=5):  # We should handle if this reaches towards the end of the video
     while True:
         video_time += step
         new_game_time = get_time(video, video_time, show=False)
         if new_game_time:
-            if -60 <= int(last_game_time - new_game_time) <= 60:
+            if -60 <= int(new_game_time - last_game_time) <= 110:  # Not sure why I did this but I extended it for a long replay
                 return video_time, new_game_time
 
 #TODO Must detect errors - backwards time shifts
@@ -201,11 +201,6 @@ def start_only_analysis(video_path, game_length, verbose=False):
 
 
 if __name__ == "__main__":
-    path = "/home/devin.fisher/Kingdoms/lol/xbjnWx7YCyg.mp4"
-    # break_video_start, break_game_start = _walk_cycle(_walk_forward, VideoFileClip(path), 2763.7094, 991.0, 2381)
-    # print str((break_video_start, break_game_start ))
-    # print "Break Start"
-    # print (util.seconds_to_string(break_video_start),
-    #        util.seconds_to_string(break_game_start))
-    print(standard_analysis(path, 1880, verbose=True))
-
+    path = "/tmp/75t-dDWZiJs.mp4"
+    video_obj = VideoFileClip(path)
+    print(_get_past_break(video_obj, 1758.8592, 920.0, 2011))
