@@ -504,10 +504,14 @@ def power_index(exp_list, data, time):
         gold_spent1 = data['frames'][time_stamp]['participantFrames'][x]['totalGold'] - data['frames'][time_stamp]['participantFrames'][x]['currentGold']
         gold_spent2 = data['frames'][time_stamp]['participantFrames'][z]['totalGold'] - data['frames'][time_stamp]['participantFrames'][z]['currentGold']
         gold_difference = gold_spent1 - gold_spent2
+
         if gold_spent1 > gold_spent2:
             total_gold = gold_difference + lvl_gold
-        if gold_spent1 < gold_spent2:
+        elif gold_spent1 < gold_spent2:
             total_gold = (0 - gold_difference) + lvl_gold
+        else:  # Gold is equal
+            total_gold = lvl_gold
+
         if abs(total_gold) > 4000:
             if total_gold > 0:
                 total_gold = 2*math.sqrt(pow(total_gold,2)+5000*total_gold)-total_gold
@@ -585,7 +589,6 @@ def infographic_list_builder(url,url_stats):
         infographic_list.append([])
         infographic_list[a].append(OrderedDict())
         infographic_list[a].append(OrderedDict())
-        infographic_list[a].append([])
 
         infographic_list[a][team_1]["timeStamp"] = infographic_time_list[a_index]
         infographic_list[a][team_1]["teamGold"] = team_gold_list[1]
