@@ -9,12 +9,12 @@ from lib.timeline_analysis.video_cooralator import video_event_translator
 
 
 class SimplisticTest(unittest.TestCase):
-    # @skip
-    @classmethod
-    def test_full_test_case(cls):
+
+    def test_full_test_case(self):
         with open("fodder/video_cooralator_test_case_1.json", 'r') as f:
             test_case_data = json.loads(f.read())
         video_event_translator(test_case_data['time_line_events'], test_case_data['video_analysis'])
+        self.assertTrue(True)
 
     def test_start_only(self):
         video_break = {"start": 120, "shifts": []}

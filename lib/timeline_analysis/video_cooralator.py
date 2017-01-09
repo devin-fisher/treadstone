@@ -1,5 +1,8 @@
 from collections import OrderedDict
-from lib.video.video_still_util import seconds_to_string
+
+
+class CorrelatorException(Exception):
+    pass
 
 
 def _convert_millisec_to_sec(mil):
@@ -13,15 +16,15 @@ def _closer_with_shift(video_break, time, shift=.5, max_distance= 5):
     start_delta = abs(video_break['start_game_time'] - time)
     end_delta = abs(video_break['end_game_time'] - time)
     if start_delta is end_delta:
-        raise Exception("Event Boundary is equal distance of break")
+        raise CorrelatorException("Event Boundary is equal distance of break")
     elif start_delta < end_delta:
         if start_delta >= max_distance:
-            raise Exception("Event Boundary is more than Max Distance from break boundary")
+            raise CorrelatorException("Event Boundary is more than Max Distance from break boundary")
         else:
             return video_break['start_game_time'] - shift, video_break['start_time'] - shift
     else:  # end_delta is less than start_delta
         if end_delta >= max_distance:
-            raise Exception("Event Boundary is more than Max Distance from break boundary")
+            raise CorrelatorException("Event Boundary is more than Max Distance from break boundary")
         else:
             return video_break['end_game_time'] + shift, video_break['end_time'] + shift
 
@@ -49,8 +52,11 @@ def video_event_translator(events, video_breaks):
     for range_data in events:
         translated = OrderedDict()
 
-        game_start, video_start = _find_video_time(video_breaks, range_data['startTime'])
-        game_end, video_end = _find_video_time(video_breaks, range_data['endTime'])
+        try:
+            game_start, video_start = _find_video_time(video_breaks, range_data['startTime'])
+            game_end, video_end = _find_video_time(video_breaks, range_data['endTime'])
+        except CorrelatorException:
+            continue
 
         translated['video_start'] = video_start
         translated['video_end'] = video_end
