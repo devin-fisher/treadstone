@@ -10,6 +10,7 @@ from lib.util.http_lol_static import request_api_resource, request_json_resource
 
 MATCH_DATA_URL = "api/leagues/%(league_id)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s/matches/%(id)s"
 
+
 def played_game(game_data):
     if game_data.get('gameId', None):
         return True
