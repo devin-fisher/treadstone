@@ -9,7 +9,6 @@ from operator import add, sub
 IMAGE_SPLITS_COUNT = 10.0
 IMAGE_SPLIT_TIME = .999 / IMAGE_SPLITS_COUNT
 
-# WALK_DOWN_CYCLE = [240.0, 60.0, 20.0, 5.0, 1.0]
 WALK_DOWN_CYCLE = [10.0, 5.0, 1.0]
 
 
@@ -24,15 +23,10 @@ def _find_sec_change(video, video_time, game_time):
         video_time_plus_split += IMAGE_SPLIT_TIME
         cur_game_time = get_time(video, video_time_plus_split)
         if cur_game_time is None:
-            return None
+            return None, None
 
         if cur_game_time > game_time:
             return video_time_plus_split + IMAGE_SPLIT_TIME, cur_game_time # add a little bit of time, we don't want to be right on the edge
-            # rtn_start_video_time = video_time_plus_split - cur_game_time
-            # if _test_start(video, rtn_start_video_time, game_test_time=game_test_time):
-            #     return rtn_start_video_time + IMAGE_SPLIT_TIME
-            # else:
-            #     return None
 
 
 def find_start_point(video, game_test_time=45, bump_rate=45):
@@ -56,14 +50,14 @@ def find_start_point(video, game_test_time=45, bump_rate=45):
             cur_video = operator(cur_video, bump_rate)
             continue
 
-        preposed_start_video_time = found_video_time - found_game_time
-        game_at_preposed = get_time(video, preposed_start_video_time + game_test_time, show=False)
+        proposed_start_video_time = found_video_time - found_game_time
+        game_at_proposed = get_time(video, proposed_start_video_time + game_test_time, show=False)
 
-        if game_at_preposed is None:
+        if game_at_proposed is None:
             cur_video = operator(cur_video, bump_rate)
             continue
-        elif game_at_preposed == game_test_time:
-            return preposed_start_video_time
+        elif game_at_proposed == game_test_time:
+            return proposed_start_video_time
         else:
             cur_video -= (found_game_time/2)
             continue
@@ -166,6 +160,7 @@ def find_time_shifts(video, start_video_time, length, verbose=False, inital_game
 
     return rtn_shifts
 
+
 def standard_analysis(video_path, game_length, verbose=False):
     rtn = {}
     rtn['game_length'] = game_length
@@ -194,8 +189,6 @@ def start_only_analysis(video_path, game_length, verbose=False):
     rtn['start'] = start
 
     rtn['shifts'] = []
-
-    # rtn['end'] = end
 
     return rtn
 

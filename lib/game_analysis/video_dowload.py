@@ -3,6 +3,8 @@ import os
 
 class YoutubeFile:
     def __init__(self, youtube_url, game_id):
+        if not youtube_url:
+            raise Exception("Youtube URL is blank")
         self.youtube_url = youtube_url
         self.game_id = game_id
 

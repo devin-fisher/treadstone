@@ -87,7 +87,7 @@ def test_video_analysis(video_path, analysis):
 if __name__ == "__main__":
     # test_still_open_video('/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4', 1927, 540)
     # test_still_open_video('/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4', 1987, 600)
-    test_all_video_analysis()
-    # print(standard_analysis('/tmp/75t-dDWZiJs.mp4', 2011, verbose=True))
+    # test_all_video_analysis()
+    print(standard_analysis('/tmp/0fafe79c-de2d-4b44-9d3b-15685e120ce7.mp4', 2277, verbose=True))
     # print(str(standard_analysis("/home/devin.fisher/Kingdoms/lol/3O7OJY3X0yM-HD.mp4", 2391, verbose=True)))
     # print compare_dict(SAMPLE_ANALYSIS["/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4"], SAMPLE_ANALYSIS["/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4"])
