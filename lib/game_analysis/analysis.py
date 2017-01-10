@@ -80,7 +80,7 @@ def do_timeline_video_analysis(game_id, game_data, game_analysis, client):
         raise Exception("Time Line URL is not defined")
 
     length = get_game_length(game_data.get('stats_url', None))
-    youtube_url = game_data.get('youtube_url', None)
+    youtube_url = find_youtube_url(game_id, game_data, game_analysis, client)
 
     with YoutubeFile(youtube_url, game_id) as video_path:
         analysis = video_analysis(video_path, length, verbose=True)
@@ -154,3 +154,7 @@ def update_match(match_data, client):
         if game_analysis:
             match_games.append(game_analysis)
     return match_games
+
+
+def find_youtube_url(game_id, game_data, game_analysis, client):
+    return game_data.get('youtube_url', None)
