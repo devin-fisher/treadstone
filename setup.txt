@@ -21,5 +21,6 @@ Mongodb-server Setup:
 Pip install:
 	moviepy
 	sklearn
+	youtube-dl
 	
 TODO make this ansible

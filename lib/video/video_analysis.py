@@ -107,8 +107,7 @@ def _get_past_break(video, video_time, last_game_time, length, step=5):  # We sh
         video_time += step
         new_game_time = get_time(video, video_time, show=False)
         if new_game_time:
-            if -60 <= int(new_game_time - last_game_time) <= 110:  # Not sure why I did this but I extended it for a long replay
-                return video_time, new_game_time
+            return video_time, new_game_time
 
 #TODO Must detect errors - backwards time shifts
 def find_time_shifts(video, start_video_time, length, verbose=False, inital_game_time_shift=61):
