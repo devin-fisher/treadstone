@@ -8,7 +8,8 @@ from lib.timeline_analysis.video_cooralator import video_event_translator
 from lib.util.mongo_util import mongodb_id_convert
 from lib.util.http_lol_static import request_api_resource, request_json_resource_cacheless
 
-MATCH_DATA_URL = "api/leagues/%(league_id)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s/matches/%(id)s"
+MATCH_DATA_URL = "api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s/matches/%(match_id)s"
+GAME_DATA_URL = "api/leagues/%(league_id)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s/matches/%(id)s"  # inconsitent league_id vs league
 
 
 def played_game(game_data):
@@ -83,7 +84,7 @@ def do_timeline_video_analysis(game_id, game_data, game_analysis, client):
     youtube_url = find_youtube_url(game_id, game_data, game_analysis, client)
 
     with YoutubeFile(youtube_url, game_id) as video_path:
-        analysis = video_analysis(video_path, length, verbose=True)
+        analysis = video_analysis(video_path, length, verbose=False)
 
     # print analysis
     game_analysis[key_val] = analysis
@@ -121,8 +122,8 @@ def update_game(game_id, game, match_data, client):
     game_analysis['match_id'] = match_data['id']
     game_analysis['game_id'] = game_id
     game_analysis['name'] = game['name']
-    if "complete" != game_analysis.get('status', "incomplete"):
-        url = MATCH_DATA_URL % match_data + "/games/" + game_id
+    if is_not_complete(game_analysis):
+        url = GAME_DATA_URL % match_data + "/games/" + game_id
         game_data = request_api_resource(url, retry=3, time_between=1)
 
         try:
@@ -147,13 +148,31 @@ def update_game(game_id, game, match_data, client):
     return game_analysis
 
 
-def update_match(match_data, client):
-    match_games = []
-    for game_id, game in match_data.get('games', dict()).iteritems():
-        game_analysis = update_game(game_id, game, match_data, client)
-        if game_analysis:
-            match_games.append(game_analysis)
-    return match_games
+def is_not_complete(game_analysis):
+    return all(k in game_analysis for k in
+               (
+                   'time_line_events',
+                    'time_line_infographic',
+                    'video_analysis',
+                    'event_translation'
+                ))
+
+
+def update_match(match_id, bracket_ids, client):
+    ids = dict(bracket_ids)
+    ids['match_id'] = match_id
+    match_data = request_api_resource(MATCH_DATA_URL % ids)
+    if match_data.get('state', '') == 'resolved':
+        print "MATCH: %(id)s - %(name)s - %(state)s" % match_data
+        print(match_data['name'])
+        match_games = []
+        for game_id, game in match_data.get('games', dict()).iteritems():
+            game_analysis = update_game(game_id, game, match_data, client)
+            if game_analysis:
+                match_games.append(game_analysis)
+        return match_data, match_games
+
+    return match_data, []
 
 
 def find_youtube_url(game_id, game_data, game_analysis, client):

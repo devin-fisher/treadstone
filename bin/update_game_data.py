@@ -15,10 +15,6 @@ from lib.report.report_builder import build_report_file
 BRACKET_DATA_URL = "api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
 
 
-def meets_schedule(bracket):
-    return True
-
-
 def main(args):
     brackets = []
     client = MongoClient()
@@ -36,9 +32,6 @@ def main(args):
         if bracket.get('complete', False):
             continue
 
-        if not meets_schedule(bracket):
-            continue
-
         print "Scanning Bracket '%(bracket_id)s'" % bracket
         bracket_data_url = BRACKET_DATA_URL % bracket
         if args.verbose:
@@ -48,14 +41,8 @@ def main(args):
             print json.dumps(bracket_data, indent=2)
 
         for match_id, match in bracket_data.get('matches', dict()).iteritems():
-            print "MATCH: %(id)s - %(name)s - %(state)s" % match
-            if match.get('state', '') == 'resolved':
-                match_data_url = bracket_data_url + "/matches/" + match_id
-                match = request_api_resource(match_data_url)
-                print(match['name'])
-                games_data = update_match(match, client)
-                build_report_file(games_data, match, match_name=match.get("name", None))
-                # break
+            match_data, games_data = update_match(match_id, bracket, client)
+            build_report_file(games_data, match_data, match_name=match_data.get("name", None))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Create a highlight report for particular match.")

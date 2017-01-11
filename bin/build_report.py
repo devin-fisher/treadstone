@@ -5,38 +5,27 @@ from pymongo import MongoClient
 import sys
 import os
 import argparse
-import json
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 
 from lib.game_analysis.analysis import update_match
-from lib.util.http_lol_static import request_api_resource
 from lib.report.report_builder import build_report_file
 
 BRACKET_DATA_URL = "api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
 
 
-def meets_schedule(bracket):
-    return True
-
-
-def main(args):
+def main(args_values):
     client = MongoClient()
-    bracket = {"league": args.league, "tournament_id": args.tournament_id, "bracket_id": args.bracket_id}
-    bracket_data_url = BRACKET_DATA_URL % bracket
-    if args.verbose:
-        print bracket_data_url
+    bracket = {
+                "league": args_values.league,
+                "tournament_id": args_values.tournament_id,
+                "bracket_id": args_values.bracket_id
+               }
 
-    match_id = args.match_id
-    match = request_api_resource(bracket_data_url + "/matches/" + match_id)
-    if match:
-        print "MATCH: %(id)s - %(name)s - %(state)s" % match
-        if match.get('state', '') == 'resolved':
-            print(match['name'])
-            games_data = update_match(match, client)
-
-            zip_file_name = os.path.join("/tmp/", match.get("name", None) + "_" + match_id+".zip")
-            build_report_file(games_data, match, file_path=zip_file_name)
-            print "created zip at " + zip_file_name
+    match_id = args_values.match_id
+    match_data, games_data = update_match(match_id, bracket, client)
+    zip_file_name = os.path.join("/tmp/", match_data.get("name", None) + "_" + match_id + ".zip")
+    build_report_file(games_data, match_data, match_name=match_data.get("name", None), file_path=zip_file_name)
+    print "created zip at " + zip_file_name
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Create a highlight report for particular match.")
