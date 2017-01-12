@@ -438,7 +438,7 @@ def exp_lvl(data,time):
 
     for b in range(1,11):
         lvl_count = 0
-        for a in range(1, time_stamp):
+        for a in range(0, time_stamp):
             for c in range(1, len(data['frames'][a]['events'])):
                 check =  data['frames'][a]['events'][c]['type']
                 if check == "SKILL_LEVEL_UP":
@@ -450,75 +450,90 @@ def exp_lvl(data,time):
 
     return(exp_list)
 
-def lvl_stat_gold(exp_list,champion_list):
+def lvl_stat_gold(champion_list,data,time):
     gold_efficiency = {"mpregenperlevel":5 , "attackspeedperlevel":25, "spellblockperlevel":18,"critperlevel":40, "hpperlevel":2.6, "hpregenperlevel":3, "attackdamageperlevel":35, "armorperlevel":20, "mpperlevel":1.4}
     lvl_stat_gold = []
     champion1 = get_champ_data("6.22.1", "Malphite")
     champion2 = get_champ_data("6.22.1", "Irelia")
+    exp_list = exp_lvl(data,time)
     for a in range(0,5):
-        sum = 0
+        total = 0
+        lvl_difference = 0
+        lvl_champ1 = 0
+        lvl_champ2 = 0
         lvl_champ1 = exp_list[a]
         lvl_champ2 = exp_list[a+5]
+        # print(lvl_difference)
         if lvl_champ1 > lvl_champ2:
             lvl_difference = lvl_champ1 - lvl_champ2
-            for b in range(0,len(champion1)):
-                sum = sum + (lvl_difference * (champion1["mpregenperlevel"] * gold_efficiency["mpregenperlevel"]))
-                sum = sum + (lvl_difference * (champion1["attackspeedperlevel"] * gold_efficiency["attackspeedperlevel"]))
-                sum = sum + (lvl_difference * (champion1["spellblockperlevel"] * gold_efficiency["spellblockperlevel"]))
-                sum = sum + (lvl_difference * (champion1["critperlevel"] * gold_efficiency["critperlevel"]))
-                sum = sum + (lvl_difference * (champion1["hpperlevel"] * gold_efficiency["hpperlevel"]))
-                sum = sum + (lvl_difference * (champion1["hpregenperlevel"] * gold_efficiency["hpregenperlevel"]))
-                sum = sum + (lvl_difference * (champion1["attackdamageperlevel"] * gold_efficiency["attackdamageperlevel"]))
-                sum = sum + (lvl_difference * (champion1["armorperlevel"] * gold_efficiency["armorperlevel"]))
-                sum = sum + (lvl_difference * (champion1["mpperlevel"] * gold_efficiency["mpperlevel"]))
-
-        if lvl_champ1 < lvl_champ2:
+            total = total + (lvl_difference * (champion1["mpregenperlevel"] * gold_efficiency["mpregenperlevel"]))
+            total = total + (lvl_difference * (champion1["attackspeedperlevel"] * gold_efficiency["attackspeedperlevel"]))
+            total = total + (lvl_difference * (champion1["spellblockperlevel"] * gold_efficiency["spellblockperlevel"]))
+            total = total + (lvl_difference * (champion1["critperlevel"] * gold_efficiency["critperlevel"]))
+            total = total + (lvl_difference * (champion1["hpperlevel"] * gold_efficiency["hpperlevel"]))
+            total = total + (lvl_difference * (champion1["hpregenperlevel"] * gold_efficiency["hpregenperlevel"]))
+            total = total + (lvl_difference * (champion1["attackdamageperlevel"] * gold_efficiency["attackdamageperlevel"]))
+            total = total + (lvl_difference * (champion1["armorperlevel"] * gold_efficiency["armorperlevel"]))
+            total = total + (lvl_difference * (champion1["mpperlevel"] * gold_efficiency["mpperlevel"]))
+            # print(total)
+        elif lvl_champ1 < lvl_champ2:
             lvl_difference = lvl_champ2 - lvl_champ1
-            for b in range(0,len(champion1)):
-                sum = sum - (lvl_difference * (champion2["mpregenperlevel"] * gold_efficiency["mpregenperlevel"]))
-                sum = sum - (lvl_difference * (champion2["attackspeedperlevel"] * gold_efficiency["attackspeedperlevel"]))
-                sum = sum - (lvl_difference * (champion2["spellblockperlevel"] * gold_efficiency["spellblockperlevel"]))
-                sum = sum - (lvl_difference * (champion2["critperlevel"] * gold_efficiency["critperlevel"]))
-                sum = sum - (lvl_difference * (champion2["hpperlevel"] * gold_efficiency["hpperlevel"]))
-                sum = sum - (lvl_difference * (champion2["hpregenperlevel"] * gold_efficiency["hpregenperlevel"]))
-                sum = sum - (lvl_difference * (champion2["attackdamageperlevel"] * gold_efficiency["attackdamageperlevel"]))
-                sum = sum - (lvl_difference * (champion2["armorperlevel"] * gold_efficiency["armorperlevel"]))
-                sum = sum - (lvl_difference * (champion2["mpperlevel"] * gold_efficiency["mpperlevel"]))
+            # for b in range(0,len(champion1)):
+            total = total - (lvl_difference * (champion2["mpregenperlevel"] * gold_efficiency["mpregenperlevel"]))
+            total = total - (lvl_difference * (champion2["attackspeedperlevel"] * gold_efficiency["attackspeedperlevel"]))
+            total = total - (lvl_difference * (champion2["spellblockperlevel"] * gold_efficiency["spellblockperlevel"]))
+            total = total - (lvl_difference * (champion2["critperlevel"] * gold_efficiency["critperlevel"]))
+            total = total - (lvl_difference * (champion2["hpperlevel"] * gold_efficiency["hpperlevel"]))
+            total = total - (lvl_difference * (champion2["hpregenperlevel"] * gold_efficiency["hpregenperlevel"]))
+            total = total - (lvl_difference * (champion2["attackdamageperlevel"] * gold_efficiency["attackdamageperlevel"]))
+            total = total - (lvl_difference * (champion2["armorperlevel"] * gold_efficiency["armorperlevel"]))
+            total = total - (lvl_difference * (champion2["mpperlevel"] * gold_efficiency["mpperlevel"]))
+            # print(total)
         else:
-            sum = 0
-        lvl_stat_gold.append(sum)
+            total = 0
+        # print(total)
+        lvl_stat_gold.append(total)
 
-    return(sum)
+
+    return(lvl_stat_gold)
 
 
-def power_index(exp_list, data, time):
+def power_index(data, time):
     time_stamp = int((time)/60)
     max_gold_diff = 5000
     power_index_list = []
     champion_list = []
+    lvl_gold = lvl_stat_gold(champion_list,data,time)
+    exp_list = exp_lvl(data,time)
     for a in range(1,6):
+        total_gold = 0
+        gold_spent1 = 0
+        gold_spent2 = 0
+        gold_difference = 0
         index = 0
         x = str(a)
         z = str(a+5)
-        lvl_gold  = lvl_stat_gold(exp_list,champion_list)
+        y = a -1
         gold_spent1 = data['frames'][time_stamp]['participantFrames'][x]['totalGold'] - data['frames'][time_stamp]['participantFrames'][x]['currentGold']
         gold_spent2 = data['frames'][time_stamp]['participantFrames'][z]['totalGold'] - data['frames'][time_stamp]['participantFrames'][z]['currentGold']
         gold_difference = gold_spent1 - gold_spent2
-
+        # print(gold_difference)
         if gold_spent1 > gold_spent2:
-            total_gold = gold_difference + lvl_gold
+            total_gold = gold_difference + lvl_gold[y]
         elif gold_spent1 < gold_spent2:
-            total_gold = (0 - gold_difference) + lvl_gold
+            total_gold = (0 - gold_difference) + lvl_gold[y]
         else:  # Gold is equal
-            total_gold = lvl_gold
-
+            total_gold = lvl_gold[y]
         if abs(total_gold) > 4000:
+            print(total_gold)
             if total_gold > 0:
-                total_gold = 2*math.sqrt(pow(total_gold,2)+5000*total_gold)-total_gold
+                total_gold = 2*(math.sqrt(pow(total_gold,2)+5000*total_gold)-total_gold)
             if total_gold < 0:
-                total_gold = -(2*math.sqrt(pow(total_gold,2)+5000*total_gold)-total_gold)
+                total_gold = -(total_gold)
+                total_gold = -(2*(math.sqrt(pow(total_gold,2)+5000*total_gold)-total_gold))
             else:
                 total_gold = total_gold
+            print(total_gold)
         if exp_list[a-1] > 10 or exp_list[a+4] > 10:
             total_gold = total_gold * .75
         if total_gold > 0:
@@ -527,7 +542,9 @@ def power_index(exp_list, data, time):
             index = (0 - (abs(total_gold) / max_gold_diff))
         index = int(index * 100)
         power_index_list.append(index)
-    # print(power_index_list)
+        # print(total_gold)
+    # print(exp_list)
+    print(power_index_list)
     return(power_index_list)
 
 def infographic_list_builder(url,url_stats):
@@ -553,8 +570,7 @@ def infographic_list_builder(url,url_stats):
     infographic_list = []
     time = infographic_time_list[1]
     champ = "aatrox"
-    exp_list = exp_lvl(data, time)
-    lvl_stat_gold(exp_list, champion_list)
+
 
 
     for a in range(0,len_infographic_time_list):
@@ -572,7 +588,7 @@ def infographic_list_builder(url,url_stats):
         dragon_count_list = dragon_counter(data,time)
         minion_list = minion_count(data,time)
         lvl_list = exp_lvl(data,time)
-        index = power_index(exp_list,data,time)
+        index = power_index(data,time)
 
         blue_graph_list = graph_info_blue(data,time)
         blue_player_kill_list = player_kill_list[0:5]
