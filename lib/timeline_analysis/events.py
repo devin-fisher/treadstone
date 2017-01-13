@@ -10,12 +10,14 @@ from lib.timeline_analysis.timeline_lib import large_fight_function
 
 def report(url, stats_url):
     data = request_json_resource(url)
+    stats_data = request_json_resource(stats_url)
     # r = requests.get(url)
     # data = r.json()
     counter_list = []
-    kill_list = kill_list_function(data)
+    kill_list = kill_list_function(data,stats_data)
     start_list, counter_list = start_counter_list_function(kill_list, counter_list)
     end_list, counter_list = end_list_function(kill_list, counter_list, start_list)
+
     team_fight = large_fight_function(start_list, counter_list)
 
     before = 11

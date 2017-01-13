@@ -355,7 +355,6 @@ def infographic_time_list_builder(data,team_fight, start_list):
     len_game = ((len(data['frames']) - 1) // 5)
     len_team_fight = len(team_fight)
     time_counter = 0
-
     for a in range(0,len_game):
         time_counter = time_counter + 5
         infographic_time = (time_counter * 60)
@@ -370,7 +369,7 @@ def infographic_time_list_builder(data,team_fight, start_list):
 
         for c in range(0,len_team_fight):
             team_fight_time = int((team_fight[c]/60))
-            if team_fight_time > time_counter and team_fight_time < (time_counter + 5) and team_fight[c] != infographic_time_list[a]:
+            if team_fight_time > time_counter and team_fight_time < (time_counter + 5) and team_fight[c] != infographic_time_list[a+1]:
                 infographic_time_list.append((team_fight[c]))
 
     infographic_time_list.remove(0)
@@ -434,20 +433,23 @@ def minion_count(data,time):
 
 def exp_lvl(data,time):
     exp_list = []
-    time_stamp = int((time)/60)
-
+    time_stamp = int((time)/60) + 1
     for b in range(1,11):
         lvl_count = 0
         for a in range(0, time_stamp):
-            for c in range(1, len(data['frames'][a]['events'])):
+            for c in range(0, len(data['frames'][a]['events'])):
                 check =  data['frames'][a]['events'][c]['type']
                 if check == "SKILL_LEVEL_UP":
                     check2 = data['frames'][a]['events'][c]['participantId']
                     if check2 == b:
+
                         lvl_count = lvl_count + 1
+        # print(lvl_count)
+
         exp_list.append(lvl_count)
 
-
+    print(exp_list)
+    print("--------")
     return(exp_list)
 
 def lvl_stat_gold(champion_list,data,time):
@@ -500,6 +502,7 @@ def lvl_stat_gold(champion_list,data,time):
 
 def power_index(data, time):
     time_stamp = int((time)/60)
+    print(time_stamp)
     max_gold_diff = 5000
     power_index_list = []
     champion_list = []
@@ -520,12 +523,14 @@ def power_index(data, time):
         # print(gold_difference)
         if gold_spent1 > gold_spent2:
             total_gold = gold_difference + lvl_gold[y]
+            print(total_gold)
         elif gold_spent1 < gold_spent2:
-            total_gold = (0 - gold_difference) + lvl_gold[y]
+            total_gold = gold_difference - lvl_gold[y]
+            print(total_gold)
         else:  # Gold is equal
             total_gold = lvl_gold[y]
-        if abs(total_gold) > 4000:
             print(total_gold)
+        if abs(total_gold) > 4000:
             if total_gold > 0:
                 total_gold = 2*(math.sqrt(pow(total_gold,2)+5000*total_gold)-total_gold)
             if total_gold < 0:
@@ -533,7 +538,6 @@ def power_index(data, time):
                 total_gold = -(2*(math.sqrt(pow(total_gold,2)+5000*total_gold)-total_gold))
             else:
                 total_gold = total_gold
-            print(total_gold)
         if exp_list[a-1] > 10 or exp_list[a+4] > 10:
             total_gold = total_gold * .75
         if total_gold > 0:
@@ -543,30 +547,34 @@ def power_index(data, time):
         index = int(index * 100)
         power_index_list.append(index)
         # print(total_gold)
-    # print(exp_list)
+
+    print(exp_list)
+
     print(power_index_list)
+    print("-----------")
     return(power_index_list)
 
 def infographic_list_builder(url,url_stats):
 
     data = request_json_resource(url)
-    data_stats = request_json_resource(url_stats)
+    stats_data = request_json_resource(url_stats)
     # r = requests.get(url)
     # s = requests.get(url_stats)
     # data = r.json()
     # data_stats = s.json()
 
     counter_list = []
-    kill_list = kill_list_function(data)
+    kill_list = kill_list_function(data,stats_data)
     start_list, counter_list = start_counter_list_function(kill_list, counter_list)
     end_list, counter_list = end_list_function(kill_list, counter_list, start_list)
     team_fight = large_fight_function(start_list, counter_list)
-    champion_list = champion_id_list(data_stats)
-    spell_list = summoner_spell(data_stats)
+    champion_list = champion_id_list(stats_data)
+    spell_list = summoner_spell(stats_data)
 
 
     infographic_time_list = infographic_time_list_builder(data, team_fight, start_list)
     len_infographic_time_list = len(infographic_time_list)
+    print(infographic_time_list)
     infographic_list = []
     time = infographic_time_list[1]
     champ = "aatrox"

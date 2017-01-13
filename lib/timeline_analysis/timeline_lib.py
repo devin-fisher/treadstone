@@ -1,6 +1,7 @@
-def kill_list_function(data):
+def kill_list_function(data,stats_data):
     kill_list = []
     t = len(data['frames'])
+    game_length = stats_data['gameDuration']
     for x in range (0, t):
 
         z = len(data['frames'][x]['events'])
@@ -84,8 +85,8 @@ def kill_list_function(data):
     x = x + 1
     new_list = []
     a = 0
-
-    # print(kill_list)
+    kill_list.append(game_length)
+    print(kill_list)
     return kill_list
 
 def start_counter_list_function(kill_list, counter_list):
