@@ -2,8 +2,7 @@ import os
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
-from PIL import ImageFile
-from lib.util.static_lol_data import get_item_image, get_summoner_image, get_champ_image, get_icon_image
+from lib.util.static_lol_data import get_champ_image, get_icon_image
 
 POWER_HEADING = "Lane Dominance"
 
@@ -164,27 +163,28 @@ def build_lane_tile(left_player, right_player, power_bar, pad=40):
     return new_im
 
 
-def build_lanes_tile(lanes, pad=10):
-    total_width = max(map(lambda x: x.width, lanes))
-    total_height = max(map(lambda x: x.height, lanes)) * 5 + pad * 4
+def build_lanes_tile(lanes_imgs, pad=10):
+    total_width = max(map(lambda x: x.width, lanes_imgs))
+    total_height = max(map(lambda x: x.height, lanes_imgs)) * 5 + pad * 4
 
     new_im = Image.new('RGBA', (total_width, total_height))
     y_pos = 0
-    for champ_tile in lanes:
+    for champ_tile in lanes_imgs:
         new_im.paste(champ_tile, (0, y_pos))
         y_pos += champ_tile.height + pad
 
     return new_im
 
 
-def build_heading_tile(width):
+def build_heading_tile(width, team_1_gold, team_2_gold):
     font = ImageFont.truetype(_assets_loc("beaufortforlol-bold.otf"), 35)
-    team_1_fill = "royalblue"
-    team_2_fill = "orangered"
 
-    gold_icon = Image.open(_assets_loc("gold_icon.png"))
     total_height = 100
     total_width = width
+
+    heading_right = build_gold_heading(int(width/3), total_height, team_2_gold, "right")
+    heading_left = build_gold_heading(int(width/3), total_height, team_1_gold, "left")
+
     new_im = Image.new('RGBA', (total_width, total_height))
 
     center_heading = Image.new('RGBA', (total_width/3, total_height))
@@ -195,7 +195,11 @@ def build_heading_tile(width):
     text_y = int((center_heading.height / 2.0) - int(h / 2.0))
     draw.text((text_x, text_y), POWER_HEADING, fill=fill, font=font)
 
-    return center_heading
+    new_im.paste(heading_left, (0, 0))
+    new_im.paste(center_heading, (heading_left.width, 0))
+    new_im.paste(heading_right, (heading_left.width + center_heading.width, 0))
+
+    return new_im
 
 
 def build_gold_heading(width, height, gold_value, icon_side, font=ImageFont.truetype(_assets_loc("beaufortforlol-bold.otf"), 35), pad=20):
@@ -215,31 +219,62 @@ def build_gold_heading(width, height, gold_value, icon_side, font=ImageFont.true
     resize_size = int(h*1.7)
     icon.thumbnail((resize_size, resize_size), resample=Image.LANCZOS)
 
-    text_x = (width/2.0) - (w + pad + icon.width)/2.0
-    text_y = (height/2.0) - (h / 2.0)
+    if icon_side == "left":
+        text_x = (width/2.0) - (w + pad + icon.width)/2.0
+    else:
+        text_x = int(int((width/2.0) - (w + pad + icon.width)/2.0) + w + pad)
+
+    text_y = int((height - h) / 2)
     draw.text((text_x, text_y), str(gold_value), fill=team_fill, font=font)
 
-    icon_x = int(text_x + w + pad)
-    icon_y = int((height/2.0) - (icon.height / 2.0))
+    if icon_side == "left":
+        icon_x = int(text_x + w + pad)
+    else:
+        icon_x = int((width/2.0) - (w + pad + icon.width)/2.0)
+
+    icon_y = int((height - icon.height) / 2)
     new_im.paste(icon, (icon_x, icon_y))
 
     return new_im
 
 
+def build_full_image(heading, lanes, pad=10):
+    # type: (object, object, object) -> object
+    width = 1920
+    height = 1080
+
+    img = Image.new('RGBA', (width, height))
+
+    x_center = int((width - lanes.width) / 2)
+
+    img.paste(heading, (x_center, 0))
+    img.paste(lanes, (x_center, heading.height + pad))
+
+    background = Image.open(_assets_loc("background1080.jpg"))
+    background.paste(img, (0, 0), img)
+    return background
+
+
+def build_sample():
+    power = build_bar_tile(10)
+    champ = build_champ_tile("Janna", 16, 'right', "6.15.1")
+    stat = build_stat_tile(66666, 666, 66, 66, 66)
+    player1 = build_player_tile(champ, stat, 'left')
+
+    champ = build_champ_tile("Janna", 16, 'left', "6.15.1")
+    stat = build_stat_tile(66666, 666, 66, 66, 66)
+    player2 = build_player_tile(champ, stat, 'right')
+
+    lane = build_lane_tile(player1, player2, power)
+
+    lanes = build_lanes_tile([lane, lane, lane, lane, lane])
+    heading = build_heading_tile(lanes.width, 66666, 66666)
+
+    full = build_full_image(heading, lanes, pad=10)
+
+    sample = full
+    return sample
+
+
 if __name__ == "__main__":
-    # power = build_bar_tile(10)
-    # champ = build_champ_tile("Janna", 16, 'right', "6.15.1")
-    # stat = build_stat_tile(66666, 666, 66, 66, 66)
-    # player1 = build_player_tile(champ, stat, 'left')
-    #
-    # champ = build_champ_tile("Janna", 16, 'left', "6.15.1")
-    # stat = build_stat_tile(66666, 666, 66, 66, 66)
-    # player2 = build_player_tile(champ, stat, 'right')
-    #
-    # lane = build_lane_tile(player1, player2, power)
-    #
-    # lanes = build_lanes_tile([lane, lane, lane, lane, lane])
-    # sample = build_heading_tile(lanes.width)
-    sample = build_gold_heading(300, 100, 7800, "left")
-    sample.show()
-    # sample.save('test.png', 'PNG')
+    build_sample()
