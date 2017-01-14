@@ -448,8 +448,8 @@ def exp_lvl(data,time):
 
         exp_list.append(lvl_count)
 
-    print(exp_list)
-    print("--------")
+    # print(exp_list)
+    # print("--------")
     return(exp_list)
 
 def lvl_stat_gold(champion_list,data,time):
@@ -502,7 +502,7 @@ def lvl_stat_gold(champion_list,data,time):
 
 def power_index(data, time):
     time_stamp = int((time)/60)
-    print(time_stamp)
+    # print(time_stamp)
     max_gold_diff = 5000
     power_index_list = []
     champion_list = []
@@ -523,13 +523,13 @@ def power_index(data, time):
         # print(gold_difference)
         if gold_spent1 > gold_spent2:
             total_gold = gold_difference + lvl_gold[y]
-            print(total_gold)
+            # print(total_gold)
         elif gold_spent1 < gold_spent2:
             total_gold = gold_difference - lvl_gold[y]
-            print(total_gold)
+            # print(total_gold)
         else:  # Gold is equal
             total_gold = lvl_gold[y]
-            print(total_gold)
+            # print(total_gold)
         if abs(total_gold) > 4000:
             if total_gold > 0:
                 total_gold = 2*(math.sqrt(pow(total_gold,2)+5000*total_gold)-total_gold)
@@ -548,10 +548,10 @@ def power_index(data, time):
         power_index_list.append(index)
         # print(total_gold)
 
-    print(exp_list)
+    # print(exp_list)
 
-    print(power_index_list)
-    print("-----------")
+    # print(power_index_list)
+    # print("-----------")
     return(power_index_list)
 
 def infographic_list_builder(url,url_stats):
@@ -574,7 +574,7 @@ def infographic_list_builder(url,url_stats):
 
     infographic_time_list = infographic_time_list_builder(data, team_fight, start_list)
     len_infographic_time_list = len(infographic_time_list)
-    print(infographic_time_list)
+    # print(infographic_time_list)
     infographic_list = []
     time = infographic_time_list[1]
     champ = "aatrox"
