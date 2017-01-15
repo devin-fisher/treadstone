@@ -6,6 +6,8 @@ import sys
 import os
 import argparse
 import json
+from pid import PidFile, PidFileError
+import tempfile
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 
 from lib.game_analysis.analysis import update_match
@@ -50,4 +52,9 @@ if __name__ == "__main__":
     parser.add_argument("-b", "--bracket", action="store", help="Explicit Bracket Id")
 
     args = parser.parse_args()
-    main(args)
+    try:
+        with PidFile(piddir=tempfile.gettempdir()) as pid:
+            main(args)
+    except PidFileError as e:
+        print("already running")
+

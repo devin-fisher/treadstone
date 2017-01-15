@@ -14,5 +14,6 @@ python2-decorator
 python2-scikit-learn
 python2-lasagne
 python2-theano
+python2-pid
 mongodb
 mongodb-server
