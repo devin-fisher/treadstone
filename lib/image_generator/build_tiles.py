@@ -7,6 +7,10 @@ from lib.util.static_lol_data import get_champ_image, get_icon_image
 POWER_HEADING = "Lane Dominance"
 
 
+def _find_center(range_val, img_size):
+    return int((range_val/2.0) - (img_size / 2.0))
+
+
 def _assets_loc(file_name):
     return os.path.join(os.path.dirname(__file__), "assets", file_name)
 
@@ -56,64 +60,44 @@ def build_champ_tile(champ, champ_lvl, level_side, version, pad=6):
 
 
 def build_stat_tile(gold, cs, kills, deaths, assists, pad=4):
-    gold_icon = get_icon_image('5.5.1', 'gold')
     score_icon = get_icon_image('5.5.1', 'score')
     minion_icon = get_icon_image('5.5.1', 'minion')
 
-    gold_icon_dem = (22, 18)
     score_icon_dem = (18, 19)
     minion_icon_dem = (22, 20)
 
-    font = ImageFont.truetype(_assets_loc("compactalet.ttf"), 20)
+    font = ImageFont.truetype(_assets_loc("compactalet.ttf"), 35)
     fill = "white"
 
-    gold_val = str(round(gold / 1000.0, 1)) + "k"
     score_val = str(kills) + '/' + str(deaths) + '/' + str(assists)
     cs_val = str(cs)
 
-    width = 55
-    height = 134
-
-    # print(width)
-    # print(height)
+    width = 180
+    height = 50
 
     img = Image.new('RGBA', (width, height))
+    icon_x = 0
+    icon_y = _find_center(height, score_icon_dem[1]) + 1
+    img.paste(score_icon, (icon_x, icon_y), score_icon)
+
+    icon_x = int( (width/2.0) ) + 25
+    icon_y = _find_center(height, minion_icon_dem[1]) - 2
+    img.paste(minion_icon, (icon_x, icon_y), minion_icon)
 
     draw = ImageDraw.Draw(img)
-    icon_x = int((width / 2) - (gold_icon_dem[0] / 2))
-    icon_y = pad
-    img.paste(gold_icon, (icon_x, icon_y))
-
-    w, h = draw.textsize(gold_val, font=font)
-    text_x = int((width - w) / 2)
-    text_y = int(icon_y + gold_icon_dem[1] + (pad / 2))
-    draw.text((text_x, text_y), gold_val, fill=fill, font=font)
-
-    draw = ImageDraw.Draw(img)
-    icon_x = int((width / 2) - (score_icon_dem[0] / 2))
-    icon_y = text_y + h + (pad * 2)
-    img.paste(score_icon, (icon_x, icon_y))
-
-    w, h = draw.textsize(score_val, font=font)
-    text_x = int((width - w) / 2)
-    text_y = int(icon_y + gold_icon_dem[1] + (pad / 2))
+    text_x = score_icon_dem[1] + pad
+    text_y = _find_center(height, 24)
     draw.text((text_x, text_y), score_val, fill=fill, font=font)
 
-    if cs:
-        draw = ImageDraw.Draw(img)
-        icon_x = int((width / 2) - (minion_icon_dem[0] / 2))
-        icon_y = text_y + h + (pad * 2)
-        img.paste(minion_icon, (icon_x, icon_y))
-
-        w, h = draw.textsize(cs_val, font=font)
-        text_x = int((width - w) / 2)
-        text_y = int(icon_y + gold_icon_dem[1] + (pad / 2))
-        draw.text((text_x, text_y), cs_val, fill=fill, font=font)
+    draw = ImageDraw.Draw(img)
+    text_x = icon_x + minion_icon_dem[1] + pad
+    text_y = _find_center(height, 24)
+    draw.text((text_x, text_y), cs_val, fill=fill, font=font)
 
     return img
 
 
-def build_player_tile(champ_tile, stats_tile, stat_side, pad=40):
+def build_player_tile(champ_tile, stats_tile, stat_side, pad=10):
     champ_tile_width, champ_tile_height = champ_tile.size
     stats_tile_width, stats_tile_height = stats_tile.size
 
@@ -124,7 +108,7 @@ def build_player_tile(champ_tile, stats_tile, stat_side, pad=40):
 
     if stat_side == 'left':
         paste_x = 0
-        paste_y = 0
+        paste_y = _find_center(total_height, stats_tile.height)
         new_im.paste(stats_tile, (paste_x, paste_y))
 
         paste_x = stats_tile_width + pad
@@ -136,7 +120,7 @@ def build_player_tile(champ_tile, stats_tile, stat_side, pad=40):
         new_im.paste(champ_tile, (paste_x, paste_y))
 
         paste_x = champ_tile_width + pad
-        paste_y = 0
+        paste_y = _find_center(total_height, stats_tile.height)
         new_im.paste(stats_tile, (paste_x, paste_y))
 
     return new_im
@@ -176,33 +160,31 @@ def build_lanes_tile(lanes_imgs, pad=10):
     return new_im
 
 
-def build_heading_tile(width, team_1_gold, team_2_gold):
-    font = ImageFont.truetype(_assets_loc("beaufortforlol-bold.otf"), 35)
+def build_heading_tile(team_1_gold, team_2_gold):
+    font = ImageFont.truetype(_assets_loc("beaufortforlol-bold.otf"), 50)
 
-    total_height = 100
-    total_width = width
+    total_height = 50
+    total_width = 900 + (40 * 2) + (120 * 2)
 
-    heading_right = build_gold_heading(int(width/3), total_height, team_2_gold, "right")
-    heading_left = build_gold_heading(int(width/3), total_height, team_1_gold, "left")
+    heading_right = build_gold_heading(team_2_gold, "right")
+    heading_left = build_gold_heading(team_1_gold, "left")
 
     new_im = Image.new('RGBA', (total_width, total_height))
 
-    center_heading = Image.new('RGBA', (total_width/3, total_height))
     fill = "white"
-    draw = ImageDraw.Draw(center_heading)
+    draw = ImageDraw.Draw(new_im)
     w, h = draw.textsize(POWER_HEADING, font=font)
-    text_x = int((center_heading.width / 2.0) - int(w / 2.0))
-    text_y = int((center_heading.height / 2.0) - int(h / 2.0))
+    text_x = _find_center(new_im.width, w)
+    text_y = 0
     draw.text((text_x, text_y), POWER_HEADING, fill=fill, font=font)
 
     new_im.paste(heading_left, (0, 0))
-    new_im.paste(center_heading, (heading_left.width, 0))
-    new_im.paste(heading_right, (heading_left.width + center_heading.width, 0))
+    new_im.paste(heading_right, (total_width - heading_right.width, 0))
 
     return new_im
 
 
-def build_gold_heading(width, height, gold_value, icon_side, font=ImageFont.truetype(_assets_loc("beaufortforlol-bold.otf"), 35), pad=20):
+def build_gold_heading(gold_value, icon_side, font=ImageFont.truetype(_assets_loc("beaufortforlol-bold.otf"), 35), pad=20):
     gold_value = str(round(gold_value / 1000.0, 1)) + "k"
 
     if icon_side == "left":
@@ -210,48 +192,53 @@ def build_gold_heading(width, height, gold_value, icon_side, font=ImageFont.true
     else:
         team_fill = "orangered"
 
+    width = 180
+    height = 50
+
     new_im = Image.new('RGBA', (width, height))
 
     draw = ImageDraw.Draw(new_im)
 
-    w, h = draw.textsize(str(gold_value), font=font)
+    w, h = draw.textsize(gold_value, fill=team_fill, font=font)
+
+    if icon_side == "left":
+        text_x = 0
+    else:
+        text_x = width - w
+
+    text_y = 0
+    draw.text((text_x, text_y), gold_value, fill=team_fill, font=font)
+
     icon = Image.open(_assets_loc("gold_icon.png"))
     resize_size = int(h*1.7)
     icon.thumbnail((resize_size, resize_size), resample=Image.LANCZOS)
 
     if icon_side == "left":
-        text_x = (width/2.0) - (w + pad + icon.width)/2.0
+        icon_x = w
     else:
-        text_x = int(int((width/2.0) - (w + pad + icon.width)/2.0) + w + pad)
-
-    text_y = int((height - h) / 2)
-    draw.text((text_x, text_y), str(gold_value), fill=team_fill, font=font)
-
-    if icon_side == "left":
-        icon_x = int(text_x + w + pad)
-    else:
-        icon_x = int((width/2.0) - (w + pad + icon.width)/2.0)
+        icon_x = text_x - icon.width
 
     icon_y = int((height - icon.height) / 2)
-    new_im.paste(icon, (icon_x, icon_y))
+    new_im.paste(icon, (icon_x, icon_y), icon)
 
     return new_im
 
 
-def build_full_image(heading, lanes, pad=10):
-    # type: (object, object, object) -> object
+def build_full_image(heading, lanes, pad=30):
     width = 1920
-    height = 1080
+    height = heading.height + pad + lanes.height
 
     img = Image.new('RGBA', (width, height))
 
-    x_center = int((width - lanes.width) / 2)
+    lanes_x_center = _find_center(width, lanes.width)
+    heading_x_center = _find_center(width, heading.width)
 
-    img.paste(heading, (x_center, 0))
-    img.paste(lanes, (x_center, heading.height + pad))
+    img.paste(heading, (heading_x_center, 0))
+    img.paste(lanes, (lanes_x_center, heading.height + pad))
 
     background = Image.open(_assets_loc("background1080.jpg"))
-    background.paste(img, (0, 0), img)
+    img_y_pos = _find_center(background.height, img.height) - 20
+    background.paste(img, (0, img_y_pos), img)
     return background
 
 
@@ -268,14 +255,15 @@ def build_sample():
     lane = build_lane_tile(player1, player2, power)
 
     lanes = build_lanes_tile([lane, lane, lane, lane, lane])
-    heading = build_heading_tile(lanes.width, 66666, 66666)
+    heading = build_heading_tile(66666, 66666)
 
     full = build_full_image(heading, lanes, pad=10)
 
-    sample = full
-    return sample
+    rtn = full
+    return rtn
 
 
 if __name__ == "__main__":
     sample = build_sample()
     sample.show()
+    # sample.save("test.png")

@@ -33,7 +33,7 @@ def build_info_graphics(infographic_data):
         right_team_gold = data[1]['teamGold']
         timestamp = data[0]['timeStamp']
 
-        heading_img = build_heading_tile(lanes_img.width, left_team_gold, right_team_gold)
+        heading_img = build_heading_tile(left_team_gold, right_team_gold)
         full_img = build_full_image(heading_img, lanes_img)
 
         file_name = "infographic_" + str(timestamp)
