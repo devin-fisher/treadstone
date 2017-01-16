@@ -13,7 +13,7 @@ def _assets_loc(file_name):
 
 def build_bar_tile(power_value, scale=100.0):
     marker = Image.open(_assets_loc("Square.png"))
-    bar = Image.open(_assets_loc("PowerBar.png"))
+    bar = Image.open(_assets_loc("PowerBar1.png"))
 
     img = Image.new('RGBA', (bar.width, marker.height))
     img.paste(bar, (0, img.height/4))
@@ -22,7 +22,7 @@ def build_bar_tile(power_value, scale=100.0):
     power_pos /= (2 * scale)
     power_pos *= bar.width
 
-    img.paste(marker, (int(power_pos), 0))
+    img.paste(marker, (int(power_pos), 0), marker)
     return img
 
 
@@ -277,4 +277,5 @@ def build_sample():
 
 
 if __name__ == "__main__":
-    build_sample()
+    sample = build_sample()
+    sample.show()

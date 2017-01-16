@@ -80,6 +80,7 @@ class LeagueList(object):
         league_list = [
             {"id": "na-lcs", "name": "LCS NA"}
             , {"id": "worlds", "name": "Worlds"}
+            , {"id": "eu-lcs", "name": "LCS EU"}
         ]
         resp.content_type = 'application/json'
         resp.status = falcon.HTTP_200

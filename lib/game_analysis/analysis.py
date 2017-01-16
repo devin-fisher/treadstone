@@ -108,8 +108,6 @@ def do_timeline_video_translation(game_id, game_data, game_analysis, client):
 
 def update_game(game_id, game, match_data, client):
     print("   " + game['name'])
-    if not played_game(game):
-        return None
 
     game_analysis = dict()
     collection = client.lol.game_analysis
@@ -125,6 +123,9 @@ def update_game(game_id, game, match_data, client):
     if is_not_complete(game_analysis):
         url = GAME_DATA_URL % match_data + "/games/" + game_id
         game_data = request_api_resource(url, retry=3, time_between=1)
+
+        if not played_game(game_data):
+            return None
 
         try:
             do_timeline_event_analysis(game_id, game_data, game_analysis, client)
@@ -149,7 +150,8 @@ def update_game(game_id, game, match_data, client):
 
 
 def is_not_complete(game_analysis):
-    return all(k in game_analysis for k in
+    # return True
+    return not all(k in game_analysis for k in
                (
                    'time_line_events',
                     'time_line_infographic',
