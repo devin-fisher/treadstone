@@ -18,9 +18,17 @@ from lib.util.mongo_util import mongodb_id_convert
 requests_cache.install_cache(os.path.join(CACHE_DIR, 'lcs_schedule_cache'), expire_after=240.0)
 
 LEAGUE_INFO_API = 'http://api.lolesports.com/api/v1/leagues?slug=%s'
+LEAGUE_INFO_API2 = 'http://api.lolesports.com/api/v1/scheduleItems?leagueId=%s'
 MATCH_DETAIL_API = 'http://api.lolesports.com/api/v2/highlanderMatchDetails?tournamentId=%s&matchId=%s'
 TIME_LINE_API = 'https://acs.leagueoflegends.com/v1/stats/game/%s/%s/timeline?gameHash=%s'
 GAME_STAT_API = 'https://acs.leagueoflegends.com/v1/stats/game/%s/%s?gameHash=%s'
+
+SLUG_ID_MAP = {"na-lcs": 2, "worlds": 9, "eu-lcs": 3}
+LEAGUE_LIST = [
+    {"id": "na-lcs", "name": "LCS NA", "numeric_id": 2}
+    , {"id": "worlds", "name": "Worlds", "numeric_id": 9}
+    , {"id": "eu-lcs", "name": "LCS EU", "numeric_id": 3}
+]
 
 
 def request_json_resource(url, retry=3, time_between=1):
@@ -36,11 +44,27 @@ def request_json_resource(url, retry=3, time_between=1):
     raise Exception('Unable to retrieve json recourse')
 
 
+def _get_league_data(league_id):
+    return request_json_resource(LEAGUE_INFO_API2 % (SLUG_ID_MAP.get(league_id, '')))
+
+
+def _get_league_info(league_id):
+    return request_json_resource(LEAGUE_INFO_API % league_id)
+
+
 def find_tournament(tournament_id, tournament_data):
     for tournament in tournament_data.get('highlanderTournaments', []):
         if tournament_id == tournament['id']:
             return tournament
     return None
+
+
+def _find_scheduled_time(match_id, league_data):
+    schedule_items = league_data.get('scheduleItems', [])
+    for item in schedule_items:
+        if item.get('match', "") == match_id:
+            return item.get('scheduledTime', "")
+    return ""
 
 
 def augment_game_data(game_data, match_details):
@@ -69,7 +93,7 @@ def augment_game_data(game_data, match_details):
 
 class League(object):
     def on_get(self, req, resp, league_id):
-        league_data = request_json_resource(LEAGUE_INFO_API % league_id, retry=3, time_between=1)
+        league_data = _get_league_info(league_id)
         resp.content_type = 'application/json'
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(league_data.get('leagues'))
@@ -77,19 +101,14 @@ class League(object):
 
 class LeagueList(object):
     def on_get(self, req, resp):
-        league_list = [
-            {"id": "na-lcs", "name": "LCS NA"}
-            , {"id": "worlds", "name": "Worlds"}
-            , {"id": "eu-lcs", "name": "LCS EU"}
-        ]
         resp.content_type = 'application/json'
         resp.status = falcon.HTTP_200
-        resp.body = json.dumps(league_list)
+        resp.body = json.dumps(LEAGUE_LIST)
 
 
 class Tournament(object):
     def on_get(self, req, resp, league_id, tournament_id):
-        league_data = request_json_resource(LEAGUE_INFO_API % league_id, retry=3, time_between=1)
+        league_data = _get_league_data(league_id)
         tournament_data = find_tournament(tournament_id, league_data)
 
         if tournament_data:
@@ -102,7 +121,7 @@ class Tournament(object):
 
 class TournamentList(object):
     def on_get(self, req, resp, league_id):
-        league_data = request_json_resource(LEAGUE_INFO_API % league_id, retry=3, time_between=1)
+        league_data = _get_league_data(league_id)
 
         tournament_list = []
         for tournament in league_data.get('highlanderTournaments', []):
@@ -122,7 +141,7 @@ class TournamentList(object):
 
 class Bracket(object):
     def on_get(self, req, resp, league_id, tournament_id, bracket_id):
-        league_data = request_json_resource(LEAGUE_INFO_API % league_id, retry=3, time_between=1)
+        league_data = _get_league_data(league_id)
         tournament_data = find_tournament(tournament_id, league_data)
         if tournament_data is None:
             raise falcon.HTTPNotFound()
@@ -139,7 +158,7 @@ class Bracket(object):
 
 class BracketList(object):
     def on_get(self, req, resp, league_id, tournament_id):
-        league_data = request_json_resource(LEAGUE_INFO_API % league_id, retry=3, time_between=1)
+        league_data = _get_league_data(league_id)
         tournament_data = find_tournament(tournament_id, league_data)
         if tournament_data is None:
             raise falcon.HTTPNotFound()
@@ -170,7 +189,7 @@ class BracketList(object):
 
 class Match(object):
     def on_get(self, req, resp, league_id, tournament_id, bracket_id, match_id):
-        league_data = request_json_resource(LEAGUE_INFO_API % league_id, retry=3, time_between=1)
+        league_data = _get_league_data(league_id)
         tournament_data = find_tournament(tournament_id, league_data)
         if tournament_data is None:
             raise falcon.HTTPNotFound()
@@ -197,7 +216,7 @@ class Match(object):
 
 class MatchList(object):
     def on_get(self, req, resp, league_id, tournament_id, bracket_id):
-        league_data = request_json_resource(LEAGUE_INFO_API % league_id, retry=3, time_between=1)
+        league_data = _get_league_data(league_id)
         tournament_data = find_tournament(tournament_id, league_data)
         if tournament_data is None:
             raise falcon.HTTPNotFound()
@@ -218,6 +237,7 @@ class MatchList(object):
             m['state'] = match['state']
             m['position'] = match['position']
             m['has_report'] = False
+            m['scheduledTime'] = _find_scheduled_time(match_id, league_data)
             if os.path.isfile(os.path.join(REPORTS_DIR, match_id + ".zip")):
                 m['has_report'] = True
 
@@ -226,6 +246,8 @@ class MatchList(object):
                 m['has_error'] = True
 
             m_list.append(m)
+
+        m_list = sorted(m_list, key=lambda k: k.get('scheduledTime', ''))
 
         if m_list:
             resp.content_type = 'application/json'
@@ -237,7 +259,7 @@ class MatchList(object):
 
 class Game(object):
     def on_get(self, req, resp, league_id, tournament_id, bracket_id, match_id, game_id):
-        league_data = request_json_resource(LEAGUE_INFO_API % league_id, retry=3, time_between=1)
+        league_data = _get_league_data(league_id)
         tournament_data = find_tournament(tournament_id, league_data)
 
         if tournament_data is None:
@@ -272,7 +294,7 @@ class Game(object):
 
 class GameList(object):
     def on_get(self, req, resp, league_id, tournament_id, bracket_id, match_id):
-        league_data = request_json_resource(LEAGUE_INFO_API % league_id, retry=3, time_between=1)
+        league_data = _get_league_data(league_id)
         tournament_data = find_tournament(tournament_id, league_data)
 
         if tournament_data is None:

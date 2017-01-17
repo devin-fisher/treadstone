@@ -45,7 +45,7 @@ def _crop_image(image):
     if (720, 1280, 3) == image.shape:
         return image[55:68, 625:653]
     elif (1080, 1920, 3) == image.shape:
-        return image[85:101, 938:980]
+        return image[80:105, 938:980]
     raise Exception("Video Resolution has changed")
 
 

@@ -103,11 +103,17 @@ def _walk_cycle(func, video, video_time, game_time, length):
 
 
 def _get_past_break(video, video_time, last_game_time, length, step=5):  # We should handle if this reaches towards the end of the video
+    break_start_video_time = video_time
     while True:
         video_time += step
         new_game_time = get_time(video, video_time, show=False)
         if new_game_time:
-            return video_time, new_game_time
+            game_time_diff = new_game_time - last_game_time
+            if game_time_diff < 5:
+                return video_time, new_game_time
+            video_time_diff = video_time - break_start_video_time
+            if -20 <= int(video_time_diff - game_time_diff) <= 30:
+                return video_time, new_game_time
 
 #TODO Must detect errors - backwards time shifts
 def find_time_shifts(video, start_video_time, length, verbose=False, inital_game_time_shift=61):
@@ -172,7 +178,10 @@ def standard_analysis(video_path, game_length, verbose=False):
     shifts = find_time_shifts(video_obj, start, game_length, verbose=verbose)
     rtn['shifts'] = shifts
 
-    end = shifts[-1]['end_time'] + (game_length - shifts[-1]['end_game_time'])
+    if shifts:
+        end = shifts[-1]['end_time'] + (game_length - shifts[-1]['end_game_time'])
+    else:
+        end = start + game_length
     rtn['end'] = end
 
     return rtn
@@ -193,6 +202,8 @@ def start_only_analysis(video_path, game_length, verbose=False):
 
 
 if __name__ == "__main__":
-    path = "/tmp/75t-dDWZiJs.mp4"
-    video_obj = VideoFileClip(path)
-    print(_get_past_break(video_obj, 1758.8592, 920.0, 2011))
+    path = "/tmp/temp/ccf7a730-5f33-4a96-935f-1ae86e26caac.mp4"
+    # video_obj = VideoFileClip(path)
+    # get_time(video_obj, 1249.4624, show=True)
+    output = standard_analysis(path, 2075, verbose=True)
+    print(output)
