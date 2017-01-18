@@ -63,26 +63,35 @@ def build_stat_tile(gold, cs, kills, deaths, assists, pad=4):
     score_icon = get_icon_image('5.5.1', 'score')
     minion_icon = get_icon_image('5.5.1', 'minion')
 
-    score_icon_dem = (18, 19)
-    minion_icon_dem = (22, 20)
+    score_icon_dem = (27, 50)
+    minion_icon_dem = (30, 27)
 
-    font = ImageFont.truetype(_assets_loc("compactalet.ttf"), 35)
+    font = ImageFont.truetype(_assets_loc("compactalet.ttf"), 40)
     fill = "white"
 
     score_val = str(kills) + '/' + str(deaths) + '/' + str(assists)
     cs_val = str(cs)
 
-    width = 180
+    width = 220
     height = 50
 
     img = Image.new('RGBA', (width, height))
     icon_x = 0
-    icon_y = _find_center(height, score_icon_dem[1]) + 1
-    img.paste(score_icon, (icon_x, icon_y), score_icon)
+    score = Image.open(_assets_loc("score_icon.png"))
+    resize_size = 45
+    score.thumbnail((resize_size, resize_size), resample=Image.LANCZOS)
+
+    icon_y = int((height - score.height) / 2)
+    img.paste(score, (0, icon_y))
 
     icon_x = int( (width/2.0) ) + 25
     icon_y = _find_center(height, minion_icon_dem[1]) - 2
-    img.paste(minion_icon, (icon_x, icon_y), minion_icon)
+    minion = Image.open(_assets_loc("minion.png"))
+    resize_size = 50
+    minion.thumbnail((resize_size, resize_size), resample=Image.LANCZOS)
+
+    icon_y = int((height - minion.height) / 2) - 2
+    img.paste(minion, (120, icon_y), minion)
 
     draw = ImageDraw.Draw(img)
     text_x = score_icon_dem[1] + pad
@@ -90,7 +99,7 @@ def build_stat_tile(gold, cs, kills, deaths, assists, pad=4):
     draw.text((text_x, text_y), score_val, fill=fill, font=font)
 
     draw = ImageDraw.Draw(img)
-    text_x = icon_x + minion_icon_dem[1] + pad
+    text_x = icon_x + minion_icon_dem[1] + pad + 10
     text_y = _find_center(height, 24)
     draw.text((text_x, text_y), cs_val, fill=fill, font=font)
 
@@ -164,7 +173,7 @@ def build_heading_tile(team_1_gold, team_2_gold):
     font = ImageFont.truetype(_assets_loc("beaufortforlol-bold.otf"), 50)
 
     total_height = 50
-    total_width = 900 + (40 * 2) + (120 * 2)
+    total_width = 950 + (40 * 2) + (120 * 2)
 
     heading_right = build_gold_heading(team_2_gold, "right")
     heading_left = build_gold_heading(team_1_gold, "left")
@@ -175,7 +184,7 @@ def build_heading_tile(team_1_gold, team_2_gold):
     draw = ImageDraw.Draw(new_im)
     w, h = draw.textsize(POWER_HEADING, font=font)
     text_x = _find_center(new_im.width, w)
-    text_y = 0
+    text_y = -12
     draw.text((text_x, text_y), POWER_HEADING, fill=fill, font=font)
 
     new_im.paste(heading_left, (0, 0))
@@ -184,7 +193,7 @@ def build_heading_tile(team_1_gold, team_2_gold):
     return new_im
 
 
-def build_gold_heading(gold_value, icon_side, font=ImageFont.truetype(_assets_loc("beaufortforlol-bold.otf"), 35), pad=20):
+def build_gold_heading(gold_value, icon_side, font=ImageFont.truetype(_assets_loc("beaufortforlol-bold.otf"), 40), pad=20):
     gold_value = str(round(gold_value / 1000.0, 1)) + "k"
 
     if icon_side == "left":
@@ -206,7 +215,7 @@ def build_gold_heading(gold_value, icon_side, font=ImageFont.truetype(_assets_lo
     else:
         text_x = width - w
 
-    text_y = 0
+    text_y = -3
     draw.text((text_x, text_y), gold_value, fill=team_fill, font=font)
 
     icon = Image.open(_assets_loc("gold_icon.png"))
