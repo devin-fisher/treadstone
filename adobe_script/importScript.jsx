@@ -359,7 +359,7 @@ var file_path = meta_string.substr(0,file_length)
 var game_number = prompt('Game number?',	"", 'Game Number');
 
 
-var path = [file_path + "G" + game_number + "_full_game_video.mp4", "C:\\Users\\kydfi\\Documents\\League Project\\Opening_AME\\Comp2.mp4"];
+var path = [file_path + "G" + game_number + "_full_game_video.mp4", "E:\\YouTube\\Video\\Intro_Final.mp4"];
 app.project.importFiles(path);
 app.project.createNewSequence("test","C:\\Program Files\\Adobe\\Adobe Premiere Pro CC 2017\\Settings\\SequencePresets\\ARRI\\1080p\\ARRI 1080p 30fps.sqpreset", 0)
 
@@ -391,7 +391,7 @@ if(event_file !== false){// if it is really there
 }
 
 var startTimeSeconds = 0;
-var endTimeSeconds = 4;
+var endTimeSeconds = 7;
 var newSubClipName = "opening";
 var hasHardBoundaries = 1;
 var sessionCounter = 1;
