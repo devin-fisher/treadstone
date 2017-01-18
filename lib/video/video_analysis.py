@@ -126,7 +126,7 @@ def _get_past_break(video, video_time, last_game_time, length, step=5):  # We sh
         new_game_time = get_time(video, video_time, show=False)
         if new_game_time:
             game_time_diff = new_game_time - last_game_time
-            if game_time_diff < 5:
+            if 0 < game_time_diff < 12:
                 # print("_get_past_break iterations: " + str(c))
                 return video_time, new_game_time
             video_time_diff = video_time - break_start_video_time
@@ -226,8 +226,16 @@ def start_only_analysis(video_path, game_length, verbose=False):
 
 
 if __name__ == "__main__":
-    path = "/tmp/temp/ccf7a730-5f33-4a96-935f-1ae86e26caac.mp4"
-    # video_obj = VideoFileClip(path)
+    path = '/tmp/lol/f393a06c-c0dd-48e2-aa2d-abaecae7646c.mp4'
+    video_obj = VideoFileClip(path)
+    # break_video_start, break_game_start = _walk_cycle(_walk_forward, video_obj, 788.0778, 154.0, 1626)
+    # break_video_past_break, break_game_past_break = _get_past_break(video_obj, 2446.1723, 1446.0, 1910)
+    # print util.seconds_to_string(break_video_past_break)
+    # print util.seconds_to_string(break_game_past_break)
+    # time = get_time(video_obj, 978.0778, show=True)
+
+    _get_past_break(video_obj, 2250.3737, 1671.0, 1657, step=5)
     # get_time(video_obj, 1249.4624, show=True)
-    output = standard_analysis(path, 2075, verbose=True)
-    print(output)
+    # output = standard_analysis(path, 1626, verbose=True)
+    # print(output)
+    pass

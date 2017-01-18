@@ -94,7 +94,7 @@ def extract_parts(image_data, show=False):
     contours = sorted(contours, cmp=contours_cmp)
     contours = filter(filter_colon_dots, contours)
 
-    if len(contours) < 3 or len(contours) > 4:
+    if len(contours) < 2 or len(contours) > 4:
         yield None
     else:
         for c in contours:

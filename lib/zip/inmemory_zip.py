@@ -2,7 +2,7 @@ import zipfile
 import StringIO
 from PIL import Image
 from io import BytesIO
-
+import unicodedata
 
 class InMemoryZip(object):
     def __init__(self):
@@ -14,6 +14,9 @@ class InMemoryZip(object):
         file_contents to the in-memory zip.'''
         # Get a handle to the in-memory zip in append mode
         zf = zipfile.ZipFile(self.in_memory_zip, "a", zipfile.ZIP_DEFLATED, False)
+
+        if isinstance(file_contents, unicode):
+            file_contents = file_contents.encode('utf-8')
 
         # Write the file to the in-memory zip
         zf.writestr(filename_in_zip, file_contents)
