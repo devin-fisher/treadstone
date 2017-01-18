@@ -11,6 +11,8 @@ IMAGE_SPLIT_TIME = .999 / IMAGE_SPLITS_COUNT
 
 WALK_DOWN_CYCLE = [10.0, 5.0, 1.0]
 
+MAX_ITERATIONS = 100
+
 
 def _test_start(video, video_time, game_test_time=45):
     at_game_test_time = get_time(video, video_time+game_test_time, show=False)
@@ -19,13 +21,19 @@ def _test_start(video, video_time, game_test_time=45):
 
 def _find_sec_change(video, video_time, game_time):
     video_time_plus_split = video_time
+    c = 0
     while True:
+        c += 1
+        if c > 100:
+            raise Exception("Unable to break loop!")
         video_time_plus_split += IMAGE_SPLIT_TIME
         cur_game_time = get_time(video, video_time_plus_split)
         if cur_game_time is None:
+            # print("_find_sec_change iterations: " + str(c))
             return None, None
 
         if cur_game_time > game_time:
+            # print("_find_sec_change iterations: " + str(c))
             return video_time_plus_split + IMAGE_SPLIT_TIME, cur_game_time # add a little bit of time, we don't want to be right on the edge
 
 
@@ -34,8 +42,12 @@ def find_start_point(video, game_test_time=45, bump_rate=45):
     max_time = video.duration
     operator = sub
 
+    c = 0
     while True:
-        # print cur_video
+        c += 1
+        if c > 100:
+            raise Exception("Unable to break loop!")
+
         if cur_video > max_time or cur_video <= 0:
             raise Exception("Unable to find start time")
 
@@ -57,6 +69,7 @@ def find_start_point(video, game_test_time=45, bump_rate=45):
             cur_video = operator(cur_video, bump_rate)
             continue
         elif game_at_proposed == game_test_time:
+            # print("find_start_point iterations: " + str(c))
             return proposed_start_video_time
         else:
             cur_video -= (found_game_time/2)
@@ -104,15 +117,21 @@ def _walk_cycle(func, video, video_time, game_time, length):
 
 def _get_past_break(video, video_time, last_game_time, length, step=5):  # We should handle if this reaches towards the end of the video
     break_start_video_time = video_time
+    c = 0
     while True:
+        c += 1
+        if c > 100:
+            raise Exception("Unable to break loop!")
         video_time += step
         new_game_time = get_time(video, video_time, show=False)
         if new_game_time:
             game_time_diff = new_game_time - last_game_time
             if game_time_diff < 5:
+                # print("_get_past_break iterations: " + str(c))
                 return video_time, new_game_time
             video_time_diff = video_time - break_start_video_time
             if -20 <= int(video_time_diff - game_time_diff) <= 30:
+                # print("_get_past_break iterations: " + str(c))
                 return video_time, new_game_time
 
 #TODO Must detect errors - backwards time shifts
@@ -127,7 +146,11 @@ def find_time_shifts(video, start_video_time, length, verbose=False, inital_game
     rtn_shifts = []
     had_errors = False
 
+    c = 0
     while True:
+        c += 1
+        if c > 100:
+            raise Exception("Unable to break loop!")
         break_video_start, break_game_start = _walk_cycle(_walk_forward, video, cur_video_time, expected_game_time, length)
 
         if break_video_start is None:
@@ -163,6 +186,7 @@ def find_time_shifts(video, start_video_time, length, verbose=False, inital_game
     if verbose:
         print str(rtn_shifts)
 
+    # print("find_time_shifts iterations: " + str(c))
     return rtn_shifts
 
 

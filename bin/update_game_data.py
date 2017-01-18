@@ -16,6 +16,7 @@ from lib.report.report_builder import build_report_file
 
 BRACKET_DATA_URL = "api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
 
+SKIPPED_MATCHES = ['dbdbc5cb-9009-49a5-bbf2-c93cf155dcae']
 
 def main(args):
     brackets = []
@@ -43,8 +44,9 @@ def main(args):
             print json.dumps(bracket_data, indent=2)
 
         for match_id, match in bracket_data.get('matches', dict()).iteritems():
-            match_data, games_data = update_match(match_id, bracket, client)
-            build_report_file(games_data, match_data, match_name=match_data.get("name", None))
+            if match_id not in SKIPPED_MATCHES:
+                match_data, games_data = update_match(match_id, bracket, client)
+                build_report_file(games_data, match_data, match_name=match_data.get("name", None))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Create a highlight report for particular match.")

@@ -77,7 +77,10 @@ def build_report_file(game_analysis, match, match_name=None, file_path=None):
     imz.append("schedule_info.json", json.dumps(schedule_info, indent=2))
     imz.append("team_info.json", json.dumps(team_info, indent=2))
 
-    imz.append("match_video_upload.bat", upload_batch_file(schedule_info, team_info, match))
+    try:
+        imz.append("match_video_upload.bat", upload_batch_file(schedule_info, team_info, match))
+    except:
+        print('failed upload batch file')
 
     if had_data:
         imz.write_to_file(file_path)
