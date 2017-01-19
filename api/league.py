@@ -67,6 +67,13 @@ def _find_scheduled_time(match_id, league_data):
     return ""
 
 
+def _build_report_file_name(match_name, match_id):
+    if match_name:
+        return os.path.join(REPORTS_DIR, match_name + "_" + match_id + ".zip")
+    else:
+        return os.path.join(REPORTS_DIR, match_id + ".zip")
+
+
 def augment_game_data(game_data, match_details):
     game_hash = None
     game_id = game_data['id']
@@ -238,7 +245,8 @@ class MatchList(object):
             m['position'] = match['position']
             m['has_report'] = False
             m['scheduledTime'] = _find_scheduled_time(match_id, league_data)
-            if os.path.isfile(os.path.join(REPORTS_DIR, match_id + ".zip")):
+            report_file_loc = _build_report_file_name(match['name'], match_id)
+            if os.path.isfile(report_file_loc):
                 m['has_report'] = True
 
             client = MongoClient()
