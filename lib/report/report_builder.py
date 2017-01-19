@@ -15,7 +15,7 @@ TYPES_OF_DATA = ['time_line_events', 'time_line_infographic', 'event_translation
 MATCH_DATA_URL = "api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s/matches/%(match_id)s"
 
 
-def _build_file_name(match_name, match_id):
+def build_report_file_name(match_name, match_id):
     if match_name:
         return os.path.join(REPORTS_DIR, match_name + "_" + match_id + ".zip")
     else:
@@ -26,7 +26,7 @@ def build_report_file(game_analysis, match, match_name=None, file_path=None):
     try:
         if file_path is None:
             match_id = match.get('id', '')
-            file_path = _build_file_name(match_name, match_id)
+            file_path = build_report_file_name(match_name, match_id)
 
         if not game_analysis:
             return
