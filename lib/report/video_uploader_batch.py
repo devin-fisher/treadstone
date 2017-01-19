@@ -56,7 +56,18 @@ def title_info(schedule,team,match):
     return title
 
 
-def description(schedule,team,match):
+def _find_player(players, player_number):
+    for c in range(0, len(players)):
+        check = players[c]['id']
+        if player_number == check:
+            player_info = players[c]['firstName'] + " '" + players[c]['name'] + "' " + \
+                          players[c]['lastName']
+            return player_info
+
+    return "UNKNOWN"
+
+
+def description(schedule, team, match):
     # example:
     # title and link to previous video
     # full game title again
@@ -73,13 +84,16 @@ def description(schedule,team,match):
     roster_info = []
     for a in range(0, len(rosters)):
         for b in range(0, len(rosters[a])):
-            for c in range(0,len(team['players'])):
-                check = team['players'][c]['id']
-                player_number = rosters[a][b]
-                if player_number == check:
-                    player_info = team['players'][c]['firstName'] + " '" + team['players'][c]['name'] + "' " + team['players'][c]['lastName']
-                    roster_info.append(player_info)
-    description_rtn = line1 + "#n#n" + line2 + "#n" + line3 + "#n#n" + line4 + "#n#n" + roster_info[0] + "#n" + roster_info[1] + "#n" + roster_info[2] + "#n" + roster_info[3] + "#n" + roster_info[4] + "#n#n" + line5 + "#n#n" + roster_info[5] + "#n" + roster_info[6] + "#n" + roster_info[7] + "#n" + roster_info[8] + "#n" + roster_info[9]
+            roster_info.append(_find_player(team['players'], rosters[a][b]))
+
+    description_rtn = line1 + "#n#n" \
+        + line2 + "#n" \
+        + line3 + "#n#n" \
+        + line4 + "#n#n" \
+        + "#n".join(roster_info[:5]) \
+        + "#n#n" \
+        + line5 + "#n#n" \
+        + "#n".join(roster_info[5:])
 
     return description_rtn
 

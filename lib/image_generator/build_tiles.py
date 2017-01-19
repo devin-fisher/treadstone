@@ -60,8 +60,8 @@ def build_champ_tile(champ, champ_lvl, level_side, version, pad=6):
 
 
 def build_stat_tile(gold, cs, kills, deaths, assists, pad=4):
-    score_icon = get_icon_image('5.5.1', 'score')
-    minion_icon = get_icon_image('5.5.1', 'minion')
+    # score_icon = get_icon_image('5.5.1', 'score')
+    # minion_icon = get_icon_image('5.5.1', 'minion')
 
     score_icon_dem = (27, 50)
     minion_icon_dem = (30, 27)
@@ -91,7 +91,7 @@ def build_stat_tile(gold, cs, kills, deaths, assists, pad=4):
     minion.thumbnail((resize_size, resize_size), resample=Image.LANCZOS)
 
     icon_y = int((height - minion.height) / 2) - 2
-    img.paste(minion, (120, icon_y), minion)
+    img.paste(minion, (120, icon_y))
 
     draw = ImageDraw.Draw(img)
     text_x = score_icon_dem[1] + pad
