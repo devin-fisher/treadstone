@@ -93,6 +93,7 @@ def build_stat_tile(gold, cs, kills, deaths, assists, pad=4):
     icon_y = int((height - minion.height) / 2) - 2
     img.paste(minion, (140, icon_y), minion)
 
+
     draw = ImageDraw.Draw(img)
     text_x = score_icon_dem[1] + pad
     text_y = _find_center(height, 24)
