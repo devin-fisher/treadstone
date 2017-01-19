@@ -72,7 +72,7 @@ def build_stat_tile(gold, cs, kills, deaths, assists, pad=4):
     score_val = str(kills) + '/' + str(deaths) + '/' + str(assists)
     cs_val = str(cs)
 
-    width = 220
+    width = 260
     height = 50
 
     img = Image.new('RGBA', (width, height))
@@ -91,7 +91,7 @@ def build_stat_tile(gold, cs, kills, deaths, assists, pad=4):
     minion.thumbnail((resize_size, resize_size), resample=Image.LANCZOS)
 
     icon_y = int((height - minion.height) / 2) - 2
-    img.paste(minion, (120, icon_y), minion)
+    img.paste(minion, (140, icon_y), minion)
 
     draw = ImageDraw.Draw(img)
     text_x = score_icon_dem[1] + pad

@@ -466,7 +466,7 @@ def lvl_stat_gold(champion_list,data,time):
         lvl_champ1 = exp_list[a]
         lvl_champ2 = exp_list[a+5]
         # print(lvl_difference)
-        if lvl_champ1 > lvl_champ2:
+        if lvl_champ1 < lvl_champ2:
             lvl_difference = lvl_champ1 - lvl_champ2
             total = total + (lvl_difference * (champion1["mpregenperlevel"] * gold_efficiency["mpregenperlevel"]))
             total = total + (lvl_difference * (champion1["attackspeedperlevel"] * gold_efficiency["attackspeedperlevel"]))
@@ -478,7 +478,7 @@ def lvl_stat_gold(champion_list,data,time):
             total = total + (lvl_difference * (champion1["armorperlevel"] * gold_efficiency["armorperlevel"]))
             total = total + (lvl_difference * (champion1["mpperlevel"] * gold_efficiency["mpperlevel"]))
             # print(total)
-        elif lvl_champ1 < lvl_champ2:
+        elif lvl_champ1 > lvl_champ2:
             lvl_difference = lvl_champ2 - lvl_champ1
             # for b in range(0,len(champion1)):
             total = total - (lvl_difference * (champion2["mpregenperlevel"] * gold_efficiency["mpregenperlevel"]))

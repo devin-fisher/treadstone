@@ -24,6 +24,34 @@ for (i = 0; i < meta_data["infographics"].length; i++){
     }
 }
 
+var path = [ "E:\\YouTube\\Video\\Intro_Final.mp4"];
+app.project.importFiles(path);
+var startTimeSeconds = 0;
+var endTimeSeconds = 7;
+var newSubClipName = "opening";
+var hasHardBoundaries = 1;
+var sessionCounter = 1;
+var takeVideo = 1;
+var takeAudio = 1;
+var projectItem = app.project.rootItem.children[1]
+if ( (projectItem) && 
+    ((projectItem.type == ProjectItemType.CLIP)	|| (projectItem.type == ProjectItemType.FILE)) ){
+    //var newSubClipName	= prompt('Name of subclip?',	projectItem.name + '_' + sessionCounter, 'Name your subclip');
+        
+    var newSubClip 	= projectItem.createSubClip(newSubClipName, 
+                                                    startTimeSeconds, 
+                                                    endTimeSeconds, 
+                                                    hasHardBoundaries,
+                                                    takeVideo,
+                                                    takeAudio);
+
+    if (newSubClip){
+        newSubClip.setStartTime(0); // New in 11.0
+    }
+    } else {
+        alert("Could not sub-clip " + projectItem.name + ".");
+    }
+
 for (i = 1; i < count; i++){
     var paths = [];   
     i_string = i.toString();
