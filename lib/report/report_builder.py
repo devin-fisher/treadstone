@@ -31,8 +31,9 @@ def build_report_file(game_analysis, match, match_name=None, file_path=None):
         if not game_analysis:
             return
 
-        if 'event_translation' not in game_analysis:
-            return
+        for game in game_analysis:
+            if 'event_translation' not in game:
+                return
 
         time_stamp = 0
         for game in game_analysis:
