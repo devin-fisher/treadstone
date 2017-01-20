@@ -519,7 +519,7 @@ def power_index(data, time):
         y = a -1
         gold_spent1 = data['frames'][time_stamp]['participantFrames'][x]['totalGold'] - data['frames'][time_stamp]['participantFrames'][x]['currentGold']
         gold_spent2 = data['frames'][time_stamp]['participantFrames'][z]['totalGold'] - data['frames'][time_stamp]['participantFrames'][z]['currentGold']
-        gold_difference = gold_spent1 - gold_spent2
+        gold_difference =  gold_spent2 - gold_spent1
         # print(gold_difference)
         if gold_spent1 > gold_spent2:
             total_gold = gold_difference + lvl_gold[y]
