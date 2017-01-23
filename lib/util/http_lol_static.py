@@ -12,10 +12,10 @@ LOCAL_PORT = '80' if str(__file__).startswith("/opt/treadstone") else '8555'
 URL_FORMAT = 'http://%s:%s/%s'
 
 
-def request_json_resource(url, retry=3, time_between=1):
+def request_json_resource(url, params=None, retry=3, time_between=1):
     with requests_cache.enabled(os.path.join(CACHE_DIR, 'lcs_static_cache')):
         for i in range(retry):
-            response = requests.get(url, headers={'Origin': 'http://www.lolesports.com'})
+            response = requests.get(url, params=params, headers={'Origin': 'http://www.lolesports.com'})
             if response.status_code == 200:
                 return response.json(object_pairs_hook=OrderedDict)
             elif response.status_code == 404:
@@ -26,10 +26,10 @@ def request_json_resource(url, retry=3, time_between=1):
         raise Exception('Unable to retrieve json recourse')
 
 
-def request_json_resource_cacheless(url, retry=3, time_between=1):
+def request_json_resource_cacheless(url, params=None, retry=3, time_between=1):
     with requests_cache.disabled():
         for i in range(retry):
-            response = requests.get(url, headers={'Origin':'http://www.lolesports.com'})
+            response = requests.get(url, params=params, headers={'Origin':'http://www.lolesports.com'})
             if response.status_code == 200:
                 return response.json(object_pairs_hook=OrderedDict)
             elif response.status_code == 404:
@@ -40,11 +40,11 @@ def request_json_resource_cacheless(url, retry=3, time_between=1):
         raise Exception('Unable to retrieve json recourse')
 
 
-def request_api_resource(relative_url, retry=3, time_between=1):
+def request_api_resource(relative_url, params=None, retry=3, time_between=1):
     url = URL_FORMAT % (LOCAL_HOST, LOCAL_PORT, relative_url)
     with requests_cache.disabled():
         for i in xrange(retry):
-            response = requests.get(url)
+            response = requests.get(url, params=params)
             if response.status_code == 200:
                 return response.json(object_pairs_hook=OrderedDict)
             elif response.status_code == 404:

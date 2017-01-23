@@ -7,6 +7,7 @@ from lib.video.video_analysis import standard_analysis as video_analysis
 from lib.timeline_analysis.video_cooralator import video_event_translator
 from lib.util.mongo_util import mongodb_id_convert
 from lib.util.http_lol_static import request_api_resource, request_json_resource_cacheless
+from lib.game_analysis.youtube_url import find_youtube_url
 
 MATCH_DATA_URL = "api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s/matches/%(match_id)s"
 GAME_DATA_URL = "api/leagues/%(league_id)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s/matches/%(id)s"  # inconsitent league_id vs league
@@ -118,8 +119,10 @@ def update_game(game_id, game, match_data, client):
     game_analysis['tournament_id'] = match_data['tournament_id']
     game_analysis['bracket_id'] = match_data['bracket_id']
     game_analysis['match_id'] = match_data['id']
+    game_analysis['match_scheduled_time'] = match_data['scheduledTime']
+    game_analysis['match_name'] = match_data['name']
     game_analysis['game_id'] = game_id
-    game_analysis['name'] = game['name']
+    game_analysis['game_name'] = game['name']
     if is_not_complete(game_analysis):
         url = GAME_DATA_URL % match_data + "/games/" + game_id
         game_data = request_api_resource(url, retry=3, time_between=1)
@@ -175,7 +178,3 @@ def update_match(match_id, bracket_ids, client):
         return match_data, match_games
 
     return match_data, []
-
-
-def find_youtube_url(game_id, game_data, game_analysis, client):
-    return game_data.get('youtube_url', None)

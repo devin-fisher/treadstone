@@ -208,6 +208,7 @@ class Match(object):
             match_data['tournament_title'] = tournament_data['title']
             match_data['tournament_description'] = tournament_data['description']
             match_data['bracket_id'] = bracket_id
+            match_data['scheduledTime'] = _find_scheduled_time(match_id, league_data)
             resp.content_type = 'application/json'
             resp.status = falcon.HTTP_200
             resp.body = json.dumps(match_data)
