@@ -183,10 +183,10 @@ def is_not_complete(game_analysis):
                 ))
 
 
-def update_match(match_id, bracket_ids, client):
+def update_match(match_id, match_data, bracket_ids, client):
     ids = dict(bracket_ids)
     ids['match_id'] = match_id
-    match_data = request_api_resource(MATCH_DATA_URL % ids)
+    # match_data = request_api_resource(MATCH_DATA_URL % ids)
 
     scheduled_str = match_data.get('scheduledTime', "2100-01-01")
     scheduled = None
@@ -198,16 +198,17 @@ def update_match(match_id, bracket_ids, client):
     if match_resolved or (scheduled and datetime.datetime.now(pytz.utc) > scheduled):
         print "MATCH: %(id)s - %(name)s - %(state)s" % match_data
         print(match_data['name'])
+        complete_match_data = request_api_resource(MATCH_DATA_URL % ids)
         match_games = []
-        for game_id, game in match_data.get('games', dict()).iteritems():
-            game_analysis = update_game(game_id, game, match_data, match_resolved, client)
+        for game_id, game in complete_match_data.get('games', dict()).iteritems():
+            game_analysis = update_game(game_id, game, complete_match_data, match_resolved, client)
             if game_analysis:
                 match_games.append(game_analysis)
 
-        if match_data.get('state', '') == 'resolved':
-            return match_data, match_games
+        if complete_match_data.get('state', '') == 'resolved':
+            return complete_match_data, match_games
         else:
-            return match_data, []
+            return complete_match_data, []
 
     return match_data, []
 

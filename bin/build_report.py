@@ -9,20 +9,22 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.
 
 from lib.game_analysis.analysis import update_match
 from lib.report.report_builder import build_report_file
+from lib.util.http_lol_static import request_api_resource
 
-BRACKET_DATA_URL = "api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
+MATCH_DATA_URL = "api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s/matches/%(match_id)s"
 
 
 def main(args_values):
     client = MongoClient()
-    bracket = {
+    ids = {
                 "league": args_values.league,
                 "tournament_id": args_values.tournament_id,
-                "bracket_id": args_values.bracket_id
+                "bracket_id": args_values.bracket_id,
+                "match_id": args_values.match_id
                }
-
     match_id = args_values.match_id
-    match_data, games_data = update_match(match_id, bracket, client)
+    match_data = request_api_resource(MATCH_DATA_URL % ids)
+    match_data, games_data = update_match(match_id, match_data, ids, client)
     zip_file_name = os.path.join("/tmp/", match_data.get("name", None) + "_" + match_id + ".zip")
     build_report_file(games_data, match_data, match_name=match_data.get("name", None), file_path=zip_file_name)
     print "created zip at " + zip_file_name

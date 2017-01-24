@@ -14,9 +14,10 @@ from lib.game_analysis.analysis import update_match
 from lib.util.http_lol_static import request_api_resource
 from lib.report.report_builder import build_report_file
 
-BRACKET_DATA_URL = "api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s"
+BRACKET_DATA_URL = "api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s/matches"
 
 SKIPPED_MATCHES = []
+
 
 def main(args):
     brackets = []
@@ -39,13 +40,14 @@ def main(args):
         bracket_data_url = BRACKET_DATA_URL % bracket
         if args.verbose:
             print bracket_data_url
-        bracket_data = request_api_resource(bracket_data_url)
+        matches = request_api_resource(bracket_data_url)
         if args.verbose:
-            print json.dumps(bracket_data, indent=2)
+            print json.dumps(matches, indent=2)
 
-        for match_id, match in bracket_data.get('matches', dict()).iteritems():
+        for match in matches:
+            match_id = match['id']
             if match_id not in SKIPPED_MATCHES:
-                match_data, games_data = update_match(match_id, bracket, client)
+                match_data, games_data = update_match(match_id, match, bracket, client)
                 build_report_file(games_data, match_data, match_name=match_data.get("name", None))
 
 if __name__ == "__main__":
