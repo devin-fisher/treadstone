@@ -112,7 +112,7 @@ def do_timeline_video_translation(game_id, game_data, game_analysis, client):
     save_game_analysis(game_id, game_analysis, client)
 
 
-def update_game(game_id, game, match_data, client):
+def update_game(game_id, game, match_data, match_resolved, client):
     print("   " + game['name'])
 
     game_analysis = dict()
@@ -133,6 +133,9 @@ def update_game(game_id, game, match_data, client):
         game_data = request_api_resource(url, retry=3, time_between=1)
 
         if not played_game(game_data):
+            if match_resolved:
+                game_analysis['game_not_played'] = True
+                save_game_analysis(game_id, game_analysis, client)
             return None
 
         try:
@@ -160,12 +163,18 @@ def update_game(game_id, game, match_data, client):
             do_timeline_video_translation(game_id, game_data, game_analysis, client)
         except Exception as e:
             save_game_analysis(game_id, game_analysis, client, error_msg=('event_translation', e.message))
-    return game_analysis
+
+    if game_analysis.get('game_not_played', False):
+        return None
+    else:
+        return game_analysis
 
 
 def is_not_complete(game_analysis):
-    # return True
-    return not all(k in game_analysis for k in
+    if game_analysis.get('game_not_played', False):
+        return False
+    else:
+        return not all(k in game_analysis for k in
                (
                    'time_line_events',
                     'time_line_infographic',
@@ -184,12 +193,14 @@ def update_match(match_id, bracket_ids, client):
     if scheduled_str:
         scheduled = parse(scheduled_str)
 
-    if match_data.get('state', '') == 'resolved' or (scheduled and datetime.datetime.now(pytz.utc) > scheduled):
+    match_resolved = match_data.get('state', '') == 'resolved'
+
+    if match_resolved or (scheduled and datetime.datetime.now(pytz.utc) > scheduled):
         print "MATCH: %(id)s - %(name)s - %(state)s" % match_data
         print(match_data['name'])
         match_games = []
         for game_id, game in match_data.get('games', dict()).iteritems():
-            game_analysis = update_game(game_id, game, match_data, client)
+            game_analysis = update_game(game_id, game, match_data, match_resolved, client)
             if game_analysis:
                 match_games.append(game_analysis)
 
@@ -201,7 +212,7 @@ def update_match(match_id, bracket_ids, client):
     return match_data, []
 
 if __name__ == "__main__":
-    scheduled = parse({}.get('scheduledTime', "2017-01-19T19:00:00.000+0000"))
+    scheduled_dt = parse({}.get('scheduledTime', "2017-01-19T19:00:00.000+0000"))
 
     print (datetime.datetime.now(pytz.utc))
-    print (datetime.datetime.now(pytz.utc) > scheduled)
+    print (datetime.datetime.now(pytz.utc) > scheduled_dt)
