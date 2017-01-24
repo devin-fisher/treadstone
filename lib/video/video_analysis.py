@@ -25,7 +25,7 @@ def _find_sec_change(video, video_time, game_time):
     while True:
         c += 1
         if c > 100:
-            raise Exception("Unable to break loop!")
+            raise Exception("Unable to break loop! - in _find_sec_change")
         video_time_plus_split += IMAGE_SPLIT_TIME
         cur_game_time = get_time(video, video_time_plus_split)
         if cur_game_time is None:
@@ -46,7 +46,7 @@ def find_start_point(video, game_test_time=45, bump_rate=45):
     while True:
         c += 1
         if c > 100:
-            raise Exception("Unable to break loop!")
+            raise Exception("Unable to break loop! - in find_start_point")
 
         if cur_video > max_time or cur_video <= 0:
             raise Exception("Unable to find start time")
@@ -121,12 +121,12 @@ def _get_past_break(video, video_time, last_game_time, length, step=5):  # We sh
     while True:
         c += 1
         if c > 100:
-            raise Exception("Unable to break loop!")
+            raise Exception("Unable to break loop! - in _get_past_break")
         video_time += step
         new_game_time = get_time(video, video_time, show=False)
         if new_game_time:
             game_time_diff = new_game_time - last_game_time
-            if 0 < game_time_diff < 12:
+            if 0 < game_time_diff < 18:
                 # print("_get_past_break iterations: " + str(c))
                 return video_time, new_game_time
             video_time_diff = video_time - break_start_video_time
@@ -150,7 +150,7 @@ def find_time_shifts(video, start_video_time, length, verbose=False, inital_game
     while True:
         c += 1
         if c > 100:
-            raise Exception("Unable to break loop!")
+            raise Exception("Unable to break loop! - in find_time_shifts")
         break_video_start, break_game_start = _walk_cycle(_walk_forward, video, cur_video_time, expected_game_time, length)
 
         if break_video_start is None:
@@ -226,7 +226,7 @@ def start_only_analysis(video_path, game_length, verbose=False):
 
 
 if __name__ == "__main__":
-    path = '/tmp/lol/f393a06c-c0dd-48e2-aa2d-abaecae7646c.mp4'
+    path = '/tmp/lol/M42l0fpG9Dg.mp4'
     video_obj = VideoFileClip(path)
     # break_video_start, break_game_start = _walk_cycle(_walk_forward, video_obj, 788.0778, 154.0, 1626)
     # break_video_past_break, break_game_past_break = _get_past_break(video_obj, 2446.1723, 1446.0, 1910)
@@ -234,7 +234,7 @@ if __name__ == "__main__":
     # print util.seconds_to_string(break_game_past_break)
     # time = get_time(video_obj, 978.0778, show=True)
 
-    _get_past_break(video_obj, 2250.3737, 1671.0, 1657, step=5)
+    print(_get_past_break(video_obj, 2694.1362, 1657, 2320))
     # get_time(video_obj, 1249.4624, show=True)
     # output = standard_analysis(path, 1626, verbose=True)
     # print(output)

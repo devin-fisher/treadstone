@@ -1,7 +1,7 @@
 from lib.util.http_lol_static import request_json_resource_cacheless
 import string
 from dateutil.parser import parse
-from datetime import datetime, timedelta
+from datetime import timedelta
 import re
 
 DEFAULT_PARAMETERS = {
