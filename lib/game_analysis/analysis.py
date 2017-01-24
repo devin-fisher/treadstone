@@ -1,6 +1,7 @@
 import time
 from dateutil.parser import parse
 import datetime
+import pytz
 
 from lib.game_analysis.video_dowload import YoutubeFile
 from lib.timeline_analysis.events import report as timeline_events
@@ -183,7 +184,7 @@ def update_match(match_id, bracket_ids, client):
     if scheduled_str:
         scheduled = parse(scheduled_str)
 
-    if match_data.get('state', '') == 'resolved' or (scheduled and datetime.datetime.now() > scheduled):
+    if match_data.get('state', '') == 'resolved' or (scheduled and datetime.datetime.now(pytz.utc) > scheduled):
         print "MATCH: %(id)s - %(name)s - %(state)s" % match_data
         print(match_data['name'])
         match_games = []
@@ -200,5 +201,7 @@ def update_match(match_id, bracket_ids, client):
     return match_data, []
 
 if __name__ == "__main__":
-    scheduled = parse({}.get('scheduledTime', "2100-01-01"))
-    print (datetime.datetime.now() > scheduled)
+    scheduled = parse({}.get('scheduledTime', "2017-01-19T19:00:00.000+0000"))
+
+    print (datetime.datetime.now(pytz.utc))
+    print (datetime.datetime.now(pytz.utc) > scheduled)

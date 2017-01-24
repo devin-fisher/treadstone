@@ -15,5 +15,7 @@ python2-scikit-learn
 python2-lasagne
 python2-theano
 python2-pid
+python2-dateutil
+pytz
 mongodb
 mongodb-server
