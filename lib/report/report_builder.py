@@ -54,7 +54,7 @@ def build_report_file(game_analysis, match, match_name=None, file_path=None):
             if not game or 'time_line_events' not in game or 'time_line_infographic' not in game:
                 continue
 
-            name = game.get('name', "G")
+            name = game.get('game_name', "G")
             video_list.append({'game_name': name, 'youtube_url': game.get('youtube_url', "Unknown")})
 
             had_data = False
