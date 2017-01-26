@@ -18,8 +18,9 @@ if(meta_file !== false){// if it is really there
 
 var count = 1
 for (i = 0; i < meta_data["infographics"].length; i++){
-    var count_string = count.toString();
-    if (meta_data["infographics"][i].substr(0,2) == "G" + count_string){
+    var game_number = meta_data["infographics"][i].substr(1,1)
+    var game = parseInt(game_number);
+    if (game > count){
         count = count + 1;
     }
 }
@@ -51,21 +52,22 @@ if ( (projectItem) &&
     } else {
         alert("Could not sub-clip " + projectItem.name + ".");
     }
-
-for (i = 1; i < count; i++){
-    var paths = [];   
+for (i = 1; i <= count; i++){
+    var vid = [];
+    var transition_path = [];
     i_string = i.toString();
     vid_path = file_path + "G" + i_string + "_short.mp4";
     transition = "E:\\YouTube\\Video\\game" + i_string + ".png";
     
     
    if(vid_path !== false){
-       paths.push(vid_path);
-       paths.push(transition);
+       vid.push(vid_path);
+       transition_path.push(transition);
        
        
        }
-   app.project.importFiles(paths);
+   app.project.importFiles(transition_path);
+   app.project.importFiles(vid);
 }
 
 

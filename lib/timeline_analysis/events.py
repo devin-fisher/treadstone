@@ -19,7 +19,7 @@ def report(url, stats_url):
     end_list, counter_list = end_list_function(kill_list, counter_list, start_list)
 
     team_fight = large_fight_function(start_list, counter_list)
-
+    objective_before = 3
     before = 11
     after = 4
     len_start_list = len(start_list)
@@ -28,22 +28,20 @@ def report(url, stats_url):
     video_edit_times = []
     for a in range(0, len_start_list):
         video_edit_times.append({})
-        seconds = int((end_list[a]) % 60)
-        end_time = start_list[a] + after
-        if (seconds < before):
-            start_time = start_list[a] - before
+        seconds = int((end_list[a]['time']) % 60)
+        end_time = start_list[a]['time'] + after
+        check = start_list[a]['eventType']
+        if (check !=  'CHAMPION_KILL'):
+            start_time = start_list[a]['time'] - objective_before
         else:
-            start_time = start_list[a] - before
-        if (seconds > 60 - after):
-            end_time = end_list[a] + after
-        else:
-            end_time = end_list[a] + after
+            start_time = start_list[a]['time'] - before
+        end_time = end_list[a]['time'] + after
 
         video_edit_times[a]['startTime'] = start_time
         video_edit_times[a]['endTime'] = end_time
         video_length = video_length + ((end_time - start_time))
 
-    # print(video_edit_times)
+    print(video_edit_times)
     return video_edit_times
 
 # def infographic_time_list_builder(data,team_fight):

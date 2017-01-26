@@ -362,9 +362,9 @@ def infographic_time_list_builder(data,team_fight, start_list):
         test_list.append(infographic_time)
 
         for b in range(0, len(start_list)):
-            if start_list[b] - infographic_time > 0 :
+            if start_list[b]['time'] - infographic_time > 0 :
                 if test == True and infographic_time_list[a] != start_list[b]:
-                    infographic_time_list.append(start_list[b])
+                    infographic_time_list.append(start_list[b]['time'])
                     test = False
 
         for c in range(0,len_team_fight):
@@ -585,6 +585,11 @@ def infographic_list_builder(url,url_stats):
         a_index = a
         # a = str(a)
         time = infographic_time_list[a]
+        if (a != 0):
+            time_before = infographic_time_list[a-1]
+            change = time - time_before
+        else:
+            change = 0
         player_gold_list = player_gold(data,team_fight,time)
         player_items_list = player_items(data, team_fight, time)
         kill_score = team_kills(data, time)
@@ -628,7 +633,7 @@ def infographic_list_builder(url,url_stats):
         infographic_list[a][team_1]["summonerSpell"] = blue_spell_list
         infographic_list[a][team_1]["minionsKilled"] = blue_minion_list
         infographic_list[a][team_1]["playerLevel"] = blue_lvl_list
-
+        infographic_list[a][team_1]["timeChange"] = change
         infographic_list[a][team_1]['playerItem'] = []
         for b in range(1,6):
             infographic_list[a][team_1]['playerItem'].append(player_items_list[b]['items'])
@@ -658,7 +663,7 @@ def infographic_list_builder(url,url_stats):
         infographic_list[a][team_2]['summonerSpell'] = red_spell_list
         infographic_list[a][team_2]['minionsKilled'] = red_minion_list
         infographic_list[a][team_2]["playerLevel"] = red_lvl_list
-
+        infographic_list[a][team_1]["timeChange"] = change
         infographic_list[a][team_2]['playerItem'] = []
         for b in range(6,11):
             infographic_list[a][team_2]['playerItem'].append(player_items_list[b]['items'])

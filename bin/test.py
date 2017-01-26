@@ -11,6 +11,7 @@ if __name__ == "__main__":
     url = "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770101/timeline?gameHash=101e59a94cf6f805"
     stats = "https://acs.leagueoflegends.com/v1/stats/game/TRLH1/1001770101?gameHash=101e59a94cf6f805"
     info = infographic_list_builder(url, stats)
+    info2 = report(url,stats)
     print (info)
     images = build_info_graphics(info)
     images[5].show()
