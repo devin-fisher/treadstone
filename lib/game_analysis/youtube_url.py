@@ -55,5 +55,5 @@ def look_for_epicquickshot(match_name, game_name, game_scheduled_time):
 
 
 if __name__ == "__main__":
-    print look_for_epicquickshot('TSM-vs-IMT', "G1", "2017-01-22T20:00:00.000+0000")
+    print look_for_epicquickshot('GIA-vs-FNC', "G2", "2017-01-27T19:00:00.000+0000")
     pass

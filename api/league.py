@@ -245,7 +245,7 @@ class MatchList(object):
                 m['has_report'] = True
 
             client = MongoClient()
-            if client.lol.game_analysis.count({'match_id': match_id, 'status': 'error'}) > 0:
+            if client.lol.game_analysis.count({'match_id': match_id, 'error_msg': { '$exists': True}}) > 0:
                 m['has_error'] = True
 
             m_list.append(m)

@@ -88,6 +88,6 @@ if __name__ == "__main__":
     # test_still_open_video('/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4', 1927, 540)
     # test_still_open_video('/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4', 1987, 600)
     test_all_video_analysis()
-    # print(standard_analysis('/tmp/lol/M42l0fpG9Dg.mp4', 2320, verbose=True))
+    # print(standard_analysis('/tmp/lol/oxtlhJBAAOQ.mp4', 2458, verbose=True))
     # print(str(standard_analysis("/home/devin.fisher/Kingdoms/lol/3O7OJY3X0yM-HD.mp4", 2391, verbose=True)))
     # print compare_dict(SAMPLE_ANALYSIS["/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4"], SAMPLE_ANALYSIS["/home/devin.fisher/Kingdoms/lol/fmqeavjSfTg.mp4"])

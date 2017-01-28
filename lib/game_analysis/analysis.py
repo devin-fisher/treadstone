@@ -94,12 +94,16 @@ def do_timeline_video_analysis(game_id, game_data, game_analysis, client):
     if youtube_url is None:
         raise NotReadyException("Unable to find youtube url")
 
+    game_analysis['youtube_url'] = youtube_url
+    game_analysis['game_length'] = length
+
+    save_game_analysis(game_id, game_analysis, client)
+
     with YoutubeFile(youtube_url, game_id) as video_path:
         analysis = video_analysis(video_path, length, verbose=False)
 
     # print analysis
     game_analysis[key_val] = analysis
-    game_analysis['youtube_url'] = youtube_url
     save_game_analysis(game_id, game_analysis, client)
 
 

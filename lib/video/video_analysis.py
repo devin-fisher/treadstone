@@ -37,7 +37,7 @@ def _find_sec_change(video, video_time, game_time):
             return video_time_plus_split + IMAGE_SPLIT_TIME, cur_game_time # add a little bit of time, we don't want to be right on the edge
 
 
-def find_start_point(video, game_test_time=45, bump_rate=45):
+def find_start_point(video, game_test_time=60, bump_rate=45):
     cur_video = video.duration*.55
     max_time = video.duration
     operator = sub
