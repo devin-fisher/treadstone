@@ -22,13 +22,19 @@ def _convert_data(datatime_obj):
 
 
 def find_youtube_url(game_id, game_data, game_analysis, client):
-    epic_link = look_for_epicquickshot(
+    rtn = game_data.get('youtube_url', None)
+    if rtn:
+        return rtn
+
+    rtn = look_for_epicquickshot(
         game_analysis.get('match_name', None),
         game_analysis.get('game_name', None),
         game_analysis.get('match_scheduled_time', None))
-    if epic_link:
-        return epic_link
-    return game_data.get('youtube_url', None)
+
+    if rtn:
+        return rtn
+    else:
+        return None
 
 
 def look_for_epicquickshot(match_name, game_name, game_scheduled_time):
