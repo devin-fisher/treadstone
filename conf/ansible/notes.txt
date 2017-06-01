@@ -1,0 +1,21 @@
+Needed actions:
+  [SERVER]
+  change ssh port -- 225
+  allow port selinux -- http://docs.ansible.com/ansible/seport_module.html
+  
+  start and enable firewalld https://docs.ansible.com/ansible/systemd_module.html
+  allow port 225 through firewall
+  disable port 22 through firewall
+  
+  
+  [APP]
+  install needed packages (yum & pip)
+  
+  start and enable nginx https://docs.ansible.com/ansible/systemd_module.html
+  symlink api.conf
+  change root to /opt/treadstone/ui
+  
+  hardlink api.service to /opt/treadstone/service/
+  start and enable nginx https://docs.ansible.com/ansible/systemd_module.html
+  
+  start and enable mongdb https://docs.ansible.com/ansible/systemd_module.html
