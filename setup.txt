@@ -4,7 +4,7 @@ Nginx Setup:
 	-- sudo systemctl enable nginx.service
 	-- sudo systemctl start nginx.service
 	-- add 'root          /opt/treadstone/ui;' in /etc/nginx/nginx.conf
-	-- add configuration for API (TODO better notes or the file)
+	-- ln -s /opt/treadstone/conf/nginx/api.conf /etc/nginx/default.d/api.conf
 	
 Service Setup:
 	-- hardlink files in /opt/treadstone/service to /etc/systemd/system
