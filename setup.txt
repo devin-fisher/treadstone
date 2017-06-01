@@ -1,22 +1,20 @@
 yum install `cat /opt/treadstone/packages.txt`
 
 Nginx Setup:
-	-- systemd enable
-	-- systemd start
-	-- symlink ui static files
-		-- index.html
-		-- scripts
-		-- bootstrap
-	-- add configuration for API
+	-- sudo systemctl enable nginx.service
+	-- sudo systemctl start nginx.service
+	-- add 'root          /opt/treadstone/ui;' in /etc/nginx/nginx.conf
+	-- add configuration for API (TODO better notes or the file)
 	
 Service Setup:
-	-- hardlink files in /opt/treadstone/service to /etc/systemd/systemd
-	-- systemd enable services
-	-- systemd start services
+	-- hardlink files in /opt/treadstone/service to /etc/systemd/system
+	   (ln /opt/treadstone/service/api.service api.service)
+	-- sudo systemctl enable api.service
+	-- sudo systemctl start api.service
 
 Mongodb-server Setup:
-	-- systemd enable
-	-- systemd start
+	-- sudo systemctl enable mongod.service
+	-- sudo systemctl start mongod.service
 
 Pip install:
 	moviepy
