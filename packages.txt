@@ -1,3 +1,10 @@
+vim
+htop
+ntp
+firewalld
+policycoreutils-python
+policycoreutils-python-utils
+
 git
 nginx
 python-gunicorn
