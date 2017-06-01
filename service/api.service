@@ -3,10 +3,13 @@ Description=Treadstone API
 After=network.target
 
 [Service]
-User=root
+User=nginx
 Group=nginx
+PermissionsStartOnly=true
 WorkingDirectory=/opt/treadstone/api
-ExecStart=/usr/bin/gunicorn --timeout 120 --workers 3 --bind unix:treadstone_api.sock -m 007 app:api
+ExecStartPre=-/usr/bin/mkdir --context=system_u:object_r:httpd_var_run_t:s0 /var/run/api
+ExecStartPre=/usr/bin/chown -R nginx:nginx /var/run/api
+ExecStart=/usr/bin/gunicorn --timeout 120 --workers 3 --bind unix:/var/run/api/treadstone_api.sock -m 007 app:api
 
 [Install]
 WantedBy=multi-user.target
