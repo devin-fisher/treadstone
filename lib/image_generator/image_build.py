@@ -19,6 +19,7 @@ def build_side_of_lane(data, side, player_num, version):
 def build_info_graphics(infographic_data):
     version = "7.1.1"
     rtn = []
+    timestamp2 = 0
     for data in infographic_data:
         lanes = []
         for i in xrange(5):
@@ -32,13 +33,15 @@ def build_info_graphics(infographic_data):
         left_team_gold = data[0]['teamGold']
         right_team_gold = data[1]['teamGold']
         timestamp = data[0]['timeStamp']
+        timediff = timestamp - timestamp2
 
-        heading_img = build_heading_tile(left_team_gold, right_team_gold)
+        heading_img = build_heading_tile(left_team_gold, right_team_gold, timestamp, timediff)
         full_img = build_full_image(heading_img, lanes_img)
 
         file_name = "infographic_" + str(timestamp)
         full_img.info['file_name'] = file_name
         rtn.append(full_img)
+        timestamp2 = timestamp
     return rtn
 
 

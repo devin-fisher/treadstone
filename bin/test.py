@@ -15,7 +15,7 @@ if __name__ == "__main__":
     print (info)
     images = build_info_graphics(info)
     images[5].show()
-    # images[5].save('/tmp/test.png', 'PNG')
+    images[5].save('C:\Ky\Youtube\Mock-ups\mock.png', 'PNG')
 
 
 # if __name__ == "__main__":

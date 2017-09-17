@@ -16,6 +16,7 @@ if(meta_file !== false){// if it is really there
           alert("Bah!"); // if something went wrong
 }
 
+
 var count = 1
 for (i = 0; i < meta_data["infographics"].length; i++){
     var game_number = meta_data["infographics"][i].substr(1,1)
@@ -25,7 +26,7 @@ for (i = 0; i < meta_data["infographics"].length; i++){
     }
 }
 
-var path = [ "E:\\YouTube\\Video\\Intro_Final.mp4"];
+var path = [ "C:\\Ky\\Youtube\\Video\\Intro_Final.mp4"];
 app.project.importFiles(path);
 var startTimeSeconds = 0;
 var endTimeSeconds = 7;
@@ -44,6 +45,7 @@ if ( (projectItem) &&
                                                     endTimeSeconds, 
                                                     hasHardBoundaries,
                                                     takeVideo,
+                                                    
                                                     takeAudio);
 
     if (newSubClip){
@@ -57,7 +59,7 @@ for (i = 1; i <= count; i++){
     var transition_path = [];
     i_string = i.toString();
     vid_path = file_path + "G" + i_string + "_short.mp4";
-    transition = "E:\\YouTube\\Video\\game" + i_string + ".png";
+    transition = "C:\\Ky\\Youtube\\Video\\game" + i_string + ".png";
     
     
    if(vid_path !== false){

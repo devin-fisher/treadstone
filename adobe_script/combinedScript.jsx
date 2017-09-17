@@ -352,21 +352,16 @@
     }
 }());
 
+
+
 var meta_file = File.openDialog("Selection prompt");
+//var game_number = prompt('Game number?',	"", 'Game Number');
+var offset_prompt = prompt('Offset Length in Seconds',	"", 'Offset');
 var meta_string = meta_file.toString();
 var file_length = meta_string.lastIndexOf("/") + 1;
 var file_path = meta_string.substr(0,file_length)
-var game_number = prompt('Game number?',	"", 'Game Number');
-var offset_prompt = prompt('Offset Length in Seconds',	"", 'Offset');
 var offset = parseInt(offset_prompt);
 
-var path = [file_path + "G" + game_number + "_full_game_video.mp4"];
-alert(file_path);
-app.project.importFiles(path);
-app.project.createNewSequence("test","C:\\Program Files\\Adobe\\Adobe Premiere Pro CC 2017\\Settings\\SequencePresets\\ARRI\\1080p\\ARRI 1080p 30fps.sqpreset", 0)
-
-var meta_data = null;
-var meta_content = null;
 if(meta_file !== false){// if it is really there
           meta_file.open('r'); // open it
           meta_content = meta_file.read(); // read it
@@ -378,20 +373,25 @@ if(meta_file !== false){// if it is really there
 }
 
 
-var event_file = File(file_path + "G" + game_number + "_event_translation.json");// but we want JSON
-var events = null; // create an empty variable
-    //  alert(file_to_read); // This could be interesting
-var content = null; // this will hold the String content from the file
-if(event_file !== false){// if it is really there
-           event_file.open('r'); // open it
-          content = event_file.read(); // read it
-          events =  JSON.parse(content);// now evaluate the string from the file
-          //alert(events.toSource()); // if it all went fine we have now a JSON Object instead of a string call length
-          event_file.close(); // always close files after reading
-          }else{
-          alert("Bah!"); // if something went wrong
+
+var count = 1
+for (i = 0; i < meta_data["infographics"].length; i++){
+    var game_number = meta_data["infographics"][i].substr(1,1)
+    var game = parseInt(game_number);
+    if (game > count){
+        count = count + 1;
+    }
 }
 
+for (i = 1; i <= count; i++){
+    var vid = [];
+    var transition_path = [];
+    i_string = i.toString();
+    var video_path = [file_path + "G" + i_string + "_full_game_video.mp4"];
+    app.project.importFiles(video_path);
+}
+
+app.project.createNewSequence("test","C:\\Program Files\\Adobe\\Adobe Premiere Pro CC 2017\\Settings\\SequencePresets\\ARRI\\1080p\\ARRI 1080p 30fps.sqpreset", 0)
 
 var meta_bool = false;
 var infographic_start = 0;
@@ -410,41 +410,95 @@ var infographic = "";
 
 
 
-var projectItem = app.project.rootItem.children[0];
+var path = [ "C:\\Ky\\Youtube\\Video\\Intro_Final.mp4"];
+app.project.importFiles(path);
+var startTimeSeconds = 0;
+var endTimeSeconds = 7;
+var newSubClipName = "opening";
 var hasHardBoundaries = 1;
 var sessionCounter = 1;
 var takeVideo = 1;
 var takeAudio = 1;
+var projectItem = app.project.rootItem.children[count+1]
+if ( (projectItem) && 
+    ((projectItem.type == ProjectItemType.CLIP)	|| (projectItem.type == ProjectItemType.FILE)) ){
+    //var newSubClipName	= prompt('Name of subclip?',	projectItem.name + '_' + sessionCounter, 'Name your subclip');
+        
+    var newSubClip 	= projectItem.createSubClip(newSubClipName, 
+                                                    startTimeSeconds, 
+                                                    endTimeSeconds, 
+                                                    hasHardBoundaries,
+                                                    takeVideo,
+                                                    
+                                                    takeAudio);
 
-for (i = 0; i < events.length; i++) {
-   
-    var startTimeSeconds = events[i].video_start + offset;
-    var endTimeSeconds = events[i].video_end + offset;
-    var newSubClipName = events[i].game_start.toString();
-    for (a = infographic_start; a < infographic_end; a++){
-        infographic = meta_data["infographics"][a];
-        infographic_time = infographic.substr(infographic.lastIndexOf("_") + 1,infographic.length - infographic.lastIndexOf("_"));
-        if (infographic_time > events[i].game_start && infographic_time < events[i].game_end){
-            var infographic_path = [file_path + meta_data["infographics"][a] + ".png"]
-            app.project.importFiles(infographic_path);
-        }
+    if (newSubClip){
+        newSubClip.setStartTime(0); // New in 11.0
     }
-    if ( (projectItem) && 
-		((projectItem.type == ProjectItemType.CLIP)	|| (projectItem.type == ProjectItemType.FILE)) ){
-		//var newSubClipName	= prompt('Name of subclip?',	projectItem.name + '_' + sessionCounter, 'Name your subclip');
-			
-		var newSubClip 	= projectItem.createSubClip(newSubClipName, 
-														startTimeSeconds, 
-														endTimeSeconds, 
-														hasHardBoundaries,
-														takeVideo,
-														takeAudio);
+    } else {
+        alert("Could not sub-clip " + projectItem.name + ".");
+    }
 
-		if (newSubClip){
-			newSubClip.setStartTime(0); // New in 11.0
-		}
-		} else {
-			alert("Could not sub-clip " + projectItem.name + ".");
-		}
+for (i = 1; i <= count; i++){
+    var game_number = parseInt(i);
 
-}
+    var transition_path = [];
+    i_string = i.toString();
+    transition = ["C:\\Ky\\Youtube\\Video\\game" + i_string + ".png"];
+    app.project.importFiles(transition);
+    var projectItem = app.project.rootItem.children[i-1];
+    var hasHardBoundaries = 1;
+    var sessionCounter = 1;
+    var takeVideo = 1;
+    var takeAudio = 1;
+    
+    var event_file = File(file_path + "G" + game_number + "_event_translation.json");// but we want JSON
+    var events = null; // create an empty variable
+    //  alert(file_to_read); // This could be interesting
+    var content = null; // this will hold the String content from the file
+    if(event_file !== false){// if it is really there
+               event_file.open('r'); // open it
+              content = event_file.read(); // read it
+              events =  JSON.parse(content);// now evaluate the string from the file
+              //alert(events.toSource()); // if it all went fine we have now a JSON Object instead of a string call length
+              event_file.close(); // always close files after reading
+              }else{
+              alert("Bah!"); // if something went wrong
+    }
+
+    for (j= 0; j < events.length; j++) {
+       
+        var startTimeSeconds = events[j].video_start + offset;
+        var endTimeSeconds = events[j].video_end + offset;
+        var newSubClipName = events[j].game_start.toString();
+        for (a = infographic_start; a < infographic_end; a++){
+            infographic = meta_data["infographics"][a];
+            infographic_time = infographic.substr(infographic.lastIndexOf("_") + 1,infographic.length - infographic.lastIndexOf("_"));
+            if (infographic_time > events[j].game_start && infographic_time < events[j].game_end){
+                var infographic_path = [file_path + meta_data["infographics"][a] + ".png"]
+                app.project.importFiles(infographic_path);
+            }
+        }
+        if ( (projectItem) && 
+            ((projectItem.type == ProjectItemType.CLIP)	|| (projectItem.type == ProjectItemType.FILE)) ){
+            //var newSubClipName	= prompt('Name of subclip?',	projectItem.name + '_' + sessionCounter, 'Name your subclip');
+                
+            var newSubClip 	= projectItem.createSubClip(newSubClipName, 
+                                                            startTimeSeconds, 
+                                                            endTimeSeconds, 
+                                                            hasHardBoundaries,
+                                                            takeVideo,
+                                                            takeAudio);
+
+            if (newSubClip){
+                newSubClip.setStartTime(0); // New in 11.0
+            }
+            } else {
+                alert("Could not sub-clip " + projectItem.name + ".");
+            }
+
+    }
+    
+ }
+
+

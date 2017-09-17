@@ -40,7 +40,7 @@ class YoutubeFile:
                 time.sleep(WAIT_BETWEEN_TRIES)
 
     def __exit__(self, ex_type, value, traceback):
-        os.remove(self.path)
+        # os.remove(self.path)
         pass
 
     def _remove_partial_file(self):

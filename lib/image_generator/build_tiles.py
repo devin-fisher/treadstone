@@ -170,10 +170,11 @@ def build_lanes_tile(lanes_imgs, pad=10):
     return new_im
 
 
-def build_heading_tile(team_1_gold, team_2_gold):
+def build_heading_tile(team_1_gold, team_2_gold, timestamp, timediff):
     font = ImageFont.truetype(_assets_loc("beaufortforlol-bold.otf"), 50)
-
-    total_height = 50
+    font_time = ImageFont.truetype(_assets_loc("beaufortforlol-bold.otf"), 70)
+    font_diff = ImageFont.truetype(_assets_loc("beaufortforlol-bold.otf"), 40)
+    total_height = 170
     total_width = 950 + (40 * 2) + (120 * 2)
 
     heading_right = build_gold_heading(team_2_gold, "right")
@@ -185,11 +186,27 @@ def build_heading_tile(team_1_gold, team_2_gold):
     draw = ImageDraw.Draw(new_im)
     w, h = draw.textsize(POWER_HEADING, font=font)
     text_x = _find_center(new_im.width, w)
-    text_y = -12
+    text_y = 119
     draw.text((text_x, text_y), POWER_HEADING, fill=fill, font=font)
 
-    new_im.paste(heading_left, (0, 0))
-    new_im.paste(heading_right, (total_width - heading_right.width, 0))
+    time_min = str(int(timestamp/60))
+    time_sec = str(timestamp%60)
+    draw = ImageDraw.Draw(new_im)
+    w, h = draw.textsize(time_min + ":" + time_sec, font=font_time)
+    time_x = _find_center(new_im.width, w)
+    time_y = -20
+    draw.text((time_x, time_y), time_min + ":" + time_sec, fill=fill, font=font_time)
+
+    diff_min = str(int(timediff/60))
+    diff_sec = str(timediff%60)
+    draw = ImageDraw.Draw(new_im)
+    w, h = draw.textsize("+" + diff_min + ":" + diff_sec, font=font_diff)
+    time_x = _find_center(new_im.width, w)
+    time_y = 70
+    draw.text((time_x, time_y), "+" + diff_min + ":" + diff_sec, fill=fill, font=font_diff)
+
+    new_im.paste(heading_left, (0, 65))
+    new_im.paste(heading_right, (total_width - heading_right.width, 65))
 
     return new_im
 
@@ -243,7 +260,7 @@ def build_full_image(heading, lanes, pad=30):
     lanes_x_center = _find_center(width, lanes.width)
     heading_x_center = _find_center(width, heading.width)
 
-    img.paste(heading, (heading_x_center, 0))
+    img.paste(heading, (heading_x_center, 20))
     img.paste(lanes, (lanes_x_center, heading.height + pad))
 
     background = Image.open(_assets_loc("background1080.jpg"))

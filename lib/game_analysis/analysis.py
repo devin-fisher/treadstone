@@ -2,6 +2,7 @@ import time
 from dateutil.parser import parse
 import datetime
 import pytz
+import os
 
 from lib.game_analysis.video_dowload import YoutubeFile
 from lib.timeline_analysis.events import report as timeline_events
@@ -11,6 +12,8 @@ from lib.timeline_analysis.video_cooralator import video_event_translator
 from lib.util.mongo_util import mongodb_id_convert
 from lib.util.http_lol_static import request_api_resource, request_json_resource_cacheless
 from lib.game_analysis.youtube_url import find_youtube_url
+from lib.timeline_analysis.image_clip import create_image_video
+from lib.util.static_vals import REPORTS_DIR
 
 
 MATCH_DATA_URL = "api/leagues/%(league)s/tournaments/%(tournament_id)s/brackets/%(bracket_id)s/matches/%(match_id)s"
@@ -163,6 +166,14 @@ def update_game(game_id, game, match_data, match_resolved, client):
             do_timeline_video_translation(game_id, game_data, game_analysis, client)
         except Exception as e:
             save_game_analysis(game_id, game_analysis, client, error_msg=('event_translation', e.message))
+
+        game_clip_dir = os.path.join(REPORTS_DIR, match_data['name'] + "_" + match_data['id'],game_id)
+        try:
+            create_image_video(game_clip_dir, game_data)
+        except Exception as e:
+            save_game_analysis(game_id, game_analysis, client, error_msg=('create_image_video', e.message))
+
+
 
     if game_analysis.get('game_not_played', False):
         return None
